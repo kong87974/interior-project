@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLUE DESIGN | 상업공간</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Pretendard", sans-serif;
+            letter-spacing: -0.02em;
+            overflow-x: hidden;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        /* REVEAL */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+
+            .hero-title {
+                font-size: 36px !important;
+            }
+
+            .hero-desc {
+                font-size: 14px !important;
+                line-height: 1.8;
+            }
+
+            .project-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .project-title {
+                font-size: 22px !important;
+            }
+
+            footer {
+                text-align: center;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 20px;
+                align-items: center !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-900">
+
+    <!-- HEADER -->
+    <div id="header"></div>
+
+    <!-- HERO -->
+    <section class="relative h-[500px] flex items-center justify-center text-white overflow-hidden">
+
+        <!-- BG -->
+        <div class="absolute inset-0 z-0">
+
+            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2000"
+                class="w-full h-full object-cover brightness-[0.4]">
+
+        </div>
+
+        <!-- TEXT -->
+        <div class="relative z-10 text-center px-6">
+
+            <h1 class="hero-title text-5xl md:text-6xl font-black tracking-tighter mb-6 reveal">
+                COMMERCIAL SPACE
+            </h1>
+
+            <p class="hero-desc max-w-2xl mx-auto text-sm md:text-base text-gray-200 leading-relaxed reveal"
+                style="transition-delay: 0.1s;">
+
+                브랜드의 분위기와 고객 경험을 고려한
+                감각적인 상업 공간 디자인을 제안합니다.
+
+            </p>
+
+        </div>
+    </section>
+
+    <!-- CATEGORY -->
+    <section class="border-b border-gray-100">
+
+        <div class="max-w-[1400px] mx-auto px-6">
+
+            <div
+                class="flex justify-center gap-8 md:gap-14 py-6 text-[13px] md:text-[14px] font-bold tracking-widest uppercase">
+
+                <a href="project_all.html"
+                    class="text-gray-400 hover:text-black transition-colors">
+                    전체보기
+                </a>
+
+                <a href="office.html"
+                    class="text-gray-400 hover:text-black transition-colors">
+                    사무공간
+                </a>
+
+                <a href="commercial.html"
+                    class="text-[#1e3a8a] border-b-2 border-[#1e3a8a] pb-2">
+                    상업공간
+                </a>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PROJECT -->
+    <section class="py-24">
+
+        <div class="max-w-[1400px] mx-auto px-6">
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-20">
+
+                <!-- ITEM -->
+                <div class="group reveal">
+
+                    <div class="relative overflow-hidden aspect-video bg-gray-100 mb-8 rounded-lg">
+
+                        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1000"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+
+                    </div>
+
+                    <div class="project-info flex justify-between items-start">
+
+                        <div>
+
+                            <p class="text-[10px] text-[#1e3a8a] font-bold tracking-widest uppercase mb-2">
+                                Cafe Design
+                            </p>
+
+                            <h4 class="project-title text-2xl font-bold tracking-tight">
+                                어반 가든 브런치 카페
+                            </h4>
+
+                        </div>
+
+                        <span class="text-xs text-gray-300 italic">
+                            2026 / Osan
+                        </span>
+
+                    </div>
+                </div>
+
+                <!-- ITEM -->
+                <div class="group reveal" style="transition-delay: 0.1s;">
+
+                    <div class="relative overflow-hidden aspect-video bg-gray-100 mb-8 rounded-lg">
+
+                        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1000"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+
+                    </div>
+
+                    <div class="project-info flex justify-between items-start">
+
+                        <div>
+
+                            <p class="text-[10px] text-[#1e3a8a] font-bold tracking-widest uppercase mb-2">
+                                Showroom
+                            </p>
+
+                            <h4 class="project-title text-2xl font-bold tracking-tight">
+                                미니멀리스트 가구 쇼룸
+                            </h4>
+
+                        </div>
+
+                        <span class="text-xs text-gray-300 italic">
+                            2026 / Gwanggyo
+                        </span>
+
+                    </div>
+                </div>
+
+                <!-- ITEM -->
+                <div class="group reveal">
+
+                    <div class="relative overflow-hidden aspect-video bg-gray-100 mb-8 rounded-lg">
+
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1000"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+
+                    </div>
+
+                    <div class="project-info flex justify-between items-start">
+
+                        <div>
+
+                            <p class="text-[10px] text-[#1e3a8a] font-bold tracking-widest uppercase mb-2">
+                                Restaurant
+                            </p>
+
+                            <h4 class="project-title text-2xl font-bold tracking-tight">
+                                더 다이닝 모던 라운지
+                            </h4>
+
+                        </div>
+
+                        <span class="text-xs text-gray-300 italic">
+                            2025 / Dongtan
+                        </span>
+
+                    </div>
+                </div>
+
+                <!-- COMING SOON -->
+                <div class="group reveal">
+
+                    <div class="bg-gray-50 aspect-video rounded-lg mb-8 flex items-center justify-center">
+
+                        <div class="text-gray-200 text-5xl font-black tracking-tighter uppercase">
+                            Coming Soon
+                        </div>
+
+                    </div>
+
+                    <div class="project-info flex justify-between items-start">
+
+                        <div>
+
+                            <p class="text-[10px] text-gray-300 font-bold tracking-widest uppercase mb-2">
+                                Commercial
+                            </p>
+
+                            <h4 class="project-title text-2xl font-bold text-gray-300">
+                                New Project
+                            </h4>
+
+                        </div>
+
+                        <span class="text-xs text-gray-200 italic">
+                            2026
+                        </span>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-28 bg-[#f8fafc]">
+
+        <div class="max-w-[1000px] mx-auto px-6 text-center reveal">
+
+            <h2 class="text-3xl md:text-5xl font-black tracking-tighter mb-6">
+                공간이 브랜드의 첫인상입니다
+            </h2>
+
+            <p class="text-gray-500 leading-relaxed mb-10">
+                블루디자인은 고객 경험과 브랜드 아이덴티티를 고려한
+                프리미엄 상업 공간을 제안합니다.
+            </p>
+
+            <a href="contact.html"
+                class="inline-flex items-center justify-center px-8 h-14 bg-[#1e3a8a] text-white text-sm font-bold tracking-widest uppercase hover:opacity-90 transition-all">
+
+                CONTACT US
+
+            </a>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <div id="footer"></div>
+
+    <script>
+
+        // header/footer 불러오기
+        fetch('./components/header.html')
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+
+        fetch('./components/footer.html')
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+
+        window.toggleMenu = function () {
+
+    const menu = document.getElementById("mobileMenu");
+
+    if(menu){
+        menu.classList.toggle("hidden");
+    }
+
+};
+        
+        // REVEAL
+        function reveal() {
+
+            var reveals = document.querySelectorAll(".reveal");
+
+            for (var i = 0; i < reveals.length; i++) {
+
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+
+                if (elementTop < windowHeight - 100) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        window.addEventListener("scroll", reveal);
+
+        reveal();
+
+    </script>
+
+</body>
+
+</html>

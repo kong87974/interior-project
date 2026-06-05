@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BLUE DESIGN | 공지사항</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"
+    />
+
+    <style>
+        body {
+            font-family: "Pretendard", sans-serif;
+            letter-spacing: -0.02em;
+            overflow-x: hidden;
+        }
+
+        /* 애니메이션 */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-900">
+
+    <!-- HEADER -->
+    <div id="header"></div>
+
+    <!-- 메인 -->
+    <main class="pt-48 pb-32 max-w-[900px] mx-auto px-6">
+
+        <!-- 게시글 헤더 -->
+        <header class="border-b border-gray-200 pb-10 mb-14 reveal">
+
+            <p class="text-[11px] text-[#1e3a8a] font-bold tracking-[0.3em] uppercase mb-5">
+                Portfolio Update
+            </p>
+
+            <h1 class="text-3xl md:text-5xl font-bold tracking-tighter leading-tight mb-8">
+                오산 현대프리이머캠퍼스 프로젝트<br class="hidden md:block">
+                시공 사례 업데이트
+            </h1>
+
+            <div class="flex items-center gap-6 text-xs text-gray-400 uppercase tracking-wider">
+                <span>Date. 2026.04.28</span>
+                <span>Author. 관리자</span>
+            </div>
+
+        </header>
+
+        <!-- 대표 이미지 -->
+        <section class="mb-16 reveal">
+
+            <div class="overflow-hidden rounded-sm bg-gray-100 aspect-[16/9]">
+
+                <img
+                    src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000"
+                    alt="오피스 프로젝트"
+                    class="w-full h-full object-cover"
+                />
+
+            </div>
+
+        </section>
+
+        <!-- 본문 -->
+        <article class="space-y-8 text-[15px] md:text-[17px] text-gray-600 leading-[2] reveal">
+
+            <p>
+                블루디자인의 최신 프로젝트,
+                <span class="font-bold text-black">
+                    ‘오산 현대프리이머캠퍼스 복층 사무실’
+                </span>
+                시공 사례가 공식 홈페이지에 새롭게 업데이트되었습니다.
+            </p>
+
+            <p>
+                이번 프로젝트는 복층 구조 특유의 높은 층고를 적극적으로 활용하여
+                개방감을 극대화하고, 업무 효율성과 공간의 완성도를 동시에 고려한
+                프리미엄 오피스 인테리어를 목표로 진행되었습니다.
+            </p>
+
+            <!-- 강조 박스 -->
+            <div class="bg-gray-50 border-l-4 border-[#1e3a8a] p-8 md:p-10">
+
+                <h3 class="text-lg font-bold text-black mb-6 tracking-tight">
+                    주요 시공 포인트
+                </h3>
+
+                <ul class="space-y-4 text-sm md:text-base text-gray-600 leading-relaxed">
+
+                    <li>
+                        • 공간 활용도를 극대화한 복층 구조 설계 및 동선 최적화
+                    </li>
+
+                    <li>
+                        • 기업 아이덴티티를 반영한 모던 & 미니멀 인테리어 컨셉 적용
+                    </li>
+
+                    <li>
+                        • 자연광과 조화를 이루는 고효율 조명 시스템 구성
+                    </li>
+
+                    <li>
+                        • 실용성과 디자인을 동시에 고려한 오피스 가구 배치
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <p>
+                자세한 시공 사례와 현장 사진은
+                <span class="font-bold text-black">
+                    PROJECT → 사무공간
+                </span>
+                메뉴에서 확인하실 수 있습니다.
+            </p>
+
+            <p>
+                블루디자인은 앞으로도 브랜드의 가치를 높이는 공간을 만들기 위해
+                더욱 완성도 높은 디자인과 시공을 선보이겠습니다.
+            </p>
+
+        </article>
+
+        <!-- 목록 버튼 -->
+        <div class="mt-24 pt-10 border-t border-gray-100 flex justify-center reveal">
+
+            <a
+                href="notice.html"
+                class="inline-flex items-center justify-center px-12 py-4 border border-black text-xs font-bold uppercase tracking-[0.3em] hover:bg-black hover:text-white transition-all duration-300"
+            >
+                목록으로
+            </a>
+
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <div id="footer"></div>
+
+    <script>
+
+        // header/footer 불러오기
+        fetch('./components/header.html')
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById('header').innerHTML = data;
+        });
+
+        fetch('./components/footer.html')
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById('footer').innerHTML = data;
+        });
+
+        window.toggleMenu = function () {
+
+    const menu = document.getElementById("mobileMenu");
+
+    if(menu){
+        menu.classList.toggle("hidden");
+    }
+
+};
+
+
+        // reveal animation
+        window.addEventListener("scroll", () => {
+
+            const reveals = document.querySelectorAll(".reveal");
+
+            reveals.forEach(el => {
+
+                const windowHeight = window.innerHeight;
+                const revealTop = el.getBoundingClientRect().top;
+
+                if (revealTop < windowHeight - 100) {
+                    el.classList.add("active");
+                }
+
+            });
+
+        });
+
+        // 초기 실행
+        window.dispatchEvent(new Event("scroll"));
+
+    </script>
+
+</body>
+</html>

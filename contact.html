@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLUE DESIGN | 견적문의</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <style>
+        body {
+            font-family: "Pretendard", sans-serif;
+            letter-spacing: -0.02em;
+            overflow-x: hidden;
+        }
+
+        /* 기본 인풋 포맷팅 제거 */
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea {
+            border-radius: 0 !important;
+            -webkit-appearance: none;
+        }
+
+        /* 슬라이더(range) 스타일 커스텀 */
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 3px solid #4b5563;
+            cursor: pointer;
+        }
+        input[type="range"]::-moz-range-thumb {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 3px solid #4b5563;
+            cursor: pointer;
+        }
+
+        /* 커스텀 라디오 버튼 (문의유형) */
+        .custom-radio {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid #4b5563;
+            border-radius: 50%;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+            background-color: #ffffff;
+            transition: all 0.2s ease;
+        }
+        .custom-radio:checked {
+            background-color: #333333;
+            border-color: #333333;
+        }
+        .custom-radio:checked::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 2px;
+            width: 5px;
+            height: 9px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        /* 커스텀 체크박스 (개인정보방침) */
+        .custom-checkbox {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid #4b5563;
+            border-radius: 0px;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+            background-color: #ffffff;
+            transition: all 0.2s ease;
+        }
+        .custom-checkbox:checked {
+            background-color: #333333;
+            border-color: #333333;
+        }
+        .custom-checkbox:checked::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 2px;
+            width: 5px;
+            height: 9px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        /* 애니메이션 */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            main {
+                padding-top: 140px !important;
+            }
+            h1 {
+                font-size: 38px !important;
+                line-height: 1.3 !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-900">
+
+    <div id="header"></div>
+
+    <main class="pt-48 pb-32 px-6">
+
+        <div class="max-w-5xl mx-auto">
+
+            <div class="mb-10 reveal">
+                <span class="text-sm font-bold tracking-[0.2em] text-gray-700 uppercase block mb-2">
+                    CONTACT
+                </span>
+                <h1 class="text-4xl font-bold tracking-tight text-[#222751]">
+                    견적문의
+                </h1>
+            </div>
+
+            <form id="contactForm" class="bg-[#dbdbdb] p-8 md:p-14 space-y-7 reveal">
+
+                <div class="grid grid-cols-1 md:grid-cols-[160px_1fr] items-center gap-2 md:gap-4">
+                    <label class="text-base font-bold text-gray-800 flex items-center">
+                        <span class="mr-1.5">•</span> 회사명 <span class="text-red-500 ml-1">*</span>
+                    </label>
+                    <input type="text" name="company_name" required class="w-full bg-white h-11 px-4 outline-none border-none text-sm">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-[160px_1fr] items-center gap-2 md:gap-4">
+                    <label class="text-base font-bold text-gray-800 flex items-center">
+                        <span class="mr-1.5">•</span> 이메일
+                    </label>
+                    <input type="email" name="user_email" class="w-full bg-white h-11 px-4 outline-none border-none text-sm">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-[160px_1fr] items-center gap-2 md:gap-4">
+                    <label class="text-base font-bold text-gray-800 flex items-center">
+                        <span class="mr-1.5">•</span> 담당자명 <span class="text-red-500 ml-1">*</span>
+                    </label>
+                    <input type="text" name="manager_name" required class="w-full bg-white h-11 px-4 outline-none border-none text-sm">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-[160px_1fr] items-center gap-2 md:gap-4">
+                    <label class="text-base font-bold text-gray-800 flex items-center">
+                        <span class="mr-1.5">•</span> 연락처 <span class="text-red-500 ml-1">*</span>
+                    </label>
+                    <input type="tel" name="user_phone" required placeholder="휴대번호 또는 유선번호" class="w-full bg-white h-11 px-4 outline-none border-none text-sm placeholder-gray-400">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-[160px_1fr] items-start md:items-center gap-2 md:gap-4">
+                    <label class="text-base font-bold text-gray-800 flex items-center">
+                        <span class="mr-1.5">•</span> 문의유형
+                    </label>
+                    <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-bold text-gray-800">
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="radio" name="inquiry_type" value="신규 사무실" class="custom-radio"> 신규 사무실
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="radio" name="inquiry_type" value="신규 상업공간" class="custom-radio"> 신규 상업공간
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="radio" name="inquiry_type" value="사무실 리모델링" class="custom-radio"> 사무실 리모델링
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="radio" name="inquiry_type" value="상업공간 리모델링" class="custom-radio"> 상업공간 리모델링
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="radio" name="inquiry_type" value="기타" class="custom-radio"> 기타
+                        </label>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-[160px_1fr] items-center gap-2 md:gap-4">
+                    <label class="text-base font-bold text-gray-800 flex items-center">
+                        <span class="mr-1.5">•</span> 회사위치
+                    </label>
+                    <input type="text" name="company_location" placeholder="주소 또는 구/동" class="w-full bg-white h-11 px-4 outline-none border-none text-sm placeholder-gray-400">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-[160px_1fr] items-center gap-2 md:gap-4">
+                    <label class="text-base font-bold text-gray-800 flex items-center">
+                        <span class="mr-1.5">•</span> 현장위치
+                    </label>
+                    <input type="text" name="site_location" placeholder="주소 또는 구/동" class="w-full bg-white h-11 px-4 outline-none border-none text-sm placeholder-gray-400">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-[160px_1fr] items-center gap-2 md:gap-4">
+                    <label class="text-base font-bold text-gray-800 flex items-center">
+                        <span class="mr-1.5">•</span> 현장규모
+                    </label>
+                    <input type="text" name="site_size" placeholder="가로 x 세로 x 높이 / 평수" class="w-full bg-white h-11 px-4 outline-none border-none text-sm placeholder-gray-400">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-[160px_1fr] items-center gap-2 md:gap-4">
+                    <label class="text-base font-bold text-gray-800 flex items-center">
+                        <span class="mr-1.5">•</span> 방문희망일
+                    </label>
+                    <input type="text" name="visit_date" class="w-full bg-white h-11 px-4 outline-none border-none text-sm">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-[160px_1fr] items-start gap-2 md:gap-4">
+                    <label class="text-base font-bold text-gray-800 flex items-center pt-1">
+                        <span class="mr-1.5">•</span> 추정예산 (단위: 원)
+                    </label>
+                    <div class="w-full relative pt-8">
+                        <div id="budgetTooltip" class="absolute top-0 left-0 -translate-x-1/2 bg-[#333333] text-white text-[11px] px-2 py-0.5 font-mono after:content-[''] after:absolute after:top-full after:left-1/2 after:-translate-x-1/2 after:border-4 after:border-transparent after:border-t-[#333333] whitespace-nowrap">
+                            10,000,000
+                        </div>
+                        <input type="range" id="budgetRange" name="budget_range" min="0" max="100000000" step="100000" value="10000000" class="w-full h-[5px] bg-[#7a7a7a] outline-none appearance-none cursor-pointer">
+                        <p class="text-xs text-gray-500 mt-2 tracking-tight">예상하거나 원하는 예산을 대략적으로 알려주시면 최대한 맞춤으로 진행을 해드립니다.</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-[160px_1fr] items-center gap-2 md:gap-4">
+                    <label class="text-base font-bold text-gray-800 flex items-center">
+                        <span class="mr-1.5">•</span> 공사희망일~완료일
+                    </label>
+                    <input type="text" name="construction_period" class="w-full bg-white h-11 px-4 outline-none border-none text-sm">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-[160px_1fr] items-center gap-2 md:gap-4">
+                    <label class="text-base font-bold text-gray-800 flex items-center">
+                        <span class="mr-1.5">•</span> 도면/현장사진1
+                    </label>
+                    <div class="flex items-center gap-4">
+                        <label class="bg-[#292552] text-white text-sm font-bold px-5 py-2.5 cursor-pointer hover:bg-[#1f1b3e] transition-colors min-w-[85px] text-center shrink-0">
+                            Uplaod
+                            <input type="file" id="fileInput1" class="hidden">
+                        </label>
+                        <span id="fileName1" class="text-xs font-bold text-gray-700 truncate max-w-[200px] md:max-w-xs">3MB 이하로 올려주세요.</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-[160px_1fr] items-center gap-2 md:gap-4">
+                    <label class="text-base font-bold text-gray-800 flex items-center">
+                        <span class="mr-1.5">•</span> 도면/현장사진2
+                    </label>
+                    <div class="flex items-center gap-4">
+                        <label class="bg-[#292552] text-white text-sm font-bold px-5 py-2.5 cursor-pointer hover:bg-[#1f1b3e] transition-colors min-w-[85px] text-center shrink-0">
+                            Upload
+                            <input type="file" id="fileInput2" class="hidden">
+                        </label>
+                        <span id="fileName2" class="text-xs font-bold text-gray-700 truncate max-w-[200px] md:max-w-xs">3MB 이하로 올려주세요.</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-[160px_1fr] items-start gap-2 md:gap-4">
+                    <label class="text-base font-bold text-gray-800 flex items-center pt-2">
+                        <span class="mr-1.5">•</span> 기타사항
+                    </label>
+                    <textarea name="etc_memo" rows="6" placeholder="상세히 적어주시면 상담에 큰 도움이 됩니다." class="w-full bg-white p-4 text-sm outline-none border-none resize-none placeholder-gray-400 leading-relaxed"></textarea>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-[160px_1fr] items-start gap-2 md:gap-4 pt-4">
+                    <label class="text-base font-bold text-gray-800 flex items-center">
+                        <span class="mr-1.5">•</span> 개인정보방침 <span class="text-red-500 ml-1">*</span>
+                    </label>
+                    <div class="flex items-start gap-3 text-xs md:text-sm text-gray-600 font-medium leading-tight">
+                        <input type="checkbox" id="privacy" required class="custom-checkbox mt-0.5">
+                        <label for="privacy" class="cursor-pointer select-none">
+                            동의합니다. (수집항목: 고객명, 전화번호, 메일 / 이용목적: 견적상담 / 보유기간: 3개월 이내)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="text-center pt-8">
+                    <button type="submit" class="bg-[#292552] text-white text-sm font-bold px-10 py-3.5 hover:bg-[#1f1b3e] transition-all tracking-wider">
+                        문의하기
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </main>
+
+    <div id="footer"></div>
+
+    <script>
+        // 1. EmailJS 초기화 설정 (본인의 Public Key로 대체해야 합니다)
+        // 공식 홈페이지(emailjs.com) 가입 후 발급받은 키를 여기에 넣습니다.
+        (function() {
+            emailjs.init("YOUR_PUBLIC_KEY"); 
+        })();
+
+        // header/footer 불러오기
+        fetch('./components/header.html')
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById('header').innerHTML = data;
+        });
+
+        fetch('./components/footer.html')
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById('footer').innerHTML = data;
+        });
+
+        window.toggleMenu = function () {
+
+    const menu = document.getElementById("mobileMenu");
+
+    if(menu){
+        menu.classList.toggle("hidden");
+    }
+
+};
+
+        // 추정예산 슬라이더 10만원 단위 반영 스크립트
+        const rangeInput = document.getElementById('budgetRange');
+        const tooltip = document.getElementById('budgetTooltip');
+
+        function updateSlider() {
+            const val = parseInt(rangeInput.value);
+            const min = parseInt(rangeInput.min);
+            const max = parseInt(rangeInput.max);
+            
+            tooltip.textContent = val.toLocaleString();
+            
+            const percent = ((val - min) / (max - min)) * 100;
+            tooltip.style.left = `calc(${percent}% - (${percent * 0.14}px - 7px))`;
+        }
+
+        rangeInput.addEventListener('input', updateSlider);
+        window.addEventListener('DOMContentLoaded', updateSlider);
+
+        // 파일 업로드 실시간 감지 스크립트
+        const fileInput1 = document.getElementById('fileInput1');
+        const fileName1 = document.getElementById('fileName1');
+        const fileInput2 = document.getElementById('fileInput2');
+        const fileName2 = document.getElementById('fileName2');
+
+        fileInput1.addEventListener('change', (e) => {
+            if(e.target.files.length > 0) {
+                fileName1.textContent = `✓ 선택된 파일: ${e.target.files[0].name}`;
+                fileName1.className = "text-xs font-bold text-emerald-700 truncate max-w-[200px] md:max-w-xs";
+            } else {
+                fileName1.textContent = "3MB 이하로 올려주세요.";
+                fileName1.className = "text-xs font-bold text-gray-700 truncate max-w-[200px] md:max-w-xs";
+            }
+        });
+
+        fileInput2.addEventListener('change', (e) => {
+            if(e.target.files.length > 0) {
+                fileName2.textContent = `✓ 선택된 파일: ${e.target.files[0].name}`;
+                fileName2.className = "text-xs font-bold text-emerald-700 truncate max-w-[200px] md:max-w-xs";
+            } else {
+                fileName2.textContent = "3MB 이하로 올려주세요.";
+                fileName2.className = "text-xs font-bold text-gray-700 truncate max-w-[200px] md:max-w-xs";
+            }
+        });
+
+        // 2. 문의하기 폼 Submit (이메일 전송 처리)
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // 기본 폼 제출 동작 차단
+
+            // 슬라이더 포맷팅된 텍스트 값을 전송 데이터에 포함하기 위해 원 단위 가공
+            const formattedBudget = parseInt(rangeInput.value).toLocaleString() + "원";
+
+            // EmailJS로 메일 전송
+            // 'YOUR_SERVICE_ID'와 'YOUR_TEMPLATE_ID'는 EmailJS 대시보드 생성 값을 입력합니다.
+            emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
+                .then(function() {
+                    alert('견적 문의가 정상적으로 전송되었습니다. 확인 후 빠른 시일 내에 연락드리겠습니다.');
+                    document.getElementById('contactForm').reset(); // 폼 초기화
+                    updateSlider(); // 슬라이더 눈금 리셋
+                }, function(error) {
+                    alert('메일 전송에 실패했습니다. 다시 시도해 주시거나 대표 번호로 문의 바랍니다. 에러: ' + JSON.stringify(error));
+                });
+        });
+
+        // reveal animation
+        window.addEventListener('scroll', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(el => {
+                const windowHeight = window.innerHeight;
+                const revealTop = el.getBoundingClientRect().top;
+
+                if (revealTop < windowHeight - 100) {
+                    el.classList.add('active');
+                }
+            });
+        });
+
+        window.dispatchEvent(new Event('scroll'));
+    </script>
+
+</body>
+</html>
+
+//활성화를 위해 세팅해야 할 사항 (EmailJS 기준)
+코드를 복사해서 반영한 뒤, 이메일이 내 주소로 정상 수신되게 하려면 EmailJS 홈페이지(무료 플랜 월 200건 제공)에서 간단한 회원가입 후 3가지 키 값을 받아 코드에 대입해 주어야 합니다.
+
+YOUR_PUBLIC_KEY 세팅: 코드 약 162번째 라인 emailjs.init("YOUR_PUBLIC_KEY"); 부분에 Account -> API Keys 메뉴에 있는 Public Key 문정열을 붙여넣습니다.
+
+YOUR_SERVICE_ID / YOUR_TEMPLATE_ID 세팅: 코드 약 207번째 라인 emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this) 부분에 연결한 메일 서비스 ID(예: Gmail 등)와 만든 메일 본문 템플릿 ID를 적어줍니다.
+
+이메일 템플릿 작성 시 설정한 name값들({{company_name}}, {{manager_name}}, {{user_phone}}, {{inquiry_type}}, {{etc_memo}} 등)을 원하는 양식대로 배치해 두면 고객이 입력한 내용 그대로 내 메일함에 들어오게 됩니다.
+
+참고 (파일 첨부 관련): EmailJS 무료 플랜 기본 sendForm 기능은 텍스트 유효성 기준 위주로 세팅되어 전송됩니다. 만약 사용자가 업로드한 '도면/사진 파일' 자체를 메일에 파일 형태로 완전하게 무제한 첨부하려면 EmailJS 유료 에드온을 쓰거나, 추후 Firebase/AWS S3 스토리지 서버에 파일을 임시 업로드한 후 그 다운로드 링크(URL)를 메일 텍스트 본문에 포함하여 발송하는 연동 방식으로 고도화하는 것을 추천합니다.

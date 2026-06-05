@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLUEDESIGN | 프리미엄 인테리어</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet"
+        as="style"
+        crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Pretendard", sans-serif;
+            letter-spacing: -0.02em;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* 드롭다운 스타일 강제 지정 */
+        .nav-item {
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 80px; /* h-20 높이와 완벽 일치 */
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            min-width: 160px;
+            display: none;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border: 1px solid #f0f0f0;
+            padding: 8px 0;
+            border-radius: 0 0 6px 6px;
+            z-index: 999999 !important;
+        }
+
+        .nav-item:hover .dropdown {
+            display: block !important;
+        }
+
+        /* SLIDE */
+        .slide-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            filter: brightness(0.7);
+        }
+
+        .slide-bg.active {
+            opacity: 1;
+        }
+
+        /* DOT */
+        .dot {
+            width: 7px;
+            height: 7px;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .dot.active {
+            background: white;
+            transform: scale(1.3);
+        }
+
+        /* REVEAL */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            #slide-title { font-size: 34px !important; text-align: center; line-height: 1.3; padding: 0 20px; }
+            #slide-sub { font-size: 14px !important; text-align: center; letter-spacing: 0.2em; padding: 0 20px; }
+            .contact-box { right: 20px !important; bottom: 20px !important; }
+            .contact-box p:first-child { font-size: 16px !important; }
+            .portfolio-section { padding-top: 90px !important; padding-bottom: 90px !important; }
+            .portfolio-title { font-size: 32px !important; }
+            .portfolio-top { flex-direction: column; align-items: flex-start !important; gap: 20px; }
+            footer { text-align: center; }
+            footer .footer-bottom { flex-direction: column; align-items: center !important; }
+        }
+    </style>
+</head>
+
+<body class="bg-white">
+
+    <nav class="fixed top-0 left-0 w-full z-[999999] bg-white border-b border-gray-100 h-20">
+        <div class="max-w-[1400px] mx-auto px-6 h-full flex justify-between items-center relative">
+            
+            <div class="hidden md:flex items-center gap-14 text-[15px] font-bold text-gray-800 h-full">
+                <div class="nav-item h-full">
+                    <a href="about.html" class="hover:text-[#1e3a8a] transition-colors py-7">회사소개</a>
+                    <div class="dropdown">
+                        <a href="about.html" class="block px-6 py-3 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#1e3a8a] font-semibold text-center">블루디자인</a>
+                        <a href="process.html" class="block px-6 py-3 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#1e3a8a] font-semibold text-center">진행절차</a>
+                        <a href="map.html" class="block px-6 py-3 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#1e3a8a] font-semibold text-center">오시는길</a>
+                    </div>
+                </div>
+                <div class="nav-item h-full">
+                    <a href="project_all.html" class="hover:text-[#1e3a8a] transition-colors py-7">프로젝트</a>
+                    <div class="dropdown">
+                        <a href="project_all.html" class="block px-6 py-3 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#1e3a8a] font-semibold text-center">전체보기</a>
+                        <a href="office.html" class="block px-6 py-3 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#1e3a8a] font-semibold text-center">사무공간</a>
+                        <a href="commercial.html" class="block px-6 py-3 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#1e3a8a] font-semibold text-center">상업공간</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center">
+                <a href="index.html" class="text-center leading-none">
+                    <div class="text-[18px] md:text-[22px] font-black tracking-wide text-[#1e3a8a]">공석준</div>
+                    <div class="text-[9px] md:text-[16px] tracking-[0.5em] text-gray-500 uppercase mt-1">INTERIOR</div>
+                </a>
+            </div>
+
+            <div class="hidden md:flex justify-end items-center gap-10 text-[15px] font-bold text-gray-800">
+                <a href="contact.html" class="hover:text-[#1e3a8a] transition-colors">견적문의</a>
+                <a href="notice.html" class="hover:text-[#1e3a8a] transition-colors">공지사항</a>
+                <div class="flex items-center gap-3 border-l border-gray-100 pl-10">
+                    <svg class="w-7 h-7 text-[#1e3a8a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 7h6"/>
+                    </svg>
+                    <div class="flex flex-col whitespace-nowrap">
+                        <span class="text-[16px] font-black text-[#1e3a8a] leading-tight">010-4192-0882</span>
+                        <span class="text-[12px] text-gray-400">camp0882@daum.net</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="md:hidden flex justify-end w-full">
+                <button onclick="toggleMenu()" class="relative z-[999999] text-[10px] font-bold border border-black px-3 py-1 uppercase tracking-widest">Menu</button>
+            </div>
+        </div>
+
+        <div id="mobileMenu" class="hidden bg-white border-t border-gray-100 px-6 py-6 w-full shadow-lg">
+            <div class="flex flex-col gap-6 text-[15px] font-bold text-gray-800">
+                <div class="flex flex-col gap-3">
+                    <a href="about.html">회사소개</a>
+                    <div class="pl-4 flex flex-col gap-3 text-[13px] text-gray-500 font-medium">
+                        <a href="about.html">블루디자인</a>
+                        <a href="process.html">진행절차</a>
+                        <a href="map.html">오시는길</a>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-3">
+                    <a href="project_all.html">프로젝트</a>
+                    <div class="pl-4 flex flex-col gap-3 text-[13px] text-gray-500 font-medium">
+                        <a href="project_all.html">전체보기</a>
+                        <a href="office.html">사무공간</a>
+                        <a href="commercial.html">상업공간</a>
+                    </div>
+                </div>
+                <a href="contact.html">견적문의</a>
+                <a href="notice.html">공지사항</a>
+                <div class="pt-4 border-t border-gray-100">
+                    <p class="text-[#1e3a8a] font-black">010-4192-0882</p>
+                    <p class="text-xs text-gray-400">camp0882@daum.net</p>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative min-h-screen w-full z-0">
+        <div id="slider" class="absolute inset-0 w-full h-full overflow-hidden z-0">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000" class="slide-bg active">
+            <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=2000" class="slide-bg">
+            <img src="https://images.unsplash.com/photo-1531973576160-7125cd663d86?q=80&w=2000" class="slide-bg">
+            <img src="https://images.unsplash.com/photo-1604328698692-f76ea9498e76?q=80&w=2000" class="slide-bg">
+        </div>
+
+        <div class="relative z-10 min-h-screen flex flex-col justify-center items-center text-white">
+            <h1 id="slide-title" class="text-4xl md:text-6xl font-bold tracking-tighter mb-4 transition-all duration-500">오산 공유오피스</h1>
+            <p id="slide-sub" class="text-xl md:text-2xl font-light tracking-[0.3em] opacity-80 transition-all duration-500">상업공간</p>
+
+            <div class="flex gap-4 mt-10">
+                <a href="project_all.html" class="px-8 py-4 bg-white text-black font-bold text-sm tracking-wider hover:bg-gray-200 transition-all">프로젝트 보기</a>
+                <a href="contact.html" class="px-8 py-4 border border-white text-white font-bold text-sm tracking-wider hover:bg-white hover:text-black transition-all">견적 문의</a>
+            </div>
+
+            <div class="absolute bottom-12 flex gap-4">
+                <span class="dot active" onclick="goSlide(0)"></span>
+                <span class="dot" onclick="goSlide(1)"></span>
+                <span class="dot" onclick="goSlide(2)"></span>
+                <span class="dot" onclick="goSlide(3)"></span>
+            </div>
+        </div>
+
+        <div class="contact-box absolute bottom-10 right-10 z-20 text-right text-white">
+            <div class="mb-6">
+                <p class="text-[20px] font-black tracking-tighter">010-4192-0882</p>
+                <p class="text-sm font-light opacity-80">camp0882@daum.net</p>
+            </div>
+            <div class="flex justify-end gap-3">
+                <a href="#" class="w-10 h-10 rounded-full bg-[#03C75A] flex items-center justify-center text-white text-[10px] font-bold uppercase">BLOG</a>
+                <a href="#" class="w-10 h-10 rounded-full bg-[#fae100] flex items-center justify-center overflow-hidden">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/KakaoTalk_logo.svg" alt="카카오톡" class="w-5 h-5 object-contain">
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-white flex items-center justify-center overflow-hidden">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="인스타그램" class="w-5 h-5 object-contain">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="portfolio-section py-32 bg-white relative z-10">
+        <div class="max-w-[1400px] mx-auto px-6">
+            <div class="mb-16 reveal">
+                <h2 class="text-[11px] text-[#1e3a8a] font-bold tracking-[0.4em] uppercase mb-4">Our Work</h2>
+                <div class="portfolio-top flex justify-between items-end">
+                    <h3 class="portfolio-title text-4xl md:text-5xl font-black tracking-tighter">PORTFOLIO</h3>
+                    <a href="office.html" class="text-xs font-bold border-b border-black pb-1 hover:text-[#1e3a8a] hover:border-[#1e3a8a] transition-all">VIEW ALL</a>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+                <div class="group cursor-pointer reveal">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-6">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1000" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-[#1e3a8a]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    </div>
+                    <p class="text-[10px] text-gray-400 tracking-widest uppercase mb-2">Office Design</p>
+                    <h4 class="text-xl font-bold tracking-tight group-hover:text-[#1e3a8a] transition-colors">현대프리미어캠퍼스 복층 사무실</h4>
+                </div>
+                <div class="group cursor-pointer reveal">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-6">
+                        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1000" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-[#1e3a8a]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    </div>
+                    <p class="text-[10px] text-gray-400 tracking-widest uppercase mb-2">Commercial Space</p>
+                    <h4 class="text-xl font-bold tracking-tight group-hover:text-[#1e3a8a] transition-colors">광교 테크노밸리 공유 오피스</h4>
+                </div>
+                <div class="group cursor-pointer reveal">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-6">
+                        <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=1000" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-[#1e3a8a]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    </div>
+                    <p class="text-[10px] text-gray-400 tracking-widest uppercase mb-2">Modern Office</p>
+                    <h4 class="text-xl font-bold tracking-tight group-hover:text-[#1e3a8a] transition-colors">동탄 IT 타워 디자인 스튜디오</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 bg-[#f8fafc] overflow-hidden relative z-10">
+        <div class="max-w-[1400px] mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                <div class="reveal">
+                    <p class="text-[11px] tracking-[0.4em] text-[#1e3a8a] font-bold uppercase mb-6">About Us</p>
+                    <h2 class="text-4xl md:text-5xl font-black tracking-tighter leading-tight mb-8">공간의 가치를<br>디자인합니다.</h2>
+                    <p class="text-gray-500 leading-relaxed text-[15px] md:text-[17px] mb-10">
+                        블루디자인은 단순한 인테리어를 넘어 공간 안에서의 경험과 동선을 설계합니다.<br><br>
+                        오피스, 상업공간, 공유오피스 등 다양한 프로젝트를 통해 공간의 새로운 가치를 제안합니다.
+                    </p>
+                    <div class="flex flex-wrap gap-10">
+                        <div>
+                            <h3 class="text-3xl font-black text-[#1e3a8a] mb-2">120+</h3>
+                            <p class="text-sm text-gray-500 tracking-wider uppercase">Projects</p>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-black text-[#1e3a8a] mb-2">10+</h3>
+                            <p class="text-sm text-gray-500 tracking-wider uppercase">Years</p>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-black text-[#1e3a8a] mb-2">98%</h3>
+                            <p class="text-sm text-gray-500 tracking-wider uppercase">Satisfaction</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative reveal">
+                    <div class="aspect-[4/5] overflow-hidden rounded-[4px]">
+                        <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1200" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div class="absolute -bottom-10 -left-10 bg-white p-8 shadow-2xl hidden md:block">
+                        <p class="text-[11px] tracking-[0.3em] uppercase text-gray-400 mb-3">Premium Interior</p>
+                        <h4 class="text-2xl font-black tracking-tight leading-snug">Modern<br>Workspace</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 bg-white relative z-10">
+        <div class="max-w-[1400px] mx-auto px-6">
+            <div class="text-center mb-24 reveal">
+                <p class="text-[11px] tracking-[0.4em] text-[#1e3a8a] font-bold uppercase mb-5">Process</p>
+                <h2 class="text-4xl md:text-5xl font-black tracking-tighter">공간이 완성되는 과정</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div class="reveal text-center">
+                    <div class="text-6xl font-black text-[#1e3a8a]/10 mb-6">01</div>
+                    <h3 class="text-2xl font-black mb-4 tracking-tight">상담</h3>
+                    <p class="text-gray-500 leading-relaxed text-sm">공간의 목적과 고객의 니즈를 충분히 상담하고 분석합니다.</p>
+                </div>
+                <div class="reveal text-center">
+                    <div class="text-6xl font-black text-[#1e3a8a]/10 mb-6">02</div>
+                    <h3 class="text-2xl font-black mb-4 tracking-tight">디자인</h3>
+                    <p class="text-gray-500 leading-relaxed text-sm">공간의 동선과 분위기를 고려한 맞춤형 디자인을 제안합니다.</p>
+                </div>
+                <div class="reveal text-center">
+                    <div class="text-6xl font-black text-[#1e3a8a]/10 mb-6">03</div>
+                    <h3 class="text-2xl font-black mb-4 tracking-tight">시공</h3>
+                    <p class="text-gray-500 leading-relaxed text-sm">숙련된 시공팀이 안정적이고 완성도 높은 작업을 진행합니다.</p>
+                </div>
+                <div class="reveal text-center">
+                    <div class="text-6xl font-black text-[#1e3a8a]/10 mb-6">04</div>
+                    <h3 class="text-2xl font-black mb-4 tracking-tight">완성</h3>
+                    <p class="text-gray-500 leading-relaxed text-sm">공간의 완성 후에도 지속적인 관리와 서비스를 제공합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer"></div>
+
+<script>
+// 푸터만 비동기로 로드 (헤더 스크립트 삭제)
+fetch('./components/footer.html')
+.then(res => res.text())
+.then(data => {
+    document.getElementById('footer').innerHTML = data;
+});
+
+function toggleMenu() {
+    const menu = document.getElementById("mobileMenu");
+    if(menu){
+        menu.classList.toggle("hidden");
+    }
+}
+
+// slide
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide-bg');
+const dots = document.querySelectorAll('.dot');
+
+function goSlide(index) {
+    currentSlide = index;
+    updateSlide();
+}
+
+function updateSlide() {
+    slides.forEach((img, i) => {
+        img.classList.toggle('active', i === currentSlide);
+    });
+    dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentSlide);
+    });
+}
+
+setInterval(() => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    updateSlide();
+}, 2000);
+
+// reveal animation
+function checkReveal() {
+    document.querySelectorAll('.reveal').forEach(el => {
+        const windowHeight = window.innerHeight;
+        const revealTop = el.getBoundingClientRect().top;
+        if (revealTop < windowHeight - 100) {
+            el.classList.add('active');
+        }
+    });
+}
+
+window.addEventListener('scroll', checkReveal);
+setTimeout(checkReveal, 300);
+</script>
+
+</body>
+</html>

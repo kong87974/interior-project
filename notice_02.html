@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BLUE DESIGN | 공지사항</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"
+    />
+
+    <style>
+        body {
+            font-family: "Pretendard", sans-serif;
+            letter-spacing: -0.02em;
+            overflow-x: hidden;
+        }
+
+        /* reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-900">
+
+    <!-- HEADER -->
+    <div id="header"></div>
+
+    <!-- 메인 -->
+    <main class="pt-48 pb-32 max-w-[900px] mx-auto px-6">
+
+        <!-- 상단 -->
+        <header class="border-b border-gray-200 pb-10 mb-14 reveal">
+
+            <p class="text-[11px] text-[#1e3a8a] font-bold tracking-[0.3em] uppercase mb-5">
+                Event
+            </p>
+
+            <h1 class="text-3xl md:text-5xl font-bold tracking-tighter leading-tight mb-8">
+                2026년 하반기 인테리어<br />
+                트렌드 상담 안내
+            </h1>
+
+            <div class="flex flex-wrap gap-6 text-xs text-gray-400 uppercase tracking-wider">
+                <span>Date · 2026.05.01</span>
+                <span>Author · 관리자</span>
+            </div>
+
+        </header>
+
+        <!-- 본문 -->
+        <article class="reveal text-gray-600 leading-relaxed text-[15px] md:text-[17px] space-y-8 min-h-[300px]">
+
+            <p>
+                블루디자인이 제안하는
+                2026년 하반기 인테리어 트렌드 상담 세션을 시작합니다.
+            </p>
+
+            <p>
+                단순한 시공을 넘어 기업의 아이덴티티가 살아있는
+                오피스 공간과 고객의 발길을 사로잡는
+                상업 공간 디자인을 위한 맞춤형 컨설팅을 제공합니다.
+            </p>
+
+            <!-- 이미지 -->
+            <div class="pt-4">
+                <img
+                    src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1600"
+                    alt="Interior Trend"
+                    class="w-full rounded-sm object-cover"
+                />
+            </div>
+
+            <!-- 정보 박스 -->
+            <div class="border border-gray-200 bg-gray-50 p-8 space-y-5">
+
+                <div>
+                    <p class="text-xs uppercase tracking-[0.2em] text-[#1e3a8a] font-bold mb-2">
+                        상담 분야
+                    </p>
+
+                    <p class="text-sm text-gray-600">
+                        사무공간 / 상업공간 / 주거 인테리어
+                    </p>
+                </div>
+
+                <div>
+                    <p class="text-xs uppercase tracking-[0.2em] text-[#1e3a8a] font-bold mb-2">
+                        예약 방법
+                    </p>
+
+                    <p class="text-sm text-gray-600">
+                        홈페이지 견적문의 또는 유선 상담 접수
+                    </p>
+                </div>
+
+                <div>
+                    <p class="text-xs uppercase tracking-[0.2em] text-[#1e3a8a] font-bold mb-2">
+                        상담 기간
+                    </p>
+
+                    <p class="text-sm text-gray-600">
+                        2026년 5월 말까지 선착순 예약
+                    </p>
+                </div>
+
+            </div>
+
+            <p>
+                블루디자인과 함께 공간의 가치를 높여보시기 바랍니다.
+            </p>
+
+        </article>
+
+        <!-- 이전글 / 다음글 -->
+        <section class="mt-24 border-t border-gray-200 reveal">
+
+            <!-- 이전글 -->
+            <a
+                href="notice_01.html"
+                class="flex items-center justify-between py-6 border-b border-gray-100 hover:bg-gray-50 transition-colors px-2"
+            >
+
+                <div>
+
+                    <p class="text-[10px] uppercase tracking-widest text-gray-400 mb-2">
+                        Previous Post
+                    </p>
+
+                    <h3 class="text-sm md:text-base font-medium">
+                        블루디자인 공식 홈페이지 리뉴얼 안내
+                    </h3>
+
+                </div>
+
+                <span class="text-gray-300 text-sm">
+                    ←
+                </span>
+
+            </a>
+
+            <!-- 다음글 -->
+            <a
+                href="notice_03.html"
+                class="flex items-center justify-between py-6 hover:bg-gray-50 transition-colors px-2"
+            >
+
+                <div>
+
+                    <p class="text-[10px] uppercase tracking-widest text-gray-400 mb-2">
+                        Next Post
+                    </p>
+
+                    <h3 class="text-sm md:text-base font-medium">
+                        오산 현대프리이머캠퍼스 프로젝트 업데이트 안내
+                    </h3>
+
+                </div>
+
+                <span class="text-gray-300 text-sm">
+                    →
+                </span>
+
+            </a>
+
+        </section>
+
+        <!-- 버튼 -->
+        <div class="mt-20 flex justify-center reveal">
+
+            <a
+                href="notice.html"
+                class="inline-flex items-center justify-center border border-black px-12 py-4 text-xs font-bold uppercase tracking-[0.25em] hover:bg-black hover:text-white transition-all"
+            >
+                List
+            </a>
+
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <div id="footer"></div>
+
+    <script>
+
+        // header/footer 불러오기
+        fetch('./components/header.html')
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById('header').innerHTML = data;
+        });
+
+        fetch('./components/footer.html')
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById('footer').innerHTML = data;
+        });
+
+        window.toggleMenu = function () {
+
+    const menu = document.getElementById("mobileMenu");
+
+    if(menu){
+        menu.classList.toggle("hidden");
+    }
+
+};
+
+
+        // reveal animation
+        window.addEventListener("scroll", () => {
+
+            const reveals = document.querySelectorAll(".reveal");
+
+            reveals.forEach(el => {
+
+                const windowHeight = window.innerHeight;
+                const revealTop = el.getBoundingClientRect().top;
+
+                if (revealTop < windowHeight - 100) {
+                    el.classList.add("active");
+                }
+
+            });
+
+        });
+
+        // 초기 실행
+        window.dispatchEvent(new Event("scroll"));
+
+    </script>
+
+</body>
+</html>
