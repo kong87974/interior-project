@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLUE DESIGN | 전체 프로젝트</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+
+    <style>
+        body {
+            font-family: "Pretendard", sans-serif;
+            letter-spacing: -0.02em;
+            overflow-x: hidden;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-900">
+
+    <!-- HEADER -->
+    <div id="header"></div>
+
+    <!-- HERO -->
+    <section class="pt-48 pb-10">
+
+        <div class="max-w-[1400px] mx-auto px-6 text-center">
+
+            <h2 class="text-[11px] text-[#1e3a8a] font-bold tracking-[0.4em] uppercase mb-4 reveal">
+                Portfolio
+            </h2>
+
+            <h3 class="text-4xl md:text-5xl font-black tracking-tighter reveal">
+                PROJECTS
+            </h3>
+
+        </div>
+
+    </section>
+
+    <!-- CATEGORY -->
+    <section class="mb-20">
+
+        <div
+            class="max-w-[1400px] mx-auto px-6 flex justify-center gap-8 text-xs font-bold tracking-widest uppercase reveal">
+
+            <a href="project_all.html"
+                class="text-[#1e3a8a] border-b-2 border-[#1e3a8a] pb-2">
+                전체보기
+            </a>
+
+            <a href="office.html"
+                class="text-gray-400 hover:text-black transition-colors pb-2">
+                사무공간
+            </a>
+
+            <a href="commercial.html"
+                class="text-gray-400 hover:text-black transition-colors pb-2">
+                상업공간
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- PROJECT GRID -->
+    <section class="pb-32">
+
+        <div class="max-w-[1400px] mx-auto px-6">
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+
+                <!-- ITEM -->
+               <div class="group cursor-pointer reveal">
+
+    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-6 rounded-sm">
+
+        <img src="./img/123.jpg"
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+
+        <!-- 이 어두워지는 영역(View Project 버튼)에 링크를 걸었습니다 -->
+        <a href="project_detail_01.html"
+            class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition duration-500 flex items-center justify-center z-10">
+
+            <span class="text-white text-sm tracking-[0.3em] uppercase font-bold">
+                View Project
+            </span>
+
+        </a>
+
+    </div>
+
+                    <p class="text-[10px] text-[#1e3a8a] font-bold tracking-widest uppercase mb-2">
+                        Office
+                    </p>
+
+                    <h4
+                        class="text-xl font-bold tracking-tight group-hover:text-[#1e3a8a] transition-colors">
+                        현대프리미어캠퍼스 복층 사무실
+                    </h4>
+
+                </div>
+
+                <!-- ITEM -->
+                <div class="group cursor-pointer reveal">
+
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-6 rounded-sm">
+
+                        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1000"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+
+                        <div
+                            class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition duration-500 flex items-center justify-center">
+
+                            <span class="text-white text-sm tracking-[0.3em] uppercase font-bold">
+                                View Project
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <p class="text-[10px] text-[#1e3a8a] font-bold tracking-widest uppercase mb-2">
+                        Commercial
+                    </p>
+
+                    <h4
+                        class="text-xl font-bold tracking-tight group-hover:text-[#1e3a8a] transition-colors">
+                        어반 가든 브런치 카페
+                    </h4>
+
+                </div>
+
+                <!-- ITEM -->
+                <div class="group cursor-pointer reveal">
+
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-6 rounded-sm">
+
+                        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1000"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+
+                        <div
+                            class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition duration-500 flex items-center justify-center">
+
+                            <span class="text-white text-sm tracking-[0.3em] uppercase font-bold">
+                                View Project
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <p class="text-[10px] text-[#1e3a8a] font-bold tracking-widest uppercase mb-2">
+                        Office
+                    </p>
+
+                    <h4
+                        class="text-xl font-bold tracking-tight group-hover:text-[#1e3a8a] transition-colors">
+                        광교 테크노밸리 공유 오피스
+                    </h4>
+
+                </div>
+
+                <!-- ITEM -->
+                <div class="group cursor-pointer reveal">
+
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-6 rounded-sm">
+
+                        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1000"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+
+                        <div
+                            class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition duration-500 flex items-center justify-center">
+
+                            <span class="text-white text-sm tracking-[0.3em] uppercase font-bold">
+                                View Project
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <p class="text-[10px] text-[#1e3a8a] font-bold tracking-widest uppercase mb-2">
+                        Commercial
+                    </p>
+
+                    <h4
+                        class="text-xl font-bold tracking-tight group-hover:text-[#1e3a8a] transition-colors">
+                        미니멀리스트 가구 쇼룸
+                    </h4>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <div id="footer"></div>
+
+    <script>
+
+        // header
+        fetch('./components/header.html')
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+
+        // footer
+        fetch('./components/footer.html')
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+
+            window.toggleMenu = function () {
+
+    const menu = document.getElementById("mobileMenu");
+
+    if(menu){
+        menu.classList.toggle("hidden");
+    }
+
+};
+
+
+        // reveal animation
+        function reveal() {
+
+            const reveals = document.querySelectorAll(".reveal");
+
+            for (let i = 0; i < reveals.length; i++) {
+
+                const windowHeight = window.innerHeight;
+                const elementTop = reveals[i].getBoundingClientRect().top;
+
+                if (elementTop < windowHeight - 100) {
+                    reveals[i].classList.add("active");
+                }
+
+            }
+
+        }
+
+        window.addEventListener("scroll", reveal);
+
+        reveal();
+
+    </script>
+
+</body>
+
+</html>

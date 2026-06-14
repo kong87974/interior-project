@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>BLUE DESIGN | 오시는 길</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet"
+        as="style"
+        crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Pretendard", sans-serif;
+            letter-spacing: -0.02em;
+            overflow-x: hidden;
+        }
+
+        .branch-card {
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .branch-card.active {
+            border-color: #1e3a8a;
+            background: #f8fafc;
+        }
+
+        .branch-card.active h3 {
+            color: #1e3a8a;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        @media (max-width: 768px) {
+            main {
+                padding-top: 130px !important;
+            }
+
+            .map-wrap {
+                height: 350px !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-900">
+
+    <!-- HEADER -->
+    <div id="header"></div>
+
+    <main class="pt-48 pb-32">
+
+        <div class="max-w-[1400px] mx-auto px-6">
+
+            <!-- TITLE -->
+            <section class="mb-20">
+
+                <p class="text-[11px] tracking-[0.4em] text-[#1e3a8a] font-bold uppercase mb-5">
+                    Location
+                </p>
+
+                <h1 class="text-4xl md:text-5xl font-black tracking-tighter mb-6">
+                    오시는 길
+                </h1>
+
+                <p class="text-gray-500 leading-relaxed text-[15px] md:text-[17px]">
+                    블루디자인의 각 지점을 안내드립니다.<br>
+                    가까운 지점을 선택하여 위치를 확인해보세요.
+                </p>
+
+            </section>
+
+            <!-- MAP -->
+            <section class="mb-16">
+
+                <div class="map-wrap w-full h-[550px] overflow-hidden border border-gray-100">
+
+                    <!-- 기본 지도를 세마점으로 설정 -->
+                    <iframe
+                        id="mapFrame"
+                        src="https://maps.google.com/maps?q=경기도 오산시 경기대로 761번길 30&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                        loading="lazy">
+                    </iframe>
+
+                </div>
+
+            </section>
+
+            <!-- BRANCH (md:grid-cols-2 로 두 지점이 넓게 차지하도록 수정) -->
+            <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                <!-- 세마 (기본 활성화: active 클래스 추가) -->
+                <div
+                    class="branch-card active border border-gray-200 p-8"
+                    onclick="changeBranch(
+                        this,
+                        '세마점',
+                        '경기도 오산시 경기대로 761번길 30 현대프리미어캠퍼스 A-D-B2-029호',
+                        'https://maps.google.com/maps?q=경기도 오산시 경기대로 761번길 30&t=&z=15&ie=UTF8&iwloc=&output=embed'
+                    )">
+
+                    <p class="text-[11px] tracking-[0.3em] uppercase text-gray-400 mb-4">
+                        Branch 01
+                    </p>
+
+                    <h3 class="text-2xl font-black tracking-tight mb-5">
+                        세마점
+                    </h3>
+
+                    <p class="text-sm text-gray-500 leading-relaxed">
+                        경기도 오산시 경기대로 761번길 30<br>
+                        현대프리미어캠퍼스 A-D-B2-029호
+                    </p>
+
+                </div>
+
+                <!-- 세교 -->
+                <div
+                    class="branch-card border border-gray-200 p-8"
+                    onclick="changeBranch(
+                        this,
+                        '세교점',
+                        '경기도 오산시 독산성로 425 더퍼스트타워세교 426호',
+                        'https://maps.google.com/maps?q=경기도 오산시 독산성로 425&t=&z=15&ie=UTF8&iwloc=&output=embed'
+                    )">
+
+                    <p class="text-[11px] tracking-[0.3em] uppercase text-gray-400 mb-4">
+                        Branch 02
+                    </p>
+
+                    <h3 class="text-2xl font-black tracking-tight mb-5">
+                        세교점
+                    </h3>
+
+                    <p class="text-sm text-gray-500 leading-relaxed">
+                        경기도 오산시 독산성로 425<br>
+                        더퍼스트타워세교 426호
+                    </p>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <div id="footer"></div>
+
+    <script>
+
+        // 모바일 메뉴
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            if (menu) {
+                menu.classList.toggle('hidden');
+            }
+        }
+
+        window.toggleMenu = function () {
+            const menu = document.getElementById("mobileMenu");
+            if(menu){
+                menu.classList.toggle("hidden");
+            }
+        };
+
+        // header/footer 불러오기
+        fetch('./components/header.html')
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+
+        fetch('./components/footer.html')
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+
+        // 지점 변경 함수 (하나로 깔끔하게 정리)
+        function changeBranch(el, title, address, mapUrl) {
+            document.querySelectorAll('.branch-card').forEach(card => {
+                card.classList.remove('active');
+            });
+
+            el.classList.add('active');
+            document.getElementById('mapFrame').src = mapUrl;
+        }
+
+    </script>
+
+</body>
+</html>
