@@ -226,7 +226,9 @@
             </div>
             <div class="flex justify-end gap-3">
                 <!-- href="#" 대신 실제 블로그 주소를 넣고, target="_blank"로 새창열기 적용 -->
-                <a href="https://blog.naver.com/zinux_" target="_blank" class="w-10 h-10 rounded-full bg-[#03C75A] flex items-center justify-center text-white text-[10px] font-bold uppercase hover:opacity-90 transition-opacity">
+               <a href="javascript:void(0);" onclick="openNaverBlog();" class="w-10 h-10 rounded-full bg-[#03C75A] flex items-center justify-center text-white text-[10px] font-bold uppercase hover:opacity-90 transition-opacity">
+                    BLOG
+                </a>
                     BLOG
                 </a>
                 <a href="http://pf.kakao.com/_AJxenX" class="w-10 h-10 rounded-full bg-[#fae100] flex items-center justify-center overflow-hidden">
@@ -394,6 +396,25 @@ function checkReveal() {
             el.classList.add('active');
         }
     });
+}
+
+// 📱 모바일/PC 구별하여 네이버 블로그 새창 열기 함수
+function openNaverBlog() {
+    // 1. 현재 접속한 기기가 모바일(스마트폰/태블릿)인지 판별합니다.
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    // 2. 판별 결과에 따라 보낼 주소를 매칭합니다.
+    let blogUrl = "";
+    if (isMobile) {
+        // 모바일 주소
+        blogUrl = "https://m.blog.naver.com/zinux_?noTrackingCode=true&proxyReferer=&tab=1";
+    } else {
+        // PC 주소
+        blogUrl = "https://blog.naver.com/zinux_";
+    }
+    
+    // 3. 결정된 주소를 새 탭(새 창)으로 열어줍니다.
+    window.open(blogUrl, '_blank');
 }
 
 window.addEventListener('scroll', checkReveal);
