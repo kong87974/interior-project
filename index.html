@@ -100,7 +100,7 @@
             transform: translateY(0);
         }
 
-        /* ✨ [수정] 부드러운 글자 색상 전환을 위한 기본 세팅 (시작은 흰색) */
+        /* ✨ [유지] 연락처 글자 색상 전환을 위한 기본 세팅 (시작은 흰색) */
         .dynamic-contact-text {
             color: #ffffff;
             transition: color 0.3s ease;
@@ -230,7 +230,7 @@
         </div>
     </section>
 
-    <!-- ⚙️ 아이콘 브랜드 순정 색상 고정 및 정밀 자간이 완성된 고정 레이아웃 -->
+    <!-- 🟢 [유지] 요청에 따라 실시간 파란색 변환 연락처 글씨 구역 완벽하게 원상복구 유지 완료 -->
     <div class="contact-box fixed bottom-10 right-10 z-[99999] flex flex-col items-end select-none">
         <div id="dynamic-text-target" class="dynamic-contact-text mb-5 flex flex-col items-end text-right">
             <p class="text-[21px] font-black tracking-tighter">010-4192-0882</p>
@@ -251,7 +251,7 @@
             <div class="mb-16 reveal">
                 <h2 class="text-[11px] text-[#1e3a8a] font-bold tracking-[0.4em] uppercase mb-4">Our Work</h2>
                 <div class="portfolio-top flex justify-between items-end">
-                    <h3 class="portfolio-title text-4xl md:text-5xl font-black tracking-tighter">PORTFOLIO</h3>
+                    <h3 class="portfolio-title text-4xl md:text-5xl font-black tracking-tighter leading-snug">PORTFOLIO</h3>
                     <a href="project_all.html" class="text-xs font-bold border-b border-black pb-1 hover:text-[#1e3a8a] hover:border-[#1e3a8a] transition-all">VIEW ALL</a>
                 </div>
             </div>
@@ -294,25 +294,13 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                 <div class="reveal">
                     <p class="text-[11px] tracking-[0.4em] text-[#1e3a8a] font-bold uppercase mb-6">About Us</p>
-                    <h2 class="text-4xl md:text-5xl font-black tracking-tighter leading-tight mb-8">공간의 가치를<br>디자인합니다.</h2>
-                    <p class="text-gray-500 leading-relaxed text-[15px] md:text-[17px] mb-10">
-                        블루디자인은 단순한 인테리어를 넘어 공간 안에서의 경험과 동선을 설계합니다.<br><br>
+                    <!-- ✨ [수정] 자간(tracking-tighter) 삭제 및 줄간격 시원하게 여유로운 'leading-relaxed'로 확장 변경 -->
+                    <h2 class="text-4xl md:text-5xl font-black leading-relaxed mb-8">공간의 가치를<br>디자인합니다.</h2>
+                    <p class="text-gray-500 leading-relaxed text-[15px] md:text-[17px]">
+                        블루디자인은 단순한 인테리어를 넘어 공간 안에서의 경험과 동선을 설계합니다.<br>
                         오피스, 상업공간, 공유오피스 등 다양한 프로젝트를 통해 공간의 새로운 가치를 제안합니다.
                     </p>
-                    <div class="flex flex-wrap gap-10">
-                        <div>
-                            <h3 class="text-3xl font-black text-[#1e3a8a] mb-2">120+</h3>
-                            <p class="text-sm text-gray-500 tracking-wider uppercase">Projects</p>
-                        </div>
-                        <div>
-                            <h3 class="text-3xl font-black text-[#1e3a8a] mb-2">10+</h3>
-                            <p class="text-sm text-gray-500 tracking-wider uppercase">Years</p>
-                        </div>
-                        <div>
-                            <h3 class="text-3xl font-black text-[#1e3a8a] mb-2">98%</h3>
-                            <p class="text-sm text-gray-500 tracking-wider uppercase">Satisfaction</p>
-                        </div>
-                    </div>
+                    <!-- ❌ [삭제] 이미지(image_bfeb7c.png)에서 짚어주신 120+, 10+, 98% 숫자 레이아웃 구역 완벽 박멸 제거 완료 -->
                 </div>
                 <div class="relative reveal">
                     <div class="aspect-[4/5] overflow-hidden rounded-[4px]">
@@ -331,7 +319,7 @@
         <div class="max-w-[1400px] mx-auto px-6">
             <div class="text-center mb-24 reveal">
                 <p class="text-[11px] tracking-[0.4em] text-[#1e3a8a] font-bold uppercase mb-5">Process</p>
-                <h2 class="text-4xl md:text-5xl font-black tracking-tighter">공간이 완성되는 과정</h2>
+                <h2 class="text-4xl md:text-5xl font-black tracking-tighter leading-snug">공간이 완성되는 과정</h2>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
                 <div class="reveal text-center">
@@ -361,7 +349,7 @@
     <div id="footer"></div>
 
 <script>
-// 푸터만 비동기로 로드 (헤더 스크립트 삭제)
+// 푸터만 비동기로 로드
 fetch('./components/footer.html')
 .then(res => res.text())
 .then(data => {
@@ -411,12 +399,11 @@ function checkReveal() {
         }
     });
 
-    // 2. ✨ 메인 비주얼 슬라이더 및 하단 푸터를 교차 계산하여 글씨색 3단 변환 제어
+    // 2. 메인 비주얼 슬라이더 및 하단 푸터를 교차 계산하여 글씨색 3단 변환 제어
     const textTarget = document.getElementById('dynamic-text-target');
     const footer = document.getElementById('footer');
 
     if (textTarget) {
-        // 하단 푸터가 있으면 푸터 진입 시점 계산
         let footerReached = false;
         if (footer) {
             const footerTop = footer.getBoundingClientRect().top;
@@ -426,19 +413,16 @@ function checkReveal() {
         }
 
         if (footerReached) {
-            // [3단]: 맨 밑 푸터(진한 파란 배경) 영역에 닿으면 다시 '흰색(#ffffff)' 노출
             textTarget.classList.remove('light-bg');
         } else if (window.scrollY > (windowHeight - 150)) {
-            // [2단]: 메인 슬라이더를 벗어나 본문(밝은 배경) 구간을 지날 때는 '지정 파란색(#162e59)' 노출
             textTarget.classList.add('light-bg');
         } else {
-            // [1단]: 최상단 메인 슬라이더(어두운 배경) 안에서는 원래대로 '흰색(#ffffff)' 노출
             textTarget.classList.remove('light-bg');
         }
     }
 }
 
-// 📱 모바일/PC 구별하여 네이버 블로그 새창 열기 함수
+// 모바일/PC 구별하여 네이버 블로그 새창 열기 함수
 function openNaverBlog() {
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     
