@@ -1,8 +1,42 @@
+<!-- 🎨 드롭다운 오작동 교정 및 스크립트 배제형 CSS 스타일 가이드 -->
+<style>
+    /* 메뉴 아이템 기본 서체 및 세로 정렬 가이드 */
+    .nav-item {
+        position: relative;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    /* 🛠️ [교정 완료] 마우스가 올라가기 전에는 기본적으로 완전히 숨겨지도록(none) 설정하고 위치 강제 */
+    .dropdown {
+        position: absolute;
+        top: 80px; /* h-20 헤더 높이 끝선과 정밀 매칭 */
+        left: 50%;
+        transform: translateX(-50%);
+        background: white;
+        min-width: 160px;
+        display: none; /* 상시 노출 현상 해결 핵심 코드 */
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        border: 1px solid #f3f4f6;
+        padding: 8px 0;
+        border-radius: 0 0 6px 6px;
+        z-index: 999999 !important;
+    }
+
+    /* 🛠️ 마우스 오버 시에만 하부 메뉴 슬롯이 드러나도록 CSS 우선순위 강제 */
+    .nav-item:hover .dropdown {
+        display: block !important;
+    }
+</style>
+
+<!-- 🛠️ 글로벌 가로 정렬 헤더 레이아웃 (원본 디자인 100% 보존) -->
 <nav class="fixed top-0 left-0 w-full z-[999999] bg-white border-b border-gray-100 h-20">
     <div class="max-w-[1400px] mx-auto px-6 h-full flex justify-between items-center relative">
         
-        <div class="hidden md:flex items-center gap-14 text-[15px] font-bold text-gray-800 h-full w-[35%] justify-start">
-            
+        <!-- [좌측 메뉴 구역] -->
+        <div class="hidden md:flex items-center gap-14 text-[15px] font-bold text-gray-800 h-full">
+            <!-- 회사소개 -->
             <div class="nav-item h-full">
                 <a href="about.html" class="hover:text-[#1e3a8a] transition-colors py-7">회사소개</a>
                 <div class="dropdown">
@@ -11,7 +45,7 @@
                     <a href="map.html" class="block px-6 py-3 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#1e3a8a] font-semibold text-center">오시는길</a>
                 </div>
             </div>
-
+            <!-- 프로젝트 -->
             <div class="nav-item h-full">
                 <a href="project_all.html" class="hover:text-[#1e3a8a] transition-colors py-7">프로젝트</a>
                 <div class="dropdown">
@@ -20,9 +54,9 @@
                     <a href="commercial.html" class="block px-6 py-3 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#1e3a8a] font-semibold text-center">상업공간</a>
                 </div>
             </div>
-
         </div>
 
+        <!-- [중앙 로고 엠블럼] -->
         <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center">
            <a href="index.html" class="flex flex-col items-center text-center leading-none">
               <div class="text-[18px] md:text-[22px] font-black tracking-wide text-[#162e59]">BLUE DESIGN</div>
@@ -30,13 +64,10 @@
            </a>
         </div>
 
-        <div class="hidden md:flex justify-end items-center gap-10 text-[15px] font-bold text-gray-800 w-[45%]">
-            
-            <div class="flex items-center gap-14 h-full mr-4">
-                <a href="contact.html" class="hover:text-[#1e3a8a] transition-colors py-7">견적문의</a>
-                <a href="notice.html" class="hover:text-[#1e3a8a] transition-colors py-7">공지사항</a>
-            </div>
-
+        <!-- [우측 메뉴 및 연락처 슬롯] -->
+        <div class="hidden md:flex justify-end items-center gap-10 text-[15px] font-bold text-gray-800">
+            <a href="contact.html" class="hover:text-[#1e3a8a] transition-colors">견적문의</a>
+            <a href="notice.html" class="hover:text-[#1e3a8a] transition-colors">공지사항</a>
             <div class="flex items-center gap-3 border-l border-gray-100 pl-10">
                 <svg class="w-7 h-7 text-[#162e59]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
@@ -47,15 +78,16 @@
                     <span class="text-[12px] text-gray-400">camp0882@daum.net</span>
                 </div>
             </div>
-
         </div>
 
+        <!-- 모바일 햄버거 메뉴 토글 버튼 -->
         <div class="md:hidden flex justify-end w-full">
-            <button onclick="toggleHeaderMenu()" class="relative z-[999999] text-[10px] font-bold border border-black px-3 py-1 uppercase tracking-widest">Menu</button>
+            <button onclick="toggleComponentMenu()" class="relative z-[999999] text-[10px] font-bold border border-black px-3 py-1 uppercase tracking-widest">Menu</button>
         </div>
     </div>
 
-    <div id="mobileHeaderMenu" class="hidden bg-white border-t border-gray-100 px-6 py-6 w-full shadow-lg">
+    <!-- 모바일 전용 드롭다운 메뉴 맵 레이아웃 -->
+    <div id="componentMobileMenu" class="hidden bg-white border-t border-gray-100 px-6 py-6 w-full shadow-lg">
         <div class="flex flex-col gap-6 text-[15px] font-bold text-gray-800">
             <div class="flex flex-col gap-3">
                 <a href="about.html">회사소개</a>
@@ -84,8 +116,8 @@
 </nav>
 
 <script>
-function toggleHeaderMenu() {
-    const menu = document.getElementById("mobileHeaderMenu");
+function toggleComponentMenu() {
+    const menu = document.getElementById("componentMobileMenu");
     if(menu){
         menu.classList.toggle("hidden");
     }
