@@ -100,13 +100,14 @@
             transform: translateY(0);
         }
 
-        /* 텍스트 색상 실시간 변경용 스타일 */
-        .text-scroll-change {
-            color: #ffffff; /* 처음엔 흰색 */
+        /* ✨ [수정] 부드러운 글자 색상 전환을 위한 기본 세팅 (시작은 흰색) */
+        .dynamic-contact-text {
+            color: #ffffff;
             transition: color 0.3s ease;
         }
-        .text-scroll-change.scrolled {
-            color: #162e59 !important; /* 스크롤 내리면 지정하신 파란색으로 변경 */
+        /* 밝은 배경 영역에 들어왔을 때 지정하신 고유 파란색 강제 적용 클래스 */
+        .dynamic-contact-text.light-bg {
+            color: #162e59 !important;
         }
 
         /* MOBILE */
@@ -229,12 +230,10 @@
         </div>
     </section>
 
-    <div class="contact-box fixed bottom-10 right-10 z-[99999] flex flex-col items-end">
-       
-        <div class="mb-5 flex flex-col items-end text-scroll-change text-right">
-           
+    <!-- ⚙️ 아이콘 브랜드 순정 색상 고정 및 정밀 자간이 완성된 고정 레이아웃 -->
+    <div class="contact-box fixed bottom-10 right-10 z-[99999] flex flex-col items-end select-none">
+        <div id="dynamic-text-target" class="dynamic-contact-text mb-5 flex flex-col items-end text-right">
             <p class="text-[21px] font-black tracking-tighter">010-4192-0882</p>
-           
             <p class="text-sm font-light opacity-90 tracking-[0.055em] mr-[-0.055em]">camp0882@daum.net</p>
         </div>
         <div class="flex justify-end gap-3">
@@ -400,7 +399,7 @@ setInterval(() => {
     updateSlide();
 }, 2000);
 
-// reveal animation & 💥 스크롤 위치에 맞춰 연락처 글자 색상 실시간 변경 기능 통합
+// reveal animation & 스크롤 위치에 맞춰 연락처 글자 색상 실시간 변경 기능 통합
 function checkReveal() {
     const windowHeight = window.innerHeight;
     
@@ -412,13 +411,29 @@ function checkReveal() {
         }
     });
 
-    // 2. ✨ 스크롤이 첫 메인 비주얼 화면을 벗어날 때 글자색을 #162e59로 변경하는 로직
-    const textTarget = document.querySelector('.text-scroll-change');
+    // 2. ✨ 메인 비주얼 슬라이더 및 하단 푸터를 교차 계산하여 글씨색 3단 변환 제어
+    const textTarget = document.getElementById('dynamic-text-target');
+    const footer = document.getElementById('footer');
+
     if (textTarget) {
-        if (window.scrollY > (windowHeight - 150)) {
-            textTarget.classList.add('scrolled');
+        // 하단 푸터가 있으면 푸터 진입 시점 계산
+        let footerReached = false;
+        if (footer) {
+            const footerTop = footer.getBoundingClientRect().top;
+            if (footerTop < windowHeight - 150) {
+                footerReached = true;
+            }
+        }
+
+        if (footerReached) {
+            // [3단]: 맨 밑 푸터(진한 파란 배경) 영역에 닿으면 다시 '흰색(#ffffff)' 노출
+            textTarget.classList.remove('light-bg');
+        } else if (window.scrollY > (windowHeight - 150)) {
+            // [2단]: 메인 슬라이더를 벗어나 본문(밝은 배경) 구간을 지날 때는 '지정 파란색(#162e59)' 노출
+            textTarget.classList.add('light-bg');
         } else {
-            textTarget.classList.remove('scrolled');
+            // [1단]: 최상단 메인 슬라이더(어두운 배경) 안에서는 원래대로 '흰색(#ffffff)' 노출
+            textTarget.classList.remove('light-bg');
         }
     }
 }
