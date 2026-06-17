@@ -46,12 +46,11 @@
             border: 0;
         }
 
-        /* ✨ 우측 하단 연락처 글자 색상 실시간 제어 스타일 (서브 페이지는 파란색 시작이 기본) */
+        /* ✨ 우측 하단 연락처 글자 색상 실시간 제어 스타일 */
         .dynamic-contact-text {
             color: #162e59;
             transition: color 0.3s ease;
         }
-        /* 푸터(진한 파란 배경) 진입 시 반전될 흰색 클래스 */
         .dynamic-contact-text.footer-bg {
             color: #ffffff !important;
         }
@@ -96,15 +95,13 @@
 
             </section>
 
-            <!-- MAP -->
             <section class="mb-16">
 
                 <div class="map-wrap w-full h-[550px] overflow-hidden border border-gray-100">
 
-                    <!-- 🟢 네이버 지도 임베딩 시스템 적용 (기본값: 세마점 현대프리미어캠퍼스 위치) -->
                     <iframe
                         id="mapFrame"
-                        src="https://v4.map.naver.com/share/mapsShare.nhn?title=%EB%B8%94%EB%A3%A8%EB%94%94%EC%9E%90%EC%9D%B8%20%EC%84%B8%EB%A7%88%EC%A0%90&lat=37.182283&lng=127.042588&coordType=latlng"
+                        src="https://map.naver.com/v5/search/%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%98%A4%EC%82%B0%EC%8B%9C%20%EA%B2%BD%EA%B8%B0%EB%8C%80%EB%A1%9C%20761%EB%B2%88%EA%B8%B0%2030?entry=thu&embed=1"
                         loading="lazy">
                     </iframe>
 
@@ -112,17 +109,15 @@
 
             </section>
 
-            <!-- BRANCH -->
             <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-                <!-- 세마점 -->
                 <div
                     class="branch-card active border border-gray-200 p-8"
                     onclick="changeBranch(
                         this,
                         '세마점',
                         '경기도 오산시 경기대로 761번길 30 현대프리미어캠퍼스 A-D-B2-029호',
-                        'https://v4.map.naver.com/share/mapsShare.nhn?title=%EB%B8%94%EB%A3%A8%EB%94%94%EC%9E%90%EC%9D%B8%20%EC%84%B8%EB%A7%88%EC%A0%90&lat=37.182283&lng=127.042588&coordType=latlng'
+                        'https://map.naver.com/v5/search/%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%98%A4%EC%82%B0%EC%8B%9C%20%EA%B2%BD%EA%B8%B0%EB%8C%80%EB%A1%9C%20761%EB%B2%88%EA%B8%B0%2030?entry=thu&embed=1'
                     )">
 
                     <p class="text-[11px] tracking-[0.3em] uppercase text-gray-400 mb-4">
@@ -140,14 +135,13 @@
 
                 </div>
 
-                <!-- 세교점 -->
                 <div
                     class="branch-card border border-gray-200 p-8"
                     onclick="changeBranch(
                         this,
                         '세교점',
                         '경기도 오산시 독산성로 425 더퍼스트타워세교 426호',
-                        'https://v4.map.naver.com/share/mapsShare.nhn?title=%EB%B8%94%EB%A3%A8%EB%94%94%EC%9E%90%EC%9D%B8%20%EC%84%B8%EA%B5%90%EC%A0%90&lat=37.180295&lng=127.027050&coordType=latlng'
+                        'https://map.naver.com/v5/search/%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%98%A4%EC%82%B0%EC%8B%9C%20%EB%8F%85%EC%82%B0%EC%84%B1%EB%A1%9C%20425?entry=thu&embed=1'
                     )">
 
                     <p class="text-[11px] tracking-[0.3em] uppercase text-gray-400 mb-4">
@@ -189,15 +183,7 @@
     <div id="footer"></div>
 
     <script>
-
-        // 모바일 메뉴
-        function toggleMenu() {
-            const menu = document.getElementById('mobileMenu');
-            if (menu) {
-                menu.classList.toggle('hidden');
-            }
-        }
-
+        // 모바일 메뉴 토글
         window.toggleMenu = function () {
             const menu = document.getElementById("mobileMenu");
             if(menu){
@@ -205,7 +191,7 @@
             }
         };
 
-        // header/footer 불러오기
+        // components 연동
         fetch('./components/header.html')
             .then(res => res.text())
             .then(data => {
@@ -218,7 +204,7 @@
                 document.getElementById('footer').innerHTML = data;
             });
 
-        // 지점 변경 함수
+        // 지점 변경 및 지도 동적 스위칭 함수
         function changeBranch(el, title, address, mapUrl) {
             document.querySelectorAll('.branch-card').forEach(card => {
                 card.classList.remove('active');
@@ -228,7 +214,7 @@
             document.getElementById('mapFrame').src = mapUrl;
         }
 
-        // ✨ 스크롤 실시간 감지하여 푸터 진입 시 연락처 글자 색상을 반전(파란색 -> 흰색)시키는 함수
+        // 스크롤 감지 푸터 색상 제어
         function checkScrollContact() {
             const windowHeight = window.innerHeight;
             const textTarget = document.getElementById('dynamic-text-target');
@@ -236,8 +222,6 @@
 
             if (textTarget && footer) {
                 const footerTop = footer.getBoundingClientRect().top;
-                
-                // 푸터 영역이 화면 하단 마진선 안으로 진입했는지 계산
                 if (footerTop < windowHeight - 150) {
                     textTarget.classList.add('footer-bg');
                 } else {
@@ -246,24 +230,18 @@
             }
         }
 
-        // 📱 모바일/PC 식별형 네이버 블로그 링크 포워딩
+        // 블로그 링크 분기 처리
         function openNaverBlog() {
             const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            
-            let blogUrl = "";
-            if (isMobile) {
-                blogUrl = "https://m.blog.naver.com/zinux_?noTrackingCode=true&proxyReferer=&tab=1";
-            } else {
-                blogUrl = "https://blog.naver.com/zinux_";
-            }
-            
+            let blogUrl = isMobile 
+                ? "https://m.blog.naver.com/zinux_?noTrackingCode=true&proxyReferer=&tab=1" 
+                : "https://blog.naver.com/zinux_";
             window.open(blogUrl, '_blank');
         }
 
         window.addEventListener('scroll', checkScrollContact);
         window.addEventListener('resize', checkScrollContact);
         setTimeout(checkScrollContact, 400);
-
     </script>
 
 </body>
