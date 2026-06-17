@@ -14,6 +14,10 @@
         href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: "Pretendard", sans-serif;
             letter-spacing: -0.02em;
@@ -27,9 +31,10 @@
             z-index: 9999;
         }
 
+        /* REVEAL ANIMATION */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(20px);
             transition: all 0.8s ease-out;
         }
 
@@ -39,16 +44,21 @@
         }
 
         .content-text p {
-            margin-bottom: 18px;
-            line-height: 2;
-            color: #444;
-            font-size: 15px;
+            margin-bottom: 14px;
+            line-height: 1.8;
+            color: #555;
+            font-size: 14.5px;
+            word-break: keep-all;
         }
 
         @media (max-width:768px) {
+            main {
+                padding-top: 110px !important;
+            }
+
             .content-text p {
                 font-size: 14px;
-                line-height: 1.9;
+                line-height: 1.75;
             }
         }
 
@@ -67,124 +77,114 @@
 
 <div id="header"></div>
 
-<main class="pt-36 pb-32">
+<main class="pt-32 pb-32">
 
     <div class="max-w-[1180px] mx-auto px-6">
 
-        <section class="mb-24 reveal">
+        <!-- ✏️ [TITLE ZONE] 타 페이지와 완벽히 동기화된 황금비율 크기의 타이틀 디자인 -->
+        <section class="mb-10 reveal">
 
-            <p class="text-[13px] tracking-[0.35em] font-bold text-gray-500 uppercase mb-6">
-                INTRODUCE
+            <p class="text-[11px] tracking-[0.4em] text-[#1e3a8a] font-bold uppercase mb-3">
+                Introduce
             </p>
 
-            <h1 class="text-4xl md:text-5xl font-black text-[#26214a] tracking-tight mb-14">
+            <h1 class="text-3xl font-black tracking-tighter mb-4">
                 블루디자인 소개
             </h1>
 
-            <div class="mb-10">
-                <img
-                    src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000"
-                    alt="블루디자인"
-                    class="w-full object-cover"
-                >
-            </div>
+            <p class="text-gray-500 leading-relaxed text-[14px] md:text-[15px]">
+                블루디자인은 공간의 본질을 연구하며, 사용자의 경험을 최우선으로 생각하는 인테리어 전문 그룹입니다.
+            </p>
 
         </section>
 
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mb-16">
+        <!-- 메인 탑 배너 이미지 구역 -->
+        <section class="mb-20 reveal">
+            <div class="overflow-hidden rounded-sm shadow-sm aspect-[21/9] md:aspect-[21/7]">
+                <img
+                    src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000"
+                    alt="블루디자인 메인 전경"
+                    class="w-full h-full object-cover"
+                >
+            </div>
+        </section>
+
+        <!-- 그리드 섹션 1. 브랜드 철학 구역 -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center mb-24">
 
             <div class="reveal">
 
-                <h2 class="text-3xl md:text-[32px] leading-tight font-black text-[#2d2853] mb-10">
-                    “공간이 바뀌면, 당신의 하루가 달라집니다.”
+                <h2 class="text-2xl md:text-[28px] leading-snug font-black text-[#26214a] mb-6 tracking-tight">
+                    “공간이 바뀌면,<br>당신의 하루가 달라집니다.”
                 </h2>
 
                 <div class="content-text">
-                    <p style="font-size: 29px;"></p>
-
                     <p>
-                        저희는 단순히 벽을 세우고 가구를 배치하는 일을 하지 않습니다.
+                        저희는 단순히 벽을 세우고 가구를 배치하는 기계적인 일을 하지 않습니다.
                     </p>
 
                     <p>
-                        그곳에 머무를 사람의 취향과 습관, 그리고 숨겨진 로망을 읽어내어
+                        그곳에 머무를 사람의 취향과 습관, 그리고 마음속 깊이 숨겨진 로망을 읽어내어 가장 ‘당신다운’ 공간을 진정성 있게 빚어냅니다.
                     </p>
                     
                     <p>
-                        가장 ‘당신다운’ 공간을 빚어냅니다.
+                        반짝하고 사라지는 트렌드를 쫓기보다, 시간이 흘러도 변치 않는 클래식한 가치와 견고함을 제안합니다.
                     </p>
 
-                    <p>
-                        트렌드를 쫓기보다 시간이 흘러도 변치 않는 가치를 제안합니다.
+                    <p class="font-semibold text-[#1e3a8a] mt-2">
+                        “블루디자인 인테리어”는 당신의 소중한 삶이 예술이 되는 완벽한 배경을 만듭니다.
                     </p>
-
-                    <p>
-                        “블루디자인 인테리어”는 당신의 삶이 예술이 되는 배경을 만듭니다.
-                    </p>
-
                 </div>
 
             </div>
 
             <div class="reveal">
-
-                <img
-                    src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1200"
-                    alt="오피스"
-                    class="w-full object-cover"
-                >
-
+                <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                    <img
+                        src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1200"
+                        alt="오피스 전경"
+                        class="w-full h-full object-cover hover:scale-[1.02] transition duration-700"
+                    >
+                </div>
             </div>
 
         </section>
 
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+        <!-- 그리드 섹션 2. 시공 가치 구역 -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
 
-            <div class="reveal">
-
-                <img
-                    src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=1200"
-                    alt="회의실"
-                    class="w-full object-cover"
-                >
-
+            <div class="reveal order-2 md:order-1">
+                <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                    <img
+                        src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=1200"
+                        alt="회의실 전경"
+                        class="w-full h-full object-cover hover:scale-[1.02] transition duration-700"
+                    >
+                </div>
             </div>
 
-            <div class="reveal">
+            <div class="reveal order-1 md:order-2">
 
-                <h2 class="text-3xl md:text-[32px] leading-tight font-black text-[#2d2853] mb-10">
-                    “기본에 충실한 설계, 빈틈없는 시공.”
+                <h2 class="text-2xl md:text-[28px] leading-snug font-black text-[#26214a] mb-6 tracking-tight">
+                    “기본에 충실한 설계,<br>빈틈없는 책임 시공.”
                 </h2>
 
                 <div class="content-text">
-                    <p style="font-size: 29px;"></p>
-
                     <p>
-                        좋은 인테리어는 화려한 겉모습보다 보이지 않는 곳의 디테일에서
-                        결정됩니다.
+                        좋은 인테리어는 눈을 사로잡는 화려한 겉모습보다 마감재 안쪽, 보이지 않는 곳의 정밀한 디테일에서 최종 결정됩니다.
                     </p>
 
                     <p>
-                        블루디자인 인테리어는 수년간의 현장 경험을 바탕으로 설계부터 마감까지 
+                        블루디자인 인테리어는 오랜 시간 굳건히 축적해 온 현장 노하우를 바탕으로 첫 설계 미팅부터 최종 검수 마감까지 정직하고 투명한 공정만을 약속드립니다.
                     </p>
 
                     <p>
-                        정직하고 투명한 공정을 약속드립니다.
+                        완공 이후 발생할 수 있는 하자에 대한 걱정은 철저히 덜고, 공간에 대한 깊은 만족감만을 가득 채워 넣는 든든한 비즈니스 파트너가 되겠습니다.
                     </p>
 
                     <p>
-                        하자에 대한 걱정은 덜고,
-                        공간에 대한 만족은 채우는 파트너.
+                        고객의 소중한 자산인 공간을 가장 안전하고 효율적인 라이프스타일 플랫폼으로 재탄생시켜 드립니다.
                     </p>
-
-                    <p>
-                        저희는 고객의 소중한 자산인 ‘인테리어’를 가장 안전하고 
-                    </p>
-
-                    <p>
-                       효율적인 공간으로 재탄생시켜드립니다. 
-                    </p>
-
                 </div>
 
             </div>
@@ -197,6 +197,7 @@
 
 <div id="footer"></div>
 
+<!-- 고정 연락처 박스 -->
 <div class="contact-box fixed bottom-10 right-10 z-[99999] flex flex-col items-end select-none">
     <div id="dynamic-text-target" class="dynamic-contact-text light-bg mb-5 flex flex-col items-end text-right">
         <p class="text-[21px] font-black tracking-tighter">010-4192-0882</p>
@@ -213,7 +214,6 @@
 </div>
 
 <script>
-
 // header/footer load
 fetch('./components/header.html')
     .then(res => res.text())
@@ -239,14 +239,14 @@ window.openNaverBlog = function() {
     window.open(blogUrl, '_blank');
 };
 
-// 스크롤 감지 및 실시간 색상 변환 함수 구현
+// 스크롤 감지 및 애니메이션/컬러 스위칭 제어
 function checkScrollEffects() {
     const windowHeight = window.innerHeight;
 
     // 1. 기존 등장 애니메이션 기능
     document.querySelectorAll('.reveal').forEach(el => {
         const revealTop = el.getBoundingClientRect().top;
-        if (revealTop < windowHeight - 100) {
+        if (revealTop < windowHeight - 80) {
             el.classList.add('active');
         }
     });
@@ -268,12 +268,12 @@ function checkScrollEffects() {
     }
 }
 
-// 스크롤 시와 초기 로딩 시 모두 체크 실행
+// 스크롤 및 로드 리스너 등록
 window.addEventListener('scroll', checkScrollEffects);
+window.addEventListener('resize', checkScrollEffects);
 window.addEventListener('DOMContentLoaded', () => {
-    setTimeout(checkScrollEffects, 200);
+    setTimeout(checkScrollEffects, 300);
 });
-
 </script>
 
 </body>
