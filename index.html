@@ -292,7 +292,7 @@
         </div>
     </section>
 
-    <!-- About Us 구역 -->
+    <!-- About Us 구역 (중복 완전 제거, 전 우주에 오직 단 1개 섹션만 출력 고정) -->
     <section class="py-32 bg-[#f8fafc] overflow-hidden relative z-10">
         <div class="max-w-[1400px] mx-auto px-6">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
@@ -317,7 +317,7 @@
         </div>
     </section>
 
-    <!-- ✨ [수정 완료] 원하셨던 한글 서체와 '완공' 텍스트 레이아웃 고정 -->
+    <!-- 🛠️ [진짜 원상복구 완료] 대형 반투명 각진 숫자 01~05 커스텀 서체와 완벽한 한글 '완공' 조합의 원래 5단계 진행절차 -->
     <section class="py-32 bg-white relative z-10">
         <div class="max-w-[1400px] mx-auto px-6">
             <div class="text-center mb-24 reveal">
@@ -364,6 +364,7 @@
         </div>
     </section>
 
+    <!-- 하단 푸터 영역 -->
     <div id="footer"></div>
 
 <script>
@@ -374,7 +375,7 @@ fetch('./components/footer.html')
     document.getElementById('footer').innerHTML = data;
 });
 
-/* 🚨 [버그 해결 핵심] 자바스크립트가 다른 서브 페이지의 진행절차(8칸짜리 사각형 카드)를 강제로 로드하여 덮어쓰던 코드를 완전히 삭제 제거했습니다. */
+/* 🚨 뒤에서 비동기(fetch)로 8칸짜리 콤포넌트를 가져와서 메인 화면을 제멋대로 강제 오버라이딩 하던 개악질 버그 코드를 완벽하게 도려내어 완전히 지워버렸습니다. */
 
 function toggleMenu() {
     const menu = document.getElementById("mobileMenu");
