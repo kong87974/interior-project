@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BLUE DESIGN | 전체 프로젝트</title>
+    <title>BLUE DESIGN | 프리미엄 공간 디자인 프로젝트</title>
 
     <link rel="icon" href="https://i.imgur.com/f1j8a7x.png" type="image/png">
 
@@ -16,6 +16,7 @@
     <style>
         body {
             font-family: "Pretendard", sans-serif;
+            letter-spacing: -0.02em;
             overflow-x: hidden;
         }
     </style>
@@ -23,120 +24,181 @@
 
 <body class="bg-white text-gray-900">
 
+    <!-- 글로벌 공통 헤더 주입 공간 -->
     <div id="header"></div>
 
-    <main class="min-h-screen">
+    <!-- 🛠️ 본문 메인 컨테이너 -->
+    <main class="min-h-screen pt-32 pb-24 max-w-[1200px] mx-auto px-6">
 
-        <section class="max-w-[1400px] mx-auto px-6 py-20">
+        <!-- 🏢 [구역 1] 프로젝트 제목 구역 -->
+        <div class="text-center my-14">
+            <!-- ✏️ 프로젝트 대제목 (원하는 명칭으로 변경 가능) -->
+            <h1 class="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight mb-2">프리미엄 하이엔드 공간 디자인</h1>
+            <!-- ✏️ 영문 서브타이틀 -->
+            <p class="text-sm md:text-base text-gray-400 font-medium tracking-wide">Premium High-End Space Design Masterpiece</p>
+        </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-                <div class="overflow-hidden">
-                    <img src="https://imgur.com/ZcHiPra.jpg"
-                        alt="project image 1"
-                        class="w-full h-full object-cover hover:scale-105 transition duration-700">
-                </div>
-
-                <div class="overflow-hidden">
-                    <img src="https://imgur.com/oHSIU1e.jpg"
-                        alt="project image 2"
-                        class="w-full h-full object-cover hover:scale-105 transition duration-700">
-                </div>
-
-                <div class="overflow-hidden">
-                    <img src="https://imgur.com/8I3JELt.jpg"
-                        alt="project image 3"
-                        class="w-full h-full object-cover hover:scale-105 transition duration-700">
-                </div>
-
-                <div class="overflow-hidden">
-                    <img src="https://imgur.com/pmeue3l.jpg"
-                        alt="project image 4"
-                        class="w-full h-full object-cover hover:scale-105 transition duration-700">
-                </div>
-
-                <div class="overflow-hidden">
-                    <img src="https://imgur.com/kceDZJj.jpg"
-                        alt="project image 5"
-                        class="w-full h-full object-cover hover:scale-105 transition duration-700">
-                </div>
-
-                <div class="overflow-hidden">
-                    <img src="https://imgur.com/v6sFEVI.jpg"
-                        alt="project image 6"
-                        class="w-full h-full object-cover hover:scale-105 transition duration-700">
-                </div>
-
-                <div class="overflow-hidden">
-                    <img src="https://imgur.com/DMv8tn0.jpg"
-                        alt="project image 7"
-                        class="w-full h-full object-cover hover:scale-105 transition duration-700">
-                </div>
-
-                <div class="overflow-hidden">
-                    <img src="https://imgur.com/WmFYlu7.jpg"
-                        alt="project image 8"
-                        class="w-full h-full object-cover hover:scale-105 transition duration-700">
-                </div>
-
-                <div class="overflow-hidden">
-                    <img src="https://imgur.com/wAUa4RE.jpg"
-                        alt="project image 9"
-                        class="w-full h-full object-cover hover:scale-105 transition duration-700">
-                </div>
-
-                <div class="overflow-hidden">
-                    <img src="https://imgur.com/VVrB4VV.jpg"
-                        alt="project image 10"
-                        class="w-full h-full object-cover hover:scale-105 transition duration-700">
-                </div>
+        <!-- 📊 [구역 2] PROJECT DETAILS (가로선 정보 표 구역) -->
+        <div class="border-t border-b border-gray-300 py-8 my-10">
+            <div class="text-center text-xs md:text-sm font-extrabold tracking-[0.2em] text-gray-800 uppercase mb-8">
+                · PROJECT DETAILS ·
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-y-6 gap-x-12 text-[14px] md:text-[15px] px-2 md:px-4">
                 
-                <div class="overflow-hidden">
-                    <img src="https://imgur.com/pJGcrIG.jpg"
-                        alt="project image 11"
-                        class="w-full h-full object-cover hover:scale-105 transition duration-700">
+                <!-- 왼쪽 스펙 (연도, 위치, 용도, 면적) -->
+                <div class="md:col-span-6 grid grid-cols-2 gap-y-4 gap-x-4 border-b md:border-b-0 md:border-r border-gray-200 pb-6 md:pb-0 md:pr-10">
+                    <div class="flex items-center"><span class="w-16 text-gray-400 font-semibold shrink-0">연도</span><span class="text-gray-700 font-medium">2026</span></div>
+                    <div class="flex items-center"><span class="w-16 text-gray-400 font-semibold shrink-0">위치</span><span class="text-gray-700 font-medium">서울특별시 강남구</span></div>
+                    <div class="flex items-center"><span class="w-16 text-gray-400 font-semibold shrink-0">용도</span><span class="text-gray-700 font-medium">프리미엄 커머셜 스페이스</span></div>
+                    <div class="flex items-center"><span class="w-16 text-gray-400 font-semibold shrink-0">면적</span><span class="text-gray-700 font-medium">485.6m²</span></div>
                 </div>
 
-                <div class="overflow-hidden">
-                    <img src="https://imgur.com/lLK6HjC.jpg"
-                        alt="project image 12"
-                        class="w-full h-full object-cover hover:scale-105 transition duration-700">
-                </div>
-
-                <div class="overflow-hidden">
-                    <img src="https://imgur.com/CQk5la9.jpg"
-                        alt="project image 13"
-                        class="w-full h-full object-cover hover:scale-105 transition duration-700">
-                </div>
-
-                <div class="overflow-hidden">
-                    <img src="https://imgur.com/XZpItKx.jpg"
-                        alt="project image 14"
-                        class="w-full h-full object-cover hover:scale-105 transition duration-700">
-                </div>
-
-                <div class="overflow-hidden">
-                    <img src="https://imgur.com/jZO00zg.jpg"
-                        alt="project image 15"
-                        class="w-full h-full object-cover hover:scale-105 transition duration-700">
-                </div>
-
-                <div class="overflow-hidden">
-                    <img src="https://imgur.com/MV2qQIC.jpg"
-                        alt="project image 16"
-                        class="w-full h-full object-cover hover:scale-105 transition duration-700">
+                <!-- 오른쪽 기획 개요 -->
+                <div class="md:col-span-6 flex flex-col md:flex-row gap-2 md:gap-6">
+                    <span class="w-16 text-gray-400 font-semibold shrink-0">개요</span>
+                    <p class="text-gray-500 leading-relaxed font-medium text-justify break-keep">
+                        공간 전체의 유기적인 동선과 자재 고유의 마감 텍스처를 극대화하여 설계된 대규모 마스터피스 프로젝트입니다. 총 16개의 정밀 뷰를 통해 직선과 곡선, 조명 레이어가 만들어내는 압도적인 프리미엄 무드를 확인하실 수 있습니다.
+                    </p>
                 </div>
 
             </div>
+        </div>
 
-        </section>
+
+        <!-- 📸 [구역 3] 2장씩 정렬되는 갤러리 스택 에디터 공간 (✨ 튀어나오는 호버 효과 내장) -->
+        <div class="mt-16 space-y-24">
+
+            <!-- 🖼️ [세트 1: 이미지 1, 2번 나란히 배치] -->
+            <div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+                    <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                        <img src="https://imgur.com/ZcHiPra.jpg" alt="image 1" class="w-full h-full object-cover hover:scale-[1.02] transition duration-700">
+                    </div>
+                    <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                        <img src="https://imgur.com/oHSIU1e.jpg" alt="image 2" class="w-full h-full object-cover hover:scale-[1.02] transition duration-700">
+                    </div>
+                </div>
+                <div class="max-w-[850px] mx-auto text-center mt-10 px-4">
+                    <h3 class="text-lg md:text-xl font-bold text-gray-850 mb-4">01. 공간의 첫인상, 라운지 초입 레이아웃</h3>
+                    <p class="text-gray-500 leading-8 text-[15px] md:text-[16px] break-keep">
+                        진입부에서 느껴지는 공간감을 극대화하기 위해 선과 면을 정밀하게 분할했습니다. 은은한 간접 조명 라인이 바닥재의 고급스러운 광택과 만나 방문객에게 깊은 신뢰감과 품격을 전달합니다.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 🖼️ [세트 2: 이미지 3, 4번 나란히 배치] -->
+            <div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+                    <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                        <img src="https://imgur.com/8I3JELt.jpg" alt="image 3" class="w-full h-full object-cover hover:scale-[1.02] transition duration-700">
+                    </div>
+                    <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                        <img src="https://imgur.com/pmeue3l.jpg" alt="image 4" class="w-full h-full object-cover hover:scale-[1.02] transition duration-700">
+                    </div>
+                </div>
+                <div class="max-w-[850px] mx-auto text-center mt-10 px-4">
+                    <h3 class="text-lg md:text-xl font-bold text-gray-850 mb-4">02. 균형 잡힌 마감재와 개방형 동선</h3>
+                    <p class="text-gray-500 leading-8 text-[15px] md:text-[16px] break-keep">
+                        블랙 파티션 프레임의 샤프한 선 처리를 통해 시각적인 정돈감을 완성했습니다. 시선은 부드럽게 가두면서 개방감을 잃지 않는 투명 및 반투명 마감재 고유의 균형을 면밀하게 구축했습니다.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 🖼️ [세트 3: 이미지 5, 6번 나란히 배치] -->
+            <div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+                    <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                        <img src="https://imgur.com/kceDZJj.jpg" alt="image 5" class="w-full h-full object-cover hover:scale-[1.02] transition duration-700">
+                    </div>
+                    <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                        <img src="https://imgur.com/v6sFEVI.jpg" alt="image 6" class="w-full h-full object-cover hover:scale-[1.02] transition duration-700">
+                    </div>
+                </div>
+                <div class="max-w-[850px] mx-auto text-center mt-10 px-4">
+                    <h3 class="text-lg md:text-xl font-bold text-gray-850 mb-4">03. 조도 설계가 제안하는 아늑한 몰입</h3>
+                    <p class="text-gray-500 leading-8 text-[15px] md:text-[16px] break-keep">
+                        장시간 머무는 내부 구성원들을 배려하여 피로도를 최소화하는 반사광 위주의 인프라를 조성했습니다. 공간의 성격에 따라 조명 조도를 자유롭게 조율하여 유연한 비즈니스 형태를 수용합니다.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 🖼️ [세트 4: 이미지 7, 8번 나란히 배치] -->
+            <div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+                    <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                        <img src="https://imgur.com/DMv8tn0.jpg" alt="image 7" class="w-full h-full object-cover hover:scale-[1.02] transition duration-700">
+                    </div>
+                    <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                        <img src="https://imgur.com/WmFYlu7.jpg" alt="image 8" class="w-full h-full object-cover hover:scale-[1.02] transition duration-700">
+                    </div>
+                </div>
+                <div class="max-w-[850px] mx-auto text-center mt-10 px-4">
+                    <h3 class="text-lg md:text-xl font-bold text-gray-850 mb-4">04. 세부 디테일이 완성하는 하이엔드 감도</h3>
+                    <p class="text-gray-500 leading-8 text-[15px] md:text-[16px] break-keep">
+                        벽면의 스무스한 마감 라인과 정교한 인체공학적 집기 배치가 완벽한 완성도를 증명합니다. 작은 틈이나 이음새 선 하나까지 정밀 시공하여 블루디자인만의 하이엔드 아이덴티티를 투영시켰습니다.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 🖼️ [세트 5: 이미지 9, 10번 나란히 배치] -->
+            <div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+                    <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                        <img src="https://imgur.com/wAUa4RE.jpg" alt="image 9" class="w-full h-full object-cover hover:scale-[1.02] transition duration-700">
+                    </div>
+                    <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                        <img src="https://imgur.com/VVrB4VV.jpg" alt="image 10" class="w-full h-full object-cover hover:scale-[1.02] transition duration-700">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 🖼️ [세트 6: 이미지 11, 12번 나란히 배치] -->
+            <div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+                    <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                        <img src="https://imgur.com/pJGcrIG.jpg" alt="image 11" class="w-full h-full object-cover hover:scale-[1.02] transition duration-700">
+                    </div>
+                    <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                        <img src="https://imgur.com/lLK6HjC.jpg" alt="image 12" class="w-full h-full object-cover hover:scale-[1.02] transition duration-700">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 🖼️ [세트 7: 이미지 13, 14번 나란히 배치] -->
+            <div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+                    <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                        <img src="https://imgur.com/CQk5la9.jpg" alt="image 13" class="w-full h-full object-cover hover:scale-[1.02] transition duration-700">
+                    </div>
+                    <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                        <img src="https://imgur.com/XZpItKx.jpg" alt="image 14" class="w-full h-full object-cover hover:scale-[1.02] transition duration-700">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 🖼️ [세트 8: 이미지 15, 16번 나란히 배치] -->
+            <div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+                    <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                        <img src="https://imgur.com/jZO00zg.jpg" alt="image 15" class="w-full h-full object-cover hover:scale-[1.02] transition duration-700">
+                    </div>
+                    <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                        <img src="https://imgur.com/MV2qQIC.jpg" alt="image 16" class="w-full h-full object-cover hover:scale-[1.02] transition duration-700">
+                    </div>
+                </div>
+            </div>
+
+        </div>
 
     </main>
 
+    <!-- 글로벌 공통 푸터 주입 공간 -->
     <div id="footer"></div>
 
+    <!-- 🔗 컴포넌트 자동 조립 스크립트 -->
     <script>
-
         // header
         fetch('./components/header.html')
             .then(res => res.text())
@@ -157,7 +219,6 @@
                 menu.classList.toggle("hidden");
             }
         };
-
     </script>
 
 </body>
