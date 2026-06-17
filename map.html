@@ -96,13 +96,15 @@
 
             </section>
 
+            <!-- MAP -->
             <section class="mb-16">
 
                 <div class="map-wrap w-full h-[550px] overflow-hidden border border-gray-100">
 
+                    <!-- 🟢 네이버 지도 임베딩 시스템 적용 (기본값: 세마점 현대프리미어캠퍼스 위치) -->
                     <iframe
                         id="mapFrame"
-                        src="https://maps.google.com/maps?q=경기도 오산시 경기대로 761번길 30&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                        src="https://v4.map.naver.com/share/mapsShare.nhn?title=%EB%B8%94%EB%A3%A8%EB%94%94%EC%9E%90%EC%9D%B8%20%EC%84%B8%EB%A7%88%EC%A0%90&lat=37.182283&lng=127.042588&coordType=latlng"
                         loading="lazy">
                     </iframe>
 
@@ -110,15 +112,17 @@
 
             </section>
 
+            <!-- BRANCH -->
             <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
+                <!-- 세마점 -->
                 <div
                     class="branch-card active border border-gray-200 p-8"
                     onclick="changeBranch(
                         this,
                         '세마점',
                         '경기도 오산시 경기대로 761번길 30 현대프리미어캠퍼스 A-D-B2-029호',
-                        'https://maps.google.com/maps?q=경기도 오산시 경기대로 761번길 30&t=&z=15&ie=UTF8&iwloc=&output=embed'
+                        'https://v4.map.naver.com/share/mapsShare.nhn?title=%EB%B8%94%EB%A3%A8%EB%94%94%EC%9E%90%EC%9D%B8%20%EC%84%B8%EB%A7%88%EC%A0%90&lat=37.182283&lng=127.042588&coordType=latlng'
                     )">
 
                     <p class="text-[11px] tracking-[0.3em] uppercase text-gray-400 mb-4">
@@ -136,13 +140,14 @@
 
                 </div>
 
+                <!-- 세교점 -->
                 <div
                     class="branch-card border border-gray-200 p-8"
                     onclick="changeBranch(
                         this,
                         '세교점',
                         '경기도 오산시 독산성로 425 더퍼스트타워세교 426호',
-                        'https://maps.google.com/maps?q=경기도 오산시 독산성로 425&t=&z=15&ie=UTF8&iwloc=&output=embed'
+                        'https://v4.map.naver.com/share/mapsShare.nhn?title=%EB%B8%94%EB%A3%A8%EB%94%94%EC%9E%90%EC%9D%B8%20%EC%84%B8%EA%B5%90%EC%A0%90&lat=37.180295&lng=127.027050&coordType=latlng'
                     )">
 
                     <p class="text-[11px] tracking-[0.3em] uppercase text-gray-400 mb-4">
