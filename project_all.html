@@ -21,6 +21,28 @@
             overflow-x: hidden;
         }
 
+        /* TAB */
+        .tab-link {
+            position: relative;
+            padding-bottom: 8px;
+            transition: all 0.3s;
+        }
+
+        .tab-link.active {
+            color: #1e3a8a;
+            font-weight: bold;
+        }
+
+        .tab-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #1e3a8a;
+        }
+
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -43,6 +65,10 @@
         }
 
         @media (max-width: 768px) {
+            .tab-wrap {
+                gap: 32px !important; /* 모바일 메뉴 간격 조절 */
+                font-size: 14px !important; /* 모바일 탭 글씨 크기도 동시 확장 */
+            }
             .contact-box { right: 20px !important; bottom: 20px !important; }
             .contact-box p:first-child { font-size: 16px !important; }
         }
@@ -58,22 +84,22 @@
             <h2 class="text-[11px] text-[#1e3a8a] font-bold tracking-[0.4em] uppercase mb-4 reveal">
                 Portfolio
             </h2>
-            <!-- ✨ [수정] 자간(tracking-tighter)을 지우고 줄간격을 여유롭게 수정하여 시원하게 벌렸습니다 -->
             <h3 class="text-4xl md:text-5xl font-black leading-snug reveal">
                 프로젝트
             </h3>
         </div>
     </section>
 
+    <!-- 🛠️ CATEGORY TAB: text-[17px], font-bold로 확대 완료 및 gap-16으로 간격 매칭 -->
     <section class="mb-20">
-        <div class="max-w-[1400px] mx-auto px-6 flex justify-center gap-8 text-xs font-bold tracking-widest uppercase reveal">
-            <a href="project_all.html" class="text-[#1e3a8a] border-b-2 border-[#1e3a8a] pb-2">
+        <div class="tab-wrap max-w-[1400px] mx-auto flex justify-center gap-16 py-6 text-[17px] font-bold tracking-wide reveal">
+            <a href="project_all.html" class="tab-link active">
                 전체보기
             </a>
-            <a href="office.html" class="text-gray-400 hover:text-black transition-colors pb-2">
+            <a href="office.html" class="tab-link text-gray-400 hover:text-black transition-colors">
                 사무공간
             </a>
-            <a href="commercial.html" class="text-gray-400 hover:text-black transition-colors pb-2">
+            <a href="commercial.html" class="tab-link text-gray-400 hover:text-black transition-colors">
                 상업공간
             </a>
         </div>
@@ -83,10 +109,11 @@
         <div class="max-w-[1400px] mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
 
+                <!-- 🏢 1. 노무법인세명 사무실 -->
                 <div class="group cursor-pointer reveal">
-                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-6 rounded-sm">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-6 rounded-lg shadow-sm">
                         <img src="https://imgur.com/HBTjbpu.jpg"
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="노무법인세명 사무실">
                         
                         <a href="project_detail_01.html"
                             class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition duration-500 flex items-center justify-center z-10">
@@ -95,18 +122,20 @@
                             </span>
                         </a>
                     </div>
+                    <!-- 🛠️ 실질적인 용도에 따라 태그를 Office로 일치시켰습니다 -->
                     <p class="text-[10px] text-[#1e3a8a] font-bold tracking-widest uppercase mb-2">
-                        Office
+                        Office / Gwanggyo
                     </p>
                     <h4 class="text-xl font-bold tracking-tight group-hover:text-[#1e3a8a] transition-colors">
-                        동탄 노무사 인테리어
+                        노무법인세명 사무실
                     </h4>
                 </div>
 
+                <!-- 🏢 2. 2026-JOIL (사무공간 분류 반영) -->
                 <div class="group cursor-pointer reveal">
-                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-6 rounded-sm">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-6 rounded-lg shadow-sm">
                         <img src="https://imgur.com/c998gUY.jpg"
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="2026-JOIL">
                         
                         <a href="project_detail_02.html" 
                             class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition duration-500 flex items-center justify-center z-10">
@@ -115,18 +144,20 @@
                             </span>
                         </a>
                     </div>
+                    <!-- 🛠️ Commercial에서 Office 태그로 통합 변경 완료 -->
                     <p class="text-[10px] text-[#1e3a8a] font-bold tracking-widest uppercase mb-2">
-                        Commercial
+                        Office / Osan
                     </p>
                     <h4 class="text-xl font-bold tracking-tight group-hover:text-[#1e3a8a] transition-colors">
                         2026-JOIL
                     </h4>
                 </div>
 
+                <!-- 🏢 3. Materials -->
                 <div class="group cursor-pointer reveal">
-                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-6 rounded-sm">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-6 rounded-lg shadow-sm">
                         <img src="https://imgur.com/mGCrfNi.jpg" 
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Materials">
                         
                         <a href="project_detail_03.html"
                             class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition duration-500 flex items-center justify-center z-10">
@@ -136,17 +167,18 @@
                         </a>
                     </div>
                     <p class="text-[10px] text-[#1e3a8a] font-bold tracking-widest uppercase mb-2">
-                        Office
+                        Office / 현장
                     </p>
                     <h4 class="text-xl font-bold tracking-tight group-hover:text-[#1e3a8a] transition-colors">
                         Materials
                     </h4>
                 </div>
 
+                <!-- 🏢 4. 로앤HR컨설팅 (사무공간 분류 반영) -->
                 <div class="group cursor-pointer reveal">
-                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-6 rounded-sm">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-6 rounded-lg shadow-sm">
                         <img src="https://imgur.com/HLuVMfR.jpg"
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="로앤HR컨설팅">
                         
                         <a href="project_detail_04.html"
                             class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition duration-500 flex items-center justify-center z-10">
@@ -155,18 +187,20 @@
                             </span>
                         </a>
                     </div>
+                    <!-- 🛠️ Commercial에서 Office 태그로 통합 변경 완료 -->
                     <p class="text-[10px] text-[#1e3a8a] font-bold tracking-widest uppercase mb-2">
-                        Commercial
+                        Office / Gwanggyo
                     </p>
                     <h4 class="text-xl font-bold tracking-tight group-hover:text-[#1e3a8a] transition-colors">
                         로앤HR컨설팅
                     </h4>
                 </div>
 
+                <!-- 🏢 5. 삼정오토메이션 (사무공간 분류 반영) -->
                 <div class="group cursor-pointer reveal">
-                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-6 rounded-sm">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-6 rounded-lg shadow-sm">
                         <img src="https://imgur.com/ZcHiPra.jpg"
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="삼정오토메이션">
                         
                         <a href="project_detail_05.html"
                             class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition duration-500 flex items-center justify-center z-10">
@@ -175,8 +209,9 @@
                             </span>
                         </a>
                     </div>
+                    <!-- 🛠️ Commercial에서 Office 태그로 통합 변경 완료 -->
                     <p class="text-[10px] text-[#1e3a8a] font-bold tracking-widest uppercase mb-2">
-                        Commercial
+                        Office / Gwanggyo
                     </p>
                     <h4 class="text-xl font-bold tracking-tight group-hover:text-[#1e3a8a] transition-colors">
                         삼정오토메이션
@@ -187,7 +222,7 @@
         </div>
     </section>
 
-    <!-- ⚙️ [유지] 고정형 연락처 컴포넌트 추가 (순정 브랜드 아이콘 및 정밀 글자 배열 적용) -->
+    <!-- 고정형 연락처 컴포넌트 -->
     <div class="contact-box fixed bottom-10 right-10 z-[99999] flex flex-col items-end select-none">
         <div id="dynamic-text-target" class="dynamic-contact-text mb-5 flex flex-col items-end text-right">
             <p class="text-[21px] font-black tracking-tighter">010-4192-0882</p>
@@ -236,7 +271,6 @@
             if (textTarget && footer) {
                 const footerTop = footer.getBoundingClientRect().top;
                 
-                // 푸터가 화면 하단에 걸치며 진입하는 순간 실시간 클래스 스위칭
                 if (footerTop < windowHeight - 150) {
                     textTarget.classList.add('footer-bg');
                 } else {
@@ -270,14 +304,12 @@
                 }
             }
             
-            // 연락처 스크롤 체크 함수 연동
             checkScrollContact();
         }
 
         window.addEventListener("scroll", reveal);
         window.addEventListener('resize', checkScrollContact);
         
-        // 초기 렌더링 후 트리거 처리
         reveal();
         setTimeout(checkScrollContact, 400);
     </script>
