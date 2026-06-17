@@ -24,31 +24,23 @@
 
 <body class="bg-white text-gray-900">
 
-    <!-- 글로벌 공통 헤더가 주입되는 공간 -->
     <div id="header"></div>
 
-    <!-- 🛠️ 본문 메인 컨테이너 (상단 여백을 주어 헤더와 겹치지 않게 세팅) -->
     <main class="min-h-screen pt-32 pb-24 max-w-[1200px] mx-auto px-6">
 
-        <!-- 🏢 [구역 1] 프로젝트 제목 구역 (보내주신 스크린샷 양식 100% 적용) -->
         <div class="text-center my-14">
-            <!-- ✏️ 프로젝트 메인 대제목 -->
             <h1 class="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight mb-2">모던 미니멀 라운지 카페</h1>
-            <!-- ✏️ 영문 서브타이틀 -->
             <p class="text-sm md:text-base text-gray-400 font-medium tracking-wide">Modern Minimal Lounge Cafe Project</p>
         </div>
 
 
-        <!-- 📊 [구역 2] PROJECT DETAILS (가로선 정보 표 구역) -->
         <div class="border-t border-b border-gray-300 py-8 my-10">
             <div class="text-center text-xs md:text-sm font-extrabold tracking-[0.2em] text-gray-800 uppercase mb-8">
                 · PROJECT DETAILS ·
             </div>
             
-            <!-- 반응형 격자 구조 (PC에선 좌우 2단 분할 / 모바일에선 세로로 1줄 자동 정렬) -->
             <div class="grid grid-cols-1 md:grid-cols-12 gap-y-6 gap-x-12 text-[14px] md:text-[15px] px-2 md:px-4">
                 
-                <!-- 왼쪽 상세 스펙 (연도, 위치, 용도, 면적) -->
                 <div class="md:col-span-6 grid grid-cols-2 gap-y-4 gap-x-4 border-b md:border-b-0 md:border-r border-gray-200 pb-6 md:pb-0 md:pr-10">
                     <div class="flex items-center"><span class="w-16 text-gray-400 font-semibold shrink-0">연도</span><span class="text-gray-700 font-medium">2026</span></div>
                     <div class="flex items-center"><span class="w-16 text-gray-400 font-semibold shrink-0">위치</span><span class="text-gray-700 font-medium">경기도 오산시</span></div>
@@ -56,10 +48,8 @@
                     <div class="flex items-center"><span class="w-16 text-gray-400 font-semibold shrink-0">면적</span><span class="text-gray-700 font-medium">145.2m²</span></div>
                 </div>
 
-                <!-- 오른쪽 기획 개요 (줄글 설명 공간) -->
                 <div class="md:col-span-6 flex flex-col md:flex-row gap-2 md:gap-6">
                     <span class="w-16 text-gray-400 font-semibold shrink-0">개요</span>
-                    <!-- ✏️ 프로젝트 상세 소개글 -->
                     <p class="text-gray-500 leading-relaxed font-medium text-justify break-keep">
                         단순히 음료를 마시는 공간을 넘어 비즈니스 미팅과 개인 작업이 모두 가능한 하이브리드형 라운지 카페로 기획되었습니다. 미니멀한 가구 라인과 은은한 타일 반사를 이용하여 세련되고 깊이감 있는 무드를 연출했습니다.
                     </p>
@@ -69,38 +59,32 @@
         </div>
 
 
-        <!-- 📸 [구역 3] 사진 아래로 쭉 한 장씩 배치 + 중간중간 글 쓰는 공간 -->
         <div class="mt-16 space-y-20">
 
-            <!-- 🖼️ [세트 1] 첫 번째 큰 사진 구역 -->
             <div class="w-full">
-                <!-- 목록 2번에 있던 라운지 카페 메인 이미지 매핑 -->
-                <img src="https://imgur.com/U1XBpZV.jpg" 
-                     alt="모던 미니멀 라운지 카페 전경 1" 
-                     class="w-full h-auto object-cover rounded-sm shadow-sm">
-                <!-- ✏️ 사진 밑에 작게 들어가는 설명 자막 -->
+                <div class="overflow-hidden rounded-sm shadow-sm">
+                    <img src="https://imgur.com/U1XBpZV.jpg" 
+                         alt="모던 미니멀 라운지 카페 전경 1" 
+                         class="w-full h-auto object-cover hover:scale-[1.01] transition duration-700">
+                </div>
                 <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 빛의 굴절과 은은한 반사재를 활용하여 부드럽고 넓은 개방감을 준 메인 홀 전경</p>
             </div>
 
-            <!-- 📝 [중간 글박스 1] 사진과 사진 사이에 들어가는 설명 글 문단 -->
             <div class="max-w-[850px] mx-auto text-center py-6 px-4">
-                <!-- ✏️ 단락 소제목 -->
                 <h3 class="text-lg md:text-xl font-bold text-gray-850 mb-4">01. 마감재의 텍스처가 주는 은은한 편안함</h3>
-                <!-- ✏️ 상세 줄글 설명 -->
                 <p class="text-gray-500 leading-8 text-[15px] md:text-[16px] break-keep">
                     화려한 장식을 최대한 배제하고 면과 선의 정밀한 정렬을 통해 시각적 노이즈를 완전히 줄였습니다. 바닥과 벽면에 적용된 모노톤 마감재는 천장의 따뜻한 간접 조명과 만나 상업공간 특유의 세련된 정체성을 완성합니다.
                 </p>
             </div>
 
-            <!-- 🖼️ [세트 2] 두 번째 큰 사진 구역 -->
             <div class="w-full">
-                <!-- 목록 4번에 있던 상업공간 이미지 연결 (필요시 다른 이미지 주소로 변경 가능) -->
-                <img src="https://imgur.com/nAyfPQI.jpg" 
-                     alt="모던 미니멀 라운지 카페 전경 2" 
-                     class="w-full h-auto object-cover rounded-sm shadow-sm">
+                <div class="overflow-hidden rounded-sm shadow-sm">
+                    <img src="https://imgur.com/nAyfPQI.jpg" 
+                         alt="모던 미니멀 라운지 카페 전경 2" 
+                         class="w-full h-auto object-cover hover:scale-[1.01] transition duration-700">
+                </div>
             </div>
 
-            <!-- 📝 [중간 글박스 2] 두 번째 설명 글 문단 -->
             <div class="max-w-[850px] mx-auto text-center py-6 px-4">
                 <h3 class="text-lg md:text-xl font-bold text-gray-850 mb-4">02. 다목적 공간 활용을 위한 가구 레이아웃</h3>
                 <p class="text-gray-500 leading-8 text-[15px] md:text-[16px] break-keep">
@@ -112,10 +96,8 @@
 
     </main>
 
-    <!-- 글로벌 공통 푸터가 주입되는 공간 -->
     <div id="footer"></div>
 
-    <!-- 🔗 컴포넌트 자동 조립 스크립트 -->
     <script>
         // header
         fetch('./components/header.html')
