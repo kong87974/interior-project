@@ -29,7 +29,7 @@
             max-width: 100%;
         }
 
-        /* TAB ACTIVE STYLE */
+        /* 🛠️ TAB STYLE: 사무공간(office.html)과 자로 잰 듯 똑같은 두께와 포지션을 갖도록 CSS 직접 매칭 */
         .tab-link {
             position: relative;
             padding-bottom: 8px;
@@ -68,12 +68,11 @@
             color: #162e59;
             transition: color 0.3s ease;
         }
-        /* 푸터 진입 시 반전될 흰색 클래스 */
         .dynamic-contact-text.footer-bg {
             color: #ffffff !important;
         }
 
-        /* MOBILE */
+        /* MOBILE RESPONSIVE */
         @media (max-width: 768px) {
             .hero-title {
                 font-size: 36px !important;
@@ -85,17 +84,7 @@
             }
 
             .tab-wrap {
-                gap: 32px !important; /* 모바일 메뉴 간격 통일 */
-                font-size: 14px !important; /* 모바일 탭 글씨 크기 스케일 매칭 */
-            }
-
-            .project-info {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .project-title {
-                font-size: 22px !important;
+                gap: 32px !important;
             }
 
             .contact-box { right: 20px !important; bottom: 20px !important; }
@@ -135,21 +124,13 @@
         </div>
     </section>
 
-    <section class="border-b border-gray-100">
-        <div class="max-w-[1400px] mx-auto px-6">
-            <div class="tab-wrap flex justify-center gap-16 py-6 text-[17px] font-bold tracking-wide">
-                <a href="project_all.html" class="tab-link text-gray-400 hover:text-black transition-colors">
-                    전체보기
-                </a>
-                <a href="office.html" class="tab-link text-gray-400 hover:text-black transition-colors">
-                    사무공간
-                </a>
-                <a href="commercial.html" class="tab-link active">
-                    상업공간
-                </a>
-            </div>
+    <div class="border-b border-gray-100 mb-16">
+        <div class="tab-wrap max-w-[1400px] mx-auto flex justify-center gap-12 py-6 text-[14px] font-medium text-gray-400">
+            <a href="project_all.html" class="tab-link">전체보기</a>
+            <a href="office.html" class="tab-link">사무공간</a>
+            <a href="commercial.html" class="tab-link active">상업공간</a>
         </div>
-    </section>
+    </div>
 
     <section class="py-40 bg-white text-center">
         <div class="max-w-[1400px] mx-auto px-6 reveal">
