@@ -6,6 +6,8 @@
 
     <title>BLUE DESIGN | 공지사항</title>
 
+    <link rel="icon" href="https://i.imgur.com/f1j8a7x.png" type="image/png">
+
     <script src="https://cdn.tailwindcss.com"></script>
 
     <link rel="stylesheet"
@@ -59,10 +61,8 @@
 
 <body class="bg-white text-gray-900">
 
-    <!-- HEADER -->
     <div id="header"></div>
 
-    <!-- HERO -->
     <section class="relative h-[400px] flex items-center justify-center text-white overflow-hidden">
 
         <div class="absolute inset-0 z-0">
@@ -86,10 +86,8 @@
 
     </section>
 
-    <!-- MAIN -->
     <main class="max-w-[1100px] mx-auto px-6 pt-20 pb-40">
 
-        <!-- 게시판 헤더 -->
         <div class="hidden md:flex items-center pb-6 border-b-2 border-black text-[13px] font-bold uppercase tracking-wider px-4 reveal">
 
             <div class="w-20 text-center">
@@ -106,10 +104,8 @@
 
         </div>
 
-        <!-- 공지 리스트 -->
         <div class="divide-y divide-gray-100">
 
-            <!-- 공지 1 -->
             <a href="notice_01.html"
                 class="notice-row flex flex-col md:flex-row items-center py-8 px-4 group reveal">
 
@@ -139,7 +135,6 @@
 
             </a>
 
-            <!-- 공지 2 -->
             <a href="notice_02.html"
                 class="notice-row flex flex-col md:flex-row items-center py-8 px-4 group reveal">
 
@@ -161,7 +156,6 @@
 
             </a>
 
-            <!-- 공지 3 -->
             <a href="notice_03.html"
                 class="notice-row flex flex-col md:flex-row items-center py-8 px-4 group reveal">
 
@@ -185,7 +179,6 @@
 
         </div>
 
-        <!-- 페이지네이션 -->
         <div class="mt-20 flex justify-center gap-2 reveal">
 
             <span class="w-8 h-8 flex items-center justify-center bg-[#1e3a8a] text-white text-xs">
@@ -204,7 +197,6 @@
 
     </main>
 
-    <!-- FOOTER -->
     <div id="footer"></div>
 
     <script>
@@ -223,43 +215,31 @@
         });
 
         window.toggleMenu = function () {
-
-    const menu = document.getElementById("mobileMenu");
-
-    if(menu){
-        menu.classList.toggle("hidden");
-    }
-
-};
-
-
-        // 모바일 메뉴
-        function toggleMenu() {
-
             const menu = document.getElementById("mobileMenu");
-
             if(menu){
                 menu.classList.toggle("hidden");
             }
+        };
 
+        // 모바일 메뉴
+        function toggleMenu() {
+            const menu = document.getElementById("mobileMenu");
+            if(menu){
+                menu.classList.toggle("hidden");
+            }
         }
 
         // reveal
         window.addEventListener('scroll', () => {
-
             const reveals = document.querySelectorAll('.reveal');
-
             reveals.forEach(el => {
-
                 const windowHeight = window.innerHeight;
                 const revealTop = el.getBoundingClientRect().top;
 
                 if (revealTop < windowHeight - 100) {
                     el.classList.add('active');
                 }
-
             });
-
         });
 
         // 초기 실행
