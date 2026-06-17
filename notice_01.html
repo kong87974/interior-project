@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BLUE DESIGN | 공지사항</title>
 
+    <link rel="icon" href="https://i.imgur.com/f1j8a7x.png" type="image/png">
+
     <script src="https://cdn.tailwindcss.com"></script>
 
     <link
@@ -35,13 +37,10 @@
 
 <body class="bg-white text-gray-900">
 
-    <!-- HEADER -->
     <div id="header"></div>
 
-    <!-- 메인 -->
     <main class="pt-48 pb-32 max-w-[900px] mx-auto px-6">
 
-        <!-- 상단 -->
         <header class="border-b border-gray-200 pb-10 mb-14 reveal">
 
             <p class="text-[11px] text-[#1e3a8a] font-bold tracking-[0.3em] uppercase mb-5">
@@ -49,11 +48,7 @@
             </p>
 
             <h1 class="text-3xl md:text-5xl font-bold tracking-tighter leading-tight mb-8">
-<<<<<<< HEAD
-                 홈페이지<br />
-=======
                 블루디자인 공식 홈페이지<br />
->>>>>>> b03289d1eca0f3fba66107fadb7e7152293195ae
                 리뉴얼 안내
             </h1>
 
@@ -64,7 +59,6 @@
 
         </header>
 
-        <!-- 본문 -->
         <article class="reveal text-gray-600 leading-relaxed text-[15px] md:text-[17px] space-y-8 min-h-[300px]">
 
             <p>
@@ -89,7 +83,6 @@
                 많은 관심 부탁드립니다.
             </p>
 
-            <!-- 이미지 -->
             <div class="pt-6">
                 <img
                     src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=1600"
@@ -100,7 +93,6 @@
 
         </article>
 
-        <!-- 이전글 / 다음글 -->
         <section class="mt-24 border-t border-gray-200 reveal">
 
             <a
@@ -127,7 +119,6 @@
 
         </section>
 
-        <!-- 버튼 -->
         <div class="mt-20 flex justify-center reveal">
 
             <a
@@ -141,11 +132,9 @@
 
     </main>
 
-    <!-- FOOTER -->
     <div id="footer"></div>
 
     <script>
-
         // header/footer 불러오기
         fetch('./components/header.html')
         .then(res => res.text())
@@ -160,37 +149,27 @@
         });
 
         window.toggleMenu = function () {
-
-    const menu = document.getElementById("mobileMenu");
-
-    if(menu){
-        menu.classList.toggle("hidden");
-    }
-
-};
-
+            const menu = document.getElementById("mobileMenu");
+            if(menu){
+                menu.classList.toggle("hidden");
+            }
+        };
 
         // reveal animation
         window.addEventListener("scroll", () => {
-
             const reveals = document.querySelectorAll(".reveal");
-
             reveals.forEach(el => {
-
                 const windowHeight = window.innerHeight;
                 const revealTop = el.getBoundingClientRect().top;
 
                 if (revealTop < windowHeight - 100) {
                     el.classList.add("active");
                 }
-
             });
-
         });
 
         // 초기 실행
         window.dispatchEvent(new Event("scroll"));
-
     </script>
 
 </body>
