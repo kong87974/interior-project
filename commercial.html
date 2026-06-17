@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BLUE DESIGN | 상업공간</title>
 
+    <!-- 🌐 [아이콘 고정] 다른 서브 페이지와 동일한 로고 파비콘 링크를 추가했습니다 -->
+    <link rel="icon" href="https://i.imgur.com/f1j8a7x.png" type="image/png">
+
     <script src="https://cdn.tailwindcss.com"></script>
 
     <link rel="stylesheet"
@@ -39,6 +42,16 @@
             transform: translateY(0);
         }
 
+        /* ✨ 우측 하단 연락처 글자 색상 실시간 제어 스타일 (서브 페이지는 파란색 시작이 기본) */
+        .dynamic-contact-text {
+            color: #162e59;
+            transition: color 0.3s ease;
+        }
+        /* 푸터(진한 파란 배경) 진입 시 반전될 흰색 클래스 */
+        .dynamic-contact-text.footer-bg {
+            color: #ffffff !important;
+        }
+
         /* MOBILE */
         @media (max-width: 768px) {
             .hero-title {
@@ -58,6 +71,9 @@
             .project-title {
                 font-size: 22px !important;
             }
+
+            .contact-box { right: 20px !important; bottom: 20px !important; }
+            .contact-box p:first-child { font-size: 16px !important; }
 
             footer {
                 text-align: center;
@@ -227,6 +243,22 @@
         </div>
     </section>
 
+    <!-- ⚙️ 고정형 연락처 컴포넌트 추가 (순정 브랜드 아이콘 및 정밀 글자 배열 적용) -->
+    <div class="contact-box fixed bottom-10 right-10 z-[99999] flex flex-col items-end select-none">
+        <div id="dynamic-text-target" class="dynamic-contact-text mb-5 flex flex-col items-end text-right">
+            <p class="text-[21px] font-black tracking-tighter">010-4192-0882</p>
+            <p class="text-sm font-light opacity-90 tracking-[0.055em] mr-[-0.055em]">camp0882@daum.net</p>
+        </div>
+        <div class="flex justify-end gap-3">
+            <a href="javascript:void(0);" onclick="openNaverBlog();" class="w-10 h-10 rounded-full bg-[#03C75A] flex items-center justify-center text-white text-[10px] font-bold uppercase hover:scale-105 shadow-lg transition-transform">
+                BLOG
+            </a>
+            <a href="http://pf.kakao.com/_AJxenX" class="w-10 h-10 rounded-full bg-[#fae100] flex items-center justify-center overflow-hidden hover:scale-105 shadow-lg transition-transform">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/KakaoTalk_logo.svg" alt="카카오톡" class="w-5 h-5 object-contain">
+            </a>
+        </div>
+    </div>
+
     <!-- FOOTER -->
     <div id="footer"></div>
 
@@ -251,7 +283,39 @@
             }
         };
         
-        // REVEAL
+        // ✨ 스크롤 실시간 감지하여 푸터 진입 시 연락처 글자 색상을 반전(파란색 -> 흰색)시키는 함수
+        function checkScrollContact() {
+            const windowHeight = window.innerHeight;
+            const textTarget = document.getElementById('dynamic-text-target');
+            const footer = document.getElementById('footer');
+
+            if (textTarget && footer) {
+                const footerTop = footer.getBoundingClientRect().top;
+                
+                // 푸터 영역이 화면 하단 마진선 안으로 진입했는지 계산
+                if (footerTop < windowHeight - 150) {
+                    textTarget.classList.add('footer-bg');
+                } else {
+                    textTarget.classList.remove('footer-bg');
+                }
+            }
+        }
+
+        // 📱 모바일/PC 식별형 네이버 블로그 링크 포워딩
+        function openNaverBlog() {
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
+            let blogUrl = "";
+            if (isMobile) {
+                blogUrl = "https://m.blog.naver.com/zinux_?noTrackingCode=true&proxyReferer=&tab=1";
+            } else {
+                blogUrl = "https://blog.naver.com/zinux_";
+            }
+            
+            window.open(blogUrl, '_blank');
+        }
+
+        // REVEAL & 스크롤 감지 결합
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
@@ -261,10 +325,16 @@
                     reveals[i].classList.add("active");
                 }
             }
+            // 색상 제어 스크립트 실시간 연동
+            checkScrollContact();
         }
 
         window.addEventListener("scroll", reveal);
+        window.addEventListener('resize', checkScrollContact);
+        
+        // 초기 로드 후 레이아웃 마크 트리거
         reveal();
+        setTimeout(checkScrollContact, 400);
     </script>
 </body>
 
