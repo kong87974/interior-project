@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>블루디자인</title>
 
-    <link rel="icon" href="https://i.imgur.com/f1j8a7x.png" type="image/png">
+    <link class="favicon" rel="icon" href="https://i.imgur.com/f1j8a7x.png" type="image/png">
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -102,12 +102,11 @@
             transform: translateY(0);
         }
 
-        /* ✨ [유지] 연락처 글자 색상 전환을 위한 기본 세팅 (시작은 흰색) */
+        /* 연락처 글자 색상 전환을 위한 기본 세팅 */
         .dynamic-contact-text {
             color: #ffffff;
             transition: color 0.3s ease;
         }
-        /* 밝은 배경 영역에 들어왔을 때 지정하신 고유 파란색 강제 적용 클래스 */
         .dynamic-contact-text.light-bg {
             color: #162e59 !important;
         }
@@ -290,13 +289,12 @@
         </div>
     </section>
 
-    <!-- 🔳 About Us 섹션 (요청하신 흰색 카드 내 텍스트만 2줄 정밀 교체) -->
     <section class="py-32 bg-[#f8fafc] overflow-hidden relative z-10">
         <div class="max-w-[1400px] mx-auto px-6">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                 <div class="reveal">
                     <p class="text-[11px] tracking-[0.4em] text-[#1e3a8a] font-bold uppercase mb-6">About Us</p>
-                    <h2 class="text-4xl md:text-5xl font-black leading-relaxed mb-8">공간의 가치를<br>디자인합니다.</h2>
+                    <h2 class="text-4xl md:text-5xl font-black leading-snug mb-8 tracking-tight">공간의 가치를<br>디자인합니다.</h2>
                     <p class="text-gray-500 leading-relaxed text-[15px] md:text-[17px]">
                         블루디자인은 단순한 인테리어를 넘어 공간 안에서의 경험과 동선을 설계합니다.<br>
                         오피스, 상업공간, 공유오피스 등 다양한 프로젝트를 통해 공간의 새로운 가치를 제안합니다.
@@ -306,17 +304,15 @@
                     <div class="aspect-[4/5] overflow-hidden rounded-[4px]">
                         <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1200" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
                     </div>
-                    <!-- 🛠️ 오직 이 플로팅 흰색 박스의 텍스트만 요청 스펙에 맞춰 수정 완료 -->
-                    <div class="absolute -bottom-10 -left-10 bg-white p-8 shadow-2xl hidden md:block">
-                        <p class="text-[11px] tracking-[0.3em] uppercase text-gray-400 mb-3">Office & Commercial</p>
-                        <h4 class="text-2xl font-black tracking-tight leading-tight">Blue Design<br>Interior</h4>
+                    <div class="absolute -bottom-10 -left-10 bg-white p-7 md:p-8 shadow-2xl hidden md:block border border-gray-50 min-w-[210px]">
+                        <p class="text-[10px] tracking-[0.25em] uppercase text-gray-400 mb-2.5">Office & Commercial</p>
+                        <h4 class="text-xl md:text-2xl font-black tracking-tight leading-tight text-gray-900">Blue Design<br>Interior</h4>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 🛠️ 원본 5단계 진행절차 완벽 원상복구 -->
     <section class="py-32 bg-white relative z-10">
         <div class="max-w-[1400px] mx-auto px-6">
             <div class="text-center mb-24 reveal">
@@ -325,35 +321,30 @@
             </div>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12">
-                <!-- 01 상담 -->
                 <div class="reveal text-center">
                     <div class="text-6xl font-black text-[#1e3a8a]/10 mb-6">01</div>
                     <h3 class="text-2xl font-black mb-4 tracking-tight">상담</h3>
                     <p class="text-gray-500 leading-relaxed text-sm break-keep">공간의 목적과 고객의 니즈를<br>충분히 상담하고 분석합니다.</p>
                 </div>
                 
-                <!-- 02 디자인 -->
                 <div class="reveal text-center">
                     <div class="text-6xl font-black text-[#1e3a8a]/10 mb-6">02</div>
                     <h3 class="text-2xl font-black mb-4 tracking-tight">디자인</h3>
                     <p class="text-gray-500 leading-relaxed text-sm break-keep">공간의 동선과 분위기를 고려한<br>맞춤형 디자인을 제안합니다.</p>
                 </div>
                 
-                <!-- 03 견적 -->
                 <div class="reveal text-center">
                     <div class="text-6xl font-black text-[#1e3a8a]/10 mb-6">03</div>
                     <h3 class="text-2xl font-black mb-4 tracking-tight">견적</h3>
                     <p class="text-gray-500 leading-relaxed text-sm break-keep">확정된 디자인과 투명한 견적을 바탕으로<br>신뢰할 수 있는 계약을 체결합니다.</p>
                 </div>
                 
-                <!-- 04 시공 -->
                 <div class="reveal text-center">
                     <div class="text-6xl font-black text-[#1e3a8a]/10 mb-6">04</div>
                     <h3 class="text-2xl font-black mb-4 tracking-tight">시공</h3>
                     <p class="text-gray-500 leading-relaxed text-sm break-keep">숙련된 시공팀이 안정적이고<br>완성도 높은 작업을 진행합니다.</p>
                 </div>
                 
-                <!-- 05 완공 -->
                 <div class="reveal text-center">
                     <div class="text-6xl font-black text-[#1e3a8a]/10 mb-6">05</div>
                     <h3 class="text-2xl font-black mb-4 tracking-tight">완공</h3>
@@ -366,7 +357,7 @@
     <div id="footer"></div>
 
 <script>
-// 푸터만 비동기로 로드
+// 푸터 비동기 로드
 fetch('./components/footer.html')
 .then(res => res.text())
 .then(data => {
@@ -404,11 +395,10 @@ setInterval(() => {
     updateSlide();
 }, 2000);
 
-// reveal animation & 스크롤 위치에 맞춰 연락처 글자 색상 실시간 변경 기능 통합
+// reveal animation 및 스크롤 연동 처리
 function checkReveal() {
     const windowHeight = window.innerHeight;
     
-    // 1. 기존 리빌 애니메이션 효과
     document.querySelectorAll('.reveal').forEach(el => {
         const revealTop = el.getBoundingClientRect().top;
         if (revealTop < windowHeight - 100) {
@@ -416,7 +406,6 @@ function checkReveal() {
         }
     });
 
-    // 2. 메인 비주얼 슬라이더 및 하단 푸터를 교차 계산하여 글씨색 3단 변환 제어
     const textTarget = document.getElementById('dynamic-text-target');
     const footer = document.getElementById('footer');
 
@@ -439,17 +428,11 @@ function checkReveal() {
     }
 }
 
-// 모바일/PC 구별하여 네이버 블로그 새창 열기 함수
 function openNaverBlog() {
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    
-    let blogUrl = "";
-    if (isMobile) {
-        blogUrl = "https://m.blog.naver.com/zinux_?noTrackingCode=true&proxyReferer=&tab=1";
-    } else {
-        blogUrl = "https://blog.naver.com/zinux_";
-    }
-    
+    let blogUrl = isMobile 
+        ? "https://m.blog.naver.com/zinux_?noTrackingCode=true&proxyReferer=&tab=1" 
+        : "https://blog.naver.com/zinux_";
     window.open(blogUrl, '_blank');
 }
 
