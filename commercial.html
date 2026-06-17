@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BLUE DESIGN | 상업공간</title>
 
-    <!-- 🌐 [아이콘 고정] 다른 서브 페이지와 동일한 로고 파비콘 링크를 추가했습니다 -->
     <link rel="icon" href="https://i.imgur.com/f1j8a7x.png" type="image/png">
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -42,12 +41,12 @@
             transform: translateY(0);
         }
 
-        /* ✨ 우측 하단 연락처 글자 색상 실시간 제어 스타일 (서브 페이지는 파란색 시작이 기본) */
+        /* ✨ 우측 하단 연락처 글자 색상 실시간 제어 스타일 */
         .dynamic-contact-text {
             color: #162e59;
             transition: color 0.3s ease;
         }
-        /* 푸터(진한 파란 배경) 진입 시 반전될 흰색 클래스 */
+        /* 푸터 진입 시 반전될 흰색 클래스 */
         .dynamic-contact-text.footer-bg {
             color: #ffffff !important;
         }
@@ -90,18 +89,14 @@
 
 <body class="bg-white text-gray-900">
 
-    <!-- HEADER -->
     <div id="header"></div>
 
-    <!-- HERO -->
     <section class="relative h-[500px] flex items-center justify-center text-white overflow-hidden">
-        <!-- BG -->
         <div class="absolute inset-0 z-0">
             <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2000"
                 class="w-full h-full object-cover brightness-[0.4]">
         </div>
 
-        <!-- TEXT -->
         <div class="relative z-10 text-center px-6">
             <h1 class="hero-title text-5xl md:text-6xl font-black tracking-tighter mb-6 reveal">
                 COMMERCIAL SPACE
@@ -113,7 +108,6 @@
         </div>
     </section>
 
-    <!-- CATEGORY -->
     <section class="border-b border-gray-100">
         <div class="max-w-[1400px] mx-auto px-6">
             <div class="flex justify-center gap-8 md:gap-14 py-6 text-[13px] md:text-[14px] font-bold tracking-widest uppercase">
@@ -130,104 +124,14 @@
         </div>
     </section>
 
-    <!-- PROJECT -->
-    <section class="py-24">
-        <div class="max-w-[1400px] mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-20">
-
-                <!-- 🏪 ITEM 1: 2026-JOIL (전체보기의 2번 아이템) -->
-                <a href="project_detail_02.html" class="group block reveal">
-                    <div class="relative overflow-hidden aspect-video bg-gray-100 mb-8 rounded-lg">
-                        <img src="https://imgur.com/c998gUY.jpg"
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                            alt="2026-JOIL">
-                    </div>
-                    <div class="project-info flex justify-between items-start">
-                        <div>
-                            <p class="text-[10px] text-[#1e3a8a] font-bold tracking-widest uppercase mb-2">
-                                Commercial / Cafe Design
-                            </p>
-                            <h4 class="project-title text-2xl font-bold tracking-tight group-hover:text-[#1e3a8a] transition-colors">
-                                2026-JOIL
-                            </h4>
-                        </div>
-                        <span class="text-xs text-gray-300 italic">
-                            2026 / Osan
-                        </span>
-                    </div>
-                </a>
-
-                <!-- 🏪 ITEM 2: 로앤HR컨설팅 (전체보기의 4번 아이템) -->
-                <a href="project_detail_04.html" class="group block reveal" style="transition-delay: 0.1s;">
-                    <div class="relative overflow-hidden aspect-video bg-gray-100 mb-8 rounded-lg">
-                        <img src="https://imgur.com/HLuVMfR.jpg"
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                            alt="로앤HR컨설팅">
-                    </div>
-                    <div class="project-info flex justify-between items-start">
-                        <div>
-                            <p class="text-[10px] text-[#1e3a8a] font-bold tracking-widest uppercase mb-2">
-                                Commercial / Showroom
-                            </p>
-                            <h4 class="project-title text-2xl font-bold tracking-tight group-hover:text-[#1e3a8a] transition-colors">
-                                로앤HR컨설팅
-                            </h4>
-                        </div>
-                        <span class="text-xs text-gray-300 italic">
-                            2026 / Gwanggyo
-                        </span>
-                    </div>
-                </a>
-
-                <!-- 🏪 ITEM 3: 삼정오토메이션 -->
-                <a href="project_detail_05.html" class="group block reveal" style="transition-delay: 0.1s;">
-                    <div class="relative overflow-hidden aspect-video bg-gray-100 mb-8 rounded-lg">
-                        <img src="https://imgur.com/ZcHiPra.jpg"
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                            alt="삼정오토메이션">
-                    </div>
-                    <div class="project-info flex justify-between items-start">
-                        <div>
-                            <p class="text-[10px] text-[#1e3a8a] font-bold tracking-widest uppercase mb-2">
-                                Commercial / Showroom
-                            </p>
-                            <h4 class="project-title text-2xl font-bold tracking-tight group-hover:text-[#1e3a8a] transition-colors">
-                                삼정오토메이션
-                            </h4>
-                        </div>
-                        <span class="text-xs text-gray-300 italic">
-                            2026 / Gwanggyo
-                        </span>
-                    </div>
-                </a>
-
-                <!-- COMING SOON -->
-                <div class="group reveal">
-                    <div class="bg-gray-50 aspect-video rounded-lg mb-8 flex items-center justify-center">
-                        <div class="text-gray-200 text-5xl font-black tracking-tighter uppercase">
-                            Coming Soon
-                        </div>
-                    </div>
-                    <div class="project-info flex justify-between items-start">
-                        <div>
-                            <p class="text-[10px] text-gray-300 font-bold tracking-widest uppercase mb-2">
-                                Commercial
-                            </p>
-                            <h4 class="project-title text-2xl font-bold text-gray-300">
-                                New Project
-                            </h4>
-                        </div>
-                        <span class="text-xs text-gray-200 italic">
-                            2026
-                        </span>
-                    </div>
-                </div>
-
-            </div>
+    <section class="py-40 bg-white text-center">
+        <div class="max-w-[1400px] mx-auto px-6 reveal">
+            <p class="text-gray-400 text-sm tracking-wide font-light">
+                현재 등록된 상업공간 포트폴리오가 없습니다.
+            </p>
         </div>
     </section>
 
-    <!-- CTA -->
     <section class="py-28 bg-[#f8fafc]">
         <div class="max-w-[1000px] mx-auto px-6 text-center reveal">
             <h2 class="text-3xl md:text-5xl font-black tracking-tighter mb-6">
@@ -243,7 +147,6 @@
         </div>
     </section>
 
-    <!-- ⚙️ 고정형 연락처 컴포넌트 추가 (순정 브랜드 아이콘 및 정밀 글자 배열 적용) -->
     <div class="contact-box fixed bottom-10 right-10 z-[99999] flex flex-col items-end select-none">
         <div id="dynamic-text-target" class="dynamic-contact-text mb-5 flex flex-col items-end text-right">
             <p class="text-[21px] font-black tracking-tighter">010-4192-0882</p>
@@ -259,7 +162,6 @@
         </div>
     </div>
 
-    <!-- FOOTER -->
     <div id="footer"></div>
 
     <script>
@@ -283,7 +185,6 @@
             }
         };
         
-        // ✨ 스크롤 실시간 감지하여 푸터 진입 시 연락처 글자 색상을 반전(파란색 -> 흰색)시키는 함수
         function checkScrollContact() {
             const windowHeight = window.innerHeight;
             const textTarget = document.getElementById('dynamic-text-target');
@@ -291,8 +192,6 @@
 
             if (textTarget && footer) {
                 const footerTop = footer.getBoundingClientRect().top;
-                
-                // 푸터 영역이 화면 하단 마진선 안으로 진입했는지 계산
                 if (footerTop < windowHeight - 150) {
                     textTarget.classList.add('footer-bg');
                 } else {
@@ -301,7 +200,6 @@
             }
         }
 
-        // 📱 모바일/PC 식별형 네이버 블로그 링크 포워딩
         function openNaverBlog() {
             const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
             
@@ -315,7 +213,6 @@
             window.open(blogUrl, '_blank');
         }
 
-        // REVEAL & 스크롤 감지 결합
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
@@ -325,14 +222,12 @@
                     reveals[i].classList.add("active");
                 }
             }
-            // 색상 제어 스크립트 실시간 연동
             checkScrollContact();
         }
 
         window.addEventListener("scroll", reveal);
         window.addEventListener('resize', checkScrollContact);
         
-        // 초기 로드 후 레이아웃 마크 트리거
         reveal();
         setTimeout(checkScrollContact, 400);
     </script>
