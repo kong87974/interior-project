@@ -4,17 +4,24 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-white/10">
 
-            <!-- LOGO (🛠️ 좌우 끝선 양쪽 여백 없이 정중앙 대칭 보정 완료) -->
+            <!-- LOGO (🛠️ 좌우 끝선 양쪽 여백 없이 정밀 대칭 완료) -->
             <div class="lg:col-span-3">
-                <div class="mb-6 flex flex-col items-start">
+                <div class="mb-6 inline-block">
                     <!-- BLUE DESIGN -->
-                    <div class="text-[24px] font-black tracking-[0.05em] leading-none uppercase text-white">
+                    <div class="text-[24px] font-black tracking-[0.04em] leading-none uppercase text-white mb-3">
                         BLUE DESIGN
                     </div>
 
-                    <!-- INTERIOR: 자간 분배 오류를 ml-[0.21em] 음수 마진 보정값으로 잡아 좌우 균형을 칼같이 맞췄습니다 -->
-                    <div class="text-[13px] text-white uppercase font-light tracking-[0.42em] leading-none block mt-2.5 ml-[0.21em]">
-                        INTERIOR
+                    <!-- INTERIOR: flex justify-between을 사용하여 양쪽 끝 여백 0 상태로 글자를 자동 균등 분배합니다. -->
+                    <div class="flex justify-between w-full text-[13px] text-white uppercase font-light leading-none select-none">
+                        <span>I</span>
+                        <span>N</span>
+                        <span>T</span>
+                        <span>E</span>
+                        <span>R</span>
+                        <span>I</span>
+                        <span>O</span>
+                        <span>R</span>
                     </div>
                 </div>
 
