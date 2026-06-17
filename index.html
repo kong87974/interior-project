@@ -99,7 +99,6 @@
 
         .reveal.active {
             opacity: 1;
-            transform: translateY(0);
         }
 
         /* 연락처 글자 색상 전환을 위한 기본 세팅 */
@@ -205,7 +204,6 @@
         </div>
     </nav>
 
-    <!-- 메인 슬라이더 비주얼 구역 -->
     <section class="relative min-h-screen w-full z-0">
         <div id="slider" class="absolute inset-0 w-full h-full overflow-hidden z-0">
             <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000" class="slide-bg active">
@@ -232,7 +230,6 @@
         </div>
     </section>
 
-    <!-- 고정 우하단 연락처 퀵링크 버튼 -->
     <div class="contact-box fixed bottom-10 right-10 z-[99999] flex flex-col items-end select-none">
         <div id="dynamic-text-target" class="dynamic-contact-text mb-5 flex flex-col items-end text-right">
             <p class="text-[21px] font-black tracking-tighter">010-4192-0882</p>
@@ -248,7 +245,6 @@
         </div>
     </div>
     
-    <!-- 포트폴리오(Our Work) 구역 -->
     <section class="portfolio-section py-32 bg-white relative z-10">
         <div class="max-w-[1400px] mx-auto px-6">
             <div class="mb-16 reveal">
@@ -292,7 +288,6 @@
         </div>
     </section>
 
-    <!-- About Us 구역 -->
     <section class="py-32 bg-[#f8fafc] overflow-hidden relative z-10">
         <div class="max-w-[1400px] mx-auto px-6">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
@@ -317,7 +312,6 @@
         </div>
     </section>
 
-    <!-- 🛠️ 진행절차 5단계 구역 (이중 화살표 보정 완료) -->
     <section class="py-32 bg-white relative z-10">
         <div class="max-w-[1400px] mx-auto px-6">
             <div class="text-center mb-24 reveal">
@@ -325,65 +319,55 @@
                 <h2 class="text-4xl md:text-5xl font-black tracking-tighter leading-snug">진행절차</h2>
             </div>
             
-            <!-- lg:items-start와 h-fit 처리로 화살표가 가로 정렬 상태에서 절대 찌그러지지 않게 셋팅 -->
             <div class="flex flex-col lg:flex-row justify-between items-center lg:items-start gap-y-6 lg:gap-y-0 relative">
-                <!-- 01 상담 -->
                 <div class="reveal text-center flex-1 w-full">
                     <div class="text-6xl font-black text-[#1e3a8a]/10 mb-6">01</div>
                     <h3 class="text-2xl font-black mb-4 tracking-tight">상담</h3>
                     <p class="text-gray-500 leading-relaxed text-sm break-keep">공간의 목적과 고객의 니즈를<br>충분히 상담하고 분석합니다.</p>
                 </div>
                 
-                <!-- 👑 이중 화살표 (높이 보정 완료) -->
-                <div class="flex items-center justify-center select-none transform rotate-90 lg:rotate-0 my-4 lg:my-0 lg:pt-24 shrink-0 h-fit">
-                    <svg class="w-8 h-8 text-[#1e3a8a]" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                <div class="reveal flex items-center justify-center select-none transform rotate-90 lg:rotate-0 my-4 lg:my-0 lg:mt-16 shrink-0">
+                    <svg class="w-7 h-7 text-[#1e3a8a]" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M6 5l7 7-7 7"/>
                     </svg>
                 </div>
                 
-                <!-- 02 디자인 -->
                 <div class="reveal text-center flex-1 w-full">
                     <div class="text-6xl font-black text-[#1e3a8a]/10 mb-6">02</div>
                     <h3 class="text-2xl font-black mb-4 tracking-tight">디자인</h3>
                     <p class="text-gray-500 leading-relaxed text-sm break-keep">공간의 동선과 분위기를 고려한<br>맞춤형 디자인을 제안합니다.</p>
                 </div>
                 
-                <!-- 👑 이중 화살표 (높이 보정 완료) -->
-                <div class="flex items-center justify-center select-none transform rotate-90 lg:rotate-0 my-4 lg:my-0 lg:pt-24 shrink-0 h-fit">
-                    <svg class="w-8 h-8 text-[#1e3a8a]" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                <div class="reveal flex items-center justify-center select-none transform rotate-90 lg:rotate-0 my-4 lg:my-0 lg:mt-16 shrink-0">
+                    <svg class="w-7 h-7 text-[#1e3a8a]" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M6 5l7 7-7 7"/>
                     </svg>
                 </div>
                 
-                <!-- 03 견적 -->
                 <div class="reveal text-center flex-1 w-full">
                     <div class="text-6xl font-black text-[#1e3a8a]/10 mb-6">03</div>
                     <h3 class="text-2xl font-black mb-4 tracking-tight">견적</h3>
                     <p class="text-gray-500 leading-relaxed text-sm break-keep">확정된 디자인과 투명한 견적을 바탕으로<br>신뢰할 수 있는 계약을 체결합니다.</p>
                 </div>
                 
-                <!-- 👑 이중 화살표 (높이 보정 완료) -->
-                <div class="flex items-center justify-center select-none transform rotate-90 lg:rotate-0 my-4 lg:my-0 lg:pt-24 shrink-0 h-fit">
-                    <svg class="w-8 h-8 text-[#1e3a8a]" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                <div class="reveal flex items-center justify-center select-none transform rotate-90 lg:rotate-0 my-4 lg:my-0 lg:mt-16 shrink-0">
+                    <svg class="w-7 h-7 text-[#1e3a8a]" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M6 5l7 7-7 7"/>
                     </svg>
                 </div>
                 
-                <!-- 04 시공 -->
                 <div class="reveal text-center flex-1 w-full">
                     <div class="text-6xl font-black text-[#1e3a8a]/10 mb-6">04</div>
                     <h3 class="text-2xl font-black mb-4 tracking-tight">시공</h3>
                     <p class="text-gray-500 leading-relaxed text-sm break-keep">숙련된 시공팀이 안정적이고<br>완성도 높은 작업을 진행합니다.</p>
                 </div>
                 
-                <!-- 👑 이중 화살표 (높이 보정 완료) -->
-                <div class="flex items-center justify-center select-none transform rotate-90 lg:rotate-0 my-4 lg:my-0 lg:pt-24 shrink-0 h-fit">
-                    <svg class="w-8 h-8 text-[#1e3a8a]" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                <div class="reveal flex items-center justify-center select-none transform rotate-90 lg:rotate-0 my-4 lg:my-0 lg:mt-16 shrink-0">
+                    <svg class="w-7 h-7 text-[#1e3a8a]" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M6 5l7 7-7 7"/>
                     </svg>
                 </div>
                 
-                <!-- 05 완공 -->
                 <div class="reveal text-center flex-1 w-full">
                     <div class="text-6xl font-black text-[#1e3a8a]/10 mb-6">05</div>
                     <h3 class="text-2xl font-black mb-4 tracking-tight">완공</h3>
