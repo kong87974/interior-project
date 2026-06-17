@@ -55,6 +55,7 @@
             justify-content: center;
         }
 
+        /* REVEAL ANIMATION */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -66,8 +67,17 @@
             transform: translateY(0);
         }
 
-        @media (max-width: 768px) {
+        /* ✨ 우측 하단 연락처 글자 색상 실시간 제어 스타일 (서브 페이지는 파란색 시작이 기본) */
+        .dynamic-contact-text {
+            color: #162e59;
+            transition: color 0.3s ease;
+        }
+        /* 푸터(진한 파란 배경) 진입 시 반전될 흰색 클래스 */
+        .dynamic-contact-text.footer-bg {
+            color: #ffffff !important;
+        }
 
+        @media (max-width: 768px) {
             main {
                 padding-top: 130px !important;
             }
@@ -85,20 +95,21 @@
             .process-item:not(:last-child)::before {
                 left: 27px;
             }
+            
+            .contact-box { right: 20px !important; bottom: 20px !important; }
+            .contact-box p:first-child { font-size: 16px !important; }
         }
     </style>
 </head>
 
 <body class="bg-white text-gray-900">
 
-    <!-- HEADER -->
     <div id="header"></div>
 
     <main class="pt-48 pb-32">
 
         <div class="max-w-[1200px] mx-auto px-6">
 
-            <!-- TITLE -->
             <section class="mb-28 reveal">
 
                 <p class="text-[11px] tracking-[0.4em] text-[#1e3a8a] font-bold uppercase mb-5">
@@ -116,10 +127,8 @@
 
             </section>
 
-            <!-- PROCESS -->
             <section class="space-y-24">
 
-                <!-- 01 -->
                 <div class="process-item reveal">
 
                     <div class="process-number">
@@ -141,7 +150,6 @@
 
                 </div>
 
-                <!-- 02 -->
                 <div class="process-item reveal">
 
                     <div class="process-number">
@@ -163,7 +171,6 @@
 
                 </div>
 
-                <!-- 03 -->
                 <div class="process-item reveal">
 
                     <div class="process-number">
@@ -185,7 +192,6 @@
 
                 </div>
 
-                <!-- 04 -->
                 <div class="process-item reveal">
 
                     <div class="process-number">
@@ -207,7 +213,6 @@
 
                 </div>
 
-                <!-- 05 -->
                 <div class="process-item reveal">
 
                     <div class="process-number">
@@ -229,7 +234,6 @@
 
                 </div>
 
-                <!-- 06 -->
                 <div class="process-item reveal">
 
                     <div class="process-number">
@@ -252,7 +256,6 @@
                 </div>
 
 
-                <!-- 07 -->
                 <div class="process-item reveal">
 
                     <div class="process-number">
@@ -279,21 +282,40 @@
 
     </main>
 
-    <!-- FOOTER -->
+    <div class="contact-box fixed bottom-10 right-10 z-[99999] flex flex-col items-end select-none">
+        <div id="dynamic-text-target" class="dynamic-contact-text mb-5 flex flex-col items-end text-right">
+            <p class="text-[21px] font-black tracking-tighter">010-4192-0882</p>
+            <p class="text-sm font-light opacity-90 tracking-[0.055em] mr-[-0.055em]">camp0882@daum.net</p>
+        </div>
+        <div class="flex justify-end gap-3">
+            <a href="javascript:void(0);" onclick="openNaverBlog();" class="w-10 h-10 rounded-full bg-[#03C75A] flex items-center justify-center text-white text-[10px] font-bold uppercase hover:scale-105 shadow-lg transition-transform">
+                BLOG
+            </a>
+            <a href="http://pf.kakao.com/_AJxenX" class="w-10 h-10 rounded-full bg-[#fae100] flex items-center justify-center overflow-hidden hover:scale-105 shadow-lg transition-transform">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/KakaoTalk_logo.svg" alt="카카오톡" class="w-5 h-5 object-contain">
+            </a>
+        </div>
+    </div>
+
     <div id="footer"></div>
 
     <script>
-
-        // 모바일 메뉴
+        // 모바일 메뉴 트래킹 및 UI 로드
         function toggleMenu() {
             const menu = document.getElementById('mobileMenu');
-
             if (menu) {
                 menu.classList.toggle('hidden');
             }
         }
 
-        // header/footer
+        window.toggleMenu = function () {
+            const menu = document.getElementById("mobileMenu");
+            if(menu){
+                menu.classList.toggle("hidden");
+            }
+        };
+
+        // header/footer 비동기 인클루드
         fetch('./components/header.html')
             .then(res => res.text())
             .then(data => {
@@ -306,18 +328,7 @@
                 document.getElementById('footer').innerHTML = data;
             });
 
-            window.toggleMenu = function () {
-
-    const menu = document.getElementById("mobileMenu");
-
-    if(menu){
-        menu.classList.toggle("hidden");
-    }
-
-};
-
-
-        // reveal
+        // 리빌 애니메이션용 스크롤 옵저버
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -328,6 +339,41 @@
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+        // ✨ 스크롤 실시간 감지하여 푸터 진입 시 연락처 폰트 컬러를 반전(파란색 -> 흰색)시키는 함수
+        function checkScrollContact() {
+            const windowHeight = window.innerHeight;
+            const textTarget = document.getElementById('dynamic-text-target');
+            const footer = document.getElementById('footer');
+
+            if (textTarget && footer) {
+                const footerTop = footer.getBoundingClientRect().top;
+                
+                // 푸터가 화면 하단에 걸치며 진입하는 순간 실시간 클래스 스위칭
+                if (footerTop < windowHeight - 150) {
+                    textTarget.classList.add('footer-bg');
+                } else {
+                    textTarget.classList.remove('footer-bg');
+                }
+            }
+        }
+
+        // 📱 모바일/PC 식별형 네이버 블로그 링크 포워딩
+        function openNaverBlog() {
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
+            let blogUrl = "";
+            if (isMobile) {
+                blogUrl = "https://m.blog.naver.com/zinux_?noTrackingCode=true&proxyReferer=&tab=1";
+            } else {
+                blogUrl = "https://blog.naver.com/zinux_";
+            }
+            
+            window.open(blogUrl, '_blank');
+        }
+
+        window.addEventListener('scroll', checkScrollContact);
+        window.addEventListener('resize', checkScrollContact);
+        setTimeout(checkScrollContact, 400);
     </script>
 
 </body>
