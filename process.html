@@ -29,8 +29,8 @@
         /* REVEAL ANIMATION */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.9s ease;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
         }
 
         .reveal.active {
@@ -50,7 +50,7 @@
 
         @media (max-width: 768px) {
             main {
-                padding-top: 120px !important;
+                padding-top: 110px !important;
             }
             
             .contact-box { right: 20px !important; bottom: 20px !important; }
@@ -63,100 +63,100 @@
 
     <div id="header"></div>
 
-    <!-- 🛠️ 상단 여백을 시원하게 벌리고 본문 영역을 넓직하게 설정 -->
-    <main class="pt-40 pb-12">
+    <!-- 🛠️ 상하단 패딩을 조정하여 표가 위아래로 더 쾌적하게 위치하도록 정렬 -->
+    <main class="pt-32 pb-12">
 
         <div class="max-w-[1200px] mx-auto px-6 w-full">
 
-            <!-- ✏️ 상단 타이틀 구역 (mb-14로 넓직한 여백 확보) -->
-            <section class="mb-14 reveal">
-                <p class="text-[11px] tracking-[0.4em] text-[#1e3a8a] font-bold uppercase mb-4">
+            <!-- ✏️ 상단 타이틀 구역 (mb-10으로 간격을 조절하여 밑단 잘림 현상을 해결) -->
+            <section class="mb-10 reveal">
+                <p class="text-[11px] tracking-[0.4em] text-[#1e3a8a] font-bold uppercase mb-3">
                     Process
                 </p>
 
-                <h1 class="text-3xl md:text-4xl font-black tracking-tighter mb-5">
+                <h1 class="text-3xl font-black tracking-tighter mb-4">
                     인테리어 시공 진행절차
                 </h1>
 
-                <p class="text-gray-500 leading-relaxed text-[15px] md:text-[16px]">
+                <p class="text-gray-500 leading-relaxed text-[14px] md:text-[15px]">
                     블루디자인은 상담부터 사후관리까지 체계적인 프로세스를 통해 공간의 완성도를 높입니다.
                 </p>
             </section>
 
-            <!-- 📊 [4개 + 4개 대칭 그리드 / 원래의 큼직하고 넓직한 스케일 복원] -->
-            <!-- 🛠️ 아래쪽에 강력한 공백마진(mb-[40vh])을 주어 파란색 푸터를 완벽히 화면 밑으로 밀어냅니다 -->
-            <section class="space-y-6 md:space-y-8 mb-[40vh]">
+            <!-- 📊 [4개 + 4개 대칭 그리드 / 큼직한 스케일과 첫 화면 안착의 황금비율 세팅] -->
+            <!-- 🛠️ mb-[25vh]로 조율하여 첫 화면에는 표만 꽉 차게 보이고, 스크롤 시에 푸터가 등장하도록 설계 -->
+            <section class="space-y-5 md:space-y-6 mb-[25vh]">
                 
                 <!-- ⬇️ [첫 번째 줄] 01단계 ~ 04단계 -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 relative">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6 relative">
                     
                     <!-- 01. 문의 -->
-                    <div class="reveal relative bg-white p-6 border border-gray-100 rounded-xl flex flex-col justify-between z-10 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-md transition duration-500 cursor-pointer">
+                    <div class="reveal relative bg-white p-5 border border-gray-100 rounded-xl flex flex-col justify-between z-10 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-md transition duration-500 cursor-pointer">
                         <div>
-                            <div class="w-[55px] h-[55px] bg-[#f8fafc] text-[#1e3a8a] border border-[#dbeafe] flex items-center justify-center font-black text-xl mb-6 select-none">
+                            <div class="w-[52px] h-[52px] bg-[#f8fafc] text-[#1e3a8a] border border-[#dbeafe] flex items-center justify-center font-black text-xl mb-5 select-none">
                                 01
                             </div>
                             <p class="text-[10px] tracking-[0.2em] uppercase text-[#1e3a8a] font-bold mb-2">
                                 Consultation
                             </p>
-                            <h2 class="text-xl md:text-2xl font-black tracking-tight mb-3">
+                            <h2 class="text-xl font-black tracking-tight mb-3">
                                 문의
                             </h2>
-                            <p class="text-gray-500 leading-8 text-[14px] md:text-[15px] break-keep">
+                            <p class="text-gray-500 leading-7 text-[13.5px] md:text-[14.5px] break-keep">
                                 고객님의 니즈와 예산을 바탕으로 첫 번째 공간 컨설팅을 시작합니다.
                             </p>
                         </div>
                     </div>
 
                     <!-- 02. 미팅 & 실측 -->
-                    <div class="reveal relative bg-white p-6 border border-gray-100 rounded-xl flex flex-col justify-between z-10 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-md transition duration-500 cursor-pointer">
+                    <div class="reveal relative bg-white p-5 border border-gray-100 rounded-xl flex flex-col justify-between z-10 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-md transition duration-500 cursor-pointer">
                         <div>
-                            <div class="w-[55px] h-[55px] bg-[#f8fafc] text-[#1e3a8a] border border-[#dbeafe] flex items-center justify-center font-black text-xl mb-6 select-none">
+                            <div class="w-[52px] h-[52px] bg-[#f8fafc] text-[#1e3a8a] border border-[#dbeafe] flex items-center justify-center font-black text-xl mb-5 select-none">
                                 02
                             </div>
                             <p class="text-[10px] tracking-[0.2em] uppercase text-[#1e3a8a] font-bold mb-2">
                                 Site Check
                             </p>
-                            <h2 class="text-xl md:text-2xl font-black tracking-tight mb-3">
+                            <h2 class="text-xl font-black tracking-tight mb-3">
                                 미팅 & 실측
                             </h2>
-                            <p class="text-gray-500 leading-8 text-[14px] md:text-[15px] break-keep">
+                            <p class="text-gray-500 leading-8 text-[13.5px] md:text-[14.5px] break-keep">
                                 현장을 직접 방문하여 구조를 분석하고 정확한 설계의 토대를 마련합니다.
                             </p>
                         </div>
                     </div>
 
                     <!-- 03. 설계 & 3D -->
-                    <div class="reveal relative bg-white p-6 border border-gray-100 rounded-xl flex flex-col justify-between z-10 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-md transition duration-500 cursor-pointer">
+                    <div class="reveal relative bg-white p-5 border border-gray-100 rounded-xl flex flex-col justify-between z-10 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-md transition duration-500 cursor-pointer">
                         <div>
-                            <div class="w-[55px] h-[55px] bg-[#f8fafc] text-[#1e3a8a] border border-[#dbeafe] flex items-center justify-center font-black text-xl mb-6 select-none">
+                            <div class="w-[52px] h-[52px] bg-[#f8fafc] text-[#1e3a8a] border border-[#dbeafe] flex items-center justify-center font-black text-xl mb-5 select-none">
                                 03
                             </div>
                             <p class="text-[10px] tracking-[0.2em] uppercase text-[#1e3a8a] font-bold mb-2">
                                 3D Design
                             </p>
-                            <h2 class="text-xl md:text-2xl font-black tracking-tight mb-3">
+                            <h2 class="text-xl font-black tracking-tight mb-3">
                                 설계 & 3D
                             </h2>
-                            <p class="text-gray-500 leading-8 text-[14px] md:text-[15px] break-keep">
+                            <p class="text-gray-500 leading-8 text-[13.5px] md:text-[14.5px] break-keep">
                                 시각화된 3D 모델링을 통해 완공 후의 모습을 미리 확인하고 조율합니다.
                             </p>
                         </div>
                     </div>
 
                     <!-- 04. 견적 & 계약 -->
-                    <div class="reveal relative bg-white p-6 border border-gray-100 rounded-xl flex flex-col justify-between z-10 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-md transition duration-500 cursor-pointer">
+                    <div class="reveal relative bg-white p-5 border border-gray-100 rounded-xl flex flex-col justify-between z-10 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-md transition duration-500 cursor-pointer">
                         <div>
-                            <div class="w-[55px] h-[55px] bg-[#f8fafc] text-[#1e3a8a] border border-[#dbeafe] flex items-center justify-center font-black text-xl mb-6 select-none">
+                            <div class="w-[52px] h-[52px] bg-[#f8fafc] text-[#1e3a8a] border border-[#dbeafe] flex items-center justify-center font-black text-xl mb-5 select-none">
                                 04
                             </div>
                             <p class="text-[10px] tracking-[0.2em] uppercase text-[#1e3a8a] font-bold mb-2">
                                 Contract
                             </p>
-                            <h2 class="text-xl md:text-2xl font-black tracking-tight mb-3">
+                            <h2 class="text-xl font-black tracking-tight mb-3">
                                 견적 & 계약
                             </h2>
-                            <p class="text-gray-500 leading-8 text-[14px] md:text-[15px] break-keep">
+                            <p class="text-gray-500 leading-8 text-[13.5px] md:text-[14.5px] break-keep">
                                 확정된 디자인과 투명한 견적을 바탕으로 신뢰할 수 있는 계약을 체결합니다.
                             </p>
                         </div>
@@ -165,69 +165,69 @@
                 </div>
 
                 <!-- ⬇️ [두 번째 줄] 05단계 ~ 08번 브랜드 장식 카드 -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 relative">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6 relative">
                     
                     <!-- 05. 공사 진행 -->
-                    <div class="reveal relative bg-white p-6 border border-gray-100 rounded-xl flex flex-col justify-between z-10 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-md transition duration-500 cursor-pointer">
+                    <div class="reveal relative bg-white p-5 border border-gray-100 rounded-xl flex flex-col justify-between z-10 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-md transition duration-500 cursor-pointer">
                         <div>
-                            <div class="w-[55px] h-[55px] bg-[#f8fafc] text-[#1e3a8a] border border-[#dbeafe] flex items-center justify-center font-black text-xl mb-6 select-none">
+                            <div class="w-[52px] h-[52px] bg-[#f8fafc] text-[#1e3a8a] border border-[#dbeafe] flex items-center justify-center font-black text-xl mb-5 select-none">
                                 05
                             </div>
                             <p class="text-[10px] tracking-[0.2em] uppercase text-[#1e3a8a] font-bold mb-2">
                                 Construction
                             </p>
-                            <h2 class="text-xl md:text-2xl font-black tracking-tight mb-3">
+                            <h2 class="text-xl font-black tracking-tight mb-3">
                                 공사 진행
                             </h2>
-                            <p class="text-gray-500 leading-8 text-[14px] md:text-[15px] break-keep">
+                            <p class="text-gray-500 leading-8 text-[13.5px] md:text-[14.5px] break-keep">
                                 숙련된 전문가들이 공정표에 맞춰 체계적이고 디테일한 시공을 진행합니다.
                             </p>
                         </div>
                     </div>
 
                     <!-- 06. 공사 완료 -->
-                    <div class="reveal relative bg-white p-6 border border-gray-100 rounded-xl flex flex-col justify-between z-10 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-md transition duration-500 cursor-pointer">
+                    <div class="reveal relative bg-white p-5 border border-gray-100 rounded-xl flex flex-col justify-between z-10 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-md transition duration-500 cursor-pointer">
                         <div>
-                            <div class="w-[55px] h-[55px] bg-[#f8fafc] text-[#1e3a8a] border border-[#dbeafe] flex items-center justify-center font-black text-xl mb-6 select-none">
+                            <div class="w-[52px] h-[52px] bg-[#f8fafc] text-[#1e3a8a] border border-[#dbeafe] flex items-center justify-center font-black text-xl mb-5 select-none">
                                 06
                             </div>
                             <p class="text-[10px] tracking-[0.2em] uppercase text-[#1e3a8a] font-bold mb-2">
                                 Completion
                             </p>
-                            <h2 class="text-xl md:text-2xl font-black tracking-tight mb-3">
+                            <h2 class="text-xl font-black tracking-tight mb-3">
                                 공사 완료
                             </h2>
-                            <p class="text-gray-500 leading-relaxed text-[14px] md:text-[15px] break-keep">
+                            <p class="text-gray-500 leading-relaxed text-[13.5px] md:text-[14.5px] break-keep">
                                 꼼꼼한 최종 검수를 통해 기대하시던 완벽한 공간을 인도해 드립니다.
                             </p>
                         </div>
                     </div>
 
                     <!-- 07. 사후 관리 -->
-                    <div class="reveal relative bg-white p-6 border border-gray-100 rounded-xl flex flex-col justify-between z-10 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-md transition duration-500 cursor-pointer">
+                    <div class="reveal relative bg-white p-5 border border-gray-100 rounded-xl flex flex-col justify-between z-10 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-md transition duration-500 cursor-pointer">
                         <div>
-                            <div class="w-[55px] h-[55px] bg-[#f8fafc] text-[#1e3a8a] border border-[#dbeafe] flex items-center justify-center font-black text-xl mb-6 select-none">
+                            <div class="w-[52px] h-[52px] bg-[#f8fafc] text-[#1e3a8a] border border-[#dbeafe] flex items-center justify-center font-black text-xl mb-5 select-none">
                                 07
                             </div>
                             <p class="text-[10px] tracking-[0.2em] uppercase text-[#1e3a8a] font-bold mb-2">
                                 AFTER CARE
                             </p>
-                            <h2 class="text-xl md:text-2xl font-black tracking-tight mb-3">
+                            <h2 class="text-xl font-black tracking-tight mb-3">
                                 사후 관리
                             </h2>
-                            <p class="text-gray-500 leading-8 text-[14px] md:text-[15px] break-keep">
+                            <p class="text-gray-500 leading-8 text-[13.5px] md:text-[14.5px] break-keep">
                                 1년간 철저한 A/S를 통해 입주 후에도 지속적인 만족과 책임을 약속합니다.
                             </p>
                         </div>
                     </div>
 
                     <!-- 08. 블루디자인 브랜드 마감 카드 -->
-                    <div class="reveal relative bg-gradient-to-br from-slate-50 to-blue-50/50 p-6 rounded-xl border border-blue-100 flex flex-col justify-between hover:scale-[1.02] hover:-translate-y-1 hover:shadow-md transition duration-500 cursor-pointer">
+                    <div class="reveal relative bg-gradient-to-br from-slate-50 to-blue-50/50 p-5 rounded-xl border border-blue-100 flex flex-col justify-between hover:scale-[1.02] hover:-translate-y-1 hover:shadow-md transition duration-500 cursor-pointer">
                         <div class="h-full flex flex-col justify-center py-1">
                             <p class="text-[9px] tracking-[0.25em] uppercase text-blue-600 font-extrabold mb-2">
                                 Blue Design Choice
                             </p>
-                            <h2 class="text-lg md:text-xl font-black text-gray-900 leading-snug tracking-tighter mb-3 break-keep">
+                            <h2 class="text-lg font-black text-gray-900 leading-snug tracking-tighter mb-3 break-keep">
                                 최고의 공간 디자인,<br>
                                 <span class="text-[#1e3a8a]">블루디자인</span>에서 시작하세요.
                             </h2>
