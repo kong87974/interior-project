@@ -29,6 +29,28 @@
             max-width: 100%;
         }
 
+        /* TAB ACTIVE STYLE */
+        .tab-link {
+            position: relative;
+            padding-bottom: 8px;
+            transition: all 0.3s;
+        }
+
+        .tab-link.active {
+            color: #1e3a8a;
+            font-weight: bold;
+        }
+
+        .tab-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #1e3a8a;
+        }
+
         /* REVEAL */
         .reveal {
             opacity: 0;
@@ -60,6 +82,11 @@
             .hero-desc {
                 font-size: 14px !important;
                 line-height: 1.8;
+            }
+
+            .tab-wrap {
+                gap: 32px !important; /* 모바일 메뉴 간격 통일 */
+                font-size: 14px !important; /* 모바일 탭 글씨 크기 스케일 매칭 */
             }
 
             .project-info {
@@ -110,14 +137,14 @@
 
     <section class="border-b border-gray-100">
         <div class="max-w-[1400px] mx-auto px-6">
-            <div class="flex justify-center gap-8 md:gap-14 py-6 text-[13px] md:text-[14px] font-bold tracking-widest uppercase">
-                <a href="project_all.html" class="text-gray-400 hover:text-black transition-colors">
+            <div class="tab-wrap flex justify-center gap-16 py-6 text-[17px] font-bold tracking-wide">
+                <a href="project_all.html" class="tab-link text-gray-400 hover:text-black transition-colors">
                     전체보기
                 </a>
-                <a href="office.html" class="text-gray-400 hover:text-black transition-colors">
+                <a href="office.html" class="tab-link text-gray-400 hover:text-black transition-colors">
                     사무공간
                 </a>
-                <a href="commercial.html" class="text-[#1e3a8a] border-b-2 border-[#1e3a8a] pb-2">
+                <a href="commercial.html" class="tab-link active">
                     상업공간
                 </a>
             </div>
