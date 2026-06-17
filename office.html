@@ -47,6 +47,18 @@
             transform: scale(1.05);
         }
 
+        /* 🛠️ [효과 추가] 상업공간과 똑같은 슬라이딩 업 애니메이션 기술 탑재 */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* ✨ 우측 하단 연락처 글자 색상 실시간 제어 스타일 */
         .dynamic-contact-text {
             color: #162e59;
@@ -59,18 +71,12 @@
         /* MOBILE RESPONSIVE */
         @media (max-width: 768px) {
             .hero-title {
-                font-size: 32px !important;
+                font-size: 36px !important; /* 상업공간 스케일과 동일화 */
             }
 
-            .hero-sub {
-                font-size: 13px !important;
-                padding: 0 20px;
-                line-height: 1.6;
-            }
-
-            .tab-wrap {
-                gap: 24px !important;
-                font-size: 12px !important;
+            .hero-desc {
+                font-size: 14px !important;
+                line-height: 1.8;
             }
 
             .project-grid {
@@ -98,21 +104,27 @@
         </div>
     </div>
 
-    <section class="relative h-[450px] flex items-center justify-center text-white overflow-hidden">
+    <!-- 🛠️ HERO 구역: 상업공간 디자인 요소 전면 이식 (높이 500px, font-black 타이틀, 슬라이딩 애니메이션 연동) -->
+    <section class="relative h-[500px] flex items-center justify-center text-white overflow-hidden">
+        <!-- BG -->
         <div class="absolute inset-0 z-0">
             <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000"
                 class="w-full h-full object-cover brightness-[0.4]">
         </div>
-        <div class="relative z-10 text-center">
-            <h1 class="hero-title text-4xl md:text-5xl font-bold tracking-tight mb-4 uppercase">
-                사무공간
+        <!-- TEXT -->
+        <div class="relative z-10 text-center px-6">
+            <!-- font-black 및 tracking-tighter로 웅장하고 두껍게 매칭 -->
+            <h1 class="hero-title text-5xl md:text-6xl font-black tracking-tighter mb-6 reveal">
+                OFFICE SPACE
             </h1>
-            <p class="hero-sub text-sm md:text-base font-light tracking-widest text-gray-300">
-                좋은 자재와 꼼꼼한 시공으로 믿음을 드립니다.
+            <p class="hero-desc max-w-2xl mx-auto text-sm md:text-base text-gray-200 leading-relaxed reveal"
+                style="transition-delay: 0.1s;">
+                업무 효율성과 기업 문화의 가치를 고려한<br>크리에이티브한 사무 공간 디자인을 제안합니다.
             </p>
         </div>
     </section>
 
+    <!-- CATEGORY TAB -->
     <div class="border-b border-gray-100 mb-16">
         <div class="tab-wrap max-w-[1400px] mx-auto flex justify-center gap-12 py-6 text-[14px] font-medium text-gray-400">
             <a href="project_all.html" class="tab-link">전체보기</a>
@@ -123,12 +135,12 @@
 
     <!-- MAIN PORTFOLIO GRID -->
     <main class="max-w-[1400px] mx-auto px-6 pb-40">
-        <!-- 💡 자바스크립트 동적 바인딩을 위한 고유 ID 부여 -->
         <div id="officeProjectGrid" class="project-grid grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-20">
-            <!-- 자바스크립트가 자동으로 카드를 생성하여 이곳에 채워 넣습니다 -->
+            <!-- 자바스크립트 바인딩 구역 -->
         </div>
     </main>
 
+    <!-- 고정형 연락처 컴포넌트 -->
     <div class="contact-box fixed bottom-10 right-10 z-[99999] flex flex-col items-end select-none">
         <div id="dynamic-text-target" class="dynamic-contact-text mb-5 flex flex-col items-end text-right">
             <p class="text-[21px] font-black tracking-tighter">010-4192-0882</p>
@@ -147,8 +159,7 @@
     <div id="footer"></div>
 
     <script>
-        // 🛠️ [사무공간 데이터 통합 엔진] 상업공간에서 이전해 온 프로젝트 목록들을 일괄 매핑 관리합니다.
-        // 향후 포트폴리오를 추가하거나 순서를 바꿀 때 이곳의 텍스트와 주소만 수정하시면 레이아웃이 자동 연동됩니다.
+        // 사무공간 데이터 통합 리스트
         const officeProjects = [
             {
                 title: "노무법인세명 사무실",
@@ -182,7 +193,6 @@
             }
         ];
 
-        // 동적 카드 랜더링 엔진 실행
         function renderOfficeProjects() {
             const container = document.getElementById('officeProjectGrid');
             if(!container) return;
@@ -190,7 +200,7 @@
             let htmlString = "";
             officeProjects.forEach(project => {
                 htmlString += `
-                    <a href="${project.link}" class="project-card group block">
+                    <a href="${project.link}" class="project-card group block reveal">
                         <div class="overflow-hidden bg-gray-100 aspect-video mb-6 rounded-lg shadow-sm">
                             <img src="${project.img}"
                                 class="w-full h-full object-cover transition-transform duration-500 ease-out"
@@ -208,10 +218,10 @@
                 `;
             });
 
-            // 준비 단계 슬롯 추가 2개 고정 노출 (Coming Soon)
+            // Coming Soon 대기 카드 2개 배치
             for(let i=0; i<2; i++) {
                 htmlString += `
-                    <div class="group block border-t border-gray-100 pt-10">
+                    <div class="group block border-t border-gray-100 pt-10 reveal">
                         <div class="bg-gray-50 aspect-video mb-6 flex items-center justify-center text-gray-200 uppercase tracking-tighter text-4xl font-bold rounded-lg select-none">
                             Coming Soon
                         </div>
@@ -226,9 +236,12 @@
             }
 
             container.innerHTML = htmlString;
+            
+            // 데이터가 주입된 후 즉시 스크롤 애니메이션 재작동 트리거를 걸어줍니다
+            reveal();
         }
 
-        // 컴포넌트 비동기 호출 제어
+        // 컴포넌트 호출
         fetch('./components/header.html')
             .then(res => res.text())
             .then(data => {
@@ -271,11 +284,25 @@
             window.open(blogUrl, '_blank');
         }
 
-        window.addEventListener('scroll', checkScrollContact);
+        // 🛠️ [애니메이션 컨트롤러] 스크롤 시 부드럽게 위로 연출되는 컨트롤 코드 통합
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) {
+                    reveals[i].classList.add("active");
+                }
+            }
+            checkScrollContact();
+        }
+
+        window.addEventListener("scroll", reveal);
         window.addEventListener('resize', checkScrollContact);
         
-        // 초기 구동 바인딩
+        // 초기 구동 실행 선언
         renderOfficeProjects();
+        setTimeout(reveal, 200);
         setTimeout(checkScrollContact, 400);
     </script>
 </body>
