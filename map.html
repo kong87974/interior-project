@@ -95,15 +95,13 @@
 
             </section>
 
-            <!-- MAP 구역 -->
             <section class="mb-16">
 
                 <div class="map-wrap w-full h-[550px] overflow-hidden border border-gray-100">
 
-                    <!-- 최신 네이버 지도 iframe 공유 주소 시스템 매핑 (기본값: 세마점) -->
                     <iframe
                         id="mapFrame"
-                        src="https://map.naver.com/v5/search/%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%98%A4%EC%82%B0%EC%8B%9C%20%EA%B2%BD%EA%B8%B0%EB%8C%80%EB%A1%9C%20761%EB%B2%88%EA%B8%B0%2030?entry=thu&embed=1"
+                        src="https://map.naver.com/v5/search/%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%98%A4%EC%82%B0%EC%8B%9C%20%EA%B2%BD%EA%B8%B0%EB%8C%80%EB%A1%9C%20761%EB%B2%88%EA%B8%B0%2030?entry=thu&embed=1&panel=0"
                         loading="lazy">
                     </iframe>
 
@@ -111,20 +109,16 @@
 
             </section>
 
-            <!-- BRANCH 구역 -->
             <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-                <!-- 세마점 카드 -->
                 <div
                     class="branch-card active border border-gray-200 p-8 pt-9"
                     onclick="changeBranch(
                         this,
                         '세마점',
                         '경기도 오산시 경기대로 761번길 30 현대프리미어캠퍼스 A-D-B2-029호',
-                        'https://map.naver.com/v5/search/%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%98%A4%EC%82%B0%EC%8B%9C%20%EA%B2%BD%EA%B8%B0%EB%8C%80%EB%A1%9C%20761%EB%B2%88%EA%B8%B0%2030?entry=thu&embed=1'
+                        'https://map.naver.com/v5/search/%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%98%A4%EC%82%B0%EC%8B%9C%20%EA%B2%BD%EA%B8%B0%EB%8C%80%EB%A1%9C%20761%EB%B2%88%EA%B8%B0%2030?entry=thu&embed=1&panel=0'
                     )">
-
-                    <!-- 🛠️ [삭제 완료] Branch 01 영문 문단을 깔끔하게 제거했습니다 -->
 
                     <h3 class="text-2xl font-black tracking-tight mb-5">
                         세마점
@@ -137,17 +131,14 @@
 
                 </div>
 
-                <!-- 세교점 카드 -->
                 <div
                     class="branch-card border border-gray-200 p-8 pt-9"
                     onclick="changeBranch(
                         this,
                         '세교점',
                         '경기도 오산시 독산성로 425 더퍼스트타워세교 426호',
-                        'https://map.naver.com/v5/search/%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%98%A4%EC%82%B0%EC%8B%9C%20%EA%B2%BD%EA%B8%B0%EB%8C%80%EB%A1%9C%20761%EB%B2%88%EA%B8%B0%2030?entry=thu&embed=1'
+                        'https://map.naver.com/v5/search/%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%98%A4%EC%82%B0%EC%8B%9C%20%EB%8F%85%EC%82%B0%EC%84%B1%EB%A1%9C%20425?entry=thu&embed=1&panel=0'
                     )">
-
-                    <!-- 🛠️ [삭제 완료] Branch 02 영문 문단을 깔끔하게 제거했습니다 -->
 
                     <h3 class="text-2xl font-black tracking-tight mb-5">
                         세교점
@@ -166,7 +157,6 @@
 
     </main>
 
-    <!-- CONTACT QUICK MENU -->
     <div class="contact-box fixed bottom-10 right-10 z-[99999] flex flex-col items-end select-none">
         <div id="dynamic-text-target" class="dynamic-contact-text mb-5 flex flex-col items-end text-right">
             <p class="text-[21px] font-black tracking-tighter">010-4192-0882</p>
