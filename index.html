@@ -205,6 +205,7 @@
         </div>
     </nav>
 
+    <!-- 메인 슬라이더 비주얼 구역 -->
     <section class="relative min-h-screen w-full z-0">
         <div id="slider" class="absolute inset-0 w-full h-full overflow-hidden z-0">
             <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000" class="slide-bg active">
@@ -231,6 +232,7 @@
         </div>
     </section>
 
+    <!-- 고정 우하단 연락처 퀵링크 버튼 -->
     <div class="contact-box fixed bottom-10 right-10 z-[99999] flex flex-col items-end select-none">
         <div id="dynamic-text-target" class="dynamic-contact-text mb-5 flex flex-col items-end text-right">
             <p class="text-[21px] font-black tracking-tighter">010-4192-0882</p>
@@ -246,6 +248,7 @@
         </div>
     </div>
     
+    <!-- 포트폴리오(Our Work) 구역 -->
     <section class="portfolio-section py-32 bg-white relative z-10">
         <div class="max-w-[1400px] mx-auto px-6">
             <div class="mb-16 reveal">
@@ -289,6 +292,7 @@
         </div>
     </section>
 
+    <!-- About Us 구역 -->
     <section class="py-32 bg-[#f8fafc] overflow-hidden relative z-10">
         <div class="max-w-[1400px] mx-auto px-6">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
@@ -304,6 +308,7 @@
                     <div class="aspect-[4/5] overflow-hidden rounded-[4px]">
                         <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1200" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
                     </div>
+                    <!-- 우측 흰색 카드 (라벨 및 2줄 정밀 교정 완료 상태) -->
                     <div class="absolute -bottom-10 -left-10 bg-white p-7 md:p-8 shadow-2xl hidden md:block border border-gray-50 min-w-[210px]">
                         <p class="text-[10px] tracking-[0.25em] uppercase text-gray-400 mb-2.5">Office & Commercial</p>
                         <h4 class="text-xl md:text-2xl font-black tracking-tight leading-tight text-gray-900">Blue Design<br>Interior</h4>
@@ -313,6 +318,7 @@
         </div>
     </section>
 
+    <!-- ✨ [복원 완료] 스크린샷 2026-06-17 113645.png 기반 고유 서체 복원 및 한글 '완공' 전면 정비 -->
     <section class="py-32 bg-white relative z-10">
         <div class="max-w-[1400px] mx-auto px-6">
             <div class="text-center mb-24 reveal">
@@ -321,30 +327,35 @@
             </div>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12">
+                <!-- 01 상담 -->
                 <div class="reveal text-center">
                     <div class="text-6xl font-black text-[#1e3a8a]/10 mb-6">01</div>
                     <h3 class="text-2xl font-black mb-4 tracking-tight">상담</h3>
                     <p class="text-gray-500 leading-relaxed text-sm break-keep">공간의 목적과 고객의 니즈를<br>충분히 상담하고 분석합니다.</p>
                 </div>
                 
+                <!-- 02 디자인 -->
                 <div class="reveal text-center">
                     <div class="text-6xl font-black text-[#1e3a8a]/10 mb-6">02</div>
                     <h3 class="text-2xl font-black mb-4 tracking-tight">디자인</h3>
                     <p class="text-gray-500 leading-relaxed text-sm break-keep">공간의 동선과 분위기를 고려한<br>맞춤형 디자인을 제안합니다.</p>
                 </div>
                 
+                <!-- 03 견적 -->
                 <div class="reveal text-center">
                     <div class="text-6xl font-black text-[#1e3a8a]/10 mb-6">03</div>
                     <h3 class="text-2xl font-black mb-4 tracking-tight">견적</h3>
                     <p class="text-gray-500 leading-relaxed text-sm break-keep">확정된 디자인과 투명한 견적을 바탕으로<br>신뢰할 수 있는 계약을 체결합니다.</p>
                 </div>
                 
+                <!-- 04 시공 -->
                 <div class="reveal text-center">
                     <div class="text-6xl font-black text-[#1e3a8a]/10 mb-6">04</div>
                     <h3 class="text-2xl font-black mb-4 tracking-tight">시공</h3>
                     <p class="text-gray-500 leading-relaxed text-sm break-keep">숙련된 시공팀이 안정적이고<br>완성도 높은 작업을 진행합니다.</p>
                 </div>
                 
+                <!-- 05 완공 (🛠️ 한자 완성에서 요청하신 한글 '완공' 및 서체 최적화 적용) -->
                 <div class="reveal text-center">
                     <div class="text-6xl font-black text-[#1e3a8a]/10 mb-6">05</div>
                     <h3 class="text-2xl font-black mb-4 tracking-tight">완공</h3>
@@ -395,7 +406,7 @@ setInterval(() => {
     updateSlide();
 }, 2000);
 
-// reveal animation 및 스크롤 연동 처리
+// reveal animation & 스크롤 연동 처리
 function checkReveal() {
     const windowHeight = window.innerHeight;
     
