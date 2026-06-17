@@ -26,6 +26,20 @@
             overflow-x: hidden;
         }
 
+        /* 📏 PC 환경에서 각 카드를 수평으로 이어주는 시그니처 가로선 */
+        @media (min-width: 1024px) {
+            .horizontal-line-step::after {
+                content: "";
+                position: absolute;
+                top: 50px; /* 숫자 박스 센터 기준 정렬 */
+                right: -16px; /* gap의 절반 영역에 위치 */
+                width: 32px;  /* 연결선 길이 */
+                height: 1px;
+                background-color: #e5e7eb;
+                z-index: 1;
+            }
+        }
+
         /* REVEAL ANIMATION */
         .reveal {
             opacity: 0;
@@ -67,7 +81,8 @@
 
         <div class="max-w-[1200px] mx-auto px-6">
 
-            <section class="mb-20 reveal">
+            <!-- 상단 타이틀 구역 -->
+            <section class="mb-24 reveal">
                 <p class="text-[11px] tracking-[0.4em] text-[#1e3a8a] font-bold uppercase mb-5">
                     Process
                 </p>
@@ -82,13 +97,17 @@
                 </p>
             </section>
 
-            <section class="space-y-6 md:space-y-8">
+            <!-- 📊 [4개 + 4개 완전 대칭 그리드 구조] -->
+            <section class="space-y-12 md:space-y-16">
                 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                <!-- ⬇️ [첫 번째 줄] 01단계 ~ 04단계 (가로 4칸 배치) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 relative">
                     
-                    <div class="reveal border border-gray-100 bg-slate-50 p-7 rounded-xl transition-all duration-300 hover:shadow-md hover:-translate-y-1 flex flex-col justify-between">
+                    <!-- 01. 문의 -->
+                    <div class="reveal horizontal-line-step relative bg-white p-2 rounded-xl flex flex-col justify-between z-10">
                         <div>
-                            <div class="w-14 h-14 bg-white text-[#1e3a8a] border border-blue-100 flex items-center justify-center font-bold text-xl rounded-xl shadow-sm mb-6">
+                            <!-- 보내주신 스크린샷과 완벽 싱크로율의 소프트 블루 박스 넘버링 마감 -->
+                            <div class="w-[66px] h-[66px] bg-[#f8fafc] text-[#1e3a8a] border border-[#dbeafe] flex items-center justify-center font-black text-xl mb-6 select-none">
                                 01
                             </div>
                             <p class="text-[10px] tracking-[0.2em] uppercase text-[#1e3a8a] font-bold mb-2">
@@ -97,15 +116,16 @@
                             <h2 class="text-2xl font-black tracking-tight mb-4">
                                 문의
                             </h2>
-                            <p class="text-gray-500 leading-relaxed text-[14px] md:text-[15px] break-keep">
+                            <p class="text-gray-500 leading-8 text-[14px] md:text-[15px] break-keep">
                                 고객님의 니즈와 예산을 바탕으로 첫 번째 공간 컨설팅을 시작합니다.
                             </p>
                         </div>
                     </div>
 
-                    <div class="reveal border border-gray-100 bg-slate-50 p-7 rounded-xl transition-all duration-300 hover:shadow-md hover:-translate-y-1 flex flex-col justify-between">
+                    <!-- 02. 미팅 & 실측 -->
+                    <div class="reveal horizontal-line-step relative bg-white p-2 rounded-xl flex flex-col justify-between z-10">
                         <div>
-                            <div class="w-14 h-14 bg-white text-[#1e3a8a] border border-blue-100 flex items-center justify-center font-bold text-xl rounded-xl shadow-sm mb-6">
+                            <div class="w-[66px] h-[66px] bg-[#f8fafc] text-[#1e3a8a] border border-[#dbeafe] flex items-center justify-center font-black text-xl mb-6 select-none">
                                 02
                             </div>
                             <p class="text-[10px] tracking-[0.2em] uppercase text-[#1e3a8a] font-bold mb-2">
@@ -114,15 +134,16 @@
                             <h2 class="text-2xl font-black tracking-tight mb-4">
                                 미팅 & 실측
                             </h2>
-                            <p class="text-gray-500 leading-relaxed text-[14px] md:text-[15px] break-keep">
+                            <p class="text-gray-500 leading-8 text-[14px] md:text-[15px] break-keep">
                                 현장을 직접 방문하여 구조를 분석하고 정확한 설계의 토대를 마련합니다.
                             </p>
                         </div>
                     </div>
 
-                    <div class="reveal border border-gray-100 bg-slate-50 p-7 rounded-xl transition-all duration-300 hover:shadow-md hover:-translate-y-1 flex flex-col justify-between">
+                    <!-- 03. 설계 & 3D -->
+                    <div class="reveal horizontal-line-step relative bg-white p-2 rounded-xl flex flex-col justify-between z-10">
                         <div>
-                            <div class="w-14 h-14 bg-white text-[#1e3a8a] border border-blue-100 flex items-center justify-center font-bold text-xl rounded-xl shadow-sm mb-6">
+                            <div class="w-[66px] h-[66px] bg-[#f8fafc] text-[#1e3a8a] border border-[#dbeafe] flex items-center justify-center font-black text-xl mb-6 select-none">
                                 03
                             </div>
                             <p class="text-[10px] tracking-[0.2em] uppercase text-[#1e3a8a] font-bold mb-2">
@@ -131,15 +152,16 @@
                             <h2 class="text-2xl font-black tracking-tight mb-4">
                                 설계 & 3D
                             </h2>
-                            <p class="text-gray-500 leading-relaxed text-[14px] md:text-[15px] break-keep">
+                            <p class="text-gray-500 leading-8 text-[14px] md:text-[15px] break-keep">
                                 시각화된 3D 모델링을 통해 완공 후의 모습을 미리 확인하고 조율합니다.
                             </p>
                         </div>
                     </div>
 
-                    <div class="reveal border border-gray-100 bg-slate-50 p-7 rounded-xl transition-all duration-300 hover:shadow-md hover:-translate-y-1 flex flex-col justify-between">
+                    <!-- 04. 견적 & 계약 -->
+                    <div class="reveal relative bg-white p-2 rounded-xl flex flex-col justify-between z-10">
                         <div>
-                            <div class="w-14 h-14 bg-white text-[#1e3a8a] border border-blue-100 flex items-center justify-center font-bold text-xl rounded-xl shadow-sm mb-6">
+                            <div class="w-[66px] h-[66px] bg-[#f8fafc] text-[#1e3a8a] border border-[#dbeafe] flex items-center justify-center font-black text-xl mb-6 select-none">
                                 04
                             </div>
                             <p class="text-[10px] tracking-[0.2em] uppercase text-[#1e3a8a] font-bold mb-2">
@@ -148,7 +170,7 @@
                             <h2 class="text-2xl font-black tracking-tight mb-4">
                                 견적 & 계약
                             </h2>
-                            <p class="text-gray-500 leading-relaxed text-[14px] md:text-[15px] break-keep">
+                            <p class="text-gray-500 leading-8 text-[14px] md:text-[15px] break-keep">
                                 확정된 디자인과 투명한 견적을 바탕으로 신뢰할 수 있는 계약을 체결합니다.
                             </p>
                         </div>
@@ -156,11 +178,13 @@
 
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <!-- ⬇️ [두 번째 줄] 05단계 ~ 08번 피날레 명언 장식 카드 (가로 4칸 완벽 대칭 배열) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 relative">
                     
-                    <div class="reveal border border-gray-100 bg-slate-50 p-7 rounded-xl transition-all duration-300 hover:shadow-md hover:-translate-y-1 flex flex-col justify-between">
+                    <!-- 05. 공사 진행 -->
+                    <div class="reveal horizontal-line-step relative bg-white p-2 rounded-xl flex flex-col justify-between z-10">
                         <div>
-                            <div class="w-14 h-14 bg-white text-[#1e3a8a] border border-blue-100 flex items-center justify-center font-bold text-xl rounded-xl shadow-sm mb-6">
+                            <div class="w-[66px] h-[66px] bg-[#f8fafc] text-[#1e3a8a] border border-[#dbeafe] flex items-center justify-center font-black text-xl mb-6 select-none">
                                 05
                             </div>
                             <p class="text-[10px] tracking-[0.2em] uppercase text-[#1e3a8a] font-bold mb-2">
@@ -169,15 +193,16 @@
                             <h2 class="text-2xl font-black tracking-tight mb-4">
                                 공사 진행
                             </h2>
-                            <p class="text-gray-500 leading-relaxed text-[14px] md:text-[15px] break-keep">
+                            <p class="text-gray-500 leading-8 text-[14px] md:text-[15px] break-keep">
                                 숙련된 전문가들이 공정표에 맞춰 체계적이고 디테일한 시공을 진행합니다.
                             </p>
                         </div>
                     </div>
 
-                    <div class="reveal border border-gray-100 bg-slate-50 p-7 rounded-xl transition-all duration-300 hover:shadow-md hover:-translate-y-1 flex flex-col justify-between">
+                    <!-- 06. 공사 완료 -->
+                    <div class="reveal horizontal-line-step relative bg-white p-2 rounded-xl flex flex-col justify-between z-10">
                         <div>
-                            <div class="w-14 h-14 bg-white text-[#1e3a8a] border border-blue-100 flex items-center justify-center font-bold text-xl rounded-xl shadow-sm mb-6">
+                            <div class="w-[66px] h-[66px] bg-[#f8fafc] text-[#1e3a8a] border border-[#dbeafe] flex items-center justify-center font-black text-xl mb-6 select-none">
                                 06
                             </div>
                             <p class="text-[10px] tracking-[0.2em] uppercase text-[#1e3a8a] font-bold mb-2">
@@ -186,15 +211,16 @@
                             <h2 class="text-2xl font-black tracking-tight mb-4">
                                 공사 완료
                             </h2>
-                            <p class="text-gray-500 leading-relaxed text-[14px] md:text-[15px] break-keep">
+                            <p class="text-gray-500 leading-8 text-[14px] md:text-[15px] break-keep">
                                 꼼꼼한 최종 검수와 완료 안내를 통해 기대하시던 완벽한 공간을 인도해 드립니다.
                             </p>
                         </div>
                     </div>
 
-                    <div class="reveal border border-blue-50 bg-blue-50/30 p-7 rounded-xl transition-all duration-300 hover:shadow-md hover:-translate-y-1 flex flex-col justify-between">
+                    <!-- 07. 사후 관리 -->
+                    <div class="reveal horizontal-line-step relative bg-white p-2 rounded-xl flex flex-col justify-between z-10">
                         <div>
-                            <div class="w-14 h-14 bg-white text-[#1e3a8a] border border-blue-200 flex items-center justify-center font-bold text-xl rounded-xl shadow-sm mb-6">
+                            <div class="w-[66px] h-[66px] bg-[#f8fafc] text-[#1e3a8a] border border-[#dbeafe] flex items-center justify-center font-black text-xl mb-6 select-none">
                                 07
                             </div>
                             <p class="text-[10px] tracking-[0.2em] uppercase text-[#1e3a8a] font-bold mb-2">
@@ -203,9 +229,29 @@
                             <h2 class="text-2xl font-black tracking-tight mb-4">
                                 사후 관리
                             </h2>
-                            <p class="text-gray-500 leading-relaxed text-[14px] md:text-[15px] break-keep">
+                            <p class="text-gray-500 leading-8 text-[14px] md:text-[15px] break-keep">
                                 1년간 철저한 A/S를 통해 입주 후에도 지속적인 만족과 책임을 약속합니다.
                             </p>
+                        </div>
+                    </div>
+
+                    <!-- ✨ [08. 블루디자인 마감 카드 구역] -->
+                    <div class="reveal relative bg-gradient-to-br from-slate-50 to-blue-50/40 p-6 rounded-xl border border-blue-100/70 flex flex-col justify-between shadow-sm">
+                        <div class="h-full flex flex-col justify-center py-2">
+                            <p class="text-[10px] tracking-[0.25em] uppercase text-blue-600 font-extrabold mb-3">
+                                Blue Design Choice
+                            </p>
+                            <h2 class="text-xl md:text-2xl font-black text-gray-900 leading-snug tracking-tighter mb-4 break-keep">
+                                최고의 공간 디자인,<br>
+                                <span class="text-[#1e3a8a]">블루디자인</span>에서<br>시작하세요.
+                            </h2>
+                            <!-- 링크 연동 가능한 미니 시그니처 버튼 -->
+                            <a href="contact.html" class="inline-flex items-center gap-2 text-xs font-bold text-[#1e3a8a] hover:text-blue-700 transition-colors mt-2">
+                                무료 상도 견적 신청하기
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-3.5 h-3.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                                </svg>
+                            </a>
                         </div>
                     </div>
 
@@ -217,6 +263,7 @@
 
     </main>
 
+    <!-- 고정 연락처 박스 -->
     <div class="contact-box fixed bottom-10 right-10 z-[99999] flex flex-col items-end select-none">
         <div id="dynamic-text-target" class="dynamic-contact-text mb-5 flex flex-col items-end text-right">
             <p class="text-[21px] font-black tracking-tighter">010-4192-0882</p>
@@ -266,7 +313,7 @@
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // ✨ 스크롤 실시간 감지하여 푸터 진입 시 연락처 폰트 컬러를 반전(파란색 -> 흰색)시키는 함수
+        // ✨ 푸터 진입 감지 스크립트
         function checkScrollContact() {
             const windowHeight = window.innerHeight;
             const textTarget = document.getElementById('dynamic-text-target');
@@ -283,7 +330,7 @@
             }
         }
 
-        // 📱 모바일/PC 식별형 네이버 블로그 링크 포워딩
+        // 네이버 블로그 스마트 포워딩
         function openNaverBlog() {
             const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
             
