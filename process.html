@@ -26,37 +26,6 @@
             overflow-x: hidden;
         }
 
-        .process-item {
-            position: relative;
-            padding-left: 100px;
-        }
-
-        .process-item:not(:last-child)::before {
-            content: "";
-            position: absolute;
-            left: 34px;
-            top: 80px;
-            width: 1px;
-            height: calc(100% + 40px);
-            background: #e5e7eb;
-        }
-
-        .process-number {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 70px;
-            height: 70px;
-            border: 1px solid #dbeafe;
-            background: #f8fafc;
-            color: #1e3a8a;
-            font-size: 24px;
-            font-weight: 900;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
         /* REVEAL ANIMATION */
         .reveal {
             opacity: 0;
@@ -69,7 +38,7 @@
             transform: translateY(0);
         }
 
-        /* ✨ 우측 하단 연락처 글자 색상 실시간 제어 스타일 (서브 페이지는 파란색 시작이 기본) */
+        /* ✨ 우측 하단 연락처 글자 색상 실시간 제어 스타일 */
         .dynamic-contact-text {
             color: #162e59;
             transition: color 0.3s ease;
@@ -82,20 +51,6 @@
         @media (max-width: 768px) {
             main {
                 padding-top: 130px !important;
-            }
-
-            .process-item {
-                padding-left: 80px;
-            }
-
-            .process-number {
-                width: 55px;
-                height: 55px;
-                font-size: 18px;
-            }
-
-            .process-item:not(:last-child)::before {
-                left: 27px;
             }
             
             .contact-box { right: 20px !important; bottom: 20px !important; }
@@ -112,8 +67,7 @@
 
         <div class="max-w-[1200px] mx-auto px-6">
 
-            <section class="mb-28 reveal">
-
+            <section class="mb-20 reveal">
                 <p class="text-[11px] tracking-[0.4em] text-[#1e3a8a] font-bold uppercase mb-5">
                     Process
                 </p>
@@ -126,155 +80,134 @@
                     블루디자인은 상담부터 사후관리까지<br>
                     체계적인 프로세스를 통해 공간의 완성도를 높입니다.
                 </p>
-
             </section>
 
-            <section class="space-y-24">
-
-                <div class="process-item reveal">
-
-                    <div class="process-number">
-                        01
+            <section class="space-y-6 md:space-y-8">
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                    
+                    <div class="reveal border border-gray-100 bg-slate-50 p-7 rounded-xl transition-all duration-300 hover:shadow-md hover:-translate-y-1 flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 bg-white text-[#1e3a8a] border border-blue-100 flex items-center justify-center font-bold text-xl rounded-xl shadow-sm mb-6">
+                                01
+                            </div>
+                            <p class="text-[10px] tracking-[0.2em] uppercase text-[#1e3a8a] font-bold mb-2">
+                                Consultation
+                            </p>
+                            <h2 class="text-2xl font-black tracking-tight mb-4">
+                                문의
+                            </h2>
+                            <p class="text-gray-500 leading-relaxed text-[14px] md:text-[15px] break-keep">
+                                고객님의 니즈와 예산을 바탕으로 첫 번째 공간 컨설팅을 시작합니다.
+                            </p>
+                        </div>
                     </div>
 
-                    <p class="text-[11px] tracking-[0.3em] uppercase text-[#1e3a8a] font-bold mb-4">
-                        Consultation
-                    </p>
+                    <div class="reveal border border-gray-100 bg-slate-50 p-7 rounded-xl transition-all duration-300 hover:shadow-md hover:-translate-y-1 flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 bg-white text-[#1e3a8a] border border-blue-100 flex items-center justify-center font-bold text-xl rounded-xl shadow-sm mb-6">
+                                02
+                            </div>
+                            <p class="text-[10px] tracking-[0.2em] uppercase text-[#1e3a8a] font-bold mb-2">
+                                Site Check
+                            </p>
+                            <h2 class="text-2xl font-black tracking-tight mb-4">
+                                미팅 & 실측
+                            </h2>
+                            <p class="text-gray-500 leading-relaxed text-[14px] md:text-[15px] break-keep">
+                                현장을 직접 방문하여 구조를 분석하고 정확한 설계의 토대를 마련합니다.
+                            </p>
+                        </div>
+                    </div>
 
-                    <h2 class="text-3xl font-black tracking-tight mb-6">
-                        문의
-                    </h2>
+                    <div class="reveal border border-gray-100 bg-slate-50 p-7 rounded-xl transition-all duration-300 hover:shadow-md hover:-translate-y-1 flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 bg-white text-[#1e3a8a] border border-blue-100 flex items-center justify-center font-bold text-xl rounded-xl shadow-sm mb-6">
+                                03
+                            </div>
+                            <p class="text-[10px] tracking-[0.2em] uppercase text-[#1e3a8a] font-bold mb-2">
+                                3D Design
+                            </p>
+                            <h2 class="text-2xl font-black tracking-tight mb-4">
+                                설계 & 3D
+                            </h2>
+                            <p class="text-gray-500 leading-relaxed text-[14px] md:text-[15px] break-keep">
+                                시각화된 3D 모델링을 통해 완공 후의 모습을 미리 확인하고 조율합니다.
+                            </p>
+                        </div>
+                    </div>
 
-                    <p class="text-gray-500 leading-relaxed text-[16px]">
-                        고객님의 니즈와 예산을 바탕으로<br>
-                        첫 번째 공간 컨설팅을 시작합니다.
-                    </p>
+                    <div class="reveal border border-gray-100 bg-slate-50 p-7 rounded-xl transition-all duration-300 hover:shadow-md hover:-translate-y-1 flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 bg-white text-[#1e3a8a] border border-blue-100 flex items-center justify-center font-bold text-xl rounded-xl shadow-sm mb-6">
+                                04
+                            </div>
+                            <p class="text-[10px] tracking-[0.2em] uppercase text-[#1e3a8a] font-bold mb-2">
+                                Contract
+                            </p>
+                            <h2 class="text-2xl font-black tracking-tight mb-4">
+                                견적 & 계약
+                            </h2>
+                            <p class="text-gray-500 leading-relaxed text-[14px] md:text-[15px] break-keep">
+                                확정된 디자인과 투명한 견적을 바탕으로 신뢰할 수 있는 계약을 체결합니다.
+                            </p>
+                        </div>
+                    </div>
 
                 </div>
 
-                <div class="process-item reveal">
-
-                    <div class="process-number">
-                        02
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                    
+                    <div class="reveal border border-gray-100 bg-slate-50 p-7 rounded-xl transition-all duration-300 hover:shadow-md hover:-translate-y-1 flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 bg-white text-[#1e3a8a] border border-blue-100 flex items-center justify-center font-bold text-xl rounded-xl shadow-sm mb-6">
+                                05
+                            </div>
+                            <p class="text-[10px] tracking-[0.2em] uppercase text-[#1e3a8a] font-bold mb-2">
+                                Construction
+                            </p>
+                            <h2 class="text-2xl font-black tracking-tight mb-4">
+                                공사 진행
+                            </h2>
+                            <p class="text-gray-500 leading-relaxed text-[14px] md:text-[15px] break-keep">
+                                숙련된 전문가들이 공정표에 맞춰 체계적이고 디테일한 시공을 진행합니다.
+                            </p>
+                        </div>
                     </div>
 
-                    <p class="text-[11px] tracking-[0.3em] uppercase text-[#1e3a8a] font-bold mb-4">
-                        Site Check
-                    </p>
-
-                    <h2 class="text-3xl font-black tracking-tight mb-6">
-                        미팅 & 실측
-                    </h2>
-
-                    <p class="text-gray-500 leading-relaxed text-[16px]">
-                        현장을 직접 방문하여 구조를 분석하고<br>
-                        정확한 설계의 토대를 마련합니다.
-                    </p>
-
-                </div>
-
-                <div class="process-item reveal">
-
-                    <div class="process-number">
-                        03
+                    <div class="reveal border border-gray-100 bg-slate-50 p-7 rounded-xl transition-all duration-300 hover:shadow-md hover:-translate-y-1 flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 bg-white text-[#1e3a8a] border border-blue-100 flex items-center justify-center font-bold text-xl rounded-xl shadow-sm mb-6">
+                                06
+                            </div>
+                            <p class="text-[10px] tracking-[0.2em] uppercase text-[#1e3a8a] font-bold mb-2">
+                                Completion
+                            </p>
+                            <h2 class="text-2xl font-black tracking-tight mb-4">
+                                공사 완료
+                            </h2>
+                            <p class="text-gray-500 leading-relaxed text-[14px] md:text-[15px] break-keep">
+                                꼼꼼한 최종 검수와 완료 안내를 통해 기대하시던 완벽한 공간을 인도해 드립니다.
+                            </p>
+                        </div>
                     </div>
 
-                    <p class="text-[11px] tracking-[0.3em] uppercase text-[#1e3a8a] font-bold mb-4">
-                        3D Design
-                    </p>
-
-                    <h2 class="text-3xl font-black tracking-tight mb-6">
-                        설계 & 3D
-                    </h2>
-
-                    <p class="text-gray-500 leading-relaxed text-[16px]">
-                        시각화된 3D 모델링을 통해<br>
-                        완공 후의 모습을 미리 확인하고 조율합니다.
-                    </p>
-
-                </div>
-
-                <div class="process-item reveal">
-
-                    <div class="process-number">
-                        04
+                    <div class="reveal border border-blue-50 bg-blue-50/30 p-7 rounded-xl transition-all duration-300 hover:shadow-md hover:-translate-y-1 flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 bg-white text-[#1e3a8a] border border-blue-200 flex items-center justify-center font-bold text-xl rounded-xl shadow-sm mb-6">
+                                07
+                            </div>
+                            <p class="text-[10px] tracking-[0.2em] uppercase text-[#1e3a8a] font-bold mb-2">
+                                AFTER CARE
+                            </p>
+                            <h2 class="text-2xl font-black tracking-tight mb-4">
+                                사후 관리
+                            </h2>
+                            <p class="text-gray-500 leading-relaxed text-[14px] md:text-[15px] break-keep">
+                                1년간 철저한 A/S를 통해 입주 후에도 지속적인 만족과 책임을 약속합니다.
+                            </p>
+                        </div>
                     </div>
-
-                    <p class="text-[11px] tracking-[0.3em] uppercase text-[#1e3a8a] font-bold mb-4">
-                        Contract
-                    </p>
-
-                    <h2 class="text-3xl font-black tracking-tight mb-6">
-                        견적 & 계약
-                    </h2>
-
-                    <p class="text-gray-500 leading-relaxed text-[16px]">
-                        확정된 디자인과 투명한 견적을 바탕으로<br>
-                        신뢰할 수 있는 계약을 체결합니다.
-                    </p>
-
-                </div>
-
-                <div class="process-item reveal">
-
-                    <div class="process-number">
-                        05
-                    </div>
-
-                    <p class="text-[11px] tracking-[0.3em] uppercase text-[#1e3a8a] font-bold mb-4">
-                        Construction
-                    </p>
-
-                    <h2 class="text-3xl font-black tracking-tight mb-6">
-                        공사 진행
-                    </h2>
-
-                    <p class="text-gray-500 leading-relaxed text-[16px]">
-                        숙련된 전문가들이 공정표에 맞춰<br>
-                        체계적이고 디테일한 시공을 진행합니다.
-                    </p>
-
-                </div>
-
-                <div class="process-item reveal">
-
-                    <div class="process-number">
-                        06
-                    </div>
-
-                    <p class="text-[11px] tracking-[0.3em] uppercase text-[#1e3a8a] font-bold mb-4">
-                        Completion
-                    </p>
-
-                    <h2 class="text-3xl font-black tracking-tight mb-6">
-                        공사 완료
-                    </h2>
-
-                    <p class="text-gray-500 leading-relaxed text-[16px]">
-                        꼼꼼한 최종 검수와 완료 안내를 통해<br>
-                        기대하시던 완벽한 공간을 인도해 드립니다.
-                    </p>
-
-                </div>
-
-
-                <div class="process-item reveal">
-
-                    <div class="process-number">
-                        07
-                    </div>
-
-                    <p class="text-[11px] tracking-[0.3em] uppercase text-[#1e3a8a] font-bold mb-4">
-                        AFTER CARE
-                    </p>
-
-                    <h2 class="text-3xl font-black tracking-tight mb-6">
-                        사후 관리
-                    </h2>
-
-                    <p class="text-gray-500 leading-relaxed text-[16px]">
-                        1년간 철저한 A/S를 통해 입주 후에도 지속적인 만족과 책임을 약속합니다.
-                    </p>
 
                 </div>
 
@@ -302,14 +235,6 @@
     <div id="footer"></div>
 
     <script>
-        // 모바일 메뉴 트래킹 및 UI 로드
-        function toggleMenu() {
-            const menu = document.getElementById('mobileMenu');
-            if (menu) {
-                menu.classList.toggle('hidden');
-            }
-        }
-
         window.toggleMenu = function () {
             const menu = document.getElementById("mobileMenu");
             if(menu){
@@ -337,7 +262,7 @@
                     entry.target.classList.add('active');
                 }
             });
-        }, { threshold: 0.15 });
+        }, { threshold: 0.1 });
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
@@ -350,7 +275,6 @@
             if (textTarget && footer) {
                 const footerTop = footer.getBoundingClientRect().top;
                 
-                // 푸터가 화면 하단에 걸치며 진입하는 순간 실시간 클래스 스위칭
                 if (footerTop < windowHeight - 150) {
                     textTarget.classList.add('footer-bg');
                 } else {
