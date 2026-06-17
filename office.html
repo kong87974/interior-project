@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BLUE DESIGN | 사무공간</title>
 
+    <link rel="icon" href="https://i.imgur.com/f1j8a7x.png" type="image/png">
+
     <script src="https://cdn.tailwindcss.com"></script>
 
     <link rel="stylesheet"
@@ -45,6 +47,16 @@
             transform: scale(1.05);
         }
 
+        /* ✨ 우측 하단 연락처 글자 색상 실시간 제어 스타일 (서브 페이지는 파란색 시작이 기본) */
+        .dynamic-contact-text {
+            color: #162e59;
+            transition: color 0.3s ease;
+        }
+        /* 푸터(진한 파란 배경) 진입 시 반전될 흰색 클래스 */
+        .dynamic-contact-text.footer-bg {
+            color: #ffffff !important;
+        }
+
         /* MOBILE */
         @media (max-width: 768px) {
             .hero-title {
@@ -66,16 +78,17 @@
                 grid-template-columns: 1fr !important;
                 gap-y: 50px !important;
             }
+            
+            .contact-box { right: 20px !important; bottom: 20px !important; }
+            .contact-box p:first-child { font-size: 16px !important; }
         }
     </style>
 </head>
 
 <body class="bg-white text-gray-900">
 
-    <!-- HEADER -->
     <div id="header"></div>
 
-    <!-- MOBILE MENU -->
     <div id="mobileMenu"
         class="hidden fixed top-[70px] left-0 w-full bg-white z-40 border-b border-gray-100 px-6 py-8 md:hidden">
         <div class="flex flex-col gap-6 text-[15px] font-bold text-gray-800 uppercase">
@@ -86,7 +99,6 @@
         </div>
     </div>
 
-    <!-- HERO -->
     <section class="relative h-[450px] flex items-center justify-center text-white overflow-hidden">
         <div class="absolute inset-0 z-0">
             <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000"
@@ -102,7 +114,6 @@
         </div>
     </section>
 
-    <!-- TAB -->
     <div class="border-b border-gray-100 mb-16">
         <div class="tab-wrap max-w-[1400px] mx-auto flex justify-center gap-12 py-6 text-[14px] font-medium text-gray-400">
             <a href="project_all.html" class="tab-link">
@@ -117,11 +128,9 @@
         </div>
     </div>
 
-    <!-- PROJECT -->
     <main class="max-w-[1400px] mx-auto px-6 pb-40">
         <div class="project-grid grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-20">
 
-            <!-- 🏢 ITEM 1: 노무법인세명 사무실 (전체보기의 1번 아이템) -->
             <a href="project_detail_01.html" class="project-card group block">
                 <div class="overflow-hidden bg-gray-100 aspect-video mb-6">
                     <img src="https://imgur.com/HBTjbpu.jpg"
@@ -138,7 +147,6 @@
                 </div>
             </a>
 
-            <!-- 🏢 ITEM 2: Materials (전체보기의 3번 아이템) -->
             <a href="project_detail_03.html" class="project-card group block">
                 <div class="overflow-hidden bg-gray-100 aspect-video mb-6">
                     <img src="https://imgur.com/mGCrfNi.jpg"
@@ -155,7 +163,6 @@
                 </div>
             </a>
 
-            <!-- COMING -->
             <div class="group block border-t border-gray-100 pt-10">
                 <div class="bg-gray-50 aspect-video mb-6 flex items-center justify-center text-gray-200 uppercase tracking-tighter text-4xl font-bold">
                     Coming Soon
@@ -168,7 +175,6 @@
                 </h3>
             </div>
 
-            <!-- COMING -->
             <div class="group block border-t border-gray-100 pt-10">
                 <div class="bg-gray-50 aspect-video mb-6 flex items-center justify-center text-gray-200 uppercase tracking-tighter text-4xl font-bold">
                     Coming Soon
@@ -183,7 +189,6 @@
 
         </div>
 
-        <!-- PAGE -->
         <div class="mt-20 flex justify-center gap-2">
             <span class="w-8 h-8 flex items-center justify-center bg-[#1e3a8a] text-white text-xs">
                 1
@@ -200,7 +205,21 @@
         </div>
     </main>
 
-    <!-- FOOTER -->
+    <div class="contact-box fixed bottom-10 right-10 z-[99999] flex flex-col items-end select-none">
+        <div id="dynamic-text-target" class="dynamic-contact-text mb-5 flex flex-col items-end text-right">
+            <p class="text-[21px] font-black tracking-tighter">010-4192-0882</p>
+            <p class="text-sm font-light opacity-90 tracking-[0.055em] mr-[-0.055em]">camp0882@daum.net</p>
+        </div>
+        <div class="flex justify-end gap-3">
+            <a href="javascript:void(0);" onclick="openNaverBlog();" class="w-10 h-10 rounded-full bg-[#03C75A] flex items-center justify-center text-white text-[10px] font-bold uppercase hover:scale-105 shadow-lg transition-transform">
+                BLOG
+            </a>
+            <a href="http://pf.kakao.com/_AJxenX" class="w-10 h-10 rounded-full bg-[#fae100] flex items-center justify-center overflow-hidden hover:scale-105 shadow-lg transition-transform">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/KakaoTalk_logo.svg" alt="카카오톡" class="w-5 h-5 object-contain">
+            </a>
+        </div>
+    </div>
+
     <div id="footer"></div>
 
     <script>
@@ -224,6 +243,42 @@
                 menu.classList.toggle("hidden");
             }
         };
+
+        // ✨ 스크롤 실시간 감지하여 푸터 진입 시 연락처 글자 색상을 반전(파란색 -> 흰색)시키는 함수
+        function checkScrollContact() {
+            const windowHeight = window.innerHeight;
+            const textTarget = document.getElementById('dynamic-text-target');
+            const footer = document.getElementById('footer');
+
+            if (textTarget && footer) {
+                const footerTop = footer.getBoundingClientRect().top;
+                
+                // 푸터 영역이 화면 하단 마진선 안으로 진입했는지 계산
+                if (footerTop < windowHeight - 150) {
+                    textTarget.classList.add('footer-bg');
+                } else {
+                    textTarget.classList.remove('footer-bg');
+                }
+            }
+        }
+
+        // 📱 모바일/PC 식별형 네이버 블로그 링크 포워딩
+        function openNaverBlog() {
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
+            let blogUrl = "";
+            if (isMobile) {
+                blogUrl = "https://m.blog.naver.com/zinux_?noTrackingCode=true&proxyReferer=&tab=1";
+            } else {
+                blogUrl = "https://blog.naver.com/zinux_";
+            }
+            
+            window.open(blogUrl, '_blank');
+        }
+
+        window.addEventListener('scroll', checkScrollContact);
+        window.addEventListener('resize', checkScrollContact);
+        setTimeout(checkScrollContact, 400);
     </script>
 </body>
 
