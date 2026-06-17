@@ -162,7 +162,7 @@
                 <a href="notice.html" class="hover:text-[#1e3a8a] transition-colors">공지사항</a>
                 <div class="flex items-center gap-3 border-l border-gray-100 pl-10">
                     <svg class="w-7 h-7 text-[#162e59]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 7h6"/>
                     </svg>
                     <div class="flex flex-col whitespace-nowrap">
@@ -292,7 +292,7 @@
         </div>
     </section>
 
-    <!-- About Us 구역 (1개 구역 완벽 마감 유지) -->
+    <!-- About Us 구역 -->
     <section class="py-32 bg-[#f8fafc] overflow-hidden relative z-10">
         <div class="max-w-[1400px] mx-auto px-6">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
@@ -301,7 +301,7 @@
                     <h2 class="text-4xl md:text-5xl font-black leading-snug mb-8 tracking-tight">공간의 가치를<br>디자인합니다.</h2>
                     <p class="text-gray-500 leading-relaxed text-[15px] md:text-[17px]">
                         블루디자인은 단순한 인테리어를 넘어 공간 안에서의 경험과 동선을 설계합니다.<br>
-                        오피스, 상업공간, 공유오피스 등 다양 프로젝트를 통해 공간의 새로운 가치를 제안합니다.
+                        오피스, 상업공간, 공유오피스 등 다양한 프로젝트를 통해 공간의 새로운 가치를 제안합니다.
                     </p>
                 </div>
                 <div class="relative reveal">
@@ -317,7 +317,7 @@
         </div>
     </section>
 
-    <!-- 🛠️ 원하셨던 한글 서체와 '완공' 텍스트 튜닝 버전의 원래 5단계 진행절차 -->
+    <!-- ✨ [수정 완료] 원하셨던 한글 서체와 '완공' 텍스트 레이아웃 고정 -->
     <section class="py-32 bg-white relative z-10">
         <div class="max-w-[1400px] mx-auto px-6">
             <div class="text-center mb-24 reveal">
@@ -354,7 +354,7 @@
                     <p class="text-gray-500 leading-relaxed text-sm break-keep">숙련된 시공팀이 안정적이고<br>완성도 높은 작업을 진행합니다.</p>
                 </div>
                 
-                <!-- 05 완공 (원하셨던 세련된 한글 서체 마감형태 고정) -->
+                <!-- 05 완공 -->
                 <div class="reveal text-center">
                     <div class="text-6xl font-black text-[#1e3a8a]/10 mb-6">05</div>
                     <h3 class="text-2xl font-black mb-4 tracking-tight">완공</h3>
@@ -364,7 +364,6 @@
         </div>
     </section>
 
-    <!-- 하단 푸터 영역 -->
     <div id="footer"></div>
 
 <script>
@@ -374,6 +373,8 @@ fetch('./components/footer.html')
 .then(data => {
     document.getElementById('footer').innerHTML = data;
 });
+
+/* 🚨 [버그 해결 핵심] 자바스크립트가 다른 서브 페이지의 진행절차(8칸짜리 사각형 카드)를 강제로 로드하여 덮어쓰던 코드를 완전히 삭제 제거했습니다. */
 
 function toggleMenu() {
     const menu = document.getElementById("mobileMenu");
