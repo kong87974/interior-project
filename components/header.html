@@ -1,10 +1,8 @@
 <nav class="fixed top-0 left-0 w-full z-[99999] bg-white border-b border-gray-100 h-20">
   <div class="max-w-[1400px] mx-auto px-6 h-full flex justify-between items-center relative">
 
-    <!-- 1. [좌측 메뉴 그룹] 중앙 로고 기준 왼쪽에 나란히 정렬 (회사소개, 프로젝트) -->
-    <div class="hidden md:flex items-center gap-14 text-[15px] font-bold text-gray-800 h-full w-[35%] justify-start">
+    <div class="hidden md:flex items-center gap-14 text-[15px] font-bold text-gray-800 h-full">
       
-      <!-- 회사소개 (기존 드롭다운 및 스타일 100% 유지) -->
       <div class="nav-item relative h-full flex items-center">
         <a href="about.html" class="hover:text-[#1e3a8a] transition-colors py-7">회사소개</a>
         <div class="dropdown absolute top-[80px] -left-4 bg-white min-w-[180px] hidden shadow-xl border border-gray-100 py-2 rounded-b-md z-[99999]">
@@ -14,7 +12,6 @@
         </div>
       </div>
 
-      <!-- 프로젝트 (기존 드롭다운 및 스타일 100% 유지) -->
       <div class="nav-item relative h-full flex items-center">
         <a href="project_all.html" class="hover:text-[#1e3a8a] transition-colors py-7">프로젝트</a>
         <div class="dropdown absolute top-[80px] -left-4 bg-white min-w-[160px] hidden shadow-xl border border-gray-100 py-2 rounded-b-md z-[99999]">
@@ -26,24 +23,17 @@
 
     </div>
 
-    <!-- 2. [중앙 고정 로고] 레퍼런스 이미지처럼 좌우 밸런스의 정중앙 축을 담당 -->
-    <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center">
-       <a href="index.html" class="flex flex-col items-center text-center leading-none">
-          <div class="text-[18px] md:text-[22px] font-black tracking-wide text-[#162e59]">BLUE DESIGN</div>
-          <div class="text-[9px] md:text-[16px] tracking-[0.65em] pl-[0.65em] text-gray-500 uppercase mt-1">INTERIOR</div>
-       </a>
-    </div>
+            <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center">
+               <a href="index.html" class="flex flex-col items-center text-center leading-none">
+                  <div class="text-[18px] md:text-[22px] font-black tracking-wide text-[#162e59]">BLUE DESIGN</div>
+                  <div class="text-[9px] md:text-[16px] tracking-[0.65em] pl-[0.65em] text-gray-500 uppercase mt-1">INTERIOR</div>
+               </a>
+             </div>
 
-    <!-- 3. [우측 메뉴 그룹] 중앙 로고 기준 오른쪽에 나란히 정렬 (견적문의, 공지사항) + 우측 끝 연락처 -->
-    <div class="hidden md:flex justify-end items-center gap-10 text-[15px] font-bold text-gray-800 w-[45%]">
-      
-      <!-- 오른쪽 대칭 구도를 위한 메뉴 2개 묶음 -->
-      <div class="flex items-center gap-14 h-full mr-4">
-        <a href="contact.html" class="hover:text-[#1e3a8a] transition-colors py-7">견적문의</a>
-        <a href="notice.html" class="hover:text-[#1e3a8a] transition-colors py-7">공지사항</a>
-      </div>
+    <div class="hidden md:flex justify-end items-center gap-10 text-[15px] font-bold text-gray-800">
+      <a href="contact.html" class="hover:text-[#1e3a8a] transition-colors">견적문의</a>
+      <a href="notice.html" class="hover:text-[#1e3a8a] transition-colors">공지사항</a>
 
-      <!-- 우측 끝 고정 연락처 정보 (기존 간격 및 규격 완벽 유지) -->
       <div class="flex items-center gap-3 border-l border-gray-100 pl-10">
         <svg class="w-7 h-7 text-[#1e3a8a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
@@ -56,7 +46,6 @@
       </div>
     </div>
 
-    <!-- 모바일 트리거 버튼 해상도 제어 -->
     <div class="md:hidden flex justify-end w-full">
       <button onclick="toggleMenu()" class="relative z-[9999] text-[10px] font-bold border border-black px-3 py-1 uppercase tracking-widest">
         Menu
@@ -65,7 +54,6 @@
 
   </div>
 
-  <!-- 모바일 슬라이드 다운 대치 메뉴 레이아웃 -->
   <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-100 px-6 py-6 w-full left-0 shadow-lg">
     <div class="flex flex-col gap-6 text-[15px] font-bold text-gray-800">
       <div class="flex flex-col gap-3">
