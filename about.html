@@ -52,15 +52,6 @@
                 line-height: 1.9;
             }
         }
-
-        /* ✨ [추가] 회사소개 페이지용 연락처 글자색 변환 스타일 */
-        .text-scroll-change {
-            color: #ffffff; /* 처음엔 흰색 */
-            transition: color 0.3s ease;
-        }
-        .text-scroll-change.scrolled {
-            color: #162e59 !important; /* 스크롤 내리면 진한 파란색 */
-        }
     </style>
 </head>
 
@@ -200,8 +191,8 @@
 
 <div id="footer"></div>
 
-<div class="contact-box fixed bottom-10 right-10 z-[99999] flex flex-col items-end">
-    <div class="mb-5 flex flex-col items-end text-scroll-change text-right">
+<div class="contact-box fixed bottom-10 right-10 z-[99999] flex flex-col items-end mix-blend-difference text-white select-none">
+    <div class="mb-5 flex flex-col items-end text-right">
         <p class="text-[21px] font-black tracking-tighter">010-4192-0882</p>
         <p class="text-sm font-light opacity-90 tracking-[0.055em] mr-[-0.055em]">camp0882@daum.net</p>
     </div>
@@ -239,14 +230,13 @@ window.toggleMenu = function () {
 
 // 블로그 열기 함수 정의
 window.openNaverBlog = function() {
-    const blogUrl = "https://blog.naver.com/camp0882"; // 블로그 주소 입력 가능
+    const blogUrl = "https://blog.naver.com/camp0882";
     window.open(blogUrl, '_blank');
 };
 
-// reveal animation & 연락처 색상 변경 스크롤 감지
+// reveal animation (이제 색상 변경 스크립트는 완전히 제거되어 가벼워졌습니다)
 window.addEventListener('scroll', () => {
 
-    // 1. 기존 등장 애니메이션 기능
     document.querySelectorAll('.reveal').forEach(el => {
         const windowHeight = window.innerHeight;
         const revealTop = el.getBoundingClientRect().top;
@@ -254,16 +244,6 @@ window.addEventListener('scroll', () => {
             el.classList.add('active');
         }
     });
-
-    // ✨ 2. [추가] 스크롤 내리면 글자색을 파란색으로 바꾸는 실시간 감지 코드
-    const textTarget = document.querySelector('.text-scroll-change');
-    if (textTarget) {
-        if (window.scrollY > 80) { // 스크롤이 조금이라도 내려가면 파란색으로 변환
-            textTarget.classList.add('scrolled');
-        } else {
-            textTarget.classList.remove('scrolled');
-        }
-    }
 
 });
 
