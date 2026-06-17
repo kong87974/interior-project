@@ -6,6 +6,8 @@
 
     <title>BLUE DESIGN | 오시는 길</title>
 
+    <link rel="icon" href="https://i.imgur.com/f1j8a7x.png" type="image/png">
+
     <script src="https://cdn.tailwindcss.com"></script>
 
     <link rel="stylesheet"
@@ -71,14 +73,12 @@
 
 <body class="bg-white text-gray-900">
 
-    <!-- HEADER -->
     <div id="header"></div>
 
     <main class="pt-48 pb-32">
 
         <div class="max-w-[1400px] mx-auto px-6">
 
-            <!-- TITLE -->
             <section class="mb-20">
 
                 <p class="text-[11px] tracking-[0.4em] text-[#1e3a8a] font-bold uppercase mb-5">
@@ -96,12 +96,10 @@
 
             </section>
 
-            <!-- MAP -->
             <section class="mb-16">
 
                 <div class="map-wrap w-full h-[550px] overflow-hidden border border-gray-100">
 
-                    <!-- 기본 지도를 세마점으로 설정 -->
                     <iframe
                         id="mapFrame"
                         src="https://maps.google.com/maps?q=경기도 오산시 경기대로 761번길 30&t=&z=15&ie=UTF8&iwloc=&output=embed"
@@ -112,10 +110,8 @@
 
             </section>
 
-            <!-- BRANCH (md:grid-cols-2 로 두 지점이 넓게 차지하도록 수정) -->
             <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-                <!-- 세마 (기본 활성화: active 클래스 추가) -->
                 <div
                     class="branch-card active border border-gray-200 p-8"
                     onclick="changeBranch(
@@ -140,7 +136,6 @@
 
                 </div>
 
-                <!-- 세교 -->
                 <div
                     class="branch-card border border-gray-200 p-8"
                     onclick="changeBranch(
@@ -171,7 +166,6 @@
 
     </main>
 
-    <!-- ⚙️ 고정형 연락처 컴포넌트 추가 (순정 브랜드 아이콘 및 정밀 글자 배열 적용) -->
     <div class="contact-box fixed bottom-10 right-10 z-[99999] flex flex-col items-end select-none">
         <div id="dynamic-text-target" class="dynamic-contact-text mb-5 flex flex-col items-end text-right">
             <p class="text-[21px] font-black tracking-tighter">010-4192-0882</p>
@@ -187,7 +181,6 @@
         </div>
     </div>
 
-    <!-- FOOTER -->
     <div id="footer"></div>
 
     <script>
