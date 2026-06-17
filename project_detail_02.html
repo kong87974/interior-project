@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BLUE DESIGN | 전체 프로젝트</title>
 
+    <link rel="icon" href="https://i.imgur.com/f1j8a7x.png" type="image/png">
+
     <script src="https://cdn.tailwindcss.com"></script>
 
     <link rel="stylesheet"
@@ -14,6 +16,7 @@
     <style>
         body {
             font-family: "Pretendard", sans-serif;
+            letter-spacing: -0.02em;
             overflow-x: hidden;
         }
     </style>
@@ -23,34 +26,55 @@
 
     <div id="header"></div>
 
-    <main class="min-h-screen">
+    <main class="min-h-screen pt-32">
 
         <section class="max-w-[1400px] mx-auto px-6 py-20">
+            
+            <div class="mb-16 text-center">
+                <p class="text-[11px] text-[#1e3a8a] font-bold tracking-[0.3em] uppercase mb-3">Portfolio</p>
+                <h1 class="text-3xl md:text-4xl font-bold tracking-tighter">전체 프로젝트</h1>
+            </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-                <div class="overflow-hidden">
-                    <img src="https://imgur.com/c998gUY.jpg"
+                <div class="relative overflow-hidden aspect-[4/3] group cursor-pointer">
+                    <img src="https://imgur.com/HBTjbpu.jpg"
                         alt="project image 1"
-                        class="w-full h-full object-cover hover:scale-105 transition duration-700">
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 text-white">
+                        <span class="text-xs uppercase tracking-widest text-gray-300 mb-1">Office Space</span>
+                        <h3 class="text-xl font-bold tracking-tight">스마트 워크플레이스 오피스</h3>
+                    </div>
                 </div>
 
-                <div class="overflow-hidden">
-                    <img src="https://imgur.com/XZ1DOd2.jpg"
+                <div class="relative overflow-hidden aspect-[4/3] group cursor-pointer">
+                    <img src="https://imgur.com/U1XBpZV.jpg"
                         alt="project image 2"
-                        class="w-full h-full object-cover hover:scale-105 transition duration-700">
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 text-white">
+                        <span class="text-xs uppercase tracking-widest text-gray-300 mb-1">Commercial Space</span>
+                        <h3 class="text-xl font-bold tracking-tight">모던 미니멀 라운지 카페</h3>
+                    </div>
                 </div>
 
-                <div class="overflow-hidden">
-                    <img src="https://imgur.com/tRVMgPD.jpg"
+                <div class="relative overflow-hidden aspect-[4/3] group cursor-pointer">
+                    <img src="https://imgur.com/F0mtgsj.jpg"
                         alt="project image 3"
-                        class="w-full h-full object-cover hover:scale-105 transition duration-700">
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 text-white">
+                        <span class="text-xs uppercase tracking-widest text-gray-300 mb-1">Office Space</span>
+                        <h3 class="text-xl font-bold tracking-tight">프리미엄 크리에이티브 스튜디오</h3>
+                    </div>
                 </div>
 
-                <div class="overflow-hidden">
-                    <img src="https://imgur.com/ihqTRut.jpg"
+                <div class="relative overflow-hidden aspect-[4/3] group cursor-pointer">
+                    <img src="https://imgur.com/nAyfPQI.jpg"
                         alt="project image 4"
-                        class="w-full h-full object-cover hover:scale-105 transition duration-700">
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 text-white">
+                        <span class="text-xs uppercase tracking-widest text-gray-300 mb-1">Commercial Space</span>
+                        <h3 class="text-xl font-bold tracking-tight">복합 문화 오산 프리미어캠퍼스</h3>
+                    </div>
                 </div>
 
             </div>
@@ -62,7 +86,6 @@
     <div id="footer"></div>
 
     <script>
-
         // header
         fetch('./components/header.html')
             .then(res => res.text())
@@ -83,7 +106,6 @@
                 menu.classList.toggle("hidden");
             }
         };
-
     </script>
 
 </body>
