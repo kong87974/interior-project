@@ -29,7 +29,19 @@
             background-color: #fcfdff;
         }
 
-        /* 🛠️ 슬라이딩 업 애니메이션 복구 */
+        /* 🛠️ [구조 분리] 글자 박스 자체는 중앙에 고정하고 내부 요소만 슬라이딩되도록 격리 */
+        .reveal-text {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal-text.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 하단 게시판용 reveal 기본 유지 */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -64,9 +76,9 @@
                 class="w-full h-full object-cover brightness-[0.4]" />
         </div>
 
-        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 w-full max-w-4xl text-center px-6">
+        <div class="absolute inset-0 z-10 w-full flex flex-col items-center justify-center text-center px-6">
             
-            <div class="reveal flex flex-col items-center justify-center text-center w-full">
+            <div class="reveal-text flex flex-col items-center justify-center text-center w-full">
                 <h1 class="hero-title w-full text-center text-4xl md:text-5xl font-bold tracking-tight mb-4 uppercase">
                     공지사항
                 </h1>
@@ -136,21 +148,29 @@
             }
         };
 
-        // reveal 애니메이션 스크롤 제어
-        window.addEventListener('scroll', () => {
+        // reveal 및 reveal-text 애니메이션 스크롤 제어 함수 수립
+        function checkReveal() {
+            const windowHeight = window.innerHeight;
+            
+            // 상단 타이틀 애니메이션 제어
+            const heroText = document.querySelector('.reveal-text');
+            if (heroText) {
+                heroText.classList.add('active');
+            }
+
+            // 하단 본문 요소 애니메이션 제어
             const reveals = document.querySelectorAll('.reveal');
             reveals.forEach(el => {
-                const windowHeight = window.innerHeight;
                 const revealTop = el.getBoundingClientRect().top;
-
                 if (revealTop < windowHeight - 100) {
                     el.classList.add('active');
                 }
             });
-        });
+        }
 
-        // 초기 실행
-        window.dispatchEvent(new Event('scroll'));
+        window.addEventListener('scroll', checkReveal);
+        // 비동기 로드 속도 고려 초기 구동 지연 실행 설정
+        setTimeout(checkReveal, 100);
     </script>
 
 </body>
