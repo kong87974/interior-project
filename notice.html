@@ -62,25 +62,20 @@
 
     <div id="header"></div>
 
-    <!-- HERO -->
-    <section class="relative h-[400px] flex items-center justify-center text-white overflow-hidden">
+    <section class="relative h-[400px] w-full flex items-center justify-center text-white overflow-hidden">
 
         <div class="absolute inset-0 z-0">
-
             <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=2000"
                 class="w-full h-full object-cover brightness-[0.4]" />
-
         </div>
 
-        <!-- ✏️ text-center 클래스로 전체 구역 완벽히 가운데 정렬 처리 -->
-        <div class="relative z-10 text-center px-6 reveal">
+        <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 w-full max-w-[1400px] text-center flex flex-col items-center justify-center px-6 reveal">
 
-            <h1 class="hero-title text-4xl md:text-5xl font-bold tracking-tight mb-4 uppercase">
+            <h1 class="hero-title w-full text-center text-4xl md:text-5xl font-bold tracking-tight mb-4 uppercase">
                 공지사항
             </h1>
 
-            <!-- ✏️ 사무공간 부제목 스타일과 완벽 일치화 (크기, 글씨체 두께, 정렬, 줄간격 100% 매칭) -->
-            <p class="hero-sub max-w-2xl mx-auto text-sm md:text-base text-gray-200 leading-relaxed">
+            <p class="hero-sub w-full text-center max-w-2xl mx-auto text-sm md:text-base text-gray-200 leading-relaxed">
                 블루디자인의 새로운 소식을 전해드립니다.
             </p>
 
@@ -88,10 +83,8 @@
 
     </section>
 
-    <!-- MAIN -->
     <main class="max-w-[1100px] mx-auto px-6 pt-20 pb-40">
 
-        <!-- 게시판 헤더 -->
         <div class="hidden md:flex items-center pb-6 border-b-2 border-black text-[13px] font-bold uppercase tracking-wider px-4 reveal">
 
             <div class="w-20 text-center">
@@ -108,10 +101,8 @@
 
         </div>
 
-        <!-- 공지 리스트 구역 -->
         <div class="divide-y divide-gray-100">
 
-            <!-- 공지 1 (단독 유지) -->
             <a href="notice_01.html"
                 class="notice-row flex flex-col md:flex-row items-center py-8 px-4 group reveal">
 
@@ -122,11 +113,9 @@
                 <div class="flex-1 md:px-10 mb-2 md:mb-0 w-full md:w-auto">
 
                     <div class="flex items-center gap-3 mb-2">
-
                         <span class="bg-[#1e3a8a] text-[10px] text-white px-2 py-0.5 font-bold uppercase tracking-tighter">
                             Notice
                         </span>
-
                     </div>
 
                     <h3 class="text-[16px] font-bold tracking-tight group-hover:text-[#1e3a8a] transition-colors leading-snug">
@@ -141,35 +130,19 @@
 
             </a>
 
-            <!-- 🛠️ [삭제 완료] 공지 2 제거되었습니다. -->
-            <!-- 🛠️ [삭제 완료] 공지 3 제거되었습니다. -->
-
         </div>
 
-        <!-- 페이지네이션 구역 -->
         <div class="mt-20 flex justify-center gap-2 reveal">
-
-            <span class="w-8 h-8 flex items-center justify-center bg-[#1e3a8a] text-white text-xs">
-                1
-            </span>
-
-            <span class="w-8 h-8 flex items-center justify-center border border-gray-200 text-gray-400 text-xs cursor-pointer hover:bg-gray-50">
-                2
-            </span>
-
-            <span class="w-8 h-8 flex items-center justify-center border border-gray-200 text-gray-400 text-xs cursor-pointer hover:bg-gray-50">
-                3
-            </span>
-
+            <span class="w-8 h-8 flex items-center justify-center bg-[#1e3a8a] text-white text-xs">1</span>
+            <span class="w-8 h-8 flex items-center justify-center border border-gray-200 text-gray-400 text-xs cursor-pointer hover:bg-gray-50">2</span>
+            <span class="w-8 h-8 flex items-center justify-center border border-gray-200 text-gray-400 text-xs cursor-pointer hover:bg-gray-50">3</span>
         </div>
 
     </main>
 
-    <!-- FOOTER -->
     <div id="footer"></div>
 
     <script>
-
         // header/footer 불러오기
         fetch('./components/header.html')
         .then(res => res.text())
@@ -213,7 +186,6 @@
 
         // 초기 실행
         window.dispatchEvent(new Event('scroll'));
-
     </script>
 
 </body>
