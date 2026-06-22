@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BLUE DESIGN | 사무공간</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>BLUE DESIGN | 공지사항</title>
 
     <link rel="icon" href="https://i.imgur.com/f1j8a7x.png" type="image/png">
 
@@ -14,40 +14,23 @@
         href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
 
     <style>
+
         body {
             font-family: "Pretendard", sans-serif;
             letter-spacing: -0.02em;
             overflow-x: hidden;
         }
 
-        /* TAB */
-        .tab-link {
-            position: relative;
-            padding-bottom: 8px;
-            transition: all 0.3s;
+        /* 공지 hover */
+        .notice-row {
+            transition: all 0.3s ease;
         }
 
-        .tab-link.active {
-            color: #1e3a8a;
-            font-weight: bold;
+        .notice-row:hover {
+            background-color: #fcfdff;
         }
 
-        .tab-link.active::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: #1e3a8a;
-        }
-
-        /* PROJECT ANIMATION */
-        .project-card:hover img {
-            transform: scale(1.05);
-        }
-
-        /* 슬라이딩 업 애니메이션 */
+        /* reveal */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -59,223 +42,176 @@
             transform: translateY(0);
         }
 
-        /* 우측 하단 연락처 글자 색상 실시간 제어 스타일 */
-        .dynamic-contact-text {
-            color: #162e59;
-            transition: color 0.3s ease;
-        }
-        .dynamic-contact-text.footer-bg {
-            color: #ffffff !important;
-        }
-
-        /* MOBILE RESPONSIVE */
         @media (max-width: 768px) {
+
             .hero-title {
-                font-size: 36px !important;
+                font-size: 38px !important;
             }
 
-            .hero-desc {
-                font-size: 14px !important;
-                line-height: 1.8;
+            .hero-sub {
+                font-size: 13px !important;
+                padding: 0 20px;
+                line-height: 1.6;
             }
 
-            .project-grid {
-                grid-template-columns: 1fr !important;
-                gap-y: 50px !important;
-            }
-            
-            .contact-box { right: 20px !important; bottom: 20px !important; }
-            .contact-box p:first-child { font-size: 16px !important; }
         }
+
     </style>
 </head>
 
 <body class="bg-white text-gray-900">
 
-    <nav id="header"></nav>
+    <div id="header"></div>
 
-    <div id="mobileMenu"
-        class="hidden fixed top-[70px] left-0 w-full bg-white z-40 border-b border-gray-100 px-6 py-8 md:hidden">
-        <div class="flex flex-col gap-6 text-[15px] font-bold text-gray-800 uppercase">
-            <a href="about.html">회사소개</a>
-            <a href="project_all.html">프로젝트</a>
-            <a href="contact.html">견적문의</a>
-            <a href="notice.html">공지사항</a>
-        </div>
-    </div>
+    <!-- HERO -->
+    <section class="relative h-[400px] flex items-center justify-center text-white overflow-hidden">
 
-    <section class="relative h-[500px] flex items-center justify-center text-white overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000"
-                class="w-full h-full object-cover brightness-[0.4]">
+
+            <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=2000"
+                class="w-full h-full object-cover brightness-[0.4]" />
+
         </div>
-        <div class="relative z-10 text-center px-6">
-            <h1 class="hero-title text-5xl md:text-6xl font-medium tracking-tighter mb-6 reveal">
-                사무공간
+
+        <div class="relative z-10 text-center reveal">
+
+            <!-- ✏️ font-bold를 font-medium으로 변경하여 요구하신 두께감으로 수정 완료! -->
+            <h1 class="hero-title text-4xl md:text-5xl font-medium tracking-tight mb-4 uppercase">
+                공지사항
             </h1>
-            <p class="hero-desc max-w-2xl mx-auto text-sm md:text-base text-gray-200 leading-relaxed reveal"
-                style="transition-delay: 0.1s;">
-                업무 효율성과 기업 문화의 가치를 고려한<br>크리에이티브한 사무 공간 디자인을 제안합니다.
+
+            <p class="hero-sub text-sm md:text-base font-light tracking-widest text-gray-300">
+                블루디자인의 새로운 소식을 전해드립니다.
             </p>
+
         </div>
+
     </section>
 
-    <div class="border-b border-gray-100 mb-16">
-        <div class="tab-wrap max-w-[1400px] mx-auto flex justify-center gap-12 py-6 text-[14px] font-medium text-gray-400">
-            <a href="project_all.html" class="tab-link">전체보기</a>
-            <a href="office.html" class="tab-link active">사무공간</a>
-            <a href="commercial.html" class="tab-link">상업공간</a>
-        </div>
-    </div>
+    <!-- MAIN -->
+    <main class="max-w-[1100px] mx-auto px-6 pt-20 pb-40">
 
-    <main class="max-w-[1400px] mx-auto px-6 pb-40">
-        <div id="officeProjectGrid" class="project-grid grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-20">
+        <!-- 게시판 헤더 -->
+        <div class="hidden md:flex items-center pb-6 border-b-2 border-black text-[13px] font-bold uppercase tracking-wider px-4 reveal">
+
+            <div class="w-20 text-center">
+                No
             </div>
+
+            <div class="flex-1 px-10">
+                Subject
+            </div>
+
+            <div class="w-32 text-center">
+                Date
+            </div>
+
+        </div>
+
+        <!-- 공지 리스트 구역 -->
+        <div class="divide-y divide-gray-100">
+
+            <!-- 공지 1 (단독 유지) -->
+            <a href="notice_01.html"
+                class="notice-row flex flex-col md:flex-row items-center py-8 px-4 group reveal">
+
+                <div class="hidden md:block w-20 text-center text-xs text-gray-400 font-medium">
+                    01
+                </div>
+
+                <div class="flex-1 md:px-10 mb-2 md:mb-0 w-full md:w-auto">
+
+                    <div class="flex items-center gap-3 mb-2">
+
+                        <span class="bg-[#1e3a8a] text-[10px] text-white px-2 py-0.5 font-bold uppercase tracking-tighter">
+                            Notice
+                        </span>
+
+                    </div>
+
+                    <h3 class="text-[16px] font-bold tracking-tight group-hover:text-[#1e3a8a] transition-colors leading-snug">
+                        블루디자인 공식 홈페이지가 새롭게 리뉴얼 되었습니다.
+                    </h3>
+
+                </div>
+
+                <div class="w-full md:w-32 text-left md:text-center text-xs text-gray-400">
+                    2026.05.05
+                </div>
+
+            </a>
+
+        </div>
+
+        <!-- 페이지네이션 구역 -->
+        <div class="mt-20 flex justify-center gap-2 reveal">
+
+            <span class="w-8 h-8 flex items-center justify-center bg-[#1e3a8a] text-white text-xs">
+                1
+            </span>
+
+            <span class="w-8 h-8 flex items-center justify-center border border-gray-200 text-gray-400 text-xs cursor-pointer hover:bg-gray-50">
+                2
+            </span>
+
+            <span class="w-8 h-8 flex items-center justify-center border border-gray-200 text-gray-400 text-xs cursor-pointer hover:bg-gray-50">
+                3
+            </span>
+
+        </div>
+
     </main>
 
-    <div class="contact-box fixed bottom-10 right-10 z-[99999] flex flex-col items-end select-none">
-        <div id="dynamic-text-target" class="dynamic-contact-text mb-5 flex flex-col items-end text-right">
-            <p class="text-[21px] font-black tracking-tighter">010-4192-0882</p>
-            <p class="text-sm font-light opacity-90 tracking-[0.055em] mr-[-0.055em]">camp0882@daum.net</p>
-        </div>
-        <div class="flex justify-end gap-3">
-            <a href="javascript:void(0);" onclick="openNaverBlog();" class="w-10 h-10 rounded-full bg-[#03C75A] flex items-center justify-center text-white text-[10px] font-bold uppercase hover:scale-105 shadow-lg transition-transform">
-                BLOG
-            </a>
-            <a href="http://pf.kakao.com/_AJxenX" class="w-10 h-10 rounded-full bg-[#fae100] flex items-center justify-center overflow-hidden hover:scale-105 shadow-lg transition-transform">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/KakaoTalk_logo.svg" alt="카카오톡" class="w-5 h-5 object-contain">
-            </a>
-        </div>
-    </div>
-
+    <!-- FOOTER -->
     <div id="footer"></div>
 
     <script>
-        // 사무공간 데이터 리스트
-        const officeProjects = [
-            {
-                title: "노무법인세명 사무실",
-                tag: "광교 / 사무공간",
-                img: "https://imgur.com/HBTjbpu.jpg",
-                link: "project_detail_01.html"
-            },
-            {
-                title: "2026-JOIL",
-                tag: "오산 / 사무공간",
-                img: "https://imgur.com/c998gUY.jpg",
-                link: "project_detail_02.html"
-            },
-            {
-                title: "Materials",
-                tag: "현장 / 사무공간",
-                img: "https://imgur.com/mGCrfNi.jpg",
-                link: "project_detail_03.html"
-            },
-            {
-                title: "로앤HR컨설팅",
-                tag: "광교 / 사무공간",
-                img: "https://imgur.com/HLuVMfR.jpg",
-                link: "project_detail_04.html"
-            },
-            {
-                title: "삼정오토메이션",
-                tag: "광교 / 사무공간",
-                img: "https://imgur.com/ZcHiPra.jpg",
-                link: "project_detail_05.html"
-            }
-        ];
 
-        function renderOfficeProjects() {
-            const container = document.getElementById('officeProjectGrid');
-            if(!container) return;
-
-            let htmlString = "";
-            officeProjects.forEach(project => {
-                htmlString += `
-                    <a href="${project.link}" class="project-card group block reveal">
-                        <div class="overflow-hidden bg-gray-100 aspect-video mb-6 rounded-lg shadow-sm">
-                            <img src="${project.img}"
-                                class="w-full h-full object-cover transition-transform duration-500 ease-out"
-                                alt="${project.title}">
-                        </div>
-                        <div>
-                            <p class="text-[11px] text-[#1e3a8a] font-bold mb-2 uppercase tracking-wider">
-                                ${project.tag}
-                            </p>
-                            <h3 class="text-lg font-bold tracking-tight group-hover:text-[#1e3a8a] transition-colors">
-                                ${project.title}
-                            </h3>
-                        </div>
-                    </a>
-                `;
-            });
-
-            container.innerHTML = htmlString;
-            reveal();
-        }
-
-        // 컴포넌트 호출
+        // header/footer 불러오기
         fetch('./components/header.html')
-            .then(res => res.text())
-            .then(data => {
-                document.getElementById('header').innerHTML = data;
-            });
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById('header').innerHTML = data;
+        });
 
         fetch('./components/footer.html')
-            .then(res => res.text())
-            .then(data => {
-                document.getElementById('footer').innerHTML = data;
-            });
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById('footer').innerHTML = data;
+        });
 
         window.toggleMenu = function () {
             const menu = document.getElementById("mobileMenu");
-            if (menu) {
+            if(menu){
                 menu.classList.toggle("hidden");
             }
         };
 
-        function checkScrollContact() {
-            const windowHeight = window.innerHeight;
-            const textTarget = document.getElementById('dynamic-text-target');
-            const footer = document.getElementById('footer');
-
-            if (textTarget && footer) {
-                const footerTop = footer.getBoundingClientRect().top;
-                if (footerTop < windowHeight - 150) {
-                    textTarget.classList.add('footer-bg');
-                } else {
-                    textTarget.classList.remove('footer-bg');
-                }
+        // 모바일 메뉴
+        function toggleMenu() {
+            const menu = document.getElementById("mobileMenu");
+            if(menu){
+                menu.classList.toggle("hidden");
             }
         }
 
-        function openNaverBlog() {
-            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            let blogUrl = isMobile 
-                ? "https://m.blog.naver.com/zinux_?noTrackingCode=true&proxyReferer=&tab=1" 
-                : "https://blog.naver.com/zinux_";
-            window.open(blogUrl, '_blank');
-        }
+        // reveal
+        window.addEventListener('scroll', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(el => {
+                const windowHeight = window.innerHeight;
+                const revealTop = el.getBoundingClientRect().top;
 
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                if (elementTop < windowHeight - 100) {
-                    reveals[i].classList.add("active");
+                if (revealTop < windowHeight - 100) {
+                    el.classList.add('active');
                 }
-            }
-            checkScrollContact();
-        }
+            });
+        });
 
-        window.addEventListener("scroll", reveal);
-        window.addEventListener('resize', checkScrollContact);
-        
-        renderOfficeProjects();
-        setTimeout(reveal, 200);
-        setTimeout(checkScrollContact, 400);
+        // 초기 실행
+        window.dispatchEvent(new Event('scroll'));
+
     </script>
-</body>
 
+</body>
 </html>
