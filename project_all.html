@@ -121,15 +121,20 @@
     <section class="pb-32">
         <div class="max-w-[1400px] mx-auto px-6">
             
+            <!-- 💡 프로젝트가 그려질 Grid 영역 -->
             <div id="project-container" class="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-16 min-h-[500px]">
-                </div>
+                <!-- 자바스크립트가 여기에 HTML을 꽂아 넣습니다 -->
+            </div>
 
+            <!-- 💡 페이지네이션 버튼 영역 -->
             <div id="pagination-container" class="flex justify-center gap-2 mt-20">
-                </div>
+                <!-- 버튼들이 생성됩니다 -->
+            </div>
 
         </div>
     </section>
 
+    <!-- 고정 연락처 -->
     <div class="contact-box fixed bottom-10 right-10 z-[99999] flex flex-col items-end select-none">
         <div id="dynamic-text-target" class="dynamic-contact-text mb-5 flex flex-col items-end text-right">
             <p class="text-[21px] font-black tracking-tighter">010-4192-0882</p>
@@ -147,12 +152,12 @@
 
     <script>
         // ==========================================
-        // 1. 프로젝트 전체 데이터 리스트 (추가 4개 포함, 총 9개 세팅)
+        // 1. 프로젝트 전체 데이터 리스트 (상업공간 매칭 완료)
         // ==========================================
         const allProjects = [
             {
                 title: "[오산] 사무실 인테리어",
-                tag: "사무공간 / 유리파티션 & 인테리어 공사",
+                tag: "사무공간 / 유리파티션 및 인테리어 공사",
                 img: "https://imgur.com/2Ed0O16.jpg",
                 link: "project_detail_04.html"
             },
@@ -164,7 +169,7 @@
             },
             {
                 title: "[오산] 복층 사무실 인테리어",
-                tag: "사무공간 / 복층 & 인테리어 공사",
+                tag: "사무공간 / 복층 및 인테리어 공사",
                 img: "https://imgur.com/hkhTopY.jpg",
                 link: "project_detail_03.html"
             },
@@ -180,32 +185,37 @@
                 img: "https://imgur.com/X1didZX.jpg",
                 link: "project_detail_05.html"
             },
-            // --- 💡 아래부터 새로 추가할 4개의 프로젝트 자리입니다 ---
             {
-                title: "[수원] 공장 사무실 인테리어",
-                tag: "사무공간 / 복층 & 인테리어 공사",
-                img: "https://imgur.com/8HPzxLm.jpg",
+                title: "[새 프로젝트 1 제목]",
+                tag: "카테고리 / 공사 내용",
+                img: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800",
                 link: "project_detail_06.html"
             },
             {
-                title: "[평택] 환경 실험실 인테리어",
-                tag: "사무공간 / 벽체 & 파사드",
-                img: "https://imgur.com/nUXdzXG.jpg",
+                title: "[새 프로젝트 2 제목]",
+                tag: "카테고리 / 공사 내용",
+                img: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800",
                 link: "project_detail_07.html"
             },
             {
-                title: "[오산] 직원 휴게실 인테리어",
-                tag: "휴게공간 / 장판 & 인테리어 공사",
-                img: "https://imgur.com/RJmCnI2.jpg",
+                title: "[새 프로젝트 3 제목]",
+                tag: "카테고리 / 공사 내용",
+                img: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=800",
                 link: "project_detail_08.html"
             },
             {
-                title: "[동탄] 메테리얼즈 사무실 인테리어",
-                tag: "사무공간 / 이미지월 & 파사드",
-                img: "https://imgur.com/jgkQq1p.jpg",
+                title: "[새 프로젝트 4 제목]",
+                tag: "카테고리 / 공사 내용",
+                img: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=800",
                 link: "project_detail_09.html"
+            },
+            // --- 💡 10번째 자리에 상업공간 신규 프로젝트 데이터를 완벽 연동했습니다! ---
+            {
+                title: "[오산] 브랜딩 프리미엄 쇼룸",
+                tag: "상업공간 / 이미지월 및 익스테리어 파사드 공사",
+                img: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800",
+                link: "commercial_detail_01.html"
             }
-            // 프로젝트를 더 추가하고 싶으면 이 아래에 계속 객체({})를 이어붙이면 됩니다!
         ];
 
         // ==========================================
@@ -265,7 +275,6 @@
                     currentPage = i;
                     renderProjects(currentPage);
                     renderPagination(); // 번호 색상 업데이트
-                    // 페이지 넘기면 살짝 위로 스크롤 올려주기
                     window.scrollTo({ top: 300, behavior: 'smooth' }); 
                 });
 
@@ -273,15 +282,11 @@
             }
         }
 
-        // ==========================================
-        // 3. 페이지 로드 시 실행 (초기화)
-        // ==========================================
+        // 초기화
         renderProjects(currentPage);
         renderPagination();
 
-        // ==========================================
-        // 기존 컴포넌트 및 UI 함수들
-        // ==========================================
+        // 컴포넌트 로드
         fetch('./components/header.html')
             .then(res => res.text())
             .then(data => { document.getElementById('header').innerHTML = data; });
