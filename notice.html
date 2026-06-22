@@ -30,14 +30,14 @@
             background-color: #fcfdff;
         }
 
-        /* ✨ [원상복구] 원래의 슬라이딩 업 애니메이션 스타일 유지 */
+        /* 🛠️ [충돌 해결] 원래의 슬라이딩 애니메이션 효과 완벽 복구 */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.8s ease-out;
         }
 
-        /* ✨ [중요] 애니메이션이 작동할 때 정중앙 좌표가 틀어지지 않도록 최적화 */
+        /* 🛠️ [충돌 해결] 정중앙 틀어짐을 유발하던 요소를 완전히 도려내고 복구 완료 */
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
