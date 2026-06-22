@@ -24,31 +24,22 @@
 
 <body class="bg-white text-gray-900">
 
-    <!-- 글로벌 공통 헤더가 주입되는 공간 -->
     <div id="header"></div>
 
-    <!-- 🛠️ 본문 메인 컨테이너 (상단 여백을 주어 헤더와 겹치지 않게 세팅) -->
     <main class="min-h-screen pt-32 pb-24 max-w-[1200px] mx-auto px-6">
 
-        <!-- 🏢 [구역 1] 프로젝트 제목 구역 -->
         <div class="text-center my-14">
-            <!-- ✏️ 프로젝트 메인 대제목 -->
             <h1 class="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight mb-2">사무실 인테리어</h1>
-            <!-- ✏️ 영문 서브타이틀 -->
             <p class="text-sm md:text-base text-gray-400 font-medium tracking-wide">Office Interior</p>
         </div>
 
-
-        <!-- 📊 [구역 2] PROJECT DETAILS (가로선 정보 표 구역) -->
         <div class="border-t border-b border-gray-300 py-8 my-10">
             <div class="text-center text-xs md:text-sm font-extrabold tracking-[0.2em] text-gray-800 uppercase mb-8">
                 · PROJECT DETAILS ·
             </div>
             
-            <!-- 반응형 격자 구조 -->
             <div class="grid grid-cols-1 md:grid-cols-12 gap-y-6 gap-x-12 text-[14px] md:text-[15px] px-2 md:px-4">
                 
-                <!-- 왼쪽 상세 스펙 (연도, 위치, 용도, 면적) -->
                 <div class="md:col-span-6 grid grid-cols-2 gap-y-4 gap-x-4 border-b md:border-b-0 md:border-r border-gray-200 pb-6 md:pb-0 md:pr-10">
                     <div class="flex items-center"><span class="w-16 text-gray-400 font-semibold shrink-0">연도</span><span class="text-gray-700 font-medium">2026</span></div>
                     <div class="flex items-center"><span class="w-16 text-gray-400 font-semibold shrink-0">위치</span><span class="text-gray-700 font-medium">경기도 오산시</span></div>
@@ -56,10 +47,8 @@
                     <div class="flex items-center"><span class="w-16 text-gray-400 font-semibold shrink-0">면적</span><span class="text-gray-700 font-medium">-</span></div>
                 </div>
 
-                <!-- 오른쪽 기획 개요 -->
                 <div class="md:col-span-6 flex flex-col md:flex-row gap-2 md:gap-6">
                     <span class="w-16 text-gray-400 font-semibold shrink-0">개요</span>
-                    <!-- ✏️ 프로젝트 상세 소개글 -->
                     <p class="text-gray-500 leading-relaxed font-medium text-justify break-keep">
                         크리에이터들의 깊은 몰입과 영감을 이끌어내기 위한 프리미엄 워크 스페이스입니다. 구조적인 형태미와 절제된 톤앤매너를 바탕으로 시각적인 안정감을 구현하였으며, 공간마다 조도의 밸런스를 섬세하게 조정하여 업무의 집중도를 극대화했습니다.
                     </p>
@@ -69,73 +58,198 @@
         </div>
 
 
-        <!-- 📸 [구역 3] 사진 아래로 쭉 한 장씩 배치 + 중간중간 글 쓰는 공간 -->
         <div class="mt-16 space-y-20">
 
-            <!-- 🖼️ [세트 1] 첫 번째 큰 사진 구역 -->
-            <div class="w-full overflow-hidden">
-                <img src="https://imgur.com/mGCrfNi.jpg" 
-                     alt="프리미엄 크리에이티브 스튜디오 전경 1" 
-                     class="w-full h-auto object-cover rounded-sm shadow-sm hover:scale-[1.01] transition duration-700">
-                <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 정갈한 면 분할과 모던한 텍스처의 자재 조화가 돋보이는 메인 컨셉 라운지</p>
+            <!-- 💡 1번 섹션: 단독 레이아웃 (사진 1) -->
+            <div>
+                <div class="w-full">
+                    <div class="overflow-hidden rounded-sm shadow-sm aspect-video">
+                        <img src="https://imgur.com/mGCrfNi.jpg" 
+                             alt="사무실 인테리어 외부 파사드 전경" 
+                             class="w-full h-full object-cover hover:scale-[1.01] transition duration-700">
+                    </div>
+                    <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 방문객에게 기업의 첫인상을 강렬하게 남기는 입구 파사드 전경</p>
+                </div>
+
+                <div class="max-w-[850px] mx-auto text-center py-10 px-4">
+                    <h3 class="text-lg md:text-xl font-bold text-gray-850 mb-4">01. 브랜드의 철학을 시각화한 파사드 디자인</h3>
+                    <p class="text-gray-500 leading-8 text-[15px] md:text-[16px] break-keep">
+                        사무실의 얼굴이라 할 수 있는 외부 파사드는 절제된 선과 면의 분할을 통해 모던함을 강조했습니다. 불필요한 장식을 걷어내고 조명과 마감재의 질감만으로 하이엔드 오피스의 시작을 알립니다.
+                    </p>
+                </div>
             </div>
 
-            <!-- 📝 [중간 글박스 1] -->
-            <div class="max-w-[850px] mx-auto text-center py-6 px-4">
-                <h3 class="text-lg md:text-xl font-bold text-gray-850 mb-4">01. 몰입을 방해하지 않는 절제의 미학</h3>
-                <p class="text-gray-500 leading-8 text-[15px] md:text-[16px] break-keep">
-                    불필요한 요소를 걷어내고 공간의 본질적인 구조에 집중했습니다. 따뜻함과 차가움의 균형을 맞춘 하이엔드 마감재를 매칭하여 오랜 시간 머물러도 눈이 피로하지 않고 영감을 유지할 수 있는 최적의 오피스 환경을 제안합니다.
-                </p>
+            <!-- 💡 2번 섹션: 2배열 레이아웃 (사진 2, 3) -->
+            <div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+                    <div class="w-full">
+                        <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                            <img src="https://imgur.com/gmAngsc.jpg" 
+                                 alt="사무실 인테리어 로비 공간" 
+                                 class="w-full h-full object-cover hover:scale-[1.01] transition duration-700">
+                        </div>
+                        <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 동선의 연속성을 고려하여 시원하게 뻗은 내부 복도 레이아웃</p>
+                    </div>
+
+                    <div class="w-full">
+                        <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                            <img src="https://imgur.com/Japnhvw.jpg" 
+                                 alt="사무실 인테리어 이미지월" 
+                                 class="w-full h-full object-cover hover:scale-[1.01] transition duration-700">
+                        </div>
+                        <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 기업의 로고와 정체성을 돋보이게 하는 메인 이미지월</p>
+                    </div>
+                </div>
+
+                <div class="max-w-[850px] mx-auto text-center py-10 px-4">
+                    <h3 class="text-lg md:text-xl font-bold text-gray-850 mb-4">02. 정체성을 확립하는 이미지월과 진입부</h3>
+                    <p class="text-gray-500 leading-8 text-[15px] md:text-[16px] break-keep">
+                        내부로 들어서면 가장 먼저 마주하는 이미지월은 간접 조명을 활용해 브랜드 로고에 은은한 입체감을 부여했습니다. 직원들과 방문객이 자연스럽게 공간으로 스며들 수 있도록 차분하고 정돈된 로비 환경을 구축했습니다.
+                    </p>
+                </div>
             </div>
 
-            <!-- 🖼️ [세트 2] 두 번째 큰 사진 구역 -->
-            <div class="w-full overflow-hidden">
-                <img src="https://imgur.com/gmAngsc.jpg" 
-                     alt="프리미엄 크리에이티브 스튜디오 전경 2" 
-                     class="w-full h-auto object-cover rounded-sm shadow-sm hover:scale-[1.01] transition duration-700">
-                <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 동선의 연속성을 고려하여 시원하게 뻗은 내부 복도 레이아웃</p>
+            <!-- 💡 3번 섹션: 2배열 레이아웃 (사진 4, 5) -->
+            <div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+                    <div class="w-full">
+                        <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                            <!-- ✏️ 아래 src 교체 -->
+                            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1600" 
+                                 alt="오픈형 워크 스페이스 1" 
+                                 class="w-full h-full object-cover hover:scale-[1.01] transition duration-700">
+                        </div>
+                        <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 시각적인 피로도를 낮춘 차분한 모노톤의 업무 공간</p>
+                    </div>
+
+                    <div class="w-full">
+                        <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                            <!-- ✏️ 아래 src 교체 -->
+                            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1600" 
+                                 alt="오픈형 워크 스페이스 2" 
+                                 class="w-full h-full object-cover hover:scale-[1.01] transition duration-700">
+                        </div>
+                        <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 개인의 몰입과 팀워크를 동시에 만족시키는 데스크 배치</p>
+                    </div>
+                </div>
+
+                <div class="max-w-[850px] mx-auto text-center py-10 px-4">
+                    <h3 class="text-lg md:text-xl font-bold text-gray-850 mb-4">03. 업무 효율을 높이는 오픈형 워크 스페이스</h3>
+                    <p class="text-gray-500 leading-8 text-[15px] md:text-[16px] break-keep">
+                        메인 업무 공간은 답답한 파티션을 최소화하여 개방감을 살리면서도, 팀 간의 원활한 소통을 위한 오픈형 레이아웃을 채택했습니다. 눈이 피안하지 않도록 플리커 프리 조명을 설계하여 최적의 집중 환경을 제공합니다.
+                    </p>
+                </div>
             </div>
 
-            <!-- 📝 [중간 글박스 2] -->
-            <div class="max-w-[850px] mx-auto text-center py-6 px-4">
-                <h3 class="text-lg md:text-xl font-bold text-gray-850 mb-4">02. 유기적인 연계와 레이어드 공간 설계</h3>
-                <p class="text-gray-500 leading-8 text-[15px] md:text-[16px] break-keep">
-                    개인 집중 업무 영역과 공용 협업 영역이 자연스럽게 스며들도록 레이아웃을 레이어링했습니다. 각 실의 독립적인 프라이버시는 구조적인 벽체와 흐름을 통해 확보하면서도 전체적인 개방감을 유지하는 것이 이번 프로젝트의 핵심 핵심 기술입니다.
-                </p>
+            <!-- 💡 4번 섹션: 2배열 레이아웃 (사진 6, 7) -->
+            <div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+                    <div class="w-full">
+                        <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                            <!-- ✏️ 아래 src 교체 -->
+                            <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1600" 
+                                 alt="유리 파티션 회의실 1" 
+                                 class="w-full h-full object-cover hover:scale-[1.01] transition duration-700">
+                        </div>
+                        <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 개방감을 극대화한 통유리 프레임의 메인 회의실</p>
+                    </div>
+
+                    <div class="w-full">
+                        <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                            <!-- ✏️ 아래 src 교체 -->
+                            <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=1600" 
+                                 alt="유리 파티션 회의실 2" 
+                                 class="w-full h-full object-cover hover:scale-[1.01] transition duration-700">
+                        </div>
+                        <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 불투명 시공 및 흡음 자재를 더해 프라이버시를 확보한 미팅룸</p>
+                    </div>
+                </div>
+
+                <div class="max-w-[850px] mx-auto text-center py-10 px-4">
+                    <h3 class="text-lg md:text-xl font-bold text-gray-850 mb-4">04. 소통과 집중을 위한 스마트 회의실</h3>
+                    <p class="text-gray-500 leading-8 text-[15px] md:text-[16px] break-keep">
+                        회의실은 공간이 단절되어 보이지 않도록 전면 유리 파티션을 적용하되, 필요에 따라 시선을 차단할 수 있는 반투명 시트와 흡음 마감재를 더해 중요한 미팅 시 프라이버시가 완벽히 보호되도록 설계했습니다.
+                    </p>
+                </div>
             </div>
 
-            <!-- 🖼️ [세트 3] 세 번째 큰 사진 구역 -->
-            <div class="w-full overflow-hidden">
-                <img src="https://imgur.com/Japnhvw.jpg" 
-                     alt="프리미엄 크리에이티브 스튜디오 전경 3" 
-                     class="w-full h-auto object-cover rounded-sm shadow-sm hover:scale-[1.01] transition duration-700">
+            <!-- 💡 5번 섹션: 2배열 레이아웃 (사진 8, 9) -->
+            <div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+                    <div class="w-full">
+                        <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                            <!-- ✏️ 아래 src 교체 -->
+                            <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1600" 
+                                 alt="사내 라운지 및 휴게공간 1" 
+                                 class="w-full h-full object-cover hover:scale-[1.01] transition duration-700">
+                        </div>
+                        <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 따뜻한 우드 톤과 플랜테리어가 돋보이는 사내 라운지</p>
+                    </div>
+
+                    <div class="w-full">
+                        <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                            <!-- ✏️ 아래 src 교체 -->
+                            <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=1600" 
+                                 alt="사내 라운지 및 휴게공간 2" 
+                                 class="w-full h-full object-cover hover:scale-[1.01] transition duration-700">
+                        </div>
+                        <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 캐주얼한 미팅 및 개인 휴식이 가능한 다목적 바 테이블</p>
+                    </div>
+                </div>
+
+                <div class="max-w-[850px] mx-auto text-center py-10 px-4">
+                    <h3 class="text-lg md:text-xl font-bold text-gray-850 mb-4">05. 영감을 재충전하는 라운지 및 휴게 공간</h3>
+                    <p class="text-gray-500 leading-8 text-[15px] md:text-[16px] break-keep">
+                        긴장된 업무의 연속성을 잠시 끊어갈 수 있도록, 라운지는 본 업무 공간보다 조금 더 따뜻하고 부드러운 조도와 톤앤매너로 구성했습니다. 커피 한 잔의 여유와 편안한 대화가 오가는 카페테리아형 휴게 공간입니다.
+                    </p>
+                </div>
             </div>
 
-            <!-- 📝 [중간 글박스 3] -->
-            <div class="max-w-[850px] mx-auto text-center py-6 px-4">
-                <h3 class="text-lg md:text-xl font-bold text-gray-850 mb-4">03. 디테일이 완성하는 공간의 품격</h3>
-                <p class="text-gray-500 leading-8 text-[15px] md:text-[16px] break-keep">
-                    가구의 조인트 선, 몰딩의 최소화, 보이지 않는 곳의 간접 조명 라인까지 미세한 디테일을 세밀하게 조율했습니다. 블루디자인만의 하이엔드 시공 노하우를 녹여내어 공간 전체에서 프리미엄한 감도를 경험할 수 있습니다.
-                </p>
+            <!-- 💡 6번 섹션: 2배열 레이아웃 (사진 10, 11) -->
+            <div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+                    <div class="w-full">
+                        <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                            <!-- ✏️ 아래 src 교체 -->
+                            <img src="https://images.unsplash.com/photo-1600607687644-aac4c1566905?q=80&w=1600" 
+                                 alt="프리미엄 오피스 디테일 1" 
+                                 class="w-full h-full object-cover hover:scale-[1.01] transition duration-700">
+                        </div>
+                        <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 숨겨진 간접 조명과 깔끔한 마감선이 돋보이는 벽체 디테일</p>
+                    </div>
+
+                    <div class="w-full">
+                        <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                            <!-- ✏️ 아래 src 교체 -->
+                            <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=1600" 
+                                 alt="프리미엄 오피스 디테일 2" 
+                                 class="w-full h-full object-cover hover:scale-[1.01] transition duration-700">
+                        </div>
+                        <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 공간 전체의 감도를 높여주는 커스텀 맞춤 가구 세팅</p>
+                    </div>
+                </div>
+
+                <div class="max-w-[850px] mx-auto text-center py-10 px-4">
+                    <h3 class="text-lg md:text-xl font-bold text-gray-850 mb-4">06. 하이엔드 디테일로 완성된 프리미엄 오피스</h3>
+                    <p class="text-gray-500 leading-8 text-[15px] md:text-[16px] break-keep">
+                        가구의 조인트 선, 몰딩의 최소화, 보이지 않는 곳의 간접 조명 라인까지 미세한 디테일을 세밀하게 조율했습니다. 블루디자인만의 하이엔드 시공 노하우를 완벽하게 녹여내어 공간 전체에서 수준 높은 감도를 경험할 수 있습니다.
+                    </p>
+                </div>
             </div>
 
         </div>
 
     </main>
 
-    <!-- 글로벌 공통 푸터가 주입되는 공간 -->
     <div id="footer"></div>
 
-    <!-- 🔗 컴포넌트 자동 조립 스크립트 -->
     <script>
-        // header
         fetch('./components/header.html')
             .then(res => res.text())
             .then(data => {
                 document.getElementById('header').innerHTML = data;
             });
 
-        // footer
         fetch('./components/footer.html')
             .then(res => res.text())
             .then(data => {
