@@ -8,7 +8,7 @@
         align-items: center;
     }
 
-    /* 🛠️ [교정 완료] 마우스가 올라가기 전에는 기본적으로 완전히 숨겨지도록(none) 설정하고 위치 강제 */
+    /* 마우스가 올라가기 전에는 기본적으로 완전히 숨겨지도록(none) 설정하고 위치 강제 */
     .dropdown {
         position: absolute;
         top: 80px; /* h-20 헤더 높이 끝선과 정밀 매칭 */
@@ -24,13 +24,13 @@
         z-index: 999999 !important;
     }
 
-    /* 🛠️ 마우스 오버 시에만 하부 메뉴 슬롯이 드러나도록 CSS 우선순위 강제 */
+    /* 마우스 오버 시에만 하부 메뉴 슬롯이 드러나도록 CSS 우선순위 강제 */
     .nav-item:hover .dropdown {
         display: block !important;
     }
 </style>
 
-<!-- 🛠️ 글로벌 가로 정렬 헤더 레이아웃 (원본 디자인 100% 보존) -->
+<!-- 🛠️ 글로벌 가로 정렬 헤더 레이아웃 -->
 <nav class="fixed top-0 left-0 w-full z-[999999] bg-white border-b border-gray-100 h-20">
     <div class="max-w-[1400px] mx-auto px-6 h-full flex justify-between items-center relative">
         
@@ -69,10 +69,14 @@
             <a href="contact.html" class="hover:text-[#1e3a8a] transition-colors">견적문의</a>
             <a href="notice.html" class="hover:text-[#1e3a8a] transition-colors">공지사항</a>
             <div class="flex items-center gap-3 border-l border-gray-100 pl-10">
-                <svg class="w-7 h-7 text-[#162e59]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 7h6"/>
+                
+                <!-- 💡 [변경 완료] 상단 가로선과 하단 홈버튼이 완벽히 들어간 새 휴대폰 SVG 아이콘 -->
+                <svg class="w-7 h-7 text-[#162e59]" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="6" y="3" width="12" height="18" rx="2.5" />
+                    <path d="M10 6h4" />
+                    <path d="M11 17.5h2" />
                 </svg>
+                
                 <div class="flex flex-col whitespace-nowrap">
                     <span class="text-[16px] font-black text-[#162e59] leading-tight">010-4192-0882</span>
                     <span class="text-[12px] text-gray-400">camp0882@daum.net</span>
@@ -86,7 +90,7 @@
         </div>
     </div>
 
-    <!-- 모바일 전용 드롭다운 메뉴 맵 레이아웃 -->
+    <!-- 모바일 전용 드롭다운 메뉴 -->
     <div id="componentMobileMenu" class="hidden bg-white border-t border-gray-100 px-6 py-6 w-full shadow-lg">
         <div class="flex flex-col gap-6 text-[15px] font-bold text-gray-800">
             <div class="flex flex-col gap-3">
