@@ -51,7 +51,23 @@
             background: #1e3a8a;
         }
 
-        /* REVEAL */
+        /* 🛠️ [Consistency Update] CSS Animation for Hero Section - JS 없이 초기 로딩 시 부드러운 슬라이딩 구현 */
+        .hero-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* REVEAL (Scroll animation for other content) */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -75,7 +91,8 @@
         /* MOBILE RESPONSIVE */
         @media (max-width: 768px) {
             .hero-title {
-                font-size: 36px !important;
+                /* 🛠️ 모바일 규격 38px로 공지사항/사무공간과 통일 */
+                font-size: 38px !important;
             }
 
             .hero-desc {
@@ -107,20 +124,26 @@
 
     <div id="header"></div>
 
-    <section class="relative h-[500px] flex items-center justify-center text-white overflow-hidden">
+    <!-- HERO 구역 -->
+    <!-- 🛠️ 배경 크기를 공지사항/사무공간과 동일한 h-[400px]로 변경 및 bg-black 추가 -->
+    <section class="relative h-[400px] w-full flex items-center justify-center text-white overflow-hidden bg-black">
         <div class="absolute inset-0 z-0">
             <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2000"
                 class="w-full h-full object-cover brightness-[0.4]">
         </div>
 
-        <div class="relative z-10 text-center px-6">
-            <h1 class="hero-title text-5xl md:text-6xl font-black tracking-tighter mb-6 reveal">
-                상업공간
-            </h1>
-            <p class="hero-desc max-w-2xl mx-auto text-sm md:text-base text-gray-200 leading-relaxed reveal"
-                style="transition-delay: 0.1s;">
-                브랜드의 분위기와 고객 경험을 고려한<br>감각적인 상업 공간 디자인을 제안합니다.
-            </p>
+        <!-- 🛠️ 텍스트 박스 레이아웃 최적화: 수직/수평 절대 중앙 배치 및 CSS 애니메이션 적용 -->
+        <div class="absolute inset-0 z-10 flex flex-col items-center justify-center px-6">
+            <div class="hero-fade-in-up text-center w-full max-w-2xl">
+                <!-- ✏️ 규격 통일: text-4xl md:text-5xl font-bold tracking-tight -->
+                <h1 class="hero-title text-4xl md:text-5xl font-bold tracking-tight mb-6 uppercase">
+                    상업공간
+                </h1>
+                <p class="hero-desc text-sm md:text-base text-gray-200 leading-relaxed"
+                    style="transition-delay: 0.1s;">
+                    브랜드의 분위기와 고객 경험을 고려한<br>감각적인 상업 공간 디자인을 제안합니다.
+                </p>
+            </div>
         </div>
     </section>
 
@@ -221,6 +244,7 @@
             window.open(blogUrl, '_blank');
         }
 
+        // 🛠️ Reveal 함수 최적화 (Hero section 제외)
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
@@ -236,6 +260,7 @@
         window.addEventListener("scroll", reveal);
         window.addEventListener('resize', checkScrollContact);
         
+        // 초기 실행
         reveal();
         setTimeout(checkScrollContact, 400);
     </script>
