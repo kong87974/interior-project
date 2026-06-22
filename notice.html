@@ -29,19 +29,19 @@
             background-color: #fcfdff;
         }
 
-        /* 🛠️ [구조 분리] 글자 박스 자체는 중앙에 고정하고 내부 요소만 슬라이딩되도록 격리 */
-        .reveal-text {
+        /* 🛠️ Y축 정렬과 충돌나지 않도록 투명도와 미세한 진입 효과만 분리 처리 */
+        .reveal-hero {
             opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s ease-out;
+            margin-top: 15px;
+            transition: opacity 0.8s ease-out, margin-top 0.8s ease-out;
         }
 
-        .reveal-text.active {
+        .reveal-hero.active {
             opacity: 1;
-            transform: translateY(0);
+            margin-top: 0;
         }
 
-        /* 하단 게시판용 reveal 기본 유지 */
+        /* 하단 게시판용 reveal */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -69,21 +69,21 @@
 
     <div id="header"></div>
 
-    <section class="relative h-[400px] w-full text-white overflow-hidden">
+    <section class="relative h-[400px] w-full flex items-center justify-center text-white overflow-hidden bg-black">
 
         <div class="absolute inset-0 z-0">
             <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=2000"
                 class="w-full h-full object-cover brightness-[0.4]" />
         </div>
 
-        <div class="absolute inset-0 z-10 w-full flex flex-col items-center justify-center text-center px-6">
+        <div class="relative z-10 w-full px-6 flex justify-center text-center">
             
-            <div class="reveal-text flex flex-col items-center justify-center text-center w-full">
+            <div class="reveal-hero w-full max-w-2xl flex flex-col items-center justify-center">
                 <h1 class="hero-title w-full text-center text-4xl md:text-5xl font-bold tracking-tight mb-4 uppercase">
                     공지사항
                 </h1>
 
-                <p class="hero-sub w-full text-center max-w-2xl mx-auto text-sm md:text-base text-gray-200 leading-relaxed">
+                <p class="hero-sub w-full text-center text-sm md:text-base text-gray-200 leading-relaxed">
                     블루디자인의 새로운 소식을 전해드립니다.
                 </p>
             </div>
@@ -148,17 +148,17 @@
             }
         };
 
-        // reveal 및 reveal-text 애니메이션 스크롤 제어 함수 수립
+        // 애니메이션 제어
         function checkReveal() {
             const windowHeight = window.innerHeight;
             
-            // 상단 타이틀 애니메이션 제어
-            const heroText = document.querySelector('.reveal-text');
+            // 상단 타이틀 구동
+            const heroText = document.querySelector('.reveal-hero');
             if (heroText) {
                 heroText.classList.add('active');
             }
 
-            // 하단 본문 요소 애니메이션 제어
+            // 하단 본문 구동
             const reveals = document.querySelectorAll('.reveal');
             reveals.forEach(el => {
                 const revealTop = el.getBoundingClientRect().top;
@@ -169,8 +169,7 @@
         }
 
         window.addEventListener('scroll', checkReveal);
-        // 비동기 로드 속도 고려 초기 구동 지연 실행 설정
-        setTimeout(checkReveal, 100);
+        setTimeout(checkReveal, 150);
     </script>
 
 </body>
