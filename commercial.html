@@ -29,7 +29,7 @@
             max-width: 100%;
         }
 
-        /* 🛠️ TAB STYLE: 사무공간(office.html)과 자로 잰 듯 똑같은 두께와 포지션을 갖도록 CSS 직접 매칭 */
+        /* 탭 링크 스타일 일치 */
         .tab-link {
             position: relative;
             padding-bottom: 8px;
@@ -51,7 +51,7 @@
             background: #1e3a8a;
         }
 
-        /* 🛠️ [Consistency Update] CSS Animation for Hero Section - JS 없이 초기 로딩 시 부드러운 슬라이딩 구현 */
+        /* 히어로 배경 앤업 스무스 슬라이딩 */
         .hero-fade-in-up {
             animation: fadeInUp 0.8s ease-out forwards;
         }
@@ -67,7 +67,7 @@
             }
         }
 
-        /* REVEAL (Scroll animation for other content) */
+        /* 스크롤 트리거 애니메이션 */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -79,7 +79,7 @@
             transform: translateY(0);
         }
 
-        /* ✨ 우측 하단 연락처 글자 색상 실시간 제어 스타일 */
+        /* 우측 고정 연락처 제어 */
         .dynamic-contact-text {
             color: #162e59;
             transition: color 0.3s ease;
@@ -88,10 +88,32 @@
             color: #ffffff !important;
         }
 
+        /* 페이지네이션 원형 버튼 통일 규격 */
+        .page-btn {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 14px;
+            font-weight: bold;
+            color: #6b7280;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .page-btn:hover {
+            background-color: #f3f4f6;
+            color: #111827;
+        }
+        .page-btn.active {
+            background-color: #1e3a8a;
+            color: white;
+        }
+
         /* MOBILE RESPONSIVE */
         @media (max-width: 768px) {
             .hero-title {
-                /* 🛠️ 모바일 규격 38px로 공지사항/사무공간과 통일 */
                 font-size: 38px !important;
             }
 
@@ -104,18 +126,13 @@
                 gap: 32px !important;
             }
 
+            .project-grid {
+                grid-template-columns: 1fr !important;
+                gap-y: 40px !important;
+            }
+
             .contact-box { right: 20px !important; bottom: 20px !important; }
             .contact-box p:first-child { font-size: 16px !important; }
-
-            footer {
-                text-align: center;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                gap: 20px;
-                align-items: center !important;
-            }
         }
     </style>
 </head>
@@ -125,17 +142,14 @@
     <div id="header"></div>
 
     <!-- HERO 구역 -->
-    <!-- 🛠️ 배경 크기를 공지사항/사무공간과 동일한 h-[400px]로 변경 및 bg-black 추가 -->
     <section class="relative h-[400px] w-full flex items-center justify-center text-white overflow-hidden bg-black">
         <div class="absolute inset-0 z-0">
             <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2000"
                 class="w-full h-full object-cover brightness-[0.4]">
         </div>
 
-        <!-- 🛠️ 텍스트 박스 레이아웃 최적화: 수직/수평 절대 중앙 배치 및 CSS 애니메이션 적용 -->
         <div class="absolute inset-0 z-10 flex flex-col items-center justify-center px-6">
             <div class="hero-fade-in-up text-center w-full max-w-2xl">
-                <!-- ✏️ 규격 통일: text-4xl md:text-5xl font-bold tracking-tight -->
                 <h1 class="hero-title text-4xl md:text-5xl font-bold tracking-tight mb-6 uppercase">
                     상업공간
                 </h1>
@@ -147,6 +161,7 @@
         </div>
     </section>
 
+    <!-- CATEGORY TAB -->
     <div class="border-b border-gray-100 mb-16">
         <div class="tab-wrap max-w-[1400px] mx-auto flex justify-center gap-12 py-6 text-[14px] font-medium text-gray-400">
             <a href="project_all.html" class="tab-link">전체보기</a>
@@ -155,14 +170,18 @@
         </div>
     </div>
 
-    <section class="py-40 bg-white text-center">
-        <div class="max-w-[1400px] mx-auto px-6 reveal">
-            <p class="text-gray-400 text-sm tracking-wide font-light">
-                현재 등록된 상업공간 포트폴리오가 없습니다.
-            </p>
+    <!-- MAIN PORTFOLIO GRID -->
+    <main class="max-w-[1400px] mx-auto px-6 pb-32">
+        <div id="commercialProjectGrid" class="project-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10 min-h-[300px]">
+            <!-- 스크립트가 꽂히는 구역 -->
         </div>
-    </section>
 
+        <div id="pagination-container" class="flex justify-center gap-2 mt-20">
+            <!-- 버튼 자동 생성 -->
+        </div>
+    </main>
+
+    <!-- 브랜드 메시지 및 컨택트 세션 -->
     <section class="py-28 bg-[#f8fafc]">
         <div class="max-w-[1000px] mx-auto px-6 text-center reveal">
             <h2 class="text-3xl md:text-5xl font-black tracking-tighter mb-6">
@@ -178,6 +197,7 @@
         </div>
     </section>
 
+    <!-- 우측 하단 유틸 연락처 박스 -->
     <div class="contact-box fixed bottom-10 right-10 z-[99999] flex flex-col items-end select-none">
         <div id="dynamic-text-target" class="dynamic-contact-text mb-5 flex flex-col items-end text-right">
             <p class="text-[21px] font-black tracking-tighter">010-4192-0882</p>
@@ -196,26 +216,100 @@
     <div id="footer"></div>
 
     <script>
-        // header/footer 불러오기
+        // ==========================================
+        // 1. 상업공간 전용 포트폴리오 데이터 리스트
+        // ==========================================
+        const commercialProjects = [
+            {
+                title: "[오산] 브랜딩 프리미엄 쇼룸",
+                tag: "상업공간 / 이미지월 및 익스테리어 파사드 공사",
+                img: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800", 
+                link: "commercial_detail_01.html" // 💡 파일 이름을 정확하게 매칭했습니다!
+            }
+        ];
+
+        // ==========================================
+        // 2. 페이지네이션 모듈 세팅
+        // ==========================================
+        const itemsPerPage = 9;
+        let currentPage = 1;
+
+        function renderCommercialProjects(page) {
+            const container = document.getElementById('commercialProjectGrid');
+            if(!container) return;
+
+            container.innerHTML = "";
+
+            const startIndex = (page - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const currentItems = commercialProjects.slice(startIndex, endIndex);
+
+            currentItems.forEach(project => {
+                const html = `
+                    <a href="${project.link}" class="project-card group block reveal">
+                        <div class="overflow-hidden bg-gray-100 aspect-video mb-6 rounded-lg shadow-sm">
+                            <img src="${project.img}"
+                                class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                                alt="${project.title}">
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold tracking-tight group-hover:text-[#1e3a8a] transition-colors mb-1.5">
+                                ${project.title}
+                            </h3>
+                            <p class="text-[13px] text-[#1e3a8a] font-bold tracking-widest uppercase">
+                                ${project.tag}
+                            </p>
+                        </div>
+                    </a>
+                `;
+                container.innerHTML += html;
+            });
+
+            setTimeout(reveal, 100);
+        }
+
+        function renderPagination() {
+            const totalPages = Math.ceil(commercialProjects.length / itemsPerPage);
+            const paginationContainer = document.getElementById('pagination-container');
+            if(!paginationContainer) return;
+
+            paginationContainer.innerHTML = "";
+            if (totalPages <= 1) return;
+
+            for (let i = 1; i <= totalPages; i++) {
+                const btn = document.createElement('div');
+                btn.className = `page-btn ${i === currentPage ? 'active' : ''}`;
+                btn.innerText = i;
+                
+                btn.addEventListener('click', () => {
+                    currentPage = i;
+                    renderCommercialProjects(currentPage);
+                    renderPagination();
+                    window.scrollTo({ top: 400, behavior: 'smooth' }); 
+                });
+
+                paginationContainer.appendChild(btn);
+            }
+        }
+
+        // 초기화 가동
+        renderCommercialProjects(currentPage);
+        renderPagination();
+
+        // 컴포넌트 비동기 로드
         fetch('./components/header.html')
             .then(res => res.text())
-            .then(data => {
-                document.getElementById('header').innerHTML = data;
-            });
+            .then(data => { document.getElementById('header').innerHTML = data; });
 
         fetch('./components/footer.html')
             .then(res => res.text())
-            .then(data => {
-                document.getElementById('footer').innerHTML = data;
-            });
+            .then(data => { document.getElementById('footer').innerHTML = data; });
 
         window.toggleMenu = function () {
             const menu = document.getElementById("mobileMenu");
-            if (menu) {
-                menu.classList.toggle("hidden");
-            }
+            if (menu) menu.classList.toggle("hidden");
         };
-        
+
         function checkScrollContact() {
             const windowHeight = window.innerHeight;
             const textTarget = document.getElementById('dynamic-text-target');
@@ -233,24 +327,16 @@
 
         function openNaverBlog() {
             const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            
-            let blogUrl = "";
-            if (isMobile) {
-                blogUrl = "https://m.blog.naver.com/zinux_?noTrackingCode=true&proxyReferer=&tab=1";
-            } else {
-                blogUrl = "https://blog.naver.com/zinux_";
-            }
-            
+            let blogUrl = isMobile ? "https://m.blog.naver.com/zinux_?noTrackingCode=true&proxyReferer=&tab=1" : "https://blog.naver.com/zinux_";
             window.open(blogUrl, '_blank');
         }
 
-        // 🛠️ Reveal 함수 최적화 (Hero section 제외)
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
                 var windowHeight = window.innerHeight;
                 var elementTop = reveals[i].getBoundingClientRect().top;
-                if (elementTop < windowHeight - 100) {
+                if (elementTop < windowHeight - 50) {
                     reveals[i].classList.add("active");
                 }
             }
@@ -259,9 +345,6 @@
 
         window.addEventListener("scroll", reveal);
         window.addEventListener('resize', checkScrollContact);
-        
-        // 초기 실행
-        reveal();
         setTimeout(checkScrollContact, 400);
     </script>
 </body>
