@@ -71,7 +71,8 @@
         /* MOBILE RESPONSIVE */
         @media (max-width: 768px) {
             .hero-title {
-                font-size: 36px !important;
+                /* 공지사항 모바일 규격인 38px과 일치하도록 튜닝 */
+                font-size: 38px !important;
             }
 
             .hero-desc {
@@ -104,13 +105,17 @@
         </div>
     </div>
 
+    <!-- HERO 구역 -->
     <section class="relative h-[500px] flex items-center justify-center text-white overflow-hidden">
+        <!-- BG -->
         <div class="absolute inset-0 z-0">
             <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000"
                 class="w-full h-full object-cover brightness-[0.4]">
         </div>
+        <!-- TEXT -->
         <div class="relative z-10 text-center px-6">
-            <h1 class="hero-title text-5xl md:text-6xl font-medium tracking-tighter mb-6 reveal">
+            <!-- ✏️ 공지사항 페이지와 글씨 크기 및 두께(text-5xl md:text-6xl font-medium)를 완벽하게 일치시켰습니다. -->
+            <h1 class="hero-title text-5xl md:text-6xl font-medium tracking-tight mb-6 reveal">
                 사무공간
             </h1>
             <p class="hero-desc max-w-2xl mx-auto text-sm md:text-base text-gray-200 leading-relaxed reveal"
@@ -120,6 +125,7 @@
         </div>
     </section>
 
+    <!-- CATEGORY TAB -->
     <div class="border-b border-gray-100 mb-16">
         <div class="tab-wrap max-w-[1400px] mx-auto flex justify-center gap-12 py-6 text-[14px] font-medium text-gray-400">
             <a href="project_all.html" class="tab-link">전체보기</a>
@@ -128,11 +134,14 @@
         </div>
     </div>
 
+    <!-- MAIN PORTFOLIO GRID -->
     <main class="max-w-[1400px] mx-auto px-6 pb-40">
         <div id="officeProjectGrid" class="project-grid grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-20">
-            </div>
+            <!-- 자바스크립트 바인딩 구역 -->
+        </div>
     </main>
 
+    <!-- 고정형 연락처 컴포넌트 -->
     <div class="contact-box fixed bottom-10 right-10 z-[99999] flex flex-col items-end select-none">
         <div id="dynamic-text-target" class="dynamic-contact-text mb-5 flex flex-col items-end text-right">
             <p class="text-[21px] font-black tracking-tighter">010-4192-0882</p>
