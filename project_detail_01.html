@@ -33,7 +33,6 @@
             <p class="text-sm md:text-base text-gray-400 font-medium tracking-wide">Labor Attorney Office Project</p>
         </div>
 
-
         <div class="border-t border-b border-gray-300 py-8 my-10">
             <div class="text-center text-xs md:text-sm font-extrabold tracking-[0.2em] text-gray-800 uppercase mb-8">
                 · PROJECT DETAILS ·
@@ -61,35 +60,73 @@
 
         <div class="mt-16 space-y-20">
 
-            <div class="w-full">
-                <div class="overflow-hidden rounded-sm shadow-sm">
-                    <img src="https://imgur.com/HBTjbpu.jpg" 
-                         alt="동탄 노무사 인테리어 전경 1" 
-                         class="w-full h-auto object-cover hover:scale-[1.01] transition duration-700">
+            <!-- 💡 1번 섹션: 기존 사진 2장을 나란히 (PC 2열, 모바일 1열) -->
+            <div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+                    
+                    <!-- 사진 1 -->
+                    <div class="w-full">
+                        <!-- aspect-[4/3]로 사진 크기 통일하여 레이아웃 무너짐 방지 -->
+                        <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                            <img src="https://imgur.com/HBTjbpu.jpg" 
+                                 alt="동탄 노무사 인테리어 전경 1" 
+                                 class="w-full h-full object-cover hover:scale-[1.01] transition duration-700">
+                        </div>
+                        <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 정돈된 라인감의 블랙 프레임 파티션</p>
+                    </div>
+
+                    <!-- 사진 2 -->
+                    <div class="w-full">
+                        <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                            <img src="https://imgur.com/U1XBpZV.jpg" 
+                                 alt="동탄 노무사 인테리어 전경 2" 
+                                 class="w-full h-full object-cover hover:scale-[1.01] transition duration-700">
+                        </div>
+                        <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 개방감과 프라이버시를 유지한 공간</p>
+                    </div>
+
                 </div>
-                <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 정돈된 라인감의 블랙 프레임 파티션과 불투명 시공을 적용한 상담실 전경</p>
-            </div>
 
-            <div class="max-w-[850px] mx-auto text-center py-6 px-4">
-                <h3 class="text-lg md:text-xl font-bold text-gray-850 mb-4">01. 신뢰감을 주는 모던 미니멀 레이아웃</h3>
-                <p class="text-gray-500 leading-8 text-[15px] md:text-[16px] break-keep">
-                    의뢰인과의 심도 깊은 상담이 주를 이루는 법인 공간인 만큼, 시선은 부드럽게 차단하되 전체적인 개방감을 해치지 않도록 조도를 면밀히 설계했습니다. 직선 위주의 가구 배치로 정갈한 인상을 줍니다.
-                </p>
-            </div>
-
-            <div class="w-full">
-                <div class="overflow-hidden rounded-sm shadow-sm">
-                    <img src="https://imgur.com/U1XBpZV.jpg" 
-                         alt="동탄 노무사 인테리어 전경 2" 
-                         class="w-full h-auto object-cover hover:scale-[1.01] transition duration-700">
+                <div class="max-w-[850px] mx-auto text-center py-10 px-4">
+                    <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-4">01. 신뢰감을 주는 모던 미니멀 레이아웃</h3>
+                    <p class="text-gray-500 leading-8 text-[15px] md:text-[16px] break-keep">
+                        의뢰인과의 심도 깊은 상담이 주를 이루는 법인 공간인 만큼, 시선은 부드럽게 차단하되 전체적인 개방감을 해치지 않도록 조도를 면밀히 설계했습니다. 직선 위주의 가구 배치로 정갈한 인상을 줍니다.
+                    </p>
                 </div>
             </div>
 
-            <div class="max-w-[850px] mx-auto text-center py-6 px-4">
-                <h3 class="text-lg md:text-xl font-bold text-gray-850 mb-4">02. 쾌적한 동선과 마감재의 균형</h3>
-                <p class="text-gray-500 leading-8 text-[15px] md:text-[16px] break-keep">
-                    바닥면의 은은한 폴리싱 타일 마감은 천장의 간접 조명을 부드럽게 반사하여 공간이 한층 더 넓어 보이는 시각적 효과를 줍니다. 실무 효율성을 높이기 위해 직원 동선과 방문객 동선을 깔끔하게 이원화했습니다.
-                </p>
+            <!-- 💡 2번 섹션: 새로 추가된 사진 2장을 나란히 (PC 2열, 모바일 1열) -->
+            <div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+                    
+                    <!-- 사진 3 (추가) -->
+                    <div class="w-full">
+                        <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                            <!-- ✏️ 아래 src 주소를 세번째 사진 주소로 교체하세요 -->
+                            <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1600" 
+                                 alt="동탄 노무사 인테리어 전경 3" 
+                                 class="w-full h-full object-cover hover:scale-[1.01] transition duration-700">
+                        </div>
+                    </div>
+
+                    <!-- 사진 4 (추가) -->
+                    <div class="w-full">
+                        <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                            <!-- ✏️ 아래 src 주소를 네번째 사진 주소로 교체하세요 -->
+                            <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=1600" 
+                                 alt="동탄 노무사 인테리어 전경 4" 
+                                 class="w-full h-full object-cover hover:scale-[1.01] transition duration-700">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="max-w-[850px] mx-auto text-center py-10 px-4">
+                    <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-4">02. 쾌적한 동선과 마감재의 균형</h3>
+                    <p class="text-gray-500 leading-8 text-[15px] md:text-[16px] break-keep">
+                        바닥면의 은은한 폴리싱 타일 마감은 천장의 간접 조명을 부드럽게 반사하여 공간이 한층 더 넓어 보이는 시각적 효과를 줍니다. 실무 효율성을 높이기 위해 직원 동선과 방문객 동선을 깔끔하게 이원화했습니다.
+                    </p>
+                </div>
             </div>
 
         </div>
