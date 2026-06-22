@@ -128,7 +128,6 @@
 
 <body class="bg-white">
 
-    <!-- 💡 옛날 하드코딩 내비게이션 태그를 지우고 공통 헤더가 들어올 자리를 만들었습니다 -->
     <div id="header"></div>
 
     <section class="relative min-h-screen w-full z-0">
@@ -283,7 +282,7 @@
     <div id="footer"></div>
 
 <script>
-// 💡 하단 스크립트에 공통 헤더를 정상적으로 로드하는 코드를 완벽하게 심었습니다.
+// 💡 헤더 비동기 로드 스크립트를 정상 작동하도록 완전히 주입했습니다.
 fetch('./components/header.html')
 .then(res => res.text())
 .then(data => {
