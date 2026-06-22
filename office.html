@@ -92,7 +92,7 @@
 
 <body class="bg-white text-gray-900">
 
-    <div id="header"></div>
+    <nav id="header"></nav>
 
     <div id="mobileMenu"
         class="hidden fixed top-[70px] left-0 w-full bg-white z-40 border-b border-gray-100 px-6 py-8 md:hidden">
@@ -104,16 +104,13 @@
         </div>
     </div>
 
-    <!-- HERO 구역 -->
     <section class="relative h-[500px] flex items-center justify-center text-white overflow-hidden">
-        <!-- BG -->
         <div class="absolute inset-0 z-0">
             <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000"
                 class="w-full h-full object-cover brightness-[0.4]">
         </div>
-        <!-- TEXT -->
         <div class="relative z-10 text-center px-6">
-            <h1 class="hero-title text-5xl md:text-6xl font-black tracking-tighter mb-6 reveal">
+            <h1 class="hero-title text-5xl md:text-6xl font-medium tracking-tighter mb-6 reveal">
                 사무공간
             </h1>
             <p class="hero-desc max-w-2xl mx-auto text-sm md:text-base text-gray-200 leading-relaxed reveal"
@@ -123,7 +120,6 @@
         </div>
     </section>
 
-    <!-- CATEGORY TAB -->
     <div class="border-b border-gray-100 mb-16">
         <div class="tab-wrap max-w-[1400px] mx-auto flex justify-center gap-12 py-6 text-[14px] font-medium text-gray-400">
             <a href="project_all.html" class="tab-link">전체보기</a>
@@ -132,15 +128,11 @@
         </div>
     </div>
 
-    <!-- MAIN PORTFOLIO GRID -->
     <main class="max-w-[1400px] mx-auto px-6 pb-40">
-        <!-- 🛠️ 5개의 실제 프로젝트만 노출되고 빈자리나 가짜 카드는 완전히 삭제되었습니다 -->
         <div id="officeProjectGrid" class="project-grid grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-20">
-            <!-- 자바스크립트 바인딩 구역 -->
-        </div>
+            </div>
     </main>
 
-    <!-- 고정형 연락처 컴포넌트 -->
     <div class="contact-box fixed bottom-10 right-10 z-[99999] flex flex-col items-end select-none">
         <div id="dynamic-text-target" class="dynamic-contact-text mb-5 flex flex-col items-end text-right">
             <p class="text-[21px] font-black tracking-tighter">010-4192-0882</p>
@@ -159,7 +151,7 @@
     <div id="footer"></div>
 
     <script>
-        // 사무공간 데이터 리스트 (상업공간에서 이전 완료)
+        // 사무공간 데이터 리스트
         const officeProjects = [
             {
                 title: "노무법인세명 사무실",
