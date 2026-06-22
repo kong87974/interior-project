@@ -14,7 +14,6 @@
         href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
 
     <style>
-
         body {
             font-family: "Pretendard", sans-serif;
             letter-spacing: -0.02em;
@@ -30,32 +29,27 @@
             background-color: #fcfdff;
         }
 
-        /* 🛠️ [충돌 해결] 원래의 슬라이딩 애니메이션 효과 완벽 복구 */
+        /* 🛠️ 슬라이딩 업 애니메이션 복구 */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.8s ease-out;
         }
 
-        /* 🛠️ [충돌 해결] 정중앙 틀어짐을 유발하던 요소를 완전히 도려내고 복구 완료 */
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
 
         @media (max-width: 768px) {
-
             .hero-title {
                 font-size: 38px !important;
             }
-
             .hero-sub {
                 font-size: 14px !important;
                 line-height: 1.8;
             }
-
         }
-
     </style>
 </head>
 
@@ -63,14 +57,14 @@
 
     <div id="header"></div>
 
-    <section class="relative h-[400px] w-full flex items-center justify-center text-white overflow-hidden">
+    <section class="relative h-[400px] w-full text-white overflow-hidden">
 
         <div class="absolute inset-0 z-0">
             <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=2000"
                 class="w-full h-full object-cover brightness-[0.4]" />
         </div>
 
-        <div class="absolute inset-0 z-10 w-full flex flex-col items-center justify-center text-center px-6">
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 w-full max-w-4xl text-center px-6">
             
             <div class="reveal flex flex-col items-center justify-center text-center w-full">
                 <h1 class="hero-title w-full text-center text-4xl md:text-5xl font-bold tracking-tight mb-4 uppercase">
@@ -89,50 +83,26 @@
     <main class="max-w-[1100px] mx-auto px-6 pt-20 pb-40">
 
         <div class="hidden md:flex items-center pb-6 border-b-2 border-black text-[13px] font-bold uppercase tracking-wider px-4 reveal">
-
-            <div class="w-20 text-center">
-                No
-            </div>
-
-            <div class="flex-1 px-10">
-                Subject
-            </div>
-
-            <div class="w-32 text-center">
-                Date
-            </div>
-
+            <div class="w-20 text-center">No</div>
+            <div class="flex-1 px-10">Subject</div>
+            <div class="w-32 text-center">Date</div>
         </div>
 
         <div class="divide-y divide-gray-100">
-
-            <a href="notice_01.html"
-                class="notice-row flex flex-col md:flex-row items-center py-8 px-4 group reveal">
-
-                <div class="hidden md:block w-20 text-center text-xs text-gray-400 font-medium">
-                    01
-                </div>
-
+            <a href="notice_01.html" class="notice-row flex flex-col md:flex-row items-center py-8 px-4 group reveal">
+                <div class="hidden md:block w-20 text-center text-xs text-gray-400 font-medium">01</div>
                 <div class="flex-1 md:px-10 mb-2 md:mb-0 w-full md:w-auto">
-
                     <div class="flex items-center gap-3 mb-2">
                         <span class="bg-[#1e3a8a] text-[10px] text-white px-2 py-0.5 font-bold uppercase tracking-tighter">
                             Notice
                         </span>
                     </div>
-
                     <h3 class="text-[16px] font-bold tracking-tight group-hover:text-[#1e3a8a] transition-colors leading-snug">
                         블루디자인 공식 홈페이지가 새롭게 리뉴얼 되었습니다.
                     </h3>
-
                 </div>
-
-                <div class="w-full md:w-32 text-left md:text-center text-xs text-gray-400">
-                    2026.05.05
-                </div>
-
+                <div class="w-full md:w-32 text-left md:text-center text-xs text-gray-400">2026.05.05</div>
             </a>
-
         </div>
 
         <div class="mt-20 flex justify-center gap-2 reveal">
@@ -166,15 +136,7 @@
             }
         };
 
-        // 모바일 메뉴
-        function toggleMenu() {
-            const menu = document.getElementById("mobileMenu");
-            if(menu){
-                menu.classList.toggle("hidden");
-            }
-        }
-
-        // reveal
+        // reveal 애니메이션 스크롤 제어
         window.addEventListener('scroll', () => {
             const reveals = document.querySelectorAll('.reveal');
             reveals.forEach(el => {
