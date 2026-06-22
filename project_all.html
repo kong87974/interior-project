@@ -53,7 +53,6 @@
             transform: translateY(0);
         }
 
-        /* ✨ 우측 하단 연락처 글자 색상 실시간 제어 스타일 */
         .dynamic-contact-text {
             color: #162e59;
             transition: color 0.3s ease;
@@ -104,10 +103,10 @@
 
     <section class="pb-32">
         <div class="max-w-[1400px] mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-16">
 
                 <div class="group cursor-pointer reveal">
-                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-6 rounded-lg shadow-sm">
+                    <div class="relative overflow-hidden aspect-video bg-gray-100 mb-6 rounded-lg shadow-sm">
                         <img src="https://imgur.com/HBTjbpu.jpg"
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="노무법인세명 사무실">
                         
@@ -127,7 +126,7 @@
                 </div>
 
                 <div class="group cursor-pointer reveal">
-                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-6 rounded-lg shadow-sm">
+                    <div class="relative overflow-hidden aspect-video bg-gray-100 mb-6 rounded-lg shadow-sm">
                         <img src="https://imgur.com/c998gUY.jpg"
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="2026-JOIL">
                         
@@ -147,7 +146,7 @@
                 </div>
 
                 <div class="group cursor-pointer reveal">
-                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-6 rounded-lg shadow-sm">
+                    <div class="relative overflow-hidden aspect-video bg-gray-100 mb-6 rounded-lg shadow-sm">
                         <img src="https://imgur.com/mGCrfNi.jpg" 
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Materials">
                         
@@ -167,7 +166,7 @@
                 </div>
 
                 <div class="group cursor-pointer reveal">
-                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-6 rounded-lg shadow-sm">
+                    <div class="relative overflow-hidden aspect-video bg-gray-100 mb-6 rounded-lg shadow-sm">
                         <img src="https://imgur.com/HLuVMfR.jpg"
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="로앤HR컨설팅">
                         
@@ -187,7 +186,7 @@
                 </div>
 
                 <div class="group cursor-pointer reveal">
-                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-6 rounded-lg shadow-sm">
+                    <div class="relative overflow-hidden aspect-video bg-gray-100 mb-6 rounded-lg shadow-sm">
                         <img src="https://imgur.com/ZcHiPra.jpg"
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="삼정오토메이션">
                         
@@ -228,14 +227,12 @@
     <div id="footer"></div>
 
     <script>
-        // header
         fetch('./components/header.html')
             .then(res => res.text())
             .then(data => {
                 document.getElementById('header').innerHTML = data;
             });
 
-        // footer
         fetch('./components/footer.html')
             .then(res => res.text())
             .then(data => {
@@ -249,7 +246,6 @@
             }
         };
 
-        // 스크롤 실시간 감지하여 푸터 진입 시 연락처 폰트 컬러 반전
         function checkScrollContact() {
             const windowHeight = window.innerHeight;
             const textTarget = document.getElementById('dynamic-text-target');
@@ -266,21 +262,16 @@
             }
         }
 
-        // 모바일/PC 식별형 네이버 블로그 링크 포워딩
         function openNaverBlog() {
             const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
             
-            let blogUrl = "";
-            if (isMobile) {
-                blogUrl = "https://m.blog.naver.com/zinux_?noTrackingCode=true&proxyReferer=&tab=1";
-            } else {
-                blogUrl = "https://blog.naver.com/zinux_";
-            }
+            let blogUrl = isMobile 
+                ? "https://m.blog.naver.com/zinux_?noTrackingCode=true&proxyReferer=&tab=1" 
+                : "https://blog.naver.com/zinux_";
             
             window.open(blogUrl, '_blank');
         }
 
-        // reveal animation & 스크롤 연동 통합
         function reveal() {
             const reveals = document.querySelectorAll(".reveal");
             for (let i = 0; i < reveals.length; i++) {
