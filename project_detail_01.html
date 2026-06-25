@@ -19,6 +19,25 @@
             letter-spacing: -0.02em;
             overflow-x: hidden;
         }
+
+        /* 모달 열렸을 때 배경 스크롤 방지용 */
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        /* 🔒 이미지 복사 방지 CSS */
+        .protected-image {
+            user-select: none;
+            -webkit-user-drag: none;
+            -ms-user-select: none;
+        }
+        
+        /* 🔒 확대 이미지 포인터 이벤트 차단 (우클릭 메뉴 방지) */
+        #modalImage {
+            pointer-events: none;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
     </style>
 </head>
 
@@ -59,26 +78,23 @@
 
         <div class="mt-16 space-y-20">
 
-            <!-- 💡 1번 섹션: 시공 중 사진 (2장 나란히) -->
             <div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
                     
-                    <!-- 사진 1 (시공 중) -->
                     <div class="w-full">
                         <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
                             <img src="https://imgur.com/vEOSLPT.jpg" 
                                  alt="동탄 노무법인 인테리어 시공 중 1" 
-                                 class="w-full h-full object-cover hover:scale-[1.01] transition duration-700">
+                                 class="zoomable-image protected-image w-full h-full object-cover hover:scale-[1.01] transition duration-700 cursor-pointer">
                         </div>
                         <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 공간 분리를 위한 뼈대 및 기초 공사 진행 모습</p>
                     </div>
 
-                    <!-- 사진 2 (시공 중) -->
                     <div class="w-full">
                         <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
                             <img src="https://imgur.com/qyW5CIm.jpg" 
                                  alt="동탄 노무법인 인테리어 시공 중 2" 
-                                 class="w-full h-full object-cover hover:scale-[1.01] transition duration-700">
+                                 class="zoomable-image protected-image w-full h-full object-cover hover:scale-[1.01] transition duration-700 cursor-pointer">
                         </div>
                         <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 정확한 레이아웃에 따른 골조 및 배선 작업</p>
                     </div>
@@ -93,26 +109,23 @@
                 </div>
             </div>
 
-            <!-- 💡 2번 섹션: 시공 완료 사진 (2장 나란히) -->
             <div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
                     
-                    <!-- 사진 3 (시공 완료) -->
                     <div class="w-full">
                         <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
                             <img src="https://imgur.com/yGpG6s7.jpg" 
                                  alt="동탄 노무법인 인테리어 시공 완료 1" 
-                                 class="w-full h-full object-cover hover:scale-[1.01] transition duration-700">
+                                 class="zoomable-image protected-image w-full h-full object-cover hover:scale-[1.01] transition duration-700 cursor-pointer">
                         </div>
                         <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 깔끔하게 마감된 업무 공간 및 복도 전경</p>
                     </div>
 
-                    <!-- 사진 4 (시공 완료) -->
                     <div class="w-full">
                         <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
                             <img src="https://imgur.com/0kzpzsH.jpg" 
                                  alt="동탄 노무법인 인테리어 시공 완료 2" 
-                                 class="w-full h-full object-cover hover:scale-[1.01] transition duration-700">
+                                 class="zoomable-image protected-image w-full h-full object-cover hover:scale-[1.01] transition duration-700 cursor-pointer">
                         </div>
                         <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 블랙 프레임과 반투명 시트로 완성된 개별 상담실</p>
                     </div>
@@ -132,6 +145,15 @@
     </main>
 
     <div id="footer"></div>
+
+    <div id="imageModal" class="fixed inset-0 z-[999999] hidden bg-black/90 flex items-center justify-center opacity-0 transition-opacity duration-300">
+        <button id="closeModal" class="absolute top-6 right-6 text-white hover:text-gray-400 focus:outline-none z-50">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <img id="modalImage" src="" alt="확대 이미지" class="protected-image max-h-[90vh] max-w-[90vw] object-contain shadow-2xl rounded-sm scale-95 transition-transform duration-300">
+    </div>
 
     <script>
         // header
@@ -154,6 +176,63 @@
                 menu.classList.toggle("hidden");
             }
         };
+
+        // 🖼️ 이미지 확대(모달) 및 보호 기능 스크립트
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const closeBtn = document.getElementById('closeModal');
+            const images = document.querySelectorAll('.zoomable-image');
+
+            // 이미지 클릭 시 모달 열기
+            images.forEach(img => {
+                img.addEventListener('click', () => {
+                    modalImg.src = img.src; // 클릭한 이미지 주소를 모달 이미지에 전달
+                    modal.classList.remove('hidden');
+                    document.body.classList.add('modal-open'); // 뒤 배경 스크롤 방지
+                    
+                    // 약간의 딜레이 후 opacity와 scale을 변경하여 부드러운 애니메이션 효과
+                    setTimeout(() => {
+                        modal.classList.remove('opacity-0');
+                        modalImg.classList.remove('scale-95');
+                        modalImg.classList.add('scale-100');
+                    }, 10);
+                });
+            });
+
+            // 모달 닫기 함수
+            const closeModalFunc = () => {
+                modal.classList.add('opacity-0');
+                modalImg.classList.remove('scale-100');
+                modalImg.classList.add('scale-95');
+                document.body.classList.remove('modal-open'); // 스크롤 방지 해제
+                
+                // 애니메이션이 끝난 후 hidden 처리
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    modalImg.src = ''; 
+                }, 300);
+            };
+
+            // 닫기 버튼 또는 여백 클릭 시 모달 닫기
+            closeBtn.addEventListener('click', closeModalFunc);
+            modal.addEventListener('click', (e) => {
+                // 이미지가 아닌 검은색 배경 영역 클릭 시 닫히도록 설정
+                if (e.target === modal) {
+                    closeModalFunc();
+                }
+            });
+
+            // 🔒 이미지 보호를 위한 추가 스크립트: 마우스 우클릭 차단
+            document.querySelectorAll('.protected-image').forEach(el => {
+                el.addEventListener('contextmenu', (e) => {
+                    e.preventDefault(); // 기본 우클릭 메뉴를 띄우지 않음
+                });
+            });
+            modalImg.addEventListener('contextmenu', (e) => {
+                e.preventDefault(); // 확대 이미지에서도 우클릭 차단
+            });
+        });
     </script>
 
 </body>
