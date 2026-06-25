@@ -19,6 +19,25 @@
             letter-spacing: -0.02em;
             overflow-x: hidden;
         }
+
+        /* 모달 열렸을 때 배경 스크롤 방지용 */
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        /* 🔒 이미지 복사 방지 CSS */
+        .protected-image {
+            user-select: none;
+            -webkit-user-drag: none;
+            -ms-user-select: none;
+        }
+        
+        /* 🔒 확대 이미지 포인터 이벤트 차단 (우클릭 메뉴 방지) */
+        #modalImage {
+            pointer-events: none;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
     </style>
 </head>
 
@@ -57,16 +76,14 @@
             </div>
         </div>
 
-
         <div class="mt-16 space-y-20">
 
-            <!-- 💡 1번 섹션: 단독 레이아웃 (완공 사진) -->
             <div>
                 <div class="w-full">
                     <div class="overflow-hidden rounded-sm shadow-sm aspect-video">
                         <img src="https://imgur.com/hkhTopY.jpg" 
                              alt="복층 사무실 인테리어 완공 전경" 
-                             class="w-full h-full object-cover hover:scale-[1.01] transition duration-700">
+                             class="zoomable-image protected-image w-full h-full object-cover hover:scale-[1.01] transition duration-700 cursor-pointer">
                     </div>
                     <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 공간의 입체감이 돋보이는 완성된 복층 오피스의 웅장한 메인 전경</p>
                 </div>
@@ -74,19 +91,18 @@
                 <div class="max-w-[850px] mx-auto text-center py-10 px-4">
                     <h3 class="text-lg md:text-xl font-bold text-gray-850 mb-4">01. 층고의 매력을 살린 하이엔드 복층 오피스</h3>
                     <p class="text-gray-500 leading-8 text-[15px] md:text-[16px] break-keep">
-                        압도적인 개방감을 자랑하는 복층 오피스의 완성된 첫인상입니다. 상하층이 자연스럽게 이어지면서도 각자의 독립된 기능을 수행할 수 있도록 설계하였으며, 모던한 조명과 마감재가 어우러져 신뢰감 있는 기업의 이미지를 전달합니다.
+                        압도적인 개방감이 자랑하는 복층 오피스의 완성된 첫인상입니다. 상하층이 자연스럽게 이어지면서도 각자의 독립된 기능을 수행할 수 있도록 설계하였으며, 모던한 조명과 마감재가 어우러져 신뢰감 있는 기업의 이미지를 전달합니다.
                     </p>
                 </div>
             </div>
 
-            <!-- 💡 2번 섹션: 2배열 레이아웃 (시공 중 1, 2) -->
             <div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
                     <div class="w-full">
                         <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
                             <img src="https://imgur.com/dXZulzA.jpg" 
                                  alt="사무실 복층 철골 공사" 
-                                 class="w-full h-full object-cover hover:scale-[1.01] transition duration-700">
+                                 class="zoomable-image protected-image w-full h-full object-cover hover:scale-[1.01] transition duration-700 cursor-pointer">
                         </div>
                         <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 튼튼하고 안전한 복층 슬래브를 위한 철골 프레임 골조 공사</p>
                     </div>
@@ -95,7 +111,7 @@
                         <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
                             <img src="https://imgur.com/ZHIuRIe.jpg" 
                                  alt="사무실 복층 기초 배선" 
-                                 class="w-full h-full object-cover hover:scale-[1.01] transition duration-700">
+                                 class="zoomable-image protected-image w-full h-full object-cover hover:scale-[1.01] transition duration-700 cursor-pointer">
                         </div>
                         <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 정확한 레이아웃 설계에 맞춘 하중 분산 및 1·2층 기초 설비 작업</p>
                     </div>
@@ -109,14 +125,13 @@
                 </div>
             </div>
 
-            <!-- 💡 3번 섹션: 2배열 레이아웃 (시공 중 3, 4) -->
             <div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
                     <div class="w-full">
                         <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
                             <img src="https://imgur.com/wiDenff.jpg" 
                                  alt="사무실 가벽 공사" 
-                                 class="w-full h-full object-cover hover:scale-[1.01] transition duration-700">
+                                 class="zoomable-image protected-image w-full h-full object-cover hover:scale-[1.01] transition duration-700 cursor-pointer">
                         </div>
                         <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 업무 효율을 높이는 각 부서별 내부 가벽 및 파티션 신설</p>
                     </div>
@@ -125,7 +140,7 @@
                         <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
                             <img src="https://imgur.com/BsJRaye.jpg" 
                                  alt="사무실 계단 및 구획화" 
-                                 class="w-full h-full object-cover hover:scale-[1.01] transition duration-700">
+                                 class="zoomable-image protected-image w-full h-full object-cover hover:scale-[1.01] transition duration-700 cursor-pointer">
                         </div>
                         <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 상하층을 연결하는 동선 확보 및 디테일한 공간 구획화 과정</p>
                     </div>
@@ -139,14 +154,13 @@
                 </div>
             </div>
 
-            <!-- 💡 4번 섹션: 2배열 레이아웃 (완공 1, 2) -->
             <div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
                     <div class="w-full">
                         <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
                             <img src="https://imgur.com/hmyQGTT.jpg" 
                                  alt="완공된 1층 오픈 워크 스페이스" 
-                                 class="w-full h-full object-cover hover:scale-[1.01] transition duration-700">
+                                 class="zoomable-image protected-image w-full h-full object-cover hover:scale-[1.01] transition duration-700 cursor-pointer">
                         </div>
                         <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 탁 트인 개방감과 쾌적한 층고를 제공하는 1층 메인 업무 공간</p>
                     </div>
@@ -155,7 +169,7 @@
                         <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
                             <img src="https://imgur.com/SV3jGsZ.jpg" 
                                  alt="완공된 통유리 회의실" 
-                                 class="w-full h-full object-cover hover:scale-[1.01] transition duration-700">
+                                 class="zoomable-image protected-image w-full h-full object-cover hover:scale-[1.01] transition duration-700 cursor-pointer">
                         </div>
                         <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 개방감을 유지하면서도 방음 성능을 높인 글라스 파티션 미팅룸</p>
                     </div>
@@ -169,14 +183,13 @@
                 </div>
             </div>
 
-            <!-- 💡 5번 섹션: 2배열 레이아웃 (완공 3, 4) -->
             <div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
                     <div class="w-full">
                         <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
                             <img src="https://imgur.com/s57qxTz.jpg" 
                                  alt="2층으로 이어지는 계단 및 라운지" 
-                                 class="w-full h-full object-cover hover:scale-[1.01] transition duration-700">
+                                 class="zoomable-image protected-image w-full h-full object-cover hover:scale-[1.01] transition duration-700 cursor-pointer">
                         </div>
                         <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 은은한 라인 조명이 더해진 세련된 계단실과 휴게 라운지</p>
                     </div>
@@ -185,7 +198,7 @@
                         <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
                             <img src="https://imgur.com/n5TEVur.jpg" 
                                  alt="2층 프라이빗 임원실 및 업무구역" 
-                                 class="w-full h-full object-cover hover:scale-[1.01] transition duration-700">
+                                 class="zoomable-image protected-image w-full h-full object-cover hover:scale-[1.01] transition duration-700 cursor-pointer">
                         </div>
                         <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 프라이버시가 완벽히 보장되는 2층의 독립적인 임원실 및 집중 업무 구역</p>
                     </div>
@@ -199,14 +212,13 @@
                 </div>
             </div>
 
-            <!-- 💡 6번 섹션: 2배열 레이아웃 (완공 5, 6) -->
             <div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
                     <div class="w-full">
                         <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
                             <img src="https://imgur.com/cKlTQ7N.jpg" 
                                  alt="복층 사무실 마감 디테일" 
-                                 class="w-full h-full object-cover hover:scale-[1.01] transition duration-700">
+                                 class="zoomable-image protected-image w-full h-full object-cover hover:scale-[1.01] transition duration-700 cursor-pointer">
                         </div>
                         <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 공간의 감도를 높여주는 숨겨진 간접 조명과 깔끔한 벽체 라인</p>
                     </div>
@@ -215,7 +227,7 @@
                         <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
                             <img src="https://imgur.com/tXkCKxu.jpg" 
                                  alt="복층 사무실 맞춤 가구 디테일" 
-                                 class="w-full h-full object-cover hover:scale-[1.01] transition duration-700">
+                                 class="zoomable-image protected-image w-full h-full object-cover hover:scale-[1.01] transition duration-700 cursor-pointer">
                         </div>
                         <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 전체적인 톤앤매너에 맞추어 세팅된 프리미엄 맞춤 가구 및 수납장</p>
                     </div>
@@ -234,6 +246,15 @@
     </main>
 
     <div id="footer"></div>
+
+    <div id="imageModal" class="fixed inset-0 z-[999999] hidden bg-black/90 flex items-center justify-center opacity-0 transition-opacity duration-300">
+        <button id="closeModal" class="absolute top-6 right-6 text-white hover:text-gray-400 focus:outline-none z-50">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <img id="modalImage" src="" alt="확대 이미지" class="protected-image max-h-[90vh] max-w-[90vw] object-contain shadow-2xl rounded-sm scale-95 transition-transform duration-300">
+    </div>
 
     <script>
         fetch('./components/header.html')
@@ -254,6 +275,63 @@
                 menu.classList.toggle("hidden");
             }
         };
+
+        // 🖼️ 이미지 확대(모달) 및 보호 기능 스크립트
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const closeBtn = document.getElementById('closeModal');
+            const images = document.querySelectorAll('.zoomable-image');
+
+            // 이미지 클릭 시 모달 열기
+            images.forEach(img => {
+                img.addEventListener('click', () => {
+                    modalImg.src = img.src; // 클릭한 이미지 주소를 모달 이미지에 전달
+                    modal.classList.remove('hidden');
+                    document.body.classList.add('modal-open'); // 뒤 배경 스크롤 방지
+                    
+                    // 약간의 딜레이 후 opacity와 scale을 변경하여 부드러운 애니메이션 효과
+                    setTimeout(() => {
+                        modal.classList.remove('opacity-0');
+                        modalImg.classList.remove('scale-95');
+                        modalImg.classList.add('scale-100');
+                    }, 10);
+                });
+            });
+
+            // 모달 닫기 함수
+            const closeModalFunc = () => {
+                modal.classList.add('opacity-0');
+                modalImg.classList.remove('scale-100');
+                modalImg.classList.add('scale-95');
+                document.body.classList.remove('modal-open'); // 스크롤 방지 해제
+                
+                // 애니메이션이 끝난 후 hidden 처리
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    modalImg.src = ''; 
+                }, 300);
+            };
+
+            // 닫기 버튼 또는 여백 클릭 시 모달 닫기
+            closeBtn.addEventListener('click', closeModalFunc);
+            modal.addEventListener('click', (e) => {
+                // 이미지가 아닌 검은색 배경 영역 클릭 시 닫히도록 설정
+                if (e.target === modal) {
+                    closeModalFunc();
+                }
+            });
+
+            // 🔒 이미지 보호를 위한 추가 스크립트: 마우스 우클릭 차단
+            document.querySelectorAll('.protected-image').forEach(el => {
+                el.addEventListener('contextmenu', (e) => {
+                    e.preventDefault(); // 기본 우클릭 메뉴를 띄우지 않음
+                });
+            });
+            modalImg.addEventListener('contextmenu', (e) => {
+                e.preventDefault(); // 확대 이미지에서도 우클릭 차단
+            });
+        });
     </script>
 
 </body>
