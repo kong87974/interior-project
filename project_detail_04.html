@@ -24,6 +24,20 @@
         body.modal-open {
             overflow: hidden;
         }
+
+        /* 🔒 이미지 복사 방지 CSS */
+        .protected-image {
+            user-select: none;
+            -webkit-user-drag: none;
+            -ms-user-select: none;
+        }
+        
+        /* 🔒 확대 이미지 포인터 이벤트 차단 (우클릭 메뉴 방지) */
+        #modalImage {
+            pointer-events: none;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
     </style>
 </head>
 
@@ -71,7 +85,7 @@
                         <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
                             <img src="https://imgur.com/hUWJzGm.jpg" 
                                  alt="로앤HR컨설팅 파사드 전경 1" 
-                                 class="zoomable-image w-full h-full object-cover hover:scale-[1.01] transition duration-700 cursor-pointer">
+                                 class="zoomable-image protected-image w-full h-full object-cover hover:scale-[1.01] transition duration-700 cursor-pointer">
                         </div>
                         <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 신뢰감을 주는 모던하고 정갈한 디자인의 외부 파사드</p>
                     </div>
@@ -80,7 +94,7 @@
                         <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
                             <img src="https://imgur.com/GgMefqM.jpg" 
                                  alt="로앤HR컨설팅 파사드 및 진입부 2" 
-                                 class="zoomable-image w-full h-full object-cover hover:scale-[1.01] transition duration-700 cursor-pointer">
+                                 class="zoomable-image protected-image w-full h-full object-cover hover:scale-[1.01] transition duration-700 cursor-pointer">
                         </div>
                         <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 기업의 정보가 깔끔하게 정돈되어 전달되는 메인 출입구</p>
                     </div>
@@ -100,7 +114,7 @@
                         <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
                             <img src="https://imgur.com/HU6KdfX.jpg" 
                                  alt="오피스 메인 업무공간 1" 
-                                 class="zoomable-image w-full h-full object-cover hover:scale-[1.01] transition duration-700 cursor-pointer">
+                                 class="zoomable-image protected-image w-full h-full object-cover hover:scale-[1.01] transition duration-700 cursor-pointer">
                         </div>
                         <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 시야를 가리지 않아 넓은 개방감을 제공하는 오픈형 워크 스페이스</p>
                     </div>
@@ -109,7 +123,7 @@
                         <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
                             <img src="https://imgur.com/2Ed0O16.jpg" 
                                  alt="오피스 메인 업무공간 2" 
-                                 class="zoomable-image w-full h-full object-cover hover:scale-[1.01] transition duration-700 cursor-pointer">
+                                 class="zoomable-image protected-image w-full h-full object-cover hover:scale-[1.01] transition duration-700 cursor-pointer">
                         </div>
                         <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 업무 효율을 높이는 쾌적한 동선과 눈이 편안한 조도 계획</p>
                     </div>
@@ -129,7 +143,7 @@
                         <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
                             <img src="https://imgur.com/N37zlsB.jpg" 
                                  alt="유리 파티션 회의실 복도" 
-                                 class="zoomable-image w-full h-full object-cover hover:scale-[1.01] transition duration-700 cursor-pointer">
+                                 class="zoomable-image protected-image w-full h-full object-cover hover:scale-[1.01] transition duration-700 cursor-pointer">
                         </div>
                         <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 슬림한 프레임의 유리 파티션으로 개방감을 살린 내부 복도</p>
                     </div>
@@ -138,7 +152,7 @@
                         <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
                             <img src="https://imgur.com/AQlMFi5.jpg" 
                                  alt="유리 파티션 상담실" 
-                                 class="zoomable-image w-full h-full object-cover hover:scale-[1.01] transition duration-700 cursor-pointer">
+                                 class="zoomable-image protected-image w-full h-full object-cover hover:scale-[1.01] transition duration-700 cursor-pointer">
                         </div>
                         <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 불투명 시트를 시공해 프라이버시를 완벽히 확보한 개별 상담실</p>
                     </div>
@@ -158,7 +172,7 @@
                         <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
                             <img src="https://imgur.com/WV7RWK0.jpg" 
                                  alt="오피스 인테리어 마감 디테일" 
-                                 class="zoomable-image w-full h-full object-cover hover:scale-[1.01] transition duration-700 cursor-pointer">
+                                 class="zoomable-image protected-image w-full h-full object-cover hover:scale-[1.01] transition duration-700 cursor-pointer">
                         </div>
                         <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 정교한 마감선과 따뜻한 질감이 돋보이는 내부 인테리어</p>
                     </div>
@@ -167,7 +181,7 @@
                         <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
                             <img src="https://imgur.com/EIe8QBo.jpg" 
                                  alt="오피스 인테리어 조명 디테일" 
-                                 class="zoomable-image w-full h-full object-cover hover:scale-[1.01] transition duration-700 cursor-pointer">
+                                 class="zoomable-image protected-image w-full h-full object-cover hover:scale-[1.01] transition duration-700 cursor-pointer">
                         </div>
                         <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 디테일한 공간 설계와 조명 연출로 완성된 하이엔드 오피스</p>
                     </div>
@@ -193,7 +207,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
         </button>
-        <img id="modalImage" src="" alt="확대 이미지" class="max-h-[90vh] max-w-[90vw] object-contain shadow-2xl rounded-sm scale-95 transition-transform duration-300">
+        <img id="modalImage" src="" alt="확대 이미지" class="protected-image max-h-[90vh] max-w-[90vw] object-contain shadow-2xl rounded-sm scale-95 transition-transform duration-300">
     </div>
 
     <script>
@@ -216,7 +230,7 @@
             }
         };
 
-        // 🖼️ 이미지 확대(모달) 기능 스크립트 추가
+        // 🖼️ 이미지 확대(모달) 및 보호 기능 스크립트
         document.addEventListener('DOMContentLoaded', () => {
             const modal = document.getElementById('imageModal');
             const modalImg = document.getElementById('modalImage');
@@ -260,6 +274,16 @@
                 if (e.target === modal) {
                     closeModalFunc();
                 }
+            });
+
+            // 🔒 이미지 보호를 위한 추가 스크립트: 마우스 우클릭 차단
+            document.querySelectorAll('.protected-image').forEach(el => {
+                el.addEventListener('contextmenu', (e) => {
+                    e.preventDefault(); // 기본 우클릭 메뉴를 띄우지 않음
+                });
+            });
+            modalImg.addEventListener('contextmenu', (e) => {
+                e.preventDefault(); // 확대 이미지에서도 우클릭 차단
             });
         });
     </script>
