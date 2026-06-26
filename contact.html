@@ -190,7 +190,7 @@
                     <label class="text-base font-bold text-gray-800 flex items-center">
                         <span class="mr-1.5">•</span> 연락처 <span class="text-red-500 ml-1">*</span>
                     </label>
-                    <input type="tel" name="user_phone" required placeholder="휴대번호 또는 유선번호" class="w-full bg-white h-11 px-4 outline-none border-none text-sm placeholder-gray-400">
+                    <input type="tel" name="user_phone" required oninput="autoHyphenPhone(this)" maxlength="13" placeholder="휴대번호 또는 유선번호" class="w-full bg-white h-11 px-4 outline-none border-none text-sm placeholder-gray-400">
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-[160px_1fr] items-start md:items-center gap-2 md:gap-4">
@@ -338,6 +338,28 @@
             }
         };
 
+        // 📞 연락처 자동 하이픈(-) 포맷팅 함수
+        function autoHyphenPhone(target) {
+            let val = target.value.replace(/[^0-9]/g, ''); // 숫자 이외의 문자 제거
+            let res = '';
+
+            // '02'로 시작하는 서울 유선전화 대응
+            if (val.startsWith('02')) {
+                if (val.length < 3) res = val;
+                else if (val.length < 6) res = val.substr(0, 2) + '-' + val.substr(2);
+                else if (val.length < 10) res = val.substr(0, 2) + '-' + val.substr(2, 3) + '-' + val.substr(5);
+                else res = val.substr(0, 2) + '-' + val.substr(2, 4) + '-' + val.substr(6, 4);
+            } 
+            // 그 외 '010', '031' 등 대응
+            else {
+                if (val.length < 4) res = val;
+                else if (val.length < 7) res = val.substr(0, 3) + '-' + val.substr(3);
+                else if (val.length < 11) res = val.substr(0, 3) + '-' + val.substr(3, 3) + '-' + val.substr(6);
+                else res = val.substr(0, 3) + '-' + val.substr(3, 4) + '-' + val.substr(7, 4);
+            }
+            target.value = res;
+        }
+
         // 추정예산 슬라이더 10만원 단위 반영 스크립트
         const rangeInput = document.getElementById('budgetRange');
         const tooltip = document.getElementById('budgetTooltip');
@@ -357,7 +379,7 @@
         window.addEventListener('DOMContentLoaded', updateSlider);
 
 
-        // 2. 문의하기 폼 Submit (이메일 전송 처리)
+        // 문의하기 폼 Submit (이메일 전송 처리)
         document.getElementById('contactForm').addEventListener('submit', function(event) {
             event.preventDefault(); // 기본 폼 제출 동작 차단
 
