@@ -121,11 +121,11 @@
         }
 
         /* ========================================================
-           ★ 디자인픽셀 스타일: 첫 진입 시 순차적 등장 등장 애니메이션 (Fade-in Up)
+           ★ 디자인픽셀 스타일: 좌측 정렬 및 순차 등장 애니메이션
         ======================================================== */
         .entry-anim {
             opacity: 0;
-            transform: translateY(50px);
+            transform: translateY(40px);
             transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
         }
         
@@ -135,18 +135,16 @@
             transform: translateY(0);
         }
 
-        /* 구분선은 왼쪽에서 오른쪽으로 슥 늘어나는 효과 적용 (선택 사항, 디자인픽셀 느낌 극대화) */
+        /* ★ 핵심 수정: 화면 오른쪽 끝까지 쭉 늘어나는 100% 얇은 구분선 효과 */
         .entry-line {
             width: 0%;
             opacity: 0;
-            transition: width 1.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 1s ease;
+            transition: width 1.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 1s ease;
+            transform-origin: left center; /* 왼쪽에서부터 확장 */
         }
         .entry-line.show {
-            opacity: 0.4;
-            width: 600px; /* PC 기준 너비 */
-        }
-        @media (max-width: 768px) {
-            .entry-line.show { width: 6rem; } /* 모바일 너비(w-24) 대응 */
+            opacity: 0.3;
+            width: 100%; /* 화면 우측 끝까지 무한히 늘어남 */
         }
         /* ======================================================== */
 
@@ -188,8 +186,9 @@
 
         /* MOBILE */
         @media (max-width: 768px) {
-            .outline-title { font-size: 46px !important; text-align: center; line-height: 1.2; }
-            #slide-sub { font-size: 16px !important; text-align: center; padding: 0 10px; }
+            .hero-container { padding-left: 24px !important; padding-right: 24px !important; }
+            .outline-title { font-size: 46px !important; line-height: 1.2; }
+            #slide-sub { font-size: 16px !important; }
             .contact-box { right: 20px !important; bottom: 20px !important; }
             .contact-box p:first-child { font-size: 16px !important; }
             .portfolio-section { padding-top: 60px !important; padding-bottom: 60px !important; }
@@ -279,14 +278,14 @@
         </div>
     </nav>
 
-    <section class="relative min-h-screen w-full z-0 flex flex-col justify-center items-center">
+    <section class="relative min-h-screen w-full z-0 flex items-center overflow-hidden">
         <div id="slider" class="absolute inset-0 w-full h-full overflow-hidden z-0">
             <img src="https://imgur.com/qNy0djf.jpg" class="slide-bg active">
             <img src="https://imgur.com/QjHHuK1.jpg" class="slide-bg">
             <img src="https://imgur.com/s7rYln8.jpg" class="slide-bg">
         </div>
 
-        <div class="relative z-10 flex flex-col items-center text-center px-4 w-full max-w-[1400px]">
+        <div class="hero-container relative z-10 flex flex-col items-start text-left w-full pl-8 sm:pl-16 md:pl-28 pr-0">
             <h1 id="anim-title" class="entry-anim outline-title text-5xl md:text-[92px] tracking-tight mb-2 md:mb-4 uppercase">
                 BLUE DESIGN
             </h1>
@@ -303,7 +302,7 @@
             </div>
         </div>
 
-        <div class="absolute bottom-12 flex gap-4 z-10">
+        <div class="absolute bottom-12 right-12 flex gap-4 z-10">
             <span class="dot active" onclick="goSlide(0)"></span>
             <span class="dot" onclick="goSlide(1)"></span>
             <span class="dot" onclick="goSlide(2)"></span>
@@ -578,16 +577,14 @@ function checkReveal() {
     }
 }
 
-// ========================================================
-// ★ 디자인픽셀 스타일: 페이지 로드 직후 애니메이션 트리거 스크립트
-// ========================================================
+// 디자인픽셀 스타일: 페이지 로드 직후 애니메이션 트리거 스크립트
 window.addEventListener('DOMContentLoaded', () => {
     // 1단계: 0.1초 뒤 메인 타이틀(BLUE DESIGN) 등장
     setTimeout(() => {
         document.getElementById('anim-title').classList.add('show');
     }, 100);
 
-    // 2단계: 0.3초 뒤 가로 구분선 가로로 슥 길어지며 등장
+    // 2단계: 0.3초 뒤 가로 구분선 가로로 슥 길어지며 등장 (우측 끝까지 뻗어나감)
     setTimeout(() => {
         document.getElementById('anim-line').classList.add('show');
     }, 300);
@@ -597,12 +594,11 @@ window.addEventListener('DOMContentLoaded', () => {
         document.getElementById('anim-sub').classList.add('show');
     }, 500);
 
-    // 4단계: 0.7초 뒤 두 버튼(PROJECT LIST, GET A QUOTE) 등장
+    // 4단계: 0.7초 뒤 두 버튼 등장
     setTimeout(() => {
         document.getElementById('anim-btns').classList.add('show');
     }, 700);
 });
-// ========================================================
 
 window.addEventListener('scroll', checkReveal);
 setTimeout(checkReveal, 300);
