@@ -48,10 +48,10 @@
             background: white;
             min-width: 160px;
             display: none;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-            border: 1px solid #f3f4f6;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border: 1px solid #f0f0f0;
             padding: 8px 0;
-            border-radius: 6px;
+            border-radius: 0 0 6px 6px;
             z-index: 999999 !important;
         }
 
@@ -59,15 +59,28 @@
             display: block !important;
         }
 
-        /* SLIDE 기본 세팅 */
-        .slide-bg {
+        /* 🟢 고정형 배경 프레임 레이아웃 (시안처럼 배경 이미지만 제자리에 고정) */
+        .slider-wrapper {
             position: absolute;
-            inset: 0;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .slide-bg {
+            position: fixed; /* 배경 고정 */
+            top: 80px; /* 헤더 바로 아래부터 시작 */
+            left: 0;
+            width: 100%;
+            height: 75vh; /* 시안 맞춤형 높이 고정 */
             object-fit: cover;
             opacity: 0;
-            transition: opacity 1.2s ease-in-out;
+            transition: opacity 1s ease-in-out;
+            filter: brightness(0.65);
+            z-index: 0;
         }
 
         .slide-bg.active {
@@ -76,25 +89,24 @@
 
         /* DOT */
         .dot {
-            width: 6px;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.3);
+            width: 7px;
+            height: 7px;
+            background: rgba(255, 255, 255, 0.4);
             border-radius: 50%;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: 0.3s;
         }
 
         .dot.active {
             background: white;
-            transform: scale(1.4);
-            box-shadow: 0 0 8px rgba(255,255,255,0.5);
+            transform: scale(1.3);
         }
 
         /* REVEAL */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+            transform: translateY(40px);
+            transition: all 1s ease;
         }
 
         .reveal.active {
@@ -111,77 +123,74 @@
             color: #162e59 !important;
         }
 
-        /* 헤더 부드러운 전환 효과 클래스 */
-        .header-transition {
-            transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease;
-        }
-
         @media (max-width: 768px) {
-            #slide-title { font-size: 36px !important; text-align: center; line-height: 1.3; }
-            #slide-sub { font-size: 14px !important; text-align: center; letter-spacing: 0.15em; }
+            #slide-title { font-size: 34px !important; text-align: center; line-height: 1.3; padding: 0 20px; }
+            #slide-sub { font-size: 14px !important; text-align: center; letter-spacing: 0.15em; padding: 0 20px; }
             .contact-box { right: 20px !important; bottom: 20px !important; }
             .contact-box p:first-child { font-size: 16px !important; }
-            .portfolio-section { padding-top: 70px !important; padding-bottom: 70px !important; }
+            .portfolio-section { padding-top: 90px !important; padding-bottom: 90px !important; }
             .portfolio-title { font-size: 32px !important; }
-            .portfolio-top { flex-direction: column; align-items: flex-start !important; gap: 16px; }
+            .portfolio-top { flex-direction: column; align-items: flex-start !important; gap: 20px; }
             footer { text-align: center; }
             footer .footer-bottom { flex-direction: column; align-items: center !important; }
+            .slide-bg { height: 60vh; }
+            .main-hero-section { height: 60vh; }
         }
     </style>
 </head>
 
 <body class="bg-white">
 
-    <nav id="navbar" class="fixed top-0 left-0 w-full z-[999999] bg-transparent border-b border-white/10 h-20 text-white header-transition">
+    <nav class="fixed top-0 left-0 w-full z-[999999] bg-white border-b border-gray-100 h-20 text-gray-800">
         <div class="max-w-[1400px] mx-auto px-6 h-full flex justify-between items-center relative">
             
             <a href="index.html" class="flex flex-col items-stretch leading-none group w-[130px]">
-                <div id="brand-logo" class="text-[18px] md:text-[22px] font-black tracking-wide text-white transition-colors duration-400">BLUE DESIGN</div>
-                <div id="brand-sub" class="text-[9px] tracking-[0.22em] text-white/60 uppercase mt-1 flex justify-between w-full transition-colors duration-400">
+                <div class="text-[18px] md:text-[22px] font-black tracking-wide text-[#162e59] text-left">BLUE DESIGN</div>
+                <div class="text-[9px] tracking-[0.22em] text-gray-500 uppercase mt-1 flex justify-between w-full">
                     <span>I</span><span>N</span><span>T</span><span>E</span><span>R</span><span>I</span><span>O</span><span>R</span>
                 </div>
             </a>
 
-            <div id="nav-menu" class="hidden md:flex items-center gap-12 text-[14px] font-medium h-full text-white/90">
+            <div class="hidden md:flex items-center gap-10 text-[15px] font-bold h-full">
                 <div class="nav-item h-full">
-                    <a href="about.html" class="hover:text-white transition-colors py-7">회사소개</a>
+                    <a href="about.html" class="hover:text-[#1e3a8a] transition-colors py-7">회사소개</a>
                     <div class="dropdown">
-                        <a href="about.html" class="block px-6 py-3 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#162e59] font-semibold text-center">블루디자인</a>
-                        <a href="process.html" class="block px-6 py-3 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#162e59] font-semibold text-center">진행절차</a>
-                        <a href="map.html" class="block px-6 py-3 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#162e59] font-semibold text-center">오시는길</a>
+                        <a href="about.html" class="block px-6 py-3 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#1e3a8a] font-semibold text-center">블루디자인</a>
+                        <a href="process.html" class="block px-6 py-3 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#1e3a8a] font-semibold text-center">진행절차</a>
+                        <a href="map.html" class="block px-6 py-3 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#1e3a8a] font-semibold text-center">오시는길</a>
                     </div>
                 </div>
                 <div class="nav-item h-full">
-                    <a href="project_all.html" class="hover:text-white transition-colors py-7">프로젝트</a>
+                    <a href="project_all.html" class="hover:text-[#1e3a8a] transition-colors py-7">프로젝트</a>
                     <div class="dropdown">
-                        <a href="project_all.html" class="block px-6 py-3 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#162e59] font-semibold text-center">전체보기</a>
-                        <a href="office.html" class="block px-6 py-3 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#162e59] font-semibold text-center">사무공간</a>
-                        <a href="commercial.html" class="block px-6 py-3 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#162e59] font-semibold text-center">상업공간</a>
+                        <a href="project_all.html" class="block px-6 py-3 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#1e3a8a] font-semibold text-center">전체보기</a>
+                        <a href="office.html" class="block px-6 py-3 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#1e3a8a] font-semibold text-center">사무공간</a>
+                        <a href="commercial.html" class="block px-6 py-3 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#1e3a8a] font-semibold text-center">상업공간</a>
                     </div>
                 </div>
-                <a href="contact.html" class="hover:text-white transition-colors py-7">견적문의</a>
-                <a href="notice.html" class="hover:text-white transition-colors py-7">공지사항</a>
+                <a href="contact.html" class="hover:text-[#1e3a8a] transition-colors py-7">견적문의</a>
+                <a href="notice.html" class="hover:text-[#1e3a8a] transition-colors py-7">공지사항</a>
                 
-                <div id="contact-divider" class="flex items-center gap-3 border-l border-white/20 pl-8 h-7 my-auto">
-                    <svg id="phone-svg" class="w-5 h-5 text-white/80" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <div class="flex items-center gap-3 border-l border-gray-100 pl-10 h-8 my-auto">
+                    <svg class="w-7 h-7 text-[#162e59]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="6" y="3" width="12" height="18" rx="2" />
                         <line x1="10" y1="6" x2="14" y2="6" />
                         <line x1="11" y1="17.5" x2="13" y2="17.5" />
                     </svg>
                     <div class="flex flex-col whitespace-nowrap justify-center">
-                        <span id="phone-text" class="text-[15px] font-bold text-white tracking-wide">010-4192-0882</span>
-                        <span id="mail-text" class="text-[11px] text-white/50 font-light">camp0882@daum.net</span>
+                        <span class="text-[16px] font-black text-[#162e59] leading-tight">010-4192-0882</span>
+                        <span class="text-[12px] text-gray-400">camp0882@daum.net</span>
                     </div>
                 </div>
             </div>
 
             <div class="md:hidden flex justify-end w-full">
-                <button id="menu-btn" onclick="toggleMenu()" class="relative z-[999999] text-[10px] font-bold border border-white text-white px-3 py-1 uppercase tracking-widest transition-all">Menu</button>
+                <button onclick="toggleMenu()" class="relative z-[999999] text-[10px] font-bold border border-black px-3 py-1 uppercase tracking-widest">Menu</button>
             </div>
         </div>
 
-        <div id="mobileMenu" class="hidden bg-white border-t border-gray-100 px-6 py-6 w-full shadow-lg text-gray-800">
-            <div class="flex flex-col gap-6 text-[15px] font-bold">
+        <div id="mobileMenu" class="hidden bg-white border-t border-gray-100 px-6 py-6 w-full shadow-lg">
+            <div class="flex flex-col gap-6 text-[15px] font-bold text-gray-800">
                 <div class="flex flex-col gap-3">
                     <a href="about.html">회사소개</a>
                     <div class="pl-4 flex flex-col gap-3 text-[13px] text-gray-500 font-medium">
@@ -201,35 +210,38 @@
                 <a href="contact.html">견적문의</a>
                 <a href="notice.html">공지사항</a>
                 <div class="pt-4 border-t border-gray-100">
-                    <p class="text-[#162e59] font-black">010-4192-0882</p>
+                    <p class="text-[#1e3a8a] font-black">010-4192-0882</p>
                     <p class="text-xs text-gray-400">camp0882@daum.net</p>
                 </div>
             </div>
         </div>
     </nav>
 
-    <section class="relative h-[85vh] w-full z-0 bg-gray-900 overflow-hidden">
+    <section class="main-hero-section relative mt-20 h-[75vh] w-full z-10 bg-white">
         
-        <div id="slider" class="absolute inset-0 w-full h-full overflow-hidden">
-            <img src="https://imgur.com/qNy0djf.jpg" class="slide-bg active">
-            <img src="https://imgur.com/QjHHuK1.jpg" class="slide-bg">
-            <img src="https://imgur.com/s7rYln8.jpg" class="slide-bg">
-            <div class="absolute inset-0 bg-black/40 z-10"></div>
+        <div class="slider-wrapper">
+            <div id="slider" class="w-full h-full relative">
+                <img src="https://imgur.com/qNy0djf.jpg" class="slide-bg active">
+                <img src="https://imgur.com/QjHHuK1.jpg" class="slide-bg">
+                <img src="https://imgur.com/s7rYln8.jpg" class="slide-bg">
+            </div>
         </div>
 
-        <div class="relative z-20 h-full flex flex-col justify-center items-center text-white px-6">
+        <div class="absolute inset-0 z-10 flex flex-col justify-center items-center px-6">
             
-            <div class="border border-white/20 backdrop-blur-[1px] px-8 py-12 md:px-24 md:py-16 text-center max-w-4xl w-full flex flex-col items-center justify-center">
-                <h1 id="slide-title" class="text-4xl md:text-6xl font-bold tracking-tighter mb-4 transition-all duration-500">
+            <div class="border border-white/40 px-10 py-12 md:px-24 md:py-20 text-center max-w-4xl w-full flex flex-col items-center justify-center">
+                
+                <h1 id="slide-title" class="text-4xl md:text-6xl font-bold tracking-tighter text-white mb-4 transition-all duration-500">
                     Blue Design
                 </h1>
-                <p id="slide-sub" class="text-lg md:text-2xl font-light tracking-[0.15em] text-white/80 transition-all duration-500">
+                
+                <p id="slide-sub" class="text-xl md:text-2xl font-light tracking-[0.15em] text-white opacity-90 mb-10 transition-all duration-500">
                     사무ㆍ상업공간 전문 인테리어
                 </p>
 
-                <div class="flex gap-4 mt-8">
-                    <a href="project_all.html" class="px-7 py-3.5 bg-white text-black font-bold text-xs tracking-wider hover:bg-gray-100 transition-all">PROJECT LIST</a>
-                    <a href="contact.html" class="px-7 py-3.5 border border-white text-white font-bold text-xs tracking-wider hover:bg-white hover:text-black transition-all">GET A QUOTE</a>
+                <div class="flex flex-wrap gap-4 justify-center">
+                    <a href="project_all.html" class="px-8 py-4 bg-white text-black font-bold text-sm tracking-wider hover:bg-gray-200 transition-all">PROJECT LIST</a>
+                    <a href="contact.html" class="px-8 py-4 border border-white text-white font-bold text-sm tracking-wider hover:bg-white hover:text-black transition-all">GET A QUOTE</a>
                 </div>
             </div>
 
@@ -256,7 +268,7 @@
         </div>
     </div>
     
-    <section class="portfolio-section py-32 bg-white relative z-10">
+    <section class="portfolio-section py-32 bg-white relative z-20 shadow-[0_-20px_50px_rgba(0,0,0,0.05)]">
         <div class="max-w-[1400px] mx-auto px-6">
             <div class="mb-16 reveal">
                 <h2 class="text-[11px] text-[#1e3a8a] font-bold tracking-[0.4em] uppercase mb-4">Our Work</h2>
@@ -299,7 +311,7 @@
         </div>
     </section>
 
-    <section class="py-32 bg-[#f8fafc] overflow-hidden relative z-10">
+    <section class="py-32 bg-[#f8fafc] overflow-hidden relative z-20">
         <div class="max-w-[1400px] mx-auto px-6">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                 <div class="reveal">
@@ -323,7 +335,7 @@
         </div>
     </section>
 
-    <section class="py-32 bg-white relative z-10">
+    <section class="py-32 bg-white relative z-20">
         <div class="max-w-[1400px] mx-auto px-6">
             <div class="text-center mb-24 reveal">
                 <p class="text-[11px] tracking-[0.4em] text-[#1e3a8a] font-bold uppercase mb-5">Process</p>
@@ -364,7 +376,7 @@
         </div>
     </section>
 
-    <div id="footer"></div>
+    <div id="footer" class="relative z-20"></div>
 
 <script>
 // 푸터 비동기 로드
@@ -381,7 +393,7 @@ function toggleMenu() {
     }
 }
 
-// slide 핵심 구동 함수
+// slide 구동 스크립트
 let currentSlide = 0;
 const slides = document.querySelectorAll('.slide-bg');
 const dots = document.querySelectorAll('.dot');
@@ -403,14 +415,12 @@ function updateSlide() {
 setInterval(() => {
     currentSlide = (currentSlide + 1) % slides.length;
     updateSlide();
-}, 3500);
+}, 3000);
 
-// 🟢 [헤더 변환 제어용 스크롤 스크립트 결합 연동]
-function handleScrollEffects() {
+// reveal animation & 스크롤 연동 처리
+function checkReveal() {
     const windowHeight = window.innerHeight;
-    const scrollY = window.scrollY;
     
-    // 1. 컴포넌트 등장 릴리즈 스캔
     document.querySelectorAll('.reveal').forEach(el => {
         const revealTop = el.getBoundingClientRect().top;
         if (revealTop < windowHeight - 100) {
@@ -418,76 +428,6 @@ function handleScrollEffects() {
         }
     });
 
-    // 2. 상단 네비게이션 칼라 실시간 인터랙션 제어
-    const navbar = document.getElementById('navbar');
-    const brandLogo = document.getElementById('brand-logo');
-    const brandSub = document.getElementById('brand-sub');
-    const navMenu = document.getElementById('nav-menu');
-    const contactDivider = document.getElementById('contact-divider');
-    const phoneSvg = document.getElementById('phone-svg');
-    const phoneText = document.getElementById('phone-text');
-    const mailText = document.getElementById('mail-text');
-    const menuBtn = document.getElementById('menu-btn');
-
-    if (scrollY > 60) {
-        // 스크롤 다운 시 원래 깔끔한 흰색 슬림 헤더 사양 복원 변경
-        navbar.classList.remove('bg-transparent', 'border-white/10', 'text-white');
-        navbar.classList.add('bg-white', 'border-gray-100', 'text-gray-800', 'shadow-sm');
-
-        brandLogo.classList.remove('text-white');
-        brandLogo.classList.add('text-[#162e59]');
-
-        brandSub.classList.remove('text-white/60');
-        brandSub.classList.add('text-gray-500');
-
-        navMenu.classList.remove('text-white/90');
-        navMenu.classList.add('text-gray-700');
-
-        contactDivider.classList.remove('border-white/20');
-        contactDivider.classList.add('border-gray-200');
-
-        phoneSvg.classList.remove('text-white/80');
-        phoneSvg.classList.add('text-[#162e59]');
-
-        phoneText.classList.remove('text-white');
-        phoneText.classList.add('text-[#162e59]');
-
-        mailText.classList.remove('text-white/50', 'font-light');
-        mailText.classList.add('text-gray-400');
-
-        menuBtn.classList.remove('border-white', 'text-white');
-        menuBtn.classList.add('border-black', 'text-black');
-    } else {
-        // 스크롤 상단 컴백 시 프리미엄 다크 투명 가이드라인 스위칭
-        navbar.classList.remove('bg-white', 'border-gray-100', 'text-gray-800', 'shadow-sm');
-        navbar.classList.add('bg-transparent', 'border-white/10', 'text-white');
-
-        brandLogo.classList.remove('text-[#162e59]');
-        brandLogo.classList.add('text-white');
-
-        brandSub.classList.remove('text-gray-500');
-        brandSub.classList.add('text-white/60');
-
-        navMenu.classList.remove('text-gray-700');
-        navMenu.classList.add('text-white/90');
-
-        contactDivider.classList.remove('border-gray-200');
-        contactDivider.classList.add('border-white/20');
-
-        phoneSvg.classList.remove('text-[#162e59]');
-        phoneSvg.classList.add('text-white/80');
-
-        phoneText.classList.remove('text-[#162e59]');
-        phoneText.classList.add('text-white');
-
-        mailText.classList.remove('text-gray-400');
-        mailText.classList.add('text-white/50', 'font-light');
-
-        menuBtn.classList.remove('border-black', 'text-black');
-        menuBtn.classList.add('border-white', 'text-white');
-    }
-
-    // 3. 우측 하단 미니 플로팅 위젯 푸터 오버랩 반전 세팅
     const textTarget = document.getElementById('dynamic-text-target');
     const footer = document.getElementById('footer');
 
@@ -502,7 +442,7 @@ function handleScrollEffects() {
 
         if (footerReached) {
             textTarget.classList.remove('light-bg');
-        } else if (scrollY > (windowHeight - 200)) {
+        } else if (window.scrollY > (windowHeight - 150)) {
             textTarget.classList.add('light-bg');
         } else {
             textTarget.classList.remove('light-bg');
@@ -518,9 +458,8 @@ function openNaverBlog() {
     window.open(blogUrl, '_blank');
 }
 
-window.addEventListener('scroll', handleScrollEffects);
-window.addEventListener('resize', handleScrollEffects);
-setTimeout(handleScrollEffects, 300);
+window.addEventListener('scroll', checkReveal);
+setTimeout(checkReveal, 300);
 </script>
 
 </body>
