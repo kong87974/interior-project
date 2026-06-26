@@ -106,19 +106,49 @@
             object-fit: cover;
             opacity: 0;
             transition: opacity 1s ease-in-out;
-            filter: brightness(0.65); /* 글자 가독성을 위해 배경을 살짝만 더 어둡게 조절 */
+            filter: brightness(0.65);
         }
 
         .slide-bg.active {
             opacity: 1;
         }
 
-        /* 메인 타이틀 흰색 아웃라인 글씨체 효과 (비연드 테크 스타일) */
+        /* 메인 타이틀 흰색 아웃라인 글씨체 효과 */
         .outline-title {
             color: transparent;
             -webkit-text-stroke: 1.5px #ffffff;
             font-weight: 800;
         }
+
+        /* ========================================================
+           ★ 디자인픽셀 스타일: 첫 진입 시 순차적 등장 등장 애니메이션 (Fade-in Up)
+        ======================================================== */
+        .entry-anim {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        
+        /* 애니메이션 활성화 되었을 때 상태 */
+        .entry-anim.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 구분선은 왼쪽에서 오른쪽으로 슥 늘어나는 효과 적용 (선택 사항, 디자인픽셀 느낌 극대화) */
+        .entry-line {
+            width: 0%;
+            opacity: 0;
+            transition: width 1.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 1s ease;
+        }
+        .entry-line.show {
+            opacity: 0.4;
+            width: 600px; /* PC 기준 너비 */
+        }
+        @media (max-width: 768px) {
+            .entry-line.show { width: 6rem; } /* 모바일 너비(w-24) 대응 */
+        }
+        /* ======================================================== */
 
         /* DOT */
         .dot {
@@ -135,7 +165,7 @@
             transform: scale(1.3);
         }
 
-        /* REVEAL */
+        /* REVEAL (스크롤 애니메이션) */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -257,17 +287,17 @@
         </div>
 
         <div class="relative z-10 flex flex-col items-center text-center px-4 w-full max-w-[1400px]">
-            <h1 class="outline-title text-5xl md:text-[92px] tracking-tight mb-2 md:mb-4 transition-all duration-500 uppercase">
+            <h1 id="anim-title" class="entry-anim outline-title text-5xl md:text-[92px] tracking-tight mb-2 md:mb-4 uppercase">
                 BLUE DESIGN
             </h1>
 
-            <div class="w-24 md:w-[600px] h-[1px] bg-white/40 my-5 md:my-7"></div>
+            <div id="anim-line" class="entry-line h-[1px] bg-white my-5 md:my-7"></div>
 
-            <p id="slide-sub" class="text-lg md:text-3xl font-bold tracking-tight mb-10 transition-all duration-500 text-white">
+            <p id="anim-sub" class="entry-anim text-lg md:text-3xl font-bold tracking-tight mb-10 text-white">
                 사무공간 ㆍ 상업공간 전문 인테리어
             </p>
 
-            <div class="flex gap-4">
+            <div id="anim-btns" class="entry-anim flex gap-4">
                 <a href="project_all.html" class="px-8 py-4 bg-white text-black font-bold text-sm tracking-wider hover:bg-gray-200 transition-all">PROJECT LIST</a>
                 <a href="contact.html" class="px-8 py-4 border border-white text-white font-bold text-sm tracking-wider hover:bg-white hover:text-black transition-all">GET A QUOTE</a>
             </div>
@@ -548,13 +578,31 @@ function checkReveal() {
     }
 }
 
-function openNaverBlog() {
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    let blogUrl = isMobile 
-        ? "https://m.blog.naver.com/zinux_?noTrackingCode=true&proxyReferer=&tab=1" 
-        : "https://blog.naver.com/zinux_";
-    window.open(blogUrl, '_blank');
-}
+// ========================================================
+// ★ 디자인픽셀 스타일: 페이지 로드 직후 애니메이션 트리거 스크립트
+// ========================================================
+window.addEventListener('DOMContentLoaded', () => {
+    // 1단계: 0.1초 뒤 메인 타이틀(BLUE DESIGN) 등장
+    setTimeout(() => {
+        document.getElementById('anim-title').classList.add('show');
+    }, 100);
+
+    // 2단계: 0.3초 뒤 가로 구분선 가로로 슥 길어지며 등장
+    setTimeout(() => {
+        document.getElementById('anim-line').classList.add('show');
+    }, 300);
+
+    // 3단계: 0.5초 뒤 부제목 등장
+    setTimeout(() => {
+        document.getElementById('anim-sub').classList.add('show');
+    }, 500);
+
+    // 4단계: 0.7초 뒤 두 버튼(PROJECT LIST, GET A QUOTE) 등장
+    setTimeout(() => {
+        document.getElementById('anim-btns').classList.add('show');
+    }, 700);
+});
+// ========================================================
 
 window.addEventListener('scroll', checkReveal);
 setTimeout(checkReveal, 300);
