@@ -68,7 +68,7 @@
             object-fit: cover;
             opacity: 0;
             transition: opacity 1s ease-in-out;
-            filter: brightness(0.7);
+            filter: brightness(0.65); /* 이미지 선명도 확보를 위한 살짝 어둡게 처리 */
         }
 
         .slide-bg.active {
@@ -111,14 +111,9 @@
             color: #162e59 !important;
         }
 
-        nav, nav *, nav svg {
-            transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, stroke 0.4s ease;
-        }
-
-        /* MOBILE */
         @media (max-width: 768px) {
-            #slide-title { font-size: 34px !important; text-align: center; line-height: 1.3; padding: 0 20px; }
-            #slide-sub { font-size: 14px !important; text-align: center; letter-spacing: 0.2em; padding: 0 20px; }
+            #slide-title { font-size: 34px !important; text-align: center; line-height: 1.3; }
+            #slide-sub { font-size: 14px !important; text-align: center; letter-spacing: 0.2em; }
             .contact-box { right: 20px !important; bottom: 20px !important; }
             .contact-box p:first-child { font-size: 16px !important; }
             .portfolio-section { padding-top: 90px !important; padding-bottom: 90px !important; }
@@ -132,12 +127,17 @@
 
 <body class="bg-white">
 
-    <nav id="main-nav" class="fixed top-0 left-0 w-full z-[999999] bg-transparent border-b border-white/10 h-20 text-white">
+    <nav class="fixed top-0 left-0 w-full z-[999999] bg-white border-b border-gray-100 h-20 text-gray-800">
         <div class="max-w-[1400px] mx-auto px-6 h-full flex justify-between items-center relative">
             
-            <div id="nav-left" class="hidden md:flex items-center gap-14 text-[15px] font-bold text-white h-full">
+            <a href="index.html" class="flex flex-col items-start leading-none group">
+                <div class="text-[18px] md:text-[21px] font-black tracking-wide text-[#162e59]">BLUE DESIGN</div>
+                <div class="text-[8px] md:text-[11px] tracking-[0.55em] pl-[0.1em] text-gray-400 uppercase mt-0.5">INTERIOR DESIGN</div>
+            </a>
+
+            <div class="hidden md:flex items-center gap-10 text-[14px] font-bold h-full">
                 <div class="nav-item h-full">
-                    <a href="about.html" class="transition-colors py-7">회사소개</a>
+                    <a href="about.html" class="hover:text-[#1e3a8a] transition-colors py-7">ABOUT</a>
                     <div class="dropdown">
                         <a href="about.html" class="block px-6 py-3 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#1e3a8a] font-semibold text-center">블루디자인</a>
                         <a href="process.html" class="block px-6 py-3 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#1e3a8a] font-semibold text-center">진행절차</a>
@@ -145,49 +145,37 @@
                     </div>
                 </div>
                 <div class="nav-item h-full">
-                    <a href="project_all.html" class="transition-colors py-7">프로젝트</a>
+                    <a href="project_all.html" class="hover:text-[#1e3a8a] transition-colors py-7">PORTFOLIO</a>
                     <div class="dropdown">
                         <a href="project_all.html" class="block px-6 py-3 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#1e3a8a] font-semibold text-center">전체보기</a>
                         <a href="office.html" class="block px-6 py-3 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#1e3a8a] font-semibold text-center">사무공간</a>
                         <a href="commercial.html" class="block px-6 py-3 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#1e3a8a] font-semibold text-center">상업공간</a>
                     </div>
                 </div>
-            </div>
-
-            <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center text-center leading-none">
-                <a href="index.html" class="flex flex-col items-center text-center leading-none">
-                  <div id="logo-main" class="text-[18px] md:text-[22px] font-black tracking-wide text-[#162e59]">BLUE DESIGN</div>
-                  <div id="logo-sub" class="text-[9px] md:text-[16px] tracking-[0.65em] pl-[0.65em] text-gray-500 uppercase mt-1">INTERIOR</div>
-                </a>
-            </div>
-
-            <div id="nav-right" class="hidden md:flex justify-end items-center gap-10 text-[15px] font-bold text-white">
-                <a href="contact.html" class="transition-colors">견적문의</a>
-                <a href="notice.html" class="transition-colors">공지사항</a>
-                <div id="nav-divider" class="flex items-center gap-3 border-l border-white/20 pl-10">
-                    
-                    <svg id="phone-icon" class="w-7 h-7 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <a href="contact.html" class="hover:text-[#1e3a8a] transition-colors py-7">CONTACT</a>
+                <a href="notice.html" class="hover:text-[#1e3a8a] transition-colors py-7">NOTICE</a>
+                
+                <div class="flex items-center gap-2 border-l border-gray-100 pl-8 h-8 my-auto">
+                    <svg class="w-5 h-5 text-[#162e59]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="6" y="3" width="12" height="18" rx="2" />
                         <line x1="10" y1="6" x2="14" y2="6" />
                         <line x1="11" y1="17.5" x2="13" y2="17.5" />
                     </svg>
-                    
-                    <div class="flex flex-col whitespace-nowrap">
-                        <span id="phone-num" class="text-[16px] font-black text-white leading-tight">010-4192-0882</span>
-                        <span id="phone-mail" class="text-[12px] text-gray-300">camp0882@daum.net</span>
+                    <div class="flex flex-col whitespace-nowrap leading-none justify-center">
+                        <span class="text-[14px] font-black text-[#162e59]">010-4192-0882</span>
                     </div>
                 </div>
             </div>
 
-            <div class="md:hidden flex justify-end w-full">
-                <button id="mobile-menu-btn" onclick="toggleMenu()" class="relative z-[999999] text-[10px] font-bold border border-white text-white px-3 py-1 uppercase tracking-widest">Menu</button>
+            <div class="md:hidden flex justify-end">
+                <button onclick="toggleMenu()" class="relative z-[999999] text-[10px] font-bold border border-black px-3 py-1 uppercase tracking-widest">Menu</button>
             </div>
         </div>
 
         <div id="mobileMenu" class="hidden bg-white border-t border-gray-100 px-6 py-6 w-full shadow-lg text-gray-800">
             <div class="flex flex-col gap-6 text-[15px] font-bold text-gray-800">
                 <div class="flex flex-col gap-3">
-                    <a href="about.html">회사소개</a>
+                    <a href="about.html">ABOUT</a>
                     <div class="pl-4 flex flex-col gap-3 text-[13px] text-gray-500 font-medium">
                         <a href="about.html">블루디자인</a>
                         <a href="process.html">진행절차</a>
@@ -195,15 +183,15 @@
                     </div>
                 </div>
                 <div class="flex flex-col gap-3">
-                    <a href="project_all.html">프로젝트</a>
+                    <a href="project_all.html">PORTFOLIO</a>
                     <div class="pl-4 flex flex-col gap-3 text-[13px] text-gray-500 font-medium">
                         <a href="project_all.html">전체보기</a>
                         <a href="office.html">사무공간</a>
                         <a href="commercial.html">상업공간</a>
                     </div>
                 </div>
-                <a href="contact.html">견적문의</a>
-                <a href="notice.html">공지사항</a>
+                <a href="contact.html">CONTACT</a>
+                <a href="notice.html">NOTICE</a>
                 <div class="pt-4 border-t border-gray-100">
                     <p class="text-[#1e3a8a] font-black">010-4192-0882</p>
                     <p class="text-xs text-gray-400">camp0882@daum.net</p>
@@ -212,23 +200,37 @@
         </div>
     </nav>
 
-    <section class="relative min-h-screen w-full z-0">
+    <section class="relative pt-20 min-h-screen w-full overflow-hidden">
+        
         <div id="slider" class="absolute inset-0 w-full h-full overflow-hidden z-0">
             <img src="https://imgur.com/qNy0djf.jpg" class="slide-bg active">
             <img src="https://imgur.com/QjHHuK1.jpg" class="slide-bg">
             <img src="https://imgur.com/s7rYln8.jpg" class="slide-bg">
         </div>
 
-        <div class="relative z-10 min-h-screen flex flex-col justify-center items-center text-white">
-            <h1 id="slide-title" class="text-4xl md:text-6xl font-bold tracking-tighter mb-4 transition-all duration-500">Blue Design</h1>
-            <p id="slide-sub" class="text-xl md:text-2xl font-light tracking-[0.15em] opacity-90 transition-all duration-500">사무ㆍ상업공간 전문 인테리어</p>
+        <div class="relative z-10 min-h-[calc(100vh-80px)] flex flex-col justify-center items-center px-6">
+            
+            <div class="border border-white/30 px-10 py-12 md:px-20 md:py-16 text-center max-w-3xl w-full flex flex-col items-center justify-center bg-black/10 backdrop-blur-[1px]">
+                
+                <h1 id="slide-title" class="text-4xl md:text-7xl font-light tracking-[0.08em] uppercase text-white mb-5 transition-all duration-500 font-mono">
+                    BLUE DESIGN
+                </h1>
+                
+                <p id="slide-sub" class="text-sm md:text-base font-medium tracking-[0.45em] text-white/90 uppercase mb-10 transition-all duration-500 pl-[0.45em]">
+                    INTERIOR DESIGN
+                </p>
 
-            <div class="flex gap-4 mt-10">
-                <a href="project_all.html" class="px-8 py-4 bg-white text-black font-bold text-sm tracking-wider hover:bg-gray-200 transition-all">PROJECT LIST</a>
-                <a href="contact.html" class="px-8 py-4 border border-white text-white font-bold text-sm tracking-wider hover:bg-white hover:text-black transition-all">GET A QUOTE</a>
+                <div class="flex flex-wrap gap-4 justify-center">
+                    <a href="project_all.html" class="px-6 py-3 border border-white text-white font-bold text-xs tracking-widest hover:bg-white hover:text-black transition-all uppercase">
+                        PROJECT LIST
+                    </a>
+                    <a href="contact.html" class="px-6 py-3 bg-white text-black font-bold text-xs tracking-widest hover:bg-gray-200 transition-all uppercase">
+                        GET A QUOTE
+                    </a>
+                </div>
             </div>
 
-            <div class="absolute bottom-12 flex gap-4">
+            <div class="absolute bottom-10 flex gap-4">
                 <span class="dot active" onclick="goSlide(0)"></span>
                 <span class="dot" onclick="goSlide(1)"></span>
                 <span class="dot" onclick="goSlide(2)"></span>
@@ -414,82 +416,6 @@ function checkReveal() {
 
     const textTarget = document.getElementById('dynamic-text-target');
     const footer = document.getElementById('footer');
-
-    const mainNav = document.getElementById('main-nav');
-    const navLeft = document.getElementById('nav-left');
-    const navRight = document.getElementById('nav-right');
-    const logoMain = document.getElementById('logo-main');
-    const logoSub = document.getElementById('logo-sub');
-    const navDivider = document.getElementById('nav-divider');
-    const phoneIcon = document.getElementById('phone-icon');
-    const phoneNum = document.getElementById('phone-num');
-    const phoneMail = document.getElementById('phone-mail');
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-
-    if (window.scrollY > 50) {
-        // 스크롤을 내렸을 때 스타일 (원래 상태와 완전 매칭)
-        mainNav.classList.remove('bg-transparent', 'border-white/10', 'text-white');
-        mainNav.classList.add('bg-white', 'border-gray-100', 'text-gray-800');
-        
-        navLeft.classList.remove('text-white');
-        navLeft.classList.add('text-gray-800');
-        
-        navRight.classList.remove('text-white');
-        navRight.classList.add('text-gray-800');
-        
-        logoMain.classList.remove('text-white');
-        logoMain.classList.add('text-[#162e59]'); // 스크롤 시 파란색 로고 동일 유지
-        
-        logoSub.classList.remove('text-gray-300');
-        logoSub.classList.add('text-gray-500');
-        
-        navDivider.classList.remove('border-white/20');
-        navDivider.classList.add('border-gray-100');
-        
-        phoneIcon.classList.remove('text-white');
-        phoneIcon.classList.add('text-[#162e59]');
-        
-        phoneNum.classList.remove('text-white');
-        phoneNum.classList.add('text-[#162e59]');
-        
-        phoneMail.classList.remove('text-gray-300');
-        phoneMail.classList.add('text-gray-400');
-        
-        mobileMenuBtn.classList.remove('border-white', 'text-white');
-        mobileMenuBtn.classList.add('border-black', 'text-black');
-    } else {
-        // ✨ [스크롤이 맨 위에 있을 때] 배경은 투명하게 비우되, 로고 파란색과 하단 경계 얇은 선 유연화 매칭
-        mainNav.classList.remove('bg-white', 'border-gray-100', 'text-gray-800');
-        mainNav.classList.add('bg-transparent', 'border-white/10', 'text-white');
-        
-        navLeft.classList.remove('text-gray-800');
-        navLeft.classList.add('text-white');
-        
-        navRight.classList.remove('text-gray-800');
-        navRight.classList.add('text-white');
-        
-        // 🟢 BLUE DESIGN 글자는 상단 투명일 때도 진한 파란색(#162e59)으로 상시 고정 적용
-        logoMain.classList.remove('text-white');
-        logoMain.classList.add('text-[#162e59]');
-        
-        logoSub.classList.remove('text-gray-500');
-        logoSub.classList.add('text-gray-300');
-        
-        navDivider.classList.remove('border-gray-100');
-        navDivider.classList.add('border-white/20');
-        
-        phoneIcon.classList.remove('text-[#162e59]');
-        phoneIcon.classList.add('text-white');
-        
-        phoneNum.classList.remove('text-[#162e59]');
-        phoneNum.classList.add('text-white');
-        
-        phoneMail.classList.remove('text-gray-400');
-        phoneMail.classList.add('text-gray-300');
-        
-        mobileMenuBtn.classList.remove('border-black', 'text-black');
-        mobileMenuBtn.classList.add('border-white', 'text-white');
-    }
 
     if (textTarget) {
         let footerReached = false;
