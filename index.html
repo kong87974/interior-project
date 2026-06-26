@@ -109,18 +109,13 @@
             opacity: 1;
         }
 
-        /* 타이틀 스타일: 아웃라인 + 다중 파란색 그림자 3D 입체화 효과 */
+        /* 타이틀 스타일: 파란색 3D 그림자 제거하고 흰색 테두리만 남김 */
         .outline-title {
             color: transparent;
             -webkit-text-stroke: 1.5px #ffffff;
             font-weight: 800;
-            text-shadow: 
-                1px 1px 0px #162e59, 
-                2px 2px 0px #162e59, 
-                3px 3px 0px #162e59, 
-                4px 4px 0px #162e59, 
-                5px 5px 0px #162e59,
-                8px 8px 20px rgba(0, 0, 0, 0.5);
+            /* 배경과 구분을 위해 아주 옅은 드롭 섀도우만 유지 (원치 않으면 삭제 가능) */
+            text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
             display: inline-block;
         }
 
@@ -141,27 +136,24 @@
             transform: translateY(0);
         }
 
-        /* ★ 가로선 레이아웃 전면 수정: 왼쪽 끝에서 출발하여 딱 글씨 가로폭 박스 영역까지만 제한 */
+        /* ★ 얇게 수정한 가로선 레이아웃 */
         .entry-line-container {
             position: relative;
             width: 100%;
-            height: 3px;
+            height: 1px; /* 3px -> 1px 로 얇게 수정 */
             margin: 12px 0 16px 0;
         }
 
         .entry-line {
             position: absolute;
-            /* 여백 한계를 계산하여 브라우저 화면 제일 왼쪽 끝(0px)에 강제 정렬 */
             left: calc(-1 * (2rem + 6vw)) !important; 
             width: 0%;
-            height: 3px !important;
+            height: 1px !important; /* 3px -> 1px 로 얇게 수정 */
             opacity: 0;
-            /* 선 길이에 맞춰 페이드아웃 처리되는 정밀 그라데이션 */
             background: linear-gradient(to right, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.4) 35%, rgba(255, 255, 255, 0.85) 100%);
             transition: width 8.0s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 2.0s ease;
         }
         
-        /* ★ 애니메이션 완료 시 총 너비가 화면 왼쪽 끝 ~ 글자 끝 넓이(100% + 좌측 패딩 offset)만큼만 확보됨 */
         .entry-line.show {
             opacity: 1;
             width: calc(100% + (2rem + 6vw)) !important;
@@ -205,9 +197,10 @@
         /* MOBILE 반응형 오프셋 초기화 대응 */
         @media (max-width: 768px) {
             .hero-container { padding-left: 24px !important; padding-right: 24px !important; }
-            .outline-title { font-size: 44px !important; line-height: 1.2; text-shadow: 1px 1px 0px #162e59, 2px 2px 0px #162e59; }
+            /* 모바일에서도 파란색 그림자 제거 */
+            .outline-title { font-size: 44px !important; line-height: 1.2; text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); }
             #slide-sub { font-size: 16px !important; }
-            .entry-line { left: -24px !important; height: 2px !important; } 
+            .entry-line { left: -24px !important; height: 1px !important; }  /* 2px -> 1px 로 얇게 수정 */
             .entry-line.show { width: calc(100% + 24px) !important; }
             .contact-box { right: 20px !important; bottom: 20px !important; }
             .contact-box p:first-child { font-size: 16px !important; }
@@ -305,8 +298,8 @@
 
         <div class="hero-container relative z-10 flex flex-col items-start text-left w-max pl-8 sm:pl-16 md:pl-32 pr-0">
             
-            <h1 id="anim-title" class="anim-up outline-title text-5xl md:text-[92px] tracking-tight uppercase">
-                BLUE DESIGN
+            <h1 id="anim-title" class="anim-up outline-title text-5xl md:text-[92px] tracking-tight">
+                Blue Design
             </h1>
 
             <div class="entry-line-container">
