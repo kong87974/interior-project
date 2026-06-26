@@ -109,7 +109,7 @@
             opacity: 1;
         }
 
-        /* ★ 타이틀 수정: 다중 레이어로 단순 선이 아닌 완벽한 진한 파란색 3D 입체 그림자 구현 */
+        /* 타이틀 스타일: 아웃라인 + 다중 파란색 그림자 3D 입체화 효과 */
         .outline-title {
             color: transparent;
             -webkit-text-stroke: 1.5px #ffffff;
@@ -121,9 +121,10 @@
                 4px 4px 0px #162e59, 
                 5px 5px 0px #162e59,
                 8px 8px 20px rgba(0, 0, 0, 0.5);
+            display: inline-block;
         }
 
-        /* 디자인픽셀 정밀 구현: 가로선 기준 위아래 슬라이드 동시 모션 (더 정적이고 느리게 4.0초 제어) */
+        /* 가로선 기준 위아래 슬라이딩 정밀 모션 제어 (4.0초 슬로우 진입) */
         .anim-up {
             opacity: 0;
             transform: translateY(40px);
@@ -140,21 +141,30 @@
             transform: translateY(0);
         }
 
-        /* ★ 구분선 수정: 두께를 3px로 굵게 확장 및 8초 동안 초정밀 슬로우 그라데이션 확장 연출 */
+        /* ★ 가로선 레이아웃 전면 수정: 왼쪽 끝에서 출발하여 딱 글씨 가로폭 박스 영역까지만 제한 */
+        .entry-line-container {
+            position: relative;
+            width: 100%;
+            height: 3px;
+            margin: 12px 0 16px 0;
+        }
+
         .entry-line {
             position: absolute;
-            left: 0 !important;
+            /* 여백 한계를 계산하여 브라우저 화면 제일 왼쪽 끝(0px)에 강제 정렬 */
+            left: calc(-1 * (2rem + 6vw)) !important; 
             width: 0%;
-            height: 3px !important; /* 선 두께 확장 */
+            height: 3px !important;
             opacity: 0;
-            background: linear-gradient(to right, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.35) 40%, rgba(255, 255, 255, 0.85) 100%);
-            /* 장엄한 감속 효과를 내는 베지어 속도 곡선 및 8초 제어 */
+            /* 선 길이에 맞춰 페이드아웃 처리되는 정밀 그라데이션 */
+            background: linear-gradient(to right, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.4) 35%, rgba(255, 255, 255, 0.85) 100%);
             transition: width 8.0s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 2.0s ease;
         }
         
+        /* ★ 애니메이션 완료 시 총 너비가 화면 왼쪽 끝 ~ 글자 끝 넓이(100% + 좌측 패딩 offset)만큼만 확보됨 */
         .entry-line.show {
             opacity: 1;
-            width: 100vw !important;
+            width: calc(100% + (2rem + 6vw)) !important;
         }
 
         /* DOT */
@@ -192,12 +202,13 @@
             color: #162e59 !important;
         }
 
-        /* MOBILE */
+        /* MOBILE 반응형 오프셋 초기화 대응 */
         @media (max-width: 768px) {
             .hero-container { padding-left: 24px !important; padding-right: 24px !important; }
-            .outline-title { font-size: 44px !important; line-height: 1.2; text-shadow: 1px 1px 0px #162e59, 2px 2px 0px #162e59, 3px 3px 10px rgba(0,0,0,0.4); }
+            .outline-title { font-size: 44px !important; line-height: 1.2; text-shadow: 1px 1px 0px #162e59, 2px 2px 0px #162e59; }
             #slide-sub { font-size: 16px !important; }
-            .entry-line { height: 2px !important; } /* 모바일은 2px이 밸런스에 최적 */
+            .entry-line { left: -24px !important; height: 2px !important; } 
+            .entry-line.show { width: calc(100% + 24px) !important; }
             .contact-box { right: 20px !important; bottom: 20px !important; }
             .contact-box p:first-child { font-size: 16px !important; }
             .portfolio-section { padding-top: 60px !important; padding-bottom: 60px !important; }
@@ -292,13 +303,13 @@
             <img src="https://imgur.com/s7rYln8.jpg" class="slide-bg">
         </div>
 
-        <div class="hero-container relative z-10 flex flex-col items-start text-left w-full pl-8 sm:pl-16 md:pl-28 pr-0">
+        <div class="hero-container relative z-10 flex flex-col items-start text-left w-max pl-8 sm:pl-16 md:pl-32 pr-0">
             
             <h1 id="anim-title" class="anim-up outline-title text-5xl md:text-[92px] tracking-tight uppercase">
                 BLUE DESIGN
             </h1>
 
-            <div class="w-full relative h-[3px] my-3 md:my-4">
+            <div class="entry-line-container">
                 <div id="anim-line" class="entry-line"></div>
             </div>
 
@@ -587,7 +598,7 @@ function checkReveal() {
     }
 }
 
-// 디자인픽셀 스타일 애니메이션 제어 스크립트 
+// 애니메이션 제어 트리거
 window.addEventListener('DOMContentLoaded', () => {
     // 1단계: 선이 확장되는 8초 모션 시작
     setTimeout(() => {
