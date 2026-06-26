@@ -101,7 +101,7 @@
             transform: translateY(0);
         }
 
-        /* ✨ 우측 하단 연락처 글자 색상 실시간 제어 스타일 (서브 페이지는 파란색 시작이 기본) */
+        /* ✨ 우측 하단 연락처 글자 색상 실시간 제어 스타일 */
         .dynamic-contact-text {
             color: #162e59;
             transition: color 0.3s ease;
@@ -222,7 +222,7 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-[160px_1fr] items-center gap-2 md:gap-4">
                     <label class="text-base font-bold text-gray-800 flex items-center">
-                        <span class="mr-1.5">•</span> 방문희망일
+                        <span class="mr-1.5">•</span> 상담 및 실측 가능일
                     </label>
                     <input type="text" name="visit_date" class="w-full bg-white h-11 px-4 outline-none border-none text-sm">
                 </div>
@@ -317,7 +317,7 @@
 
         // 📞 연락처 자동 하이픈(-) 포맷팅 함수
         function autoHyphenPhone(target) {
-            let val = target.value.replace(/[^0-9]/g, ''); // 숫자 이외의 문자 제거
+            let val = target.value.replace(/[^0-9]/g, ''); 
             let res = '';
 
             if (val.startsWith('02')) {
@@ -337,12 +337,12 @@
 
         // 💰 추정예산 3자리 단위 자동 쉼표(,) 포맷팅 함수
         function autoCommaBudget(target) {
-            let val = target.value.replace(/[^0-9]/g, ''); // 숫자만 필터링
+            let val = target.value.replace(/[^0-9]/g, ''); 
             if (val === '') {
                 target.value = '';
                 return;
             }
-            target.value = Number(val).toLocaleString(); // 3자리 세퍼레이터 추가
+            target.value = Number(val).toLocaleString(); 
         }
 
         // '기타' 라디오 버튼 클릭 시 텍스트 창 제어 함수
@@ -351,11 +351,11 @@
             const etcInput = document.getElementById('inquiry_etc_text');
 
             if (etcRadio.checked) {
-                etcInput.classList.remove('hidden'); // 활성화
+                etcInput.classList.remove('hidden'); 
                 etcInput.setAttribute('required', 'true');
                 etcInput.focus();
             } else {
-                etcInput.classList.add('hidden'); // 비활성화
+                etcInput.classList.add('hidden'); 
                 etcInput.removeAttribute('required');
                 etcInput.value = '';
             }
@@ -363,17 +363,15 @@
 
         // 문의하기 폼 Submit (이메일 전송 처리)
         document.getElementById('contactForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // 기본 제출 방지
+            event.preventDefault(); 
 
             const formData = new FormData(this);
 
-            // '기타' 선택 여부에 따른 데이터 가공
             let finalInquiryType = formData.get('inquiry_type');
             if (finalInquiryType === '기타') {
                 finalInquiryType = '기타: ' + formData.get('inquiry_etc_text');
             }
 
-            // 예산 문자열 가공 ('원' 단위 부착)
             let rawBudget = formData.get('budget_range');
             let finalBudget = rawBudget ? rawBudget + '원' : '미기입';
 
@@ -396,7 +394,7 @@
                 .then(function() {
                     alert('견적 문의가 정상적으로 전송되었습니다. 확인 후 빠른 시일 내에 연락드리겠습니다.');
                     document.getElementById('contactForm').reset();
-                    toggleEtcInput(); // 레이아웃 상태 리셋
+                    toggleEtcInput(); 
                 }, function(error) {
                     alert('메일 전송에 실패했습니다. 다시 시도해 주시거나 대표 번호로 문의 바랍니다. 에러: ' + JSON.stringify(error));
                 });
