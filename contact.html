@@ -5,13 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BLUE DESIGN | 견적문의</title>
 
-    <!-- 🌐 [아이콘 고정] 다른 서브 페이지와 동일한 로고 파비콘 링크를 추가했습니다 -->
     <link rel="icon" href="https://i.imgur.com/f1j8a7x.png" type="image/png">
 
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
@@ -176,9 +174,9 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-[160px_1fr] items-center gap-2 md:gap-4">
                     <label class="text-base font-bold text-gray-800 flex items-center">
-                        <span class="mr-1.5">•</span> 이메일
+                        <span class="mr-1.5">•</span> 이메일 <span class="text-red-500 ml-1">*</span>
                     </label>
-                    <input type="email" name="user_email" class="w-full bg-white h-11 px-4 outline-none border-none text-sm">
+                    <input type="email" name="user_email" required class="w-full bg-white h-11 px-4 outline-none border-none text-sm">
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-[160px_1fr] items-center gap-2 md:gap-4">
@@ -266,7 +264,6 @@
                     <input type="text" name="construction_period" class="w-full bg-white h-11 px-4 outline-none border-none text-sm">
                 </div>
 
-
                 <div class="grid grid-cols-1 md:grid-cols-[160px_1fr] items-start gap-2 md:gap-4">
                     <label class="text-base font-bold text-gray-800 flex items-center pt-2">
                         <span class="mr-1.5">•</span> 기타사항
@@ -298,7 +295,6 @@
 
     </main>
 
-    <!-- 🟢 우측 하단 연락처 글씨 레이아웃 원본 그대로 100% 유지 -->
     <div class="contact-box fixed bottom-10 right-10 z-[99999] flex flex-col items-end select-none">
         <div id="dynamic-text-target" class="dynamic-contact-text mb-5 flex flex-col items-end text-right">
             <p class="text-[21px] font-black tracking-tighter">010-4192-0882</p>
@@ -365,10 +361,30 @@
         document.getElementById('contactForm').addEventListener('submit', function(event) {
             event.preventDefault(); // 기본 폼 제출 동작 차단
 
-            // 슬라이더 포맷팅된 텍스트 값을 전송 데이터에 포함하기 위해 원 단위 가공
-            const formattedBudget = parseInt(rangeInput.value).toLocaleString() + "원";
+            // 폼에 입력된 데이터 가져오기
+            const formData = new FormData(this);
+            
+            // 슬라이더 포맷팅된 텍스트 값을 "원" 단위로 가공
+            const formattedBudget = parseInt(document.getElementById('budgetRange').value).toLocaleString() + "원";
 
-            emailjs.sendForm('service_wsz5497', 'template_a35v7vi', this)
+            // EmailJS에 전달할 파라미터 구성 (EmailJS 템플릿 변수명과 반드시 일치해야 함)
+            const templateParams = {
+                company_name: formData.get('company_name'),
+                user_email: formData.get('user_email'),
+                manager_name: formData.get('manager_name'),
+                user_phone: formData.get('user_phone'),
+                inquiry_type: formData.get('inquiry_type') || '선택 안함',
+                company_location: formData.get('company_location'),
+                site_location: formData.get('site_location'),
+                site_size: formData.get('site_size'),
+                visit_date: formData.get('visit_date'),
+                budget_range: formattedBudget,
+                construction_period: formData.get('construction_period'),
+                etc_memo: formData.get('etc_memo')
+            };
+
+            // sendForm 대신 send 메서드를 사용하여 명시적으로 데이터 전송
+            emailjs.send('service_wsz5497', 'template_a35v7vi', templateParams)
                 .then(function() {
                     alert('견적 문의가 정상적으로 전송되었습니다. 확인 후 빠른 시일 내에 연락드리겠습니다.');
                     document.getElementById('contactForm').reset(); // 폼 초기화
