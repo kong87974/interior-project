@@ -109,18 +109,11 @@
             opacity: 1;
         }
 
-        /* 타이틀 스타일: 아웃라인 + 다중 파란색 그림자 3D 입체화 효과 */
+        /* 타이틀 스타일: 파란색 그림자 제거, 깔끔한 하얀색 테두리 아웃라인만 유지 */
         .outline-title {
             color: transparent;
             -webkit-text-stroke: 1.5px #ffffff;
             font-weight: 800;
-            text-shadow: 
-                1px 1px 0px #162e59, 
-                2px 2px 0px #162e59, 
-                3px 3px 0px #162e59, 
-                4px 4px 0px #162e59, 
-                5px 5px 0px #162e59,
-                8px 8px 20px rgba(0, 0, 0, 0.5);
             display: inline-block;
         }
 
@@ -205,7 +198,7 @@
         /* MOBILE 반응형 오프셋 초기화 대응 */
         @media (max-width: 768px) {
             .hero-container { padding-left: 24px !important; padding-right: 24px !important; }
-            .outline-title { font-size: 44px !important; line-height: 1.2; text-shadow: 1px 1px 0px #162e59, 2px 2px 0px #162e59; }
+            .outline-title { font-size: 44px !important; line-height: 1.2; }
             #slide-sub { font-size: 16px !important; }
             .entry-line { left: -24px !important; height: 2px !important; } 
             .entry-line.show { width: calc(100% + 24px) !important; }
@@ -306,7 +299,7 @@
         <div class="hero-container relative z-10 flex flex-col items-start text-left w-max pl-8 sm:pl-16 md:pl-32 pr-0">
             
             <h1 id="anim-title" class="anim-up outline-title text-5xl md:text-[92px] tracking-tight uppercase">
-                BLUE DESIGN
+                Blue Design
             </h1>
 
             <div class="entry-line-container">
@@ -317,9 +310,9 @@
                 사무공간 ㆍ 상업공간 전문 인테리어
             </p>
 
-            <div id="anim-btns" class="anim-down flex gap-4">
-                <a href="project_all.html" class="px-8 py-4 bg-white text-black font-bold text-sm tracking-wider hover:bg-gray-200 transition-all">PROJECT LIST</a>
-                <a href="contact.html" class="px-8 py-4 border border-white text-white font-bold text-sm tracking-wider hover:bg-white hover:text-black transition-all">GET A QUOTE</a>
+            <div id="anim-btns" class="anim-down flex gap-8">
+                <a href="project_all.html" class="pb-1 text-[#162e59] font-black text-base md:text-xl tracking-wider border-b-[3px] border-[#162e59] transition-all hover:opacity-80">PROJECT LIST</a>
+                <a href="contact.html" class="pb-1 text-white font-bold text-base md:text-xl tracking-wider border-b-[3px] border-white transition-all hover:text-gray-200 hover:border-gray-200">GET A QUOTE</a>
             </div>
         </div>
 
