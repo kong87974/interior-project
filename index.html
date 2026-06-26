@@ -106,11 +106,18 @@
             object-fit: cover;
             opacity: 0;
             transition: opacity 1s ease-in-out;
-            filter: brightness(0.7);
+            filter: brightness(0.65); /* 글자 가독성을 위해 배경을 살짝만 더 어둡게 조절 */
         }
 
         .slide-bg.active {
             opacity: 1;
+        }
+
+        /* 메인 타이틀 흰색 아웃라인 글씨체 효과 (비연드 테크 스타일) */
+        .outline-title {
+            color: transparent;
+            -webkit-text-stroke: 1.5px #ffffff;
+            font-weight: 800;
         }
 
         /* DOT */
@@ -151,8 +158,8 @@
 
         /* MOBILE */
         @media (max-width: 768px) {
-            #slide-title { font-size: 34px !important; text-align: center; line-height: 1.3; padding: 0 20px; }
-            #slide-sub { font-size: 14px !important; text-align: center; letter-spacing: 0.2em; padding: 0 20px; }
+            .outline-title { font-size: 46px !important; text-align: center; line-height: 1.2; }
+            #slide-sub { font-size: 16px !important; text-align: center; padding: 0 10px; }
             .contact-box { right: 20px !important; bottom: 20px !important; }
             .contact-box p:first-child { font-size: 16px !important; }
             .portfolio-section { padding-top: 60px !important; padding-bottom: 60px !important; }
@@ -242,29 +249,34 @@
         </div>
     </nav>
 
-    <section class="relative min-h-screen w-full z-0">
+    <section class="relative min-h-screen w-full z-0 flex flex-col justify-center items-center">
         <div id="slider" class="absolute inset-0 w-full h-full overflow-hidden z-0">
             <img src="https://imgur.com/qNy0djf.jpg" class="slide-bg active">
             <img src="https://imgur.com/QjHHuK1.jpg" class="slide-bg">
             <img src="https://imgur.com/s7rYln8.jpg" class="slide-bg">
         </div>
 
-        <div class="relative z-10 min-h-screen flex flex-col justify-center text-white">
-            <div class="flex items-center gap-10">
-                <h1 id="slide-title" class="text-7xl font-bold tracking-tight mb-2 transition-all duration-500">BLUE DESIGN</h1>
-                <p id="slide-sub" class="text-4xl font-black mb-4 transition-all duration-500">사무공간ㆍ사무공간 전문 인테리어</p>
-            </div>
+        <div class="relative z-10 flex flex-col items-center text-center px-4 w-full max-w-[1400px]">
+            <h1 class="outline-title text-5xl md:text-[92px] tracking-tight mb-2 md:mb-4 transition-all duration-500 uppercase">
+                BLUE DESIGN
+            </h1>
 
-            <div class="flex gap-4 mt-16 max-w-[1400px]">
-                <a href="project_all.html" class="flex-1 text-center py-5 bg-white text-black font-bold text-base tracking-wider hover:bg-gray-200 transition-all">PROJECT LIST</a>
-                <a href="contact.html" class="flex-1 text-center py-5 border border-white text-white font-bold text-base tracking-wider hover:bg-white hover:text-black transition-all">GET A QUOTE</a>
-            </div>
+            <div class="w-24 md:w-[600px] h-[1px] bg-white/40 my-5 md:my-7"></div>
 
-            <div class="absolute bottom-12 flex gap-4 self-center">
-                <span class="dot active" onclick="goSlide(0)"></span>
-                <span class="dot" onclick="goSlide(1)"></span>
-                <span class="dot" onclick="goSlide(2)"></span>
+            <p id="slide-sub" class="text-lg md:text-3xl font-bold tracking-tight mb-10 transition-all duration-500 text-white">
+                사무공간 ㆍ 상업공간 전문 인테리어
+            </p>
+
+            <div class="flex gap-4">
+                <a href="project_all.html" class="px-8 py-4 bg-white text-black font-bold text-sm tracking-wider hover:bg-gray-200 transition-all">PROJECT LIST</a>
+                <a href="contact.html" class="px-8 py-4 border border-white text-white font-bold text-sm tracking-wider hover:bg-white hover:text-black transition-all">GET A QUOTE</a>
             </div>
+        </div>
+
+        <div class="absolute bottom-12 flex gap-4 z-10">
+            <span class="dot active" onclick="goSlide(0)"></span>
+            <span class="dot" onclick="goSlide(1)"></span>
+            <span class="dot" onclick="goSlide(2)"></span>
         </div>
     </section>
 
@@ -294,7 +306,6 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
-                
                 <a href="project_detail_09.html" class="group cursor-pointer reveal block">
                     <div class="relative overflow-hidden aspect-video bg-gray-100 mb-5 rounded-md shadow-sm">
                         <img src="https://imgur.com/jgkQq1p.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="K-Materials 사무실">
@@ -348,7 +359,6 @@
                     <p class="text-[12px] text-[#1e3a8a] font-bold tracking-normal uppercase mb-1.5">상업공간</p>
                     <h4 class="text-lg font-bold tracking-tight group-hover:text-[#1e3a8a] transition-colors">[수원] 아구찜 음식점</h4>
                 </a>
-
             </div>
         </div>
     </section>
@@ -362,7 +372,7 @@
                     <p class="text-gray-500 leading-relaxed text-[15px] md:text-[17px]">
                         블루디자인은 단순한 인테리어를 넘어 공간 안에서의 경험과 동선을 설계합니다.<br>
                         사무공간, 상업공간 등 다양한 프로젝트를 통해 공간의 새로운 가치를 제안합니다.
-                    </    p>
+                    </p>
                 </div>
                 <div class="relative reveal">
                     <div class="aspect-[4/5] overflow-hidden rounded-[4px]">
