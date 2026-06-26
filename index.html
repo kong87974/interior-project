@@ -34,7 +34,7 @@
 
         /* 헤더 및 드롭다운 스타일 전환용 트랜지션 효과 */
         nav {
-            transition: background-color 0.3s ease, border-color 0.3s ease;
+            transition: background-color 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
         }
         nav a, nav span, nav svg, nav button {
             transition: color 0.3s ease, border-color 0.3s ease, filter 0.3s ease, text-shadow 0.3s ease, background-color 0.3s ease;
@@ -61,19 +61,19 @@
             align-items: center;
         }
 
-        /* [수정 완공] 문법 에러가 나던 세미콜론(;) 누락 문제를 완전히 해결한 코드입니다 */
+        /* 드롭다운: 답답하게 탁하던 느낌을 개선하기 위해 배경 투명도를 더 투명하게 낮추고 투명 블러 선명화 */
         .dropdown {
             position: absolute;
             top: 80px; /* h-20 높이와 완벽 일치 */
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(255, 255, 255, 0.12); /* 투명 배경 */
-            backdrop-filter: blur(12px); 
-            -webkit-backdrop-filter: blur(12px); /* 속성 구분을 위해 세미콜론 정밀 수정 완료 */
+            background: rgba(255, 255, 255, 0.05); /* 투명도를 더 높여 투명하게 변경 */
+            backdrop-filter: blur(8px); 
+            -webkit-backdrop-filter: blur(8px);
             width: 180px; /* 글자가 절대 깨지지 않는 안전한 고정 너비 */
             display: none;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.2); /* 은은한 흰색 테두리 */
+            border: 1px solid rgba(255, 255, 255, 0.15); /* 은은한 흰색 테두리 경량화 */
             padding: 8px 0;
             border-radius: 8px;
             z-index: 999999 !important;
@@ -172,7 +172,7 @@
 
 <body class="bg-white">
 
-    <nav id="mainHeader" class="fixed top-0 left-0 w-full z-[999999] bg-transparent border-b border-white/20 h-20 backdrop-blur-[4px]">
+    <nav id="mainHeader" class="fixed top-0 left-0 w-full z-[999999] bg-transparent border-b border-white/10 h-20">
         <div class="max-w-[1400px] mx-auto px-6 h-full flex justify-between items-center relative">
             
             <div id="leftMenu" class="hidden md:flex items-center gap-14 text-[15px] font-bold text-white h-full shadow-text">
@@ -204,7 +204,7 @@
             <div id="rightMenu" class="hidden md:flex justify-end items-center gap-10 text-[15px] font-bold text-white shadow-text">
                 <a href="contact.html" class="hover:text-gray-200 transition-colors">견적문의</a>
                 <a href="notice.html" class="hover:text-gray-200 transition-colors">공지사항</a>
-                <div id="headerContactBorder" class="flex items-center gap-3 border-l border-white/20 pl-10">
+                <div id="headerContactBorder" class="flex items-center gap-3 border-l border-white/10 pl-10">
                     
                     <svg id="phoneIcon" class="w-7 h-7 text-white shadow-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="6" y="3" width="12" height="18" rx="2" />
@@ -441,7 +441,7 @@ setInterval(() => {
     updateSlide();
 }, 2000);
 
-// 실시간 스크롤 연동 처리 함수 (헤더 컬러 & 그림자 & 애니메이션 통합 제어)
+// 실시간 스크롤 연동 처리 함수
 function checkReveal() {
     const windowHeight = window.innerHeight;
     const scrollY = window.scrollY;
@@ -458,14 +458,16 @@ function checkReveal() {
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 
     if (scrollY > 50) {
-        // 스크롤이 내려갔을 때: 흰색 배경에 90% 투명도 적용, 원래 고유 글씨 색상 복구 및 그림자 제거
+        // 스크롤이 내려갔을 때: 흰색 배경에 90% 투명도 및 미세한 블러 추가
+        header.style.backgroundColor = "rgba(255, 255, 255, 0.9)";
         header.classList.remove('bg-transparent', 'border-white/20');
-        header.classList.add('bg-white/90', 'border-gray-100');
+        header.classList.add('border-gray-100');
+        header.style.backdropFilter = "blur(4px)";
 
         leftMenu.classList.remove('text-white', 'shadow-text');
         leftMenu.classList.add('text-gray-800');
 
-        logoMain.classList.remove('shadow-text'); // 본래 진한 파란색만 유지
+        logoMain.classList.remove('shadow-text');
 
         logoSub.classList.remove('text-gray-300', 'shadow-text');
         logoSub.classList.add('text-gray-500');
@@ -473,7 +475,7 @@ function checkReveal() {
         rightMenu.classList.remove('text-white', 'shadow-text');
         rightMenu.classList.add('text-gray-800');
 
-        headerContactBorder.classList.remove('border-white/20');
+        headerContactBorder.classList.remove('border-white/10');
         headerContactBorder.classList.add('border-gray-100');
 
         phoneIcon.classList.remove('text-white', 'shadow-icon');
@@ -488,9 +490,11 @@ function checkReveal() {
         mobileMenuBtn.classList.remove('border-white', 'text-white', 'shadow-text');
         mobileMenuBtn.classList.add('border-black', 'text-black');
     } else {
-        // 최상단에 있을 때: 완전 투명 배경, BLUE DESIGN(진한파랑), 나머지 텍스트들은 흰색 및 가독성을 위한 부드러운 그림자(shadow-text) 활성화
-        header.classList.remove('bg-white/90', 'border-gray-100');
+        // 최상단에 있을 때: 완전 투명 배경으로 복귀 (블러 완전 제거)
+        header.style.backgroundColor = "transparent";
+        header.classList.remove('border-gray-100');
         header.classList.add('bg-transparent', 'border-white/20');
+        header.style.backdropFilter = "none";
 
         leftMenu.classList.remove('text-gray-800');
         leftMenu.classList.add('text-white', 'shadow-text');
@@ -504,7 +508,7 @@ function checkReveal() {
         rightMenu.classList.add('text-white', 'shadow-text');
 
         headerContactBorder.classList.remove('border-gray-100');
-        headerContactBorder.classList.add('border-white/20');
+        headerContactBorder.classList.add('border-white/10');
 
         phoneIcon.classList.remove('text-[#162e59]');
         phoneIcon.classList.add('text-white', 'shadow-icon');
