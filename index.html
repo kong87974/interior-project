@@ -109,52 +109,53 @@
             opacity: 1;
         }
 
-        /* 타이틀 스타일: 아웃라인 + 진한 파란색 그림자 */
+        /* ★ 타이틀 수정: 다중 레이어로 단순 선이 아닌 완벽한 진한 파란색 3D 입체 그림자 구현 */
         .outline-title {
             color: transparent;
             -webkit-text-stroke: 1.5px #ffffff;
             font-weight: 800;
-            filter: drop-shadow(4px 4px 0px rgba(22, 46, 89, 0.75)) drop-shadow(0px 8px 16px rgba(0, 0, 0, 0.3));
+            text-shadow: 
+                1px 1px 0px #162e59, 
+                2px 2px 0px #162e59, 
+                3px 3px 0px #162e59, 
+                4px 4px 0px #162e59, 
+                5px 5px 0px #162e59,
+                8px 8px 20px rgba(0, 0, 0, 0.5);
         }
 
-        /* ========================================================
-           ★ 디자인픽셀 최종 수정: 동시 슬라이딩 모션 및 느린 그라데이션 선
-        ======================================================== */
-        /* 위아래 동시 진입을 위해 트랜지션 시간과 큐빅베지어를 일치시킴 */
+        /* 디자인픽셀 정밀 구현: 가로선 기준 위아래 슬라이드 동시 모션 (더 정적이고 느리게 4.0초 제어) */
         .anim-up {
             opacity: 0;
-            transform: translateY(35px);
-            transition: opacity 1.5s cubic-bezier(0.1, 0.8, 0.2, 1), transform 1.5s cubic-bezier(0.1, 0.8, 0.2, 1);
+            transform: translateY(40px);
+            transition: opacity 4.0s cubic-bezier(0.1, 0.7, 0.1, 1), transform 4.0s cubic-bezier(0.1, 0.7, 0.1, 1);
         }
         .anim-down {
             opacity: 0;
-            transform: translateY(-35px); /* 선 기준으로 동시에 위에서 아래로 정렬 */
-            transition: opacity 1.5s cubic-bezier(0.1, 0.8, 0.2, 1), transform 1.5s cubic-bezier(0.1, 0.8, 0.2, 1);
+            transform: translateY(-40px); 
+            transition: opacity 4.0s cubic-bezier(0.1, 0.7, 0.1, 1), transform 4.0s cubic-bezier(0.1, 0.7, 0.1, 1);
         }
         
-        /* 트리거 작동 시 클래스 적용 */
         .anim-up.show, .anim-down.show {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* 여백 한계를 깨고 화면 왼쪽 끝 '정밀 밀착' 및 두께 1.5px 확장 */
+        /* ★ 구분선 수정: 두께를 3px로 굵게 확장 및 8초 동안 초정밀 슬로우 그라데이션 확장 연출 */
         .entry-line {
             position: absolute;
             left: 0 !important;
             width: 0%;
-            height: 1.5px !important; /* 조금 더 굵고 직관적으로 수정 */
+            height: 3px !important; /* 선 두께 확장 */
             opacity: 0;
-            background: linear-gradient(to right, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.3) 40%, rgba(255, 255, 255, 0.75) 100%);
-            /* ★ 연출 수정: 모션 속도를 3.0초로 늦추어 묵직하고 은은하게 깔리도록 설정 */
-            transition: width 3.0s cubic-bezier(0.15, 0.85, 0.3, 1), opacity 1.5s ease;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.35) 40%, rgba(255, 255, 255, 0.85) 100%);
+            /* 장엄한 감속 효과를 내는 베지어 속도 곡선 및 8초 제어 */
+            transition: width 8.0s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 2.0s ease;
         }
         
         .entry-line.show {
             opacity: 1;
             width: 100vw !important;
         }
-        /* ======================================================== */
 
         /* DOT */
         .dot {
@@ -194,8 +195,9 @@
         /* MOBILE */
         @media (max-width: 768px) {
             .hero-container { padding-left: 24px !important; padding-right: 24px !important; }
-            .outline-title { font-size: 44px !important; line-height: 1.2; filter: drop-shadow(2px 2px 0px rgba(22, 46, 89, 0.75)); }
+            .outline-title { font-size: 44px !important; line-height: 1.2; text-shadow: 1px 1px 0px #162e59, 2px 2px 0px #162e59, 3px 3px 10px rgba(0,0,0,0.4); }
             #slide-sub { font-size: 16px !important; }
+            .entry-line { height: 2px !important; } /* 모바일은 2px이 밸런스에 최적 */
             .contact-box { right: 20px !important; bottom: 20px !important; }
             .contact-box p:first-child { font-size: 16px !important; }
             .portfolio-section { padding-top: 60px !important; padding-bottom: 60px !important; }
@@ -296,7 +298,7 @@
                 BLUE DESIGN
             </h1>
 
-            <div class="w-full relative h-[1.5px] my-3 md:my-4">
+            <div class="w-full relative h-[3px] my-3 md:my-4">
                 <div id="anim-line" class="entry-line"></div>
             </div>
 
@@ -493,7 +495,7 @@ function updateSlide() {
         img.classList.toggle('active', i === currentSlide);
     });
     dots.forEach((dot, i) => {
-        dot.toggle('active', i === currentSlide);
+        dot.classList.toggle('active', i === currentSlide);
     });
 }
 
@@ -585,18 +587,18 @@ function checkReveal() {
     }
 }
 
-// 디자인픽셀 스타일 애니메이션 제어 스크립트 (동시 슬라이딩 매칭 및 선 속도 3초 완화)
+// 디자인픽셀 스타일 애니메이션 제어 스크립트 
 window.addEventListener('DOMContentLoaded', () => {
-    // 1단계: 가로 그라데이션 선이 왼쪽 0px 지점부터 오른쪽까지 3초간 묵직하고 느리게 채워짐
+    // 1단계: 선이 확장되는 8초 모션 시작
     setTimeout(() => {
         document.getElementById('anim-line').classList.add('show');
     }, 100);
 
-    // ★ 2단계 핵심 수정: 선이 넓어지는 타이밍에 맞춰 상하 글씨 요소들이 '동시에' 갈라지며 등장
+    // 2단계: 선을 기점으로 위아래 4초간 부드럽게 대칭 슬라이딩
     setTimeout(() => {
-        document.getElementById('anim-title').classList.add('show'); // 아래에서 위로
-        document.getElementById('anim-sub').classList.add('show');   // 위에서 아래로
-        document.getElementById('anim-btns').classList.add('show');  // 버튼 세트 동시 노출
+        document.getElementById('anim-title').classList.add('show'); 
+        document.getElementById('anim-sub').classList.add('show');   
+        document.getElementById('anim-btns').classList.add('show');  
     }, 250);
 });
 
