@@ -109,7 +109,7 @@
             opacity: 1;
         }
 
-        /* 타이틀 스타일: 아웃라인 + 진한 파란색(네이비) 입체 그림자 */
+        /* 타이틀 스타일: 아웃라인 + 진한 파란색 그림자 */
         .outline-title {
             color: transparent;
             -webkit-text-stroke: 1.5px #ffffff;
@@ -118,39 +118,41 @@
         }
 
         /* ========================================================
-           ★ 디자인픽셀 정밀 구현: 가로선 기준 위아래 슬라이드 모션
+           ★ 디자인픽셀 최종 수정: 동시 슬라이딩 모션 및 느린 그라데이션 선
         ======================================================== */
-        /* 1단계: 선 기준으로 위에서 아래로 내려오거나, 아래에서 위로 올라오는 모션 분리 */
+        /* 위아래 동시 진입을 위해 트랜지션 시간과 큐빅베지어를 일치시킴 */
         .anim-up {
             opacity: 0;
-            transform: translateY(40px); /* 아래에서 위로 올라오며 등장 */
-            transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+            transform: translateY(35px);
+            transition: opacity 1.5s cubic-bezier(0.1, 0.8, 0.2, 1), transform 1.5s cubic-bezier(0.1, 0.8, 0.2, 1);
         }
         .anim-down {
             opacity: 0;
-            transform: translateY(-20px); /* 가로선 기준으로 위에서 아래로 살짝 내려오며 등장 */
-            transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+            transform: translateY(-35px); /* 선 기준으로 동시에 위에서 아래로 정렬 */
+            transition: opacity 1.5s cubic-bezier(0.1, 0.8, 0.2, 1), transform 1.5s cubic-bezier(0.1, 0.8, 0.2, 1);
         }
         
+        /* 트리거 작동 시 클래스 적용 */
         .anim-up.show, .anim-down.show {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* ★ 가로선 효과: 왼쪽 끝까지 고정 및 오른쪽으로 갈수록 진해지는 그라데이션 */
+        /* 여백 한계를 깨고 화면 왼쪽 끝 '정밀 밀착' 및 두께 1.5px 확장 */
         .entry-line {
             position: absolute;
-            left: 0;
+            left: 0 !important;
             width: 0%;
+            height: 1.5px !important; /* 조금 더 굵고 직관적으로 수정 */
             opacity: 0;
-            /* 디자인픽셀처럼 흰색이 오른쪽으로 갈수록 진해지는 슬림 그라데이션 라인 */
-            background: linear-gradient(to right, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.6) 100%);
-            transition: width 1.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 1s ease;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.3) 40%, rgba(255, 255, 255, 0.75) 100%);
+            /* ★ 연출 수정: 모션 속도를 3.0초로 늦추어 묵직하고 은은하게 깔리도록 설정 */
+            transition: width 3.0s cubic-bezier(0.15, 0.85, 0.3, 1), opacity 1.5s ease;
         }
         
         .entry-line.show {
             opacity: 1;
-            width: 100vw; /* 화면 왼쪽 끝부터 오른쪽 전체를 관통 */
+            width: 100vw !important;
         }
         /* ======================================================== */
 
@@ -294,8 +296,8 @@
                 BLUE DESIGN
             </h1>
 
-            <div class="w-full relative h-[1px] my-4 md:my-5">
-                <div id="anim-line" class="entry-line h-[1px]"></div>
+            <div class="w-full relative h-[1.5px] my-3 md:my-4">
+                <div id="anim-line" class="entry-line"></div>
             </div>
 
             <p id="anim-sub" class="anim-down text-lg md:text-3xl font-bold tracking-tight mb-10 text-white">
@@ -491,7 +493,7 @@ function updateSlide() {
         img.classList.toggle('active', i === currentSlide);
     });
     dots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === currentSlide);
+        dot.toggle('active', i === currentSlide);
     });
 }
 
@@ -583,27 +585,19 @@ function checkReveal() {
     }
 }
 
-// 디자인픽셀 스타일 애니메이션 제어 스크립트
+// 디자인픽셀 스타일 애니메이션 제어 스크립트 (동시 슬라이딩 매칭 및 선 속도 3초 완화)
 window.addEventListener('DOMContentLoaded', () => {
-    // 1단계: 가로 그라데이션 선이 왼쪽 끝에서 오른쪽 끝까지 부드럽게 먼저 채워짐
+    // 1단계: 가로 그라데이션 선이 왼쪽 0px 지점부터 오른쪽까지 3초간 묵직하고 느리게 채워짐
     setTimeout(() => {
         document.getElementById('anim-line').classList.add('show');
-    }, 150);
+    }, 100);
 
-    // 2단계: 가로선 위쪽의 대형 타이틀이 아래에서 위로(anim-up) 스르륵 등장
+    // ★ 2단계 핵심 수정: 선이 넓어지는 타이밍에 맞춰 상하 글씨 요소들이 '동시에' 갈라지며 등장
     setTimeout(() => {
-        document.getElementById('anim-title').classList.add('show');
-    }, 400);
-
-    // 3단계: 가로선 아래쪽의 부제목이 위에서 아래로(anim-down) 안착하며 등장
-    setTimeout(() => {
-        document.getElementById('anim-sub').classList.add('show');
-    }, 600);
-
-    // 4단계: 부제목 하단의 버튼 링크 세트가 부제목의 흐름을 이어받아 아래로 등장
-    setTimeout(() => {
-        document.getElementById('anim-btns').classList.add('show');
-    }, 750);
+        document.getElementById('anim-title').classList.add('show'); // 아래에서 위로
+        document.getElementById('anim-sub').classList.add('show');   // 위에서 아래로
+        document.getElementById('anim-btns').classList.add('show');  // 버튼 세트 동시 노출
+    }, 250);
 });
 
 window.addEventListener('scroll', checkReveal);
