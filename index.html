@@ -40,12 +40,12 @@
             transition: color 0.3s ease, border-color 0.3s ease, filter 0.3s ease, text-shadow 0.3s ease;
         }
 
-        /* [추가] 투명 헤더일 때 가독성을 극대화하는 은은한 그림자 스타일 */
+        /* [수정] 배경 이미지와 자연스럽게 어우러지도록 그림자를 더 부드럽고 약하게 변경 */
         .shadow-text {
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
         }
         .shadow-icon {
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+            filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.2));
         }
 
         /* 드롭다운 스타일 완벽 복구 및 가로 너비 보장 */
@@ -162,7 +162,7 @@
 
 <body class="bg-white">
 
-    <nav id="mainHeader" class="fixed top-0 left-0 w-full z-[999999] bg-transparent border-b border-white/20 h-20">
+    <nav id="mainHeader" class="fixed top-0 left-0 w-full z-[999999] bg-transparent border-b border-white/20 h-20 backdrop-blur-[4px]">
         <div class="max-w-[1400px] mx-auto px-6 h-full flex justify-between items-center relative">
             
             <div id="leftMenu" class="hidden md:flex items-center gap-14 text-[15px] font-bold text-white h-full shadow-text">
@@ -432,6 +432,7 @@ setInterval(() => {
 }, 2000);
 
 // 실시간 스크롤 연동 처리 함수 (헤더 컬러 & 그림자 & 애니메이션 통합 제어)
+// [수정] 스크롤 시 배경을 완벽한 흰색 대신 90% 투명한 흰색(bg-white/90)으로 제어하도록 업데이트
 function checkReveal() {
     const windowHeight = window.innerHeight;
     const scrollY = window.scrollY;
@@ -448,9 +449,9 @@ function checkReveal() {
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 
     if (scrollY > 50) {
-        // 스크롤이 내려갔을 때: 흰색 배경 원형 복구 및 그림자 제거
+        // 스크롤이 내려갔을 때: 흰색 배경에 90% 투명도 적용, 원래 고유 글씨 색상 복구 및 그림자 제거
         header.classList.remove('bg-transparent', 'border-white/20');
-        header.classList.add('bg-white', 'border-gray-100');
+        header.classList.add('bg-white/90', 'border-gray-100');
 
         leftMenu.classList.remove('text-white', 'shadow-text');
         leftMenu.classList.add('text-gray-800');
@@ -478,8 +479,8 @@ function checkReveal() {
         mobileMenuBtn.classList.remove('border-white', 'text-white', 'shadow-text');
         mobileMenuBtn.classList.add('border-black', 'text-black');
     } else {
-        // 최상단에 있을 때: 투명 배경, BLUE DESIGN(진한파랑), 텍스트들 흰색 및 가독성을 위한 그림자(shadow-text) 재활성화
-        header.classList.remove('bg-white', 'border-gray-100');
+        // 최상단에 있을 때: 완전 투명 배경, BLUE DESIGN(진한파랑), 나머지 텍스트들은 흰색 및 가독성을 위한 부드러운 그림자(shadow-text) 활성화
+        header.classList.remove('bg-white/90', 'border-gray-100');
         header.classList.add('bg-transparent', 'border-white/20');
 
         leftMenu.classList.remove('text-gray-800');
