@@ -109,7 +109,7 @@
             opacity: 1;
         }
 
-        /* ★ 타이틀 수정: 아웃라인 스타일 + 진한 파란색(네이비) 입체 그림자 효과 적용 */
+        /* 타이틀 스타일: 아웃라인 + 진한 파란색(네이비) 입체 그림자 */
         .outline-title {
             color: transparent;
             -webkit-text-stroke: 1.5px #ffffff;
@@ -117,37 +117,42 @@
             filter: drop-shadow(4px 4px 0px rgba(22, 46, 89, 0.75)) drop-shadow(0px 8px 16px rgba(0, 0, 0, 0.3));
         }
 
-        /* 애니메이션 기본 세팅 */
-        .entry-anim {
+        /* ========================================================
+           ★ 디자인픽셀 정밀 구현: 가로선 기준 위아래 슬라이드 모션
+        ======================================================== */
+        /* 1단계: 선 기준으로 위에서 아래로 내려오거나, 아래에서 위로 올라오는 모션 분리 */
+        .anim-up {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(40px); /* 아래에서 위로 올라오며 등장 */
+            transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .anim-down {
+            opacity: 0;
+            transform: translateY(-20px); /* 가로선 기준으로 위에서 아래로 살짝 내려오며 등장 */
             transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
         }
         
-        .entry-anim.show {
+        .anim-up.show, .anim-down.show {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* ★ 구분선 수정: 화면 왼쪽 끝(left:0)부터 오른쪽 끝까지 완벽하게 채우기 */
-        .entry-line-container {
-            position: relative;
-            width: 100vw;
-            margin-left: calc(-1 * (inset-padding)); /* 자바스크립트 및 반응형 여백 상쇄용 */
-        }
-        
+        /* ★ 가로선 효과: 왼쪽 끝까지 고정 및 오른쪽으로 갈수록 진해지는 그라데이션 */
         .entry-line {
             position: absolute;
             left: 0;
             width: 0%;
             opacity: 0;
+            /* 디자인픽셀처럼 흰색이 오른쪽으로 갈수록 진해지는 슬림 그라데이션 라인 */
+            background: linear-gradient(to right, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.6) 100%);
             transition: width 1.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 1s ease;
         }
         
         .entry-line.show {
-            opacity: 0.35;
-            width: 100vw; /* 좌우 무한대 확장 */
+            opacity: 1;
+            width: 100vw; /* 화면 왼쪽 끝부터 오른쪽 전체를 관통 */
         }
+        /* ======================================================== */
 
         /* DOT */
         .dot {
@@ -285,19 +290,19 @@
 
         <div class="hero-container relative z-10 flex flex-col items-start text-left w-full pl-8 sm:pl-16 md:pl-28 pr-0">
             
-            <h1 id="anim-title" class="entry-anim outline-title text-5xl md:text-[92px] tracking-tight uppercase">
+            <h1 id="anim-title" class="anim-up outline-title text-5xl md:text-[92px] tracking-tight uppercase">
                 BLUE DESIGN
             </h1>
 
             <div class="w-full relative h-[1px] my-4 md:my-5">
-                <div id="anim-line" class="entry-line h-[1px] bg-white"></div>
+                <div id="anim-line" class="entry-line h-[1px]"></div>
             </div>
 
-            <p id="anim-sub" class="entry-anim text-lg md:text-3xl font-bold tracking-tight mb-10 text-white">
+            <p id="anim-sub" class="anim-down text-lg md:text-3xl font-bold tracking-tight mb-10 text-white">
                 사무공간 ㆍ 상업공간 전문 인테리어
             </p>
 
-            <div id="anim-btns" class="entry-anim flex gap-4">
+            <div id="anim-btns" class="anim-down flex gap-4">
                 <a href="project_all.html" class="px-8 py-4 bg-white text-black font-bold text-sm tracking-wider hover:bg-gray-200 transition-all">PROJECT LIST</a>
                 <a href="contact.html" class="px-8 py-4 border border-white text-white font-bold text-sm tracking-wider hover:bg-white hover:text-black transition-all">GET A QUOTE</a>
             </div>
@@ -578,23 +583,27 @@ function checkReveal() {
     }
 }
 
-// 애니메이션 제어 트리거
+// 디자인픽셀 스타일 애니메이션 제어 스크립트
 window.addEventListener('DOMContentLoaded', () => {
-    setTimeout(() => {
-        document.getElementById('anim-title').classList.add('show');
-    }, 100);
-
+    // 1단계: 가로 그라데이션 선이 왼쪽 끝에서 오른쪽 끝까지 부드럽게 먼저 채워짐
     setTimeout(() => {
         document.getElementById('anim-line').classList.add('show');
-    }, 300);
+    }, 150);
 
+    // 2단계: 가로선 위쪽의 대형 타이틀이 아래에서 위로(anim-up) 스르륵 등장
+    setTimeout(() => {
+        document.getElementById('anim-title').classList.add('show');
+    }, 400);
+
+    // 3단계: 가로선 아래쪽의 부제목이 위에서 아래로(anim-down) 안착하며 등장
     setTimeout(() => {
         document.getElementById('anim-sub').classList.add('show');
-    }, 500);
+    }, 600);
 
+    // 4단계: 부제목 하단의 버튼 링크 세트가 부제목의 흐름을 이어받아 아래로 등장
     setTimeout(() => {
         document.getElementById('anim-btns').classList.add('show');
-    }, 700);
+    }, 750);
 });
 
 window.addEventListener('scroll', checkReveal);
