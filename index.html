@@ -59,7 +59,17 @@
             display: block !important;
         }
 
-        /* SLIDE */
+        /* 🟢 배경 슬라이드 고정 효과 (Fix-Background) */
+        .slider-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+        }
+
         .slide-bg {
             position: absolute;
             inset: 0;
@@ -68,7 +78,7 @@
             object-fit: cover;
             opacity: 0;
             transition: opacity 1s ease-in-out;
-            filter: brightness(0.65); /* 이미지 선명도 확보를 위한 살짝 어둡게 처리 */
+            filter: brightness(0.65);
         }
 
         .slide-bg.active {
@@ -112,8 +122,8 @@
         }
 
         @media (max-width: 768px) {
-            #slide-title { font-size: 34px !important; text-align: center; line-height: 1.3; }
-            #slide-sub { font-size: 14px !important; text-align: center; letter-spacing: 0.2em; }
+            #slide-title { font-size: 38px !important; text-align: center; line-height: 1.3; }
+            #slide-sub { font-size: 13px !important; text-align: center; }
             .contact-box { right: 20px !important; bottom: 20px !important; }
             .contact-box p:first-child { font-size: 16px !important; }
             .portfolio-section { padding-top: 90px !important; padding-bottom: 90px !important; }
@@ -130,9 +140,11 @@
     <nav class="fixed top-0 left-0 w-full z-[999999] bg-white border-b border-gray-100 h-20 text-gray-800">
         <div class="max-w-[1400px] mx-auto px-6 h-full flex justify-between items-center relative">
             
-            <a href="index.html" class="flex flex-col items-start leading-none group">
-                <div class="text-[18px] md:text-[21px] font-black tracking-wide text-[#162e59]">BLUE DESIGN</div>
-                <div class="text-[8px] md:text-[11px] tracking-[0.55em] pl-[0.1em] text-gray-400 uppercase mt-0.5">INTERIOR DESIGN</div>
+            <a href="index.html" class="flex flex-col items-stretch leading-none group w-[155px]">
+                <div class="text-[22px] font-black tracking-normal text-[#162e59] text-center whitespace-nowrap">Blue Design</div>
+                <div class="text-[9px] tracking-[0.22em] text-gray-400 uppercase mt-1 text-justify after:inline-block after:w-full after:content-[''] flex justify-between">
+                    <span>사</span><span>무</span><span>·</span><span>상</span><span>업</span><span>공</span><span>간</span><span> </span><span>전</span><span>문</span>
+                </div>
             </a>
 
             <div class="hidden md:flex items-center gap-10 text-[14px] font-bold h-full">
@@ -194,54 +206,57 @@
                 <a href="notice.html">NOTICE</a>
                 <div class="pt-4 border-t border-gray-100">
                     <p class="text-[#1e3a8a] font-black">010-4192-0882</p>
-                    <p class="text-xs text-gray-400">camp0882@daum.net</p>
                 </div>
             </div>
         </div>
     </nav>
 
-    <section class="relative pt-20 min-h-screen w-full overflow-hidden">
-        
-        <div id="slider" class="absolute inset-0 w-full h-full overflow-hidden z-0">
+    <div class="slider-wrapper">
+        <div id="slider" class="w-full h-full relative">
             <img src="https://imgur.com/qNy0djf.jpg" class="slide-bg active">
             <img src="https://imgur.com/QjHHuK1.jpg" class="slide-bg">
             <img src="https://imgur.com/s7rYln8.jpg" class="slide-bg">
         </div>
+    </div>
 
-        <div class="relative z-10 min-h-[calc(100vh-80px)] flex flex-col justify-center items-center px-6">
-            
-            <div class="border border-white/30 px-10 py-12 md:px-20 md:py-16 text-center max-w-3xl w-full flex flex-col items-center justify-center bg-black/10 backdrop-blur-[1px]">
+    <section class="relative pt-20 min-h-screen w-full z-10 pointer-events-none">
+        
+        <div class="min-h-[calc(100vh-80px)] flex justify-center items-center w-full">
+            <div class="max-w-[1400px] w-full mx-auto h-full px-6 flex justify-center items-center">
                 
-                <h1 id="slide-title" class="text-4xl md:text-7xl font-light tracking-[0.08em] uppercase text-white mb-5 transition-all duration-500 font-mono">
-                    BLUE DESIGN
-                </h1>
-                
-                <p id="slide-sub" class="text-sm md:text-base font-medium tracking-[0.45em] text-white/90 uppercase mb-10 transition-all duration-500 pl-[0.45em]">
-                    INTERIOR DESIGN
-                </p>
+                <div class="border border-white/50 px-10 py-12 md:px-24 md:py-20 text-center max-w-4xl w-full flex flex-col items-center justify-center pointer-events-auto">
+                    
+                    <h1 id="slide-title" class="text-4xl md:text-6xl font-normal text-white mb-3 transition-all duration-500">
+                        Blue Design
+                    </h1>
+                    
+                    <p id="slide-sub" class="text-sm md:text-base font-normal tracking-[0.1em] text-white/90 mb-12 transition-all duration-500">
+                        사무 · 상업공간 전문 인테리어
+                    </p>
 
-                <div class="flex flex-wrap gap-4 justify-center">
-                    <a href="project_all.html" class="px-6 py-3 border border-white text-white font-bold text-xs tracking-widest hover:bg-white hover:text-black transition-all uppercase">
-                        PROJECT LIST
-                    </a>
-                    <a href="contact.html" class="px-6 py-3 bg-white text-black font-bold text-xs tracking-widest hover:bg-gray-200 transition-all uppercase">
-                        GET A QUOTE
-                    </a>
+                    <div class="flex flex-wrap gap-4 justify-center">
+                        <a href="project_all.html" class="px-6 py-3 border border-white text-white font-bold text-xs tracking-widest hover:bg-white hover:text-black transition-all uppercase">
+                            PROJECT LIST
+                        </a>
+                        <a href="contact.html" class="px-6 py-3 bg-white text-black font-bold text-xs tracking-widest hover:bg-gray-200 transition-all uppercase">
+                            GET A QUOTE
+                        </a>
+                    </div>
                 </div>
-            </div>
 
-            <div class="absolute bottom-10 flex gap-4">
-                <span class="dot active" onclick="goSlide(0)"></span>
-                <span class="dot" onclick="goSlide(1)"></span>
-                <span class="dot" onclick="goSlide(2)"></span>
             </div>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-4 pointer-events-auto">
+            <span class="dot active" onclick="goSlide(0)"></span>
+            <span class="dot" onclick="goSlide(1)"></span>
+            <span class="dot" onclick="goSlide(2)"></span>
         </div>
     </section>
 
     <div class="contact-box fixed bottom-10 right-10 z-[99999] flex flex-col items-end select-none">
         <div id="dynamic-text-target" class="dynamic-contact-text mb-5 flex flex-col items-end text-right">
             <p class="text-[21px] font-black tracking-tighter">010-4192-0882</p>
-            <p class="text-sm font-light opacity-90 tracking-[0.055em] mr-[-0.055em]">camp0882@daum.net</p>
         </div>
         <div class="flex justify-end gap-3">
             <a href="javascript:void(0);" onclick="openNaverBlog();" class="w-10 h-10 rounded-full bg-[#03C75A] flex items-center justify-center text-white text-[10px] font-bold uppercase hover:scale-105 shadow-lg transition-transform">
@@ -253,7 +268,7 @@
         </div>
     </div>
     
-    <section class="portfolio-section py-32 bg-white relative z-10">
+    <section class="portfolio-section py-32 bg-white relative z-20">
         <div class="max-w-[1400px] mx-auto px-6">
             <div class="mb-16 reveal">
                 <h2 class="text-[11px] text-[#1e3a8a] font-bold tracking-[0.4em] uppercase mb-4">Our Work</h2>
@@ -296,7 +311,7 @@
         </div>
     </section>
 
-    <section class="py-32 bg-[#f8fafc] overflow-hidden relative z-10">
+    <section class="py-32 bg-[#f8fafc] overflow-hidden relative z-20">
         <div class="max-w-[1400px] mx-auto px-6">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                 <div class="reveal">
@@ -320,7 +335,7 @@
         </div>
     </section>
 
-    <section class="py-32 bg-white relative z-10">
+    <section class="py-32 bg-white relative z-20">
         <div class="max-w-[1400px] mx-auto px-6">
             <div class="text-center mb-24 reveal">
                 <p class="text-[11px] tracking-[0.4em] text-[#1e3a8a] font-bold uppercase mb-5">Process</p>
@@ -361,7 +376,7 @@
         </div>
     </section>
 
-    <div id="footer"></div>
+    <div id="footer" class="relative z-20"></div>
 
 <script>
 // 푸터 비동기 로드
@@ -388,7 +403,6 @@ function goSlide(index) {
     updateSlide();
 }
 
-// slide update
 function updateSlide() {
     slides.forEach((img, i) => {
         img.classList.toggle('active', i === currentSlide);
@@ -401,9 +415,9 @@ function updateSlide() {
 setInterval(() => {
     currentSlide = (currentSlide + 1) % slides.length;
     updateSlide();
-}, 2000);
+}, 3000);
 
-// reveal animation & 스크롤 연동 처리
+// reveal 및 스크롤 감지 컬러 스위칭
 function checkReveal() {
     const windowHeight = window.innerHeight;
     
