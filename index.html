@@ -111,7 +111,6 @@
             color: #162e59 !important;
         }
 
-        /* 🟢 [헤더 색상 변경 유연화를 위한 트랜지션 효과 추가] */
         nav, nav *, nav svg {
             transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, stroke 0.4s ease;
         }
@@ -133,7 +132,7 @@
 
 <body class="bg-white">
 
-    <nav id="main-nav" class="fixed top-0 left-0 w-full z-[999999] bg-transparent border-b border-transparent h-20 text-white">
+    <nav id="main-nav" class="fixed top-0 left-0 w-full z-[999999] bg-transparent border-b border-white/10 h-20 text-white">
         <div class="max-w-[1400px] mx-auto px-6 h-full flex justify-between items-center relative">
             
             <div id="nav-left" class="hidden md:flex items-center gap-14 text-[15px] font-bold text-white h-full">
@@ -157,8 +156,8 @@
 
             <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center text-center leading-none">
                 <a href="index.html" class="flex flex-col items-center text-center leading-none">
-                  <div id="logo-main" class="text-[18px] md:text-[22px] font-black tracking-wide text-white">BLUE DESIGN</div>
-                  <div id="logo-sub" class="text-[9px] md:text-[16px] tracking-[0.65em] pl-[0.65em] text-gray-300 uppercase mt-1">INTERIOR</div>
+                  <div id="logo-main" class="text-[18px] md:text-[22px] font-black tracking-wide text-[#162e59]">BLUE DESIGN</div>
+                  <div id="logo-sub" class="text-[9px] md:text-[16px] tracking-[0.65em] pl-[0.65em] text-gray-500 uppercase mt-1">INTERIOR</div>
                 </a>
             </div>
 
@@ -303,7 +302,7 @@
                     <h2 class="text-4xl md:text-5xl font-black leading-snug mb-8 tracking-tight">공간의 가치를<br>디자인합니다.</h2>
                     <p class="text-gray-500 leading-relaxed text-[15px] md:text-[17px]">
                         블루디자인은 단순한 인테리어를 넘어 공간 안에서의 경험과 동선을 설계합니다.<br>
-                        사무공간, 상업공간 등 다양 프로젝트를 통해 공간의 새로운 가치를 제안합니다.
+                        사무공간, 상업공간 등 다양한 프로젝트를 통해 공간의 새로운 가치를 제안합니다.
                     </p>
                 </div>
                 <div class="relative reveal">
@@ -416,7 +415,6 @@ function checkReveal() {
     const textTarget = document.getElementById('dynamic-text-target');
     const footer = document.getElementById('footer');
 
-    // 🟢 [헤더 실시간 변환 로직 탑재] 원래 스타일 스펙과 정밀 매칭
     const mainNav = document.getElementById('main-nav');
     const navLeft = document.getElementById('nav-left');
     const navRight = document.getElementById('nav-right');
@@ -429,9 +427,9 @@ function checkReveal() {
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
 
     if (window.scrollY > 50) {
-        // 1. 스크롤을 내렸을 때 기존 원본 페이지 스타일 구조 그대로 복원
-        mainNav.classList.remove('bg-transparent', 'border-transparent', 'text-white');
-        mainNav.classList.add('bg-white', 'border-b', 'border-gray-100', 'text-gray-800');
+        // 스크롤을 내렸을 때 스타일 (원래 상태와 완전 매칭)
+        mainNav.classList.remove('bg-transparent', 'border-white/10', 'text-white');
+        mainNav.classList.add('bg-white', 'border-gray-100', 'text-gray-800');
         
         navLeft.classList.remove('text-white');
         navLeft.classList.add('text-gray-800');
@@ -440,7 +438,7 @@ function checkReveal() {
         navRight.classList.add('text-gray-800');
         
         logoMain.classList.remove('text-white');
-        logoMain.classList.add('text-[#162e59]');
+        logoMain.classList.add('text-[#162e59]'); // 스크롤 시 파란색 로고 동일 유지
         
         logoSub.classList.remove('text-gray-300');
         logoSub.classList.add('text-gray-500');
@@ -460,9 +458,9 @@ function checkReveal() {
         mobileMenuBtn.classList.remove('border-white', 'text-white');
         mobileMenuBtn.classList.add('border-black', 'text-black');
     } else {
-        // 2. 스크롤이 맨 위에 있을 때 완전히 투명하게 연출하며 텍스트 반전
-        mainNav.classList.remove('bg-white', 'border-b', 'border-gray-100', 'text-gray-800');
-        mainNav.classList.add('bg-transparent', 'border-transparent', 'text-white');
+        // ✨ [스크롤이 맨 위에 있을 때] 배경은 투명하게 비우되, 로고 파란색과 하단 경계 얇은 선 유연화 매칭
+        mainNav.classList.remove('bg-white', 'border-gray-100', 'text-gray-800');
+        mainNav.classList.add('bg-transparent', 'border-white/10', 'text-white');
         
         navLeft.classList.remove('text-gray-800');
         navLeft.classList.add('text-white');
@@ -470,8 +468,9 @@ function checkReveal() {
         navRight.classList.remove('text-gray-800');
         navRight.classList.add('text-white');
         
-        logoMain.classList.remove('text-[#162e59]');
-        logoMain.classList.add('text-white');
+        // 🟢 BLUE DESIGN 글자는 상단 투명일 때도 진한 파란색(#162e59)으로 상시 고정 적용
+        logoMain.classList.remove('text-white');
+        logoMain.classList.add('text-[#162e59]');
         
         logoSub.classList.remove('text-gray-500');
         logoSub.classList.add('text-gray-300');
