@@ -29,26 +29,6 @@
             -webkit-appearance: none;
         }
 
-        /* 슬라이더(range) 스타일 커스텀 */
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: #ffffff;
-            border: 3px solid #4b5563;
-            cursor: pointer;
-        }
-        input[type="range"]::-moz-range-thumb {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: #ffffff;
-            border: 3px solid #4b5563;
-            cursor: pointer;
-        }
-
         /* 커스텀 라디오 버튼 (문의유형) */
         .custom-radio {
             appearance: none;
@@ -195,24 +175,25 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-[160px_1fr] items-start md:items-center gap-2 md:gap-4">
                     <label class="text-base font-bold text-gray-800 flex items-center">
-                        <span class="mr-1.5">•</span> 문의유형
+                        <span class="mr-1.5">•</span> 문의유형 <span class="text-red-500 ml-1">*</span>
                     </label>
-                    <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-bold text-gray-800">
+                    <div class="flex flex-wrap items-center gap-x-5 gap-y-3 text-sm font-bold text-gray-800">
                         <label class="flex items-center gap-2 cursor-pointer">
-                            <input type="radio" name="inquiry_type" value="신규 사무실" class="custom-radio"> 사무공간 인테리어
+                            <input type="radio" name="inquiry_type" value="사무공간 인테리어" required onchange="toggleEtcInput()" class="custom-radio"> 사무공간 인테리어
                         </label>
                         <label class="flex items-center gap-2 cursor-pointer">
-                            <input type="radio" name="inquiry_type" value="신규 상업공간" class="custom-radio"> 상업공간 인테리어
+                            <input type="radio" name="inquiry_type" value="상업공간 인테리어" required onchange="toggleEtcInput()" class="custom-radio"> 상업공간 인테리어
                         </label>
                         <label class="flex items-center gap-2 cursor-pointer">
-                            <input type="radio" name="inquiry_type" value="사무실 리모델링" class="custom-radio"> 이미지월/파사드
+                            <input type="radio" name="inquiry_type" value="이미지월/파사드" required onchange="toggleEtcInput()" class="custom-radio"> 이미지월/파사드
                         </label>
                         <label class="flex items-center gap-2 cursor-pointer">
-                            <input type="radio" name="inquiry_type" value="상업공간 리모델링" class="custom-radio"> 철거
+                            <input type="radio" name="inquiry_type" value="철거" required onchange="toggleEtcInput()" class="custom-radio"> 철거
                         </label>
                         <label class="flex items-center gap-2 cursor-pointer">
-                            <input type="radio" name="inquiry_type" value="기타" class="custom-radio"> 기타
+                            <input type="radio" name="inquiry_type" id="inquiry_type_etc" value="기타" required onchange="toggleEtcInput()" class="custom-radio"> 기타
                         </label>
+                        <input type="text" name="inquiry_etc_text" id="inquiry_etc_text" placeholder="기타 내용을 적어주세요." class="hidden bg-white h-9 px-3 outline-none border-none text-sm font-normal text-gray-700 w-full sm:w-48 placeholder-gray-400">
                     </div>
                 </div>
 
@@ -244,17 +225,11 @@
                     <input type="text" name="visit_date" class="w-full bg-white h-11 px-4 outline-none border-none text-sm">
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-[160px_1fr] items-start gap-2 md:gap-4">
-                    <label class="text-base font-bold text-gray-800 flex items-center pt-1">
-                        <span class="mr-1.5">•</span> 추정예산 (단위: 원)
+                <div class="grid grid-cols-1 md:grid-cols-[160px_1fr] items-center gap-2 md:gap-4">
+                    <label class="text-base font-bold text-gray-800 flex items-center">
+                        <span class="mr-1.5">•</span> 추정예산
                     </label>
-                    <div class="w-full relative pt-8">
-                        <div id="budgetTooltip" class="absolute top-0 left-0 -translate-x-1/2 bg-[#333333] text-white text-[11px] px-2 py-0.5 font-mono after:content-[''] after:absolute after:top-full after:left-1/2 after:-translate-x-1/2 after:border-4 after:border-transparent after:border-t-[#333333] whitespace-nowrap">
-                            0
-                        </div>
-                        <input type="range" id="budgetRange" name="budget_range" min="0" max="500000000" step="100000" value="0" class="w-full h-[5px] bg-[#7a7a7a] outline-none appearance-none cursor-pointer">
-                        <p class="text-xs text-gray-500 mt-2 tracking-tight">예상하거나 원하는 예산을 대략적으로 알려주시면 최대한 맞춤으로 진행을 해드립니다.</p>
-                    </div>
+                    <input type="text" name="budget_range" placeholder="예: 5000만 원, 1억 등 대략적인 예산을 적어주세요." class="w-full bg-white h-11 px-4 outline-none border-none text-sm placeholder-gray-400">
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-[160px_1fr] items-center gap-2 md:gap-4">
@@ -360,24 +335,21 @@
             target.value = res;
         }
 
-        // 추정예산 슬라이더 10만원 단위 반영 스크립트
-        const rangeInput = document.getElementById('budgetRange');
-        const tooltip = document.getElementById('budgetTooltip');
+        // ✨ '기타' 라디오 버튼 클릭 시 텍스트 창 띄우는 함수
+        function toggleEtcInput() {
+            const etcRadio = document.getElementById('inquiry_type_etc');
+            const etcInput = document.getElementById('inquiry_etc_text');
 
-        function updateSlider() {
-            const val = parseInt(rangeInput.value);
-            const min = parseInt(rangeInput.min);
-            const max = parseInt(rangeInput.max);
-            
-            tooltip.textContent = val.toLocaleString();
-            
-            const percent = ((val - min) / (max - min)) * 100;
-            tooltip.style.left = `calc(${percent}% - (${percent * 0.14}px - 7px))`;
+            if (etcRadio.checked) {
+                etcInput.classList.remove('hidden'); // 창 보이기
+                etcInput.setAttribute('required', 'true'); // 필수 입력 적용
+                etcInput.focus();
+            } else {
+                etcInput.classList.add('hidden'); // 창 숨기기
+                etcInput.removeAttribute('required'); // 필수 입력 해제
+                etcInput.value = ''; // 적어둔 내용 초기화
+            }
         }
-
-        rangeInput.addEventListener('input', updateSlider);
-        window.addEventListener('DOMContentLoaded', updateSlider);
-
 
         // 문의하기 폼 Submit (이메일 전송 처리)
         document.getElementById('contactForm').addEventListener('submit', function(event) {
@@ -385,22 +357,25 @@
 
             // 폼에 입력된 데이터 가져오기
             const formData = new FormData(this);
-            
-            // 슬라이더 포맷팅된 텍스트 값을 "원" 단위로 가공
-            const formattedBudget = parseInt(document.getElementById('budgetRange').value).toLocaleString() + "원";
 
-            // EmailJS에 전달할 파라미터 구성 (EmailJS 템플릿 변수명과 반드시 일치해야 함)
+            // ✨ '기타'가 선택되었을 경우 텍스트 입력창 내용으로 덮어쓰기
+            let finalInquiryType = formData.get('inquiry_type');
+            if (finalInquiryType === '기타') {
+                finalInquiryType = '기타: ' + formData.get('inquiry_etc_text');
+            }
+
+            // EmailJS에 전달할 파라미터 구성
             const templateParams = {
                 company_name: formData.get('company_name'),
                 user_email: formData.get('user_email'),
                 manager_name: formData.get('manager_name'),
                 user_phone: formData.get('user_phone'),
-                inquiry_type: formData.get('inquiry_type') || '선택 안함',
+                inquiry_type: finalInquiryType, // 가공된 문의유형 데이터 전달
                 company_location: formData.get('company_location'),
                 site_location: formData.get('site_location'),
                 site_size: formData.get('site_size'),
                 visit_date: formData.get('visit_date'),
-                budget_range: formattedBudget,
+                budget_range: formData.get('budget_range'), // 텍스트 폼에서 입력받은 내용
                 construction_period: formData.get('construction_period'),
                 etc_memo: formData.get('etc_memo')
             };
@@ -410,7 +385,7 @@
                 .then(function() {
                     alert('견적 문의가 정상적으로 전송되었습니다. 확인 후 빠른 시일 내에 연락드리겠습니다.');
                     document.getElementById('contactForm').reset(); // 폼 초기화
-                    updateSlider(); // 슬라이더 눈금 리셋
+                    toggleEtcInput(); // 기타 인풋창 숨김 초기화
                 }, function(error) {
                     alert('메일 전송에 실패했습니다. 다시 시도해 주시거나 대표 번호로 문의 바랍니다. 에러: ' + JSON.stringify(error));
                 });
