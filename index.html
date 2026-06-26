@@ -37,10 +37,18 @@
             transition: background-color 0.3s ease, border-color 0.3s ease;
         }
         nav a, nav span, nav svg, nav button {
-            transition: color 0.3s ease, border-color 0.3s ease;
+            transition: color 0.3s ease, border-color 0.3s ease, filter 0.3s ease, text-shadow 0.3s ease;
         }
 
-        /* 드롭다운 스타일 강제 지정 */
+        /* [추가] 투명 헤더일 때 가독성을 극대화하는 은은한 그림자 스타일 */
+        .shadow-text {
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        }
+        .shadow-icon {
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+        }
+
+        /* 드롭다운 스타일 완벽 복구 및 가로 너비 보장 */
         .nav-item {
             position: relative;
             height: 100%;
@@ -54,12 +62,12 @@
             left: 50%;
             transform: translateX(-50%);
             background: white;
-            min-width: 160px;
+            width: 180px; /* 글자가 절대 깨지지 않는 안전한 고정 너비 */
             display: none;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            border: 1px solid #f0f0f0;
-            padding: 8px 0;
-            border-radius: 0 0 6px 6px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e5e7eb;
+            padding: 6px 0;
+            border-radius: 0 0 8px 8px;
             z-index: 999999 !important;
         }
 
@@ -67,12 +75,22 @@
             display: block !important;
         }
 
+        /* 드롭다운 내부 링크 - 세로 한 줄 정렬 복구 및 스타일 고정 */
         .dropdown a {
-            color: #4b5563 !important;
+            display: block !important;
+            width: 100%;
+            padding: 12px 0 !important;
+            font-size: 14px !important;
+            font-weight: 600 !important;
+            color: #4b5563 !important; /* 차분한 회색 */
+            text-align: center !important;
+            text-shadow: none !important; /* 드롭다운 내부 글씨는 그림자 제외 */
+            transition: all 0.2s ease;
         }
+
         .dropdown a:hover {
-            color: #1e3a8a !important;
-            background-color: #f9fafb;
+            color: #1e3a8a !important; /* 마우스 올리면 진한 파란색 */
+            background-color: #f8fafc !important; /* 연한 배경색 처리 */
         }
 
         /* SLIDE */
@@ -147,9 +165,9 @@
     <nav id="mainHeader" class="fixed top-0 left-0 w-full z-[999999] bg-transparent border-b border-white/20 h-20">
         <div class="max-w-[1400px] mx-auto px-6 h-full flex justify-between items-center relative">
             
-            <div id="leftMenu" class="hidden md:flex items-center gap-14 text-[15px] font-bold text-white h-full">
+            <div id="leftMenu" class="hidden md:flex items-center gap-14 text-[15px] font-bold text-white h-full shadow-text">
                 <div class="nav-item h-full">
-                    <a href="about.html" class="hover:text-[#1e3a8a] transition-colors py-7">회사소개</a>
+                    <a href="about.html" class="hover:text-gray-200 transition-colors py-7">회사소개</a>
                     <div class="dropdown">
                         <a href="about.html">블루디자인</a>
                         <a href="process.html">진행절차</a>
@@ -157,7 +175,7 @@
                     </div>
                 </div>
                 <div class="nav-item h-full">
-                    <a href="project_all.html" class="hover:text-[#1e3a8a] transition-colors py-7">프로젝트</a>
+                    <a href="project_all.html" class="hover:text-gray-200 transition-colors py-7">프로젝트</a>
                     <div class="dropdown">
                         <a href="project_all.html">전체보기</a>
                         <a href="office.html">사무공간</a>
@@ -168,17 +186,17 @@
 
             <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center">
                 <a href="index.html" class="flex flex-col items-center text-center leading-none">
-                  <div class="text-[18px] md:text-[22px] font-black tracking-wide text-[#162e59]">BLUE DESIGN</div>
-                  <div id="logoSub" class="text-[9px] md:text-[16px] tracking-[0.65em] pl-[0.65em] text-gray-300 uppercase mt-1">INTERIOR</div>
+                  <div id="logoMain" class="text-[18px] md:text-[22px] font-black tracking-wide text-[#162e59] shadow-text">BLUE DESIGN</div>
+                  <div id="logoSub" class="text-[9px] md:text-[16px] tracking-[0.65em] pl-[0.65em] text-gray-300 uppercase mt-1 shadow-text">INTERIOR</div>
                 </a>
             </div>
 
-            <div id="rightMenu" class="hidden md:flex justify-end items-center gap-10 text-[15px] font-bold text-white">
-                <a href="contact.html" class="hover:text-[#1e3a8a] transition-colors">견적문의</a>
-                <a href="notice.html" class="hover:text-[#1e3a8a] transition-colors">공지사항</a>
+            <div id="rightMenu" class="hidden md:flex justify-end items-center gap-10 text-[15px] font-bold text-white shadow-text">
+                <a href="contact.html" class="hover:text-gray-200 transition-colors">견적문의</a>
+                <a href="notice.html" class="hover:text-gray-200 transition-colors">공지사항</a>
                 <div id="headerContactBorder" class="flex items-center gap-3 border-l border-white/20 pl-10">
                     
-                    <svg id="phoneIcon" class="w-7 h-7 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                    <svg id="phoneIcon" class="w-7 h-7 text-white shadow-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="6" y="3" width="12" height="18" rx="2" />
                         <line x1="10" y1="6" x2="14" y2="6" />
                         <line x1="11" y1="17.5" x2="13" y2="17.5" />
@@ -192,7 +210,7 @@
             </div>
 
             <div class="md:hidden flex justify-end w-full">
-                <button id="mobileMenuBtn" onclick="toggleMenu()" class="relative z-[999999] text-[10px] font-bold border border-white text-white px-3 py-1 uppercase tracking-widest">Menu</button>
+                <button id="mobileMenuBtn" onclick="toggleMenu()" class="relative z-[999999] text-[10px] font-bold border border-white text-white px-3 py-1 uppercase tracking-widest shadow-text">Menu</button>
             </div>
         </div>
 
@@ -413,16 +431,16 @@ setInterval(() => {
     updateSlide();
 }, 2000);
 
-// 실시간 스크롤 연동 처리 함수 (헤더 컬러 & 애니메이션 전체 통합 제어)
+// 실시간 스크롤 연동 처리 함수 (헤더 컬러 & 그림자 & 애니메이션 통합 제어)
 function checkReveal() {
     const windowHeight = window.innerHeight;
     const scrollY = window.scrollY;
 
-    // 1. 헤더 실시간 배경색 및 글씨색상 제어 (원래 디자인 원형 복구 스크립트)
     const header = document.getElementById('mainHeader');
     const leftMenu = document.getElementById('leftMenu');
-    const rightMenu = document.getElementById('rightMenu');
+    const logoMain = document.getElementById('logoMain');
     const logoSub = document.getElementById('logoSub');
+    const rightMenu = document.getElementById('rightMenu');
     const headerContactBorder = document.getElementById('headerContactBorder');
     const phoneIcon = document.getElementById('phoneIcon');
     const headerPhone = document.getElementById('headerPhone');
@@ -430,23 +448,25 @@ function checkReveal() {
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 
     if (scrollY > 50) {
-        // 스크롤이 내려갔을 때: 배경은 흰색, 글씨는 원래 고유 색상들로 변경
+        // 스크롤이 내려갔을 때: 흰색 배경 원형 복구 및 그림자 제거
         header.classList.remove('bg-transparent', 'border-white/20');
         header.classList.add('bg-white', 'border-gray-100');
 
-        leftMenu.classList.remove('text-white');
+        leftMenu.classList.remove('text-white', 'shadow-text');
         leftMenu.classList.add('text-gray-800');
 
-        rightMenu.classList.remove('text-white');
-        rightMenu.classList.add('text-gray-800');
+        logoMain.classList.remove('shadow-text'); // 본래 진한 파란색만 유지
 
-        logoSub.classList.remove('text-gray-300');
+        logoSub.classList.remove('text-gray-300', 'shadow-text');
         logoSub.classList.add('text-gray-500');
+
+        rightMenu.classList.remove('text-white', 'shadow-text');
+        rightMenu.classList.add('text-gray-800');
 
         headerContactBorder.classList.remove('border-white/20');
         headerContactBorder.classList.add('border-gray-100');
 
-        phoneIcon.classList.remove('text-white');
+        phoneIcon.classList.remove('text-white', 'shadow-icon');
         phoneIcon.classList.add('text-[#162e59]');
 
         headerPhone.classList.remove('text-white');
@@ -455,27 +475,29 @@ function checkReveal() {
         headerEmail.classList.remove('text-gray-300');
         headerEmail.classList.add('text-gray-400');
 
-        mobileMenuBtn.classList.remove('border-white', 'text-white');
+        mobileMenuBtn.classList.remove('border-white', 'text-white', 'shadow-text');
         mobileMenuBtn.classList.add('border-black', 'text-black');
     } else {
-        // 최상단에 있을 때: 배경은 투명, BLUE DESIGN(진한파랑 상시 유지), 나머지 메뉴 글씨는 흰색 계열 처리
+        // 최상단에 있을 때: 투명 배경, BLUE DESIGN(진한파랑), 텍스트들 흰색 및 가독성을 위한 그림자(shadow-text) 재활성화
         header.classList.remove('bg-white', 'border-gray-100');
         header.classList.add('bg-transparent', 'border-white/20');
 
         leftMenu.classList.remove('text-gray-800');
-        leftMenu.classList.add('text-white');
+        leftMenu.classList.add('text-white', 'shadow-text');
 
-        rightMenu.classList.remove('text-gray-800');
-        rightMenu.classList.add('text-white');
+        logoMain.classList.add('shadow-text');
 
         logoSub.classList.remove('text-gray-500');
-        logoSub.classList.add('text-gray-300');
+        logoSub.classList.add('text-gray-300', 'shadow-text');
+
+        rightMenu.classList.remove('text-gray-800');
+        rightMenu.classList.add('text-white', 'shadow-text');
 
         headerContactBorder.classList.remove('border-gray-100');
         headerContactBorder.classList.add('border-white/20');
 
         phoneIcon.classList.remove('text-[#162e59]');
-        phoneIcon.classList.add('text-white');
+        phoneIcon.classList.add('text-white', 'shadow-icon');
 
         headerPhone.classList.remove('text-[#162e59]');
         headerPhone.classList.add('text-white');
@@ -484,7 +506,7 @@ function checkReveal() {
         headerEmail.classList.add('text-gray-300');
 
         mobileMenuBtn.classList.remove('border-black', 'text-black');
-        mobileMenuBtn.classList.add('border-white', 'text-white');
+        mobileMenuBtn.classList.add('border-white', 'text-white', 'shadow-text');
     }
 
     // 2. 콘텐츠 나타남(Reveal) 애니메이션 처리
