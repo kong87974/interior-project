@@ -111,6 +111,11 @@
             color: #162e59 !important;
         }
 
+        /* 🟢 [헤더 색상 변경 유연화를 위한 트랜지션 효과 추가] */
+        nav, nav *, nav svg {
+            transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, stroke 0.4s ease;
+        }
+
         /* MOBILE */
         @media (max-width: 768px) {
             #slide-title { font-size: 34px !important; text-align: center; line-height: 1.3; padding: 0 20px; }
@@ -128,12 +133,12 @@
 
 <body class="bg-white">
 
-    <nav class="fixed top-0 left-0 w-full z-[999999] bg-white border-b border-gray-100 h-20">
+    <nav id="main-nav" class="fixed top-0 left-0 w-full z-[999999] bg-transparent border-b border-transparent h-20 text-white">
         <div class="max-w-[1400px] mx-auto px-6 h-full flex justify-between items-center relative">
             
-            <div class="hidden md:flex items-center gap-14 text-[15px] font-bold text-gray-800 h-full">
+            <div id="nav-left" class="hidden md:flex items-center gap-14 text-[15px] font-bold text-white h-full">
                 <div class="nav-item h-full">
-                    <a href="about.html" class="hover:text-[#1e3a8a] transition-colors py-7">회사소개</a>
+                    <a href="about.html" class="transition-colors py-7">회사소개</a>
                     <div class="dropdown">
                         <a href="about.html" class="block px-6 py-3 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#1e3a8a] font-semibold text-center">블루디자인</a>
                         <a href="process.html" class="block px-6 py-3 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#1e3a8a] font-semibold text-center">진행절차</a>
@@ -141,7 +146,7 @@
                     </div>
                 </div>
                 <div class="nav-item h-full">
-                    <a href="project_all.html" class="hover:text-[#1e3a8a] transition-colors py-7">프로젝트</a>
+                    <a href="project_all.html" class="transition-colors py-7">프로젝트</a>
                     <div class="dropdown">
                         <a href="project_all.html" class="block px-6 py-3 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#1e3a8a] font-semibold text-center">전체보기</a>
                         <a href="office.html" class="block px-6 py-3 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#1e3a8a] font-semibold text-center">사무공간</a>
@@ -150,37 +155,37 @@
                 </div>
             </div>
 
-            <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center">
+            <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center text-center leading-none">
                 <a href="index.html" class="flex flex-col items-center text-center leading-none">
-                  <div class="text-[18px] md:text-[22px] font-black tracking-wide text-[#162e59]">BLUE DESIGN</div>
-                  <div class="text-[9px] md:text-[16px] tracking-[0.65em] pl-[0.65em] text-gray-500 uppercase mt-1">INTERIOR</div>
+                  <div id="logo-main" class="text-[18px] md:text-[22px] font-black tracking-wide text-white">BLUE DESIGN</div>
+                  <div id="logo-sub" class="text-[9px] md:text-[16px] tracking-[0.65em] pl-[0.65em] text-gray-300 uppercase mt-1">INTERIOR</div>
                 </a>
-              </div>
+            </div>
 
-            <div class="hidden md:flex justify-end items-center gap-10 text-[15px] font-bold text-gray-800">
-                <a href="contact.html" class="hover:text-[#1e3a8a] transition-colors">견적문의</a>
-                <a href="notice.html" class="hover:text-[#1e3a8a] transition-colors">공지사항</a>
-                <div class="flex items-center gap-3 border-l border-gray-100 pl-10">
+            <div id="nav-right" class="hidden md:flex justify-end items-center gap-10 text-[15px] font-bold text-white">
+                <a href="contact.html" class="transition-colors">견적문의</a>
+                <a href="notice.html" class="transition-colors">공지사항</a>
+                <div id="nav-divider" class="flex items-center gap-3 border-l border-white/20 pl-10">
                     
-                    <svg class="w-7 h-7 text-[#162e59]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                    <svg id="phone-icon" class="w-7 h-7 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="6" y="3" width="12" height="18" rx="2" />
                         <line x1="10" y1="6" x2="14" y2="6" />
                         <line x1="11" y1="17.5" x2="13" y2="17.5" />
                     </svg>
                     
                     <div class="flex flex-col whitespace-nowrap">
-                        <span class="text-[16px] font-black text-[#162e59] leading-tight">010-4192-0882</span>
-                        <span class="text-[12px] text-gray-400">camp0882@daum.net</span>
+                        <span id="phone-num" class="text-[16px] font-black text-white leading-tight">010-4192-0882</span>
+                        <span id="phone-mail" class="text-[12px] text-gray-300">camp0882@daum.net</span>
                     </div>
                 </div>
             </div>
 
             <div class="md:hidden flex justify-end w-full">
-                <button onclick="toggleMenu()" class="relative z-[999999] text-[10px] font-bold border border-black px-3 py-1 uppercase tracking-widest">Menu</button>
+                <button id="mobile-menu-btn" onclick="toggleMenu()" class="relative z-[999999] text-[10px] font-bold border border-white text-white px-3 py-1 uppercase tracking-widest">Menu</button>
             </div>
         </div>
 
-        <div id="mobileMenu" class="hidden bg-white border-t border-gray-100 px-6 py-6 w-full shadow-lg">
+        <div id="mobileMenu" class="hidden bg-white border-t border-gray-100 px-6 py-6 w-full shadow-lg text-gray-800">
             <div class="flex flex-col gap-6 text-[15px] font-bold text-gray-800">
                 <div class="flex flex-col gap-3">
                     <a href="about.html">회사소개</a>
@@ -298,7 +303,7 @@
                     <h2 class="text-4xl md:text-5xl font-black leading-snug mb-8 tracking-tight">공간의 가치를<br>디자인합니다.</h2>
                     <p class="text-gray-500 leading-relaxed text-[15px] md:text-[17px]">
                         블루디자인은 단순한 인테리어를 넘어 공간 안에서의 경험과 동선을 설계합니다.<br>
-                        사무공간, 상업공간 등 다양한 프로젝트를 통해 공간의 새로운 가치를 제안합니다.
+                        사무공간, 상업공간 등 다양 프로젝트를 통해 공간의 새로운 가치를 제안합니다.
                     </p>
                 </div>
                 <div class="relative reveal">
@@ -410,6 +415,82 @@ function checkReveal() {
 
     const textTarget = document.getElementById('dynamic-text-target');
     const footer = document.getElementById('footer');
+
+    // 🟢 [헤더 실시간 변환 로직 탑재] 원래 스타일 스펙과 정밀 매칭
+    const mainNav = document.getElementById('main-nav');
+    const navLeft = document.getElementById('nav-left');
+    const navRight = document.getElementById('nav-right');
+    const logoMain = document.getElementById('logo-main');
+    const logoSub = document.getElementById('logo-sub');
+    const navDivider = document.getElementById('nav-divider');
+    const phoneIcon = document.getElementById('phone-icon');
+    const phoneNum = document.getElementById('phone-num');
+    const phoneMail = document.getElementById('phone-mail');
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+
+    if (window.scrollY > 50) {
+        // 1. 스크롤을 내렸을 때 기존 원본 페이지 스타일 구조 그대로 복원
+        mainNav.classList.remove('bg-transparent', 'border-transparent', 'text-white');
+        mainNav.classList.add('bg-white', 'border-b', 'border-gray-100', 'text-gray-800');
+        
+        navLeft.classList.remove('text-white');
+        navLeft.classList.add('text-gray-800');
+        
+        navRight.classList.remove('text-white');
+        navRight.classList.add('text-gray-800');
+        
+        logoMain.classList.remove('text-white');
+        logoMain.classList.add('text-[#162e59]');
+        
+        logoSub.classList.remove('text-gray-300');
+        logoSub.classList.add('text-gray-500');
+        
+        navDivider.classList.remove('border-white/20');
+        navDivider.classList.add('border-gray-100');
+        
+        phoneIcon.classList.remove('text-white');
+        phoneIcon.classList.add('text-[#162e59]');
+        
+        phoneNum.classList.remove('text-white');
+        phoneNum.classList.add('text-[#162e59]');
+        
+        phoneMail.classList.remove('text-gray-300');
+        phoneMail.classList.add('text-gray-400');
+        
+        mobileMenuBtn.classList.remove('border-white', 'text-white');
+        mobileMenuBtn.classList.add('border-black', 'text-black');
+    } else {
+        // 2. 스크롤이 맨 위에 있을 때 완전히 투명하게 연출하며 텍스트 반전
+        mainNav.classList.remove('bg-white', 'border-b', 'border-gray-100', 'text-gray-800');
+        mainNav.classList.add('bg-transparent', 'border-transparent', 'text-white');
+        
+        navLeft.classList.remove('text-gray-800');
+        navLeft.classList.add('text-white');
+        
+        navRight.classList.remove('text-gray-800');
+        navRight.classList.add('text-white');
+        
+        logoMain.classList.remove('text-[#162e59]');
+        logoMain.classList.add('text-white');
+        
+        logoSub.classList.remove('text-gray-500');
+        logoSub.classList.add('text-gray-300');
+        
+        navDivider.classList.remove('border-gray-100');
+        navDivider.classList.add('border-white/20');
+        
+        phoneIcon.classList.remove('text-[#162e59]');
+        phoneIcon.classList.add('text-white');
+        
+        phoneNum.classList.remove('text-[#162e59]');
+        phoneNum.classList.add('text-white');
+        
+        phoneMail.classList.remove('text-gray-400');
+        phoneMail.classList.add('text-gray-300');
+        
+        mobileMenuBtn.classList.remove('border-black', 'text-black');
+        mobileMenuBtn.classList.add('border-white', 'text-white');
+    }
 
     if (textTarget) {
         let footerReached = false;
