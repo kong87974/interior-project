@@ -62,7 +62,7 @@
             background: rgba(255, 255, 255, 0.45); 
             backdrop-filter: blur(14px); 
             -webkit-backdrop-filter: blur(14px);
-            width: 180px;
+            width: 130px; /* 기존 180px에서 130px로 축소 */
             display: none;
             box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
             border: 1px solid rgba(255, 255, 255, 0.4);
@@ -78,8 +78,8 @@
         .dropdown a {
             display: block !important;
             width: 100%;
-            padding: 14px 0 !important;
-            font-size: 15px !important;
+            padding: 10px 0 !important; /* 기존 14px에서 10px로 여백 축소 */
+            font-size: 14px !important; /* 글자 크기 약간 축소 */
             font-weight: 800 !important;
             color: #ffffff !important;
             text-align: center !important;
@@ -114,7 +114,6 @@
             color: transparent;
             -webkit-text-stroke: 1.5px #ffffff;
             font-weight: 800;
-            /* 배경과 구분을 위해 아주 옅은 드롭 섀도우만 유지 (원치 않으면 삭제 가능) */
             text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
             display: inline-block;
         }
@@ -140,7 +139,7 @@
         .entry-line-container {
             position: relative;
             width: 100%;
-            height: 1px; /* 3px -> 1px 로 얇게 수정 */
+            height: 1px;
             margin: 12px 0 16px 0;
         }
 
@@ -148,7 +147,7 @@
             position: absolute;
             left: calc(-1 * (2rem + 6vw)) !important; 
             width: 0%;
-            height: 1px !important; /* 3px -> 1px 로 얇게 수정 */
+            height: 1px !important;
             opacity: 0;
             background: linear-gradient(to right, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.4) 35%, rgba(255, 255, 255, 0.85) 100%);
             transition: width 8.0s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 2.0s ease;
@@ -197,10 +196,9 @@
         /* MOBILE 반응형 오프셋 초기화 대응 */
         @media (max-width: 768px) {
             .hero-container { padding-left: 24px !important; padding-right: 24px !important; }
-            /* 모바일에서도 파란색 그림자 제거 */
             .outline-title { font-size: 44px !important; line-height: 1.2; text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); }
             #slide-sub { font-size: 16px !important; }
-            .entry-line { left: -24px !important; height: 1px !important; }  /* 2px -> 1px 로 얇게 수정 */
+            .entry-line { left: -24px !important; height: 1px !important; } 
             .entry-line.show { width: calc(100% + 24px) !important; }
             .contact-box { right: 20px !important; bottom: 20px !important; }
             .contact-box p:first-child { font-size: 16px !important; }
@@ -226,7 +224,7 @@
                 <div class="nav-item h-full">
                     <a href="project_all.html" class="hover:text-gray-200 transition-colors py-7">프로젝트</a>
                     <div class="dropdown">
-                        <a href="project_all.html" class="active-blue">전체보기</a>
+                        <a href="project_all.html">전체보기</a>
                         <a href="office.html">사무공간</a>
                         <a href="commercial.html">상업공간</a>
                     </div>
