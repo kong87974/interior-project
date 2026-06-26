@@ -48,11 +48,6 @@
             filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.2));
         }
 
-        /* 투명 드롭다운 내부에서 글씨가 무조건 잘 보이도록 강하고 선명하게 먹이는 그림자 */
-        .dropdown-shadow-text {
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.3);
-        }
-
         /* 드롭다운 스타일 완벽 복구 및 가로 너비 보장 */
         .nav-item {
             position: relative;
@@ -61,19 +56,19 @@
             align-items: center;
         }
 
-        /* 드롭다운: 답답하게 탁하던 느낌을 개선하기 위해 배경 투명도를 더 투명하게 낮추고 투명 블러 선명화 */
+        /* 배경 불투명도(0.45) 상향 및 블러 보강 */
         .dropdown {
             position: absolute;
             top: 80px; /* h-20 높이와 완벽 일치 */
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(255, 255, 255, 0.05); /* 투명도를 더 높여 투명하게 변경 */
-            backdrop-filter: blur(8px); 
-            -webkit-backdrop-filter: blur(8px);
-            width: 180px; /* 글자가 절대 깨지지 않는 안전한 고정 너비 */
+            background: rgba(255, 255, 255, 0.45); /* 불투명도를 높여 글씨 기본 바탕 확보 */
+            backdrop-filter: blur(14px); 
+            -webkit-backdrop-filter: blur(14px); /* 뒤 배경을 불투명하게 뭉개 가독성 극대화 */
+            width: 180px;
             display: none;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.15); /* 은은한 흰색 테두리 경량화 */
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.4); /* 테두리도 조금 더 선명하게 조정 */
             padding: 8px 0;
             border-radius: 8px;
             z-index: 999999 !important;
@@ -83,24 +78,24 @@
             display: block !important;
         }
 
-        /* 드롭다운 내부 링크 스타일 - 흰색 기본 글씨에 강한 그림자 조합 */
+        /* 흰색 반불투명 배경 위에서 글씨가 더 튀어나와 보이도록 어두운 파란 테두리 느낌의 그림자 매칭 */
         .dropdown a {
             display: block !important;
             width: 100%;
             padding: 14px 0 !important;
             font-size: 15px !important;
-            font-weight: 700 !important;
-            color: #ffffff !important; /* 기본 상태는 흰색 */
+            font-weight: 800 !important;
+            color: #ffffff !important;
             text-align: center !important;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5), 0 4px 10px rgba(0, 0, 0, 0.3) !important; /* 글씨 가독성 강제 확보 */
+            text-shadow: 0 1px 4px rgba(22, 46, 89, 0.8), 0 2px 8px rgba(0, 0, 0, 0.5) !important;
             transition: all 0.25s ease;
         }
 
-        /* 마우스 올렸을 때 및 '전체보기' 활성화 상태 - 요청하신 찐한 파란색(#162e59) 반영 */
+        /* 마우스 올렸을 때 및 '전체보기' 활성화 상태 - 원래 디자인 색상 완벽 유지 */
         .dropdown a:hover, .dropdown a.active-blue {
-            color: #162e59 !important; /* 요청하신 찐한 파란색 */
-            background-color: rgba(255, 255, 255, 0.15) !important; /* 살짝 밝아지는 투명 배경 효과 */
-            text-shadow: 0 1px 3px rgba(255, 255, 255, 0.2) !important; /* 파란 글씨용 매칭 그림자 변경 */
+            color: #162e59 !important; /* 시그니처 진한 파란색 */
+            background-color: rgba(255, 255, 255, 0.3) !important; /* 마우스 오버 시 불투명 레이어 가시성 보장 */
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6) !important;
         }
 
         /* SLIDE */
@@ -168,7 +163,7 @@
             footer .footer-bottom { flex-direction: column; align-items: center !important; }
         }
     </style>
-</head>
+</head> head
 
 <body class="bg-white">
 
@@ -330,6 +325,33 @@
                     <h4 class="text-xl font-bold tracking-tight group-hover:text-[#1e3a8a] transition-colors">지식산업센터 (주)현진산업 복층 사무실</h4>
                 </a>
 
+                <a href="project_detail_01.html" class="group cursor-pointer reveal block">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-6">
+                        <img src="https://imgur.com/HBTjbpu.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="노무법인세명 사무실">
+                        <div class="absolute inset-0 bg-[#1e3a8a]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    </div>
+                    <p class="text-[11px] text-[#1e3a8a] font-bold tracking-normal uppercase mb-2">사무공간</p>
+                    <h4 class="text-xl font-bold tracking-tight group-hover:text-[#1e3a8a] transition-colors">[평택] 노무법인세명 사무실</h4>
+                </a>
+
+                <a href="project_detail_05.html" class="group cursor-pointer reveal block">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-6">
+                        <img src="https://imgur.com/X1didZX.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="삼정오토메이션 사무실">
+                        <div class="absolute inset-0 bg-[#1e3a8a]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    </div>
+                    <p class="text-[11px] text-[#1e3a8a] font-bold tracking-normal uppercase mb-2">사무공간</p>
+                    <h4 class="text-xl font-bold tracking-tight group-hover:text-[#1e3a8a] transition-colors">[동탄] (주)삼정오토메이션 사무실</h4>
+                </a>
+
+                <a href="project_detail_06.html" class="group cursor-pointer reveal block">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-6">
+                        <img src="https://imgur.com/8HPzxLm.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="파워에스티 공장 및 사무실">
+                        <div class="absolute inset-0 bg-[#1e3a8a]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    </div>
+                    <p class="text-[11px] text-[#1e3a8a] font-bold tracking-normal uppercase mb-2">사무공간</p>
+                    <h4 class="text-xl font-bold tracking-tight group-hover:text-[#1e3a8a] transition-colors">[수원] (주)파워에스티 공장 & 사무실</h4>
+                </a>
+
             </div>
         </div>
     </section>
@@ -458,7 +480,6 @@ function checkReveal() {
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 
     if (scrollY > 50) {
-        // 스크롤이 내려갔을 때: 흰색 배경에 90% 투명도 및 미세한 블러 추가
         header.style.backgroundColor = "rgba(255, 255, 255, 0.9)";
         header.classList.remove('bg-transparent', 'border-white/20');
         header.classList.add('border-gray-100');
@@ -490,7 +511,6 @@ function checkReveal() {
         mobileMenuBtn.classList.remove('border-white', 'text-white', 'shadow-text');
         mobileMenuBtn.classList.add('border-black', 'text-black');
     } else {
-        // 최상단에 있을 때: 완전 투명 배경으로 복귀 (블러 완전 제거)
         header.style.backgroundColor = "transparent";
         header.classList.remove('border-gray-100');
         header.classList.add('bg-transparent', 'border-white/20');
