@@ -109,15 +109,21 @@
             opacity: 1;
         }
 
-        /* 타이틀 스타일: 파란색 그림자 제거, 깔끔한 하얀색 테두리 아웃라인만 유지 */
+        /* ★ 타이틀 수정: 다중 레이어로 단순 선이 아닌 완벽한 진한 파란색 3D 입체 그림자 구현 */
         .outline-title {
             color: transparent;
             -webkit-text-stroke: 1.5px #ffffff;
             font-weight: 800;
-            display: inline-block;
+            text-shadow: 
+                1px 1px 0px #162e59, 
+                2px 2px 0px #162e59, 
+                3px 3px 0px #162e59, 
+                4px 4px 0px #162e59, 
+                5px 5px 0px #162e59,
+                8px 8px 20px rgba(0, 0, 0, 0.5);
         }
 
-        /* 가로선 기준 위아래 슬라이딩 정밀 모션 제어 (4.0초 슬로우 진입) */
+        /* 디자인픽셀 정밀 구현: 가로선 기준 위아래 슬라이드 동시 모션 (더 정적이고 느리게 4.0초 제어) */
         .anim-up {
             opacity: 0;
             transform: translateY(40px);
@@ -134,30 +140,21 @@
             transform: translateY(0);
         }
 
-        /* ★ 가로선 레이아웃 전면 수정: 왼쪽 끝에서 출발하여 딱 글씨 가로폭 박스 영역까지만 제한 */
-        .entry-line-container {
-            position: relative;
-            width: 100%;
-            height: 3px;
-            margin: 12px 0 16px 0;
-        }
-
+        /* ★ 구분선 수정: 두께를 3px로 굵게 확장 및 8초 동안 초정밀 슬로우 그라데이션 확장 연출 */
         .entry-line {
             position: absolute;
-            /* 여백 한계를 계산하여 브라우저 화면 제일 왼쪽 끝(0px)에 강제 정렬 */
-            left: calc(-1 * (2rem + 6vw)) !important; 
+            left: 0 !important;
             width: 0%;
-            height: 3px !important;
+            height: 3px !important; /* 선 두께 확장 */
             opacity: 0;
-            /* 선 길이에 맞춰 페이드아웃 처리되는 정밀 그라데이션 */
-            background: linear-gradient(to right, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.4) 35%, rgba(255, 255, 255, 0.85) 100%);
+            background: linear-gradient(to right, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.35) 40%, rgba(255, 255, 255, 0.85) 100%);
+            /* 장엄한 감속 효과를 내는 베지어 속도 곡선 및 8초 제어 */
             transition: width 8.0s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 2.0s ease;
         }
         
-        /* ★ 애니메이션 완료 시 총 너비가 화면 왼쪽 끝 ~ 글자 끝 넓이(100% + 좌측 패딩 offset)만큼만 확보됨 */
         .entry-line.show {
             opacity: 1;
-            width: calc(100% + (2rem + 6vw)) !important;
+            width: 100vw !important;
         }
 
         /* DOT */
@@ -195,13 +192,12 @@
             color: #162e59 !important;
         }
 
-        /* MOBILE 반응형 오프셋 초기화 대응 */
+        /* MOBILE */
         @media (max-width: 768px) {
             .hero-container { padding-left: 24px !important; padding-right: 24px !important; }
-            .outline-title { font-size: 44px !important; line-height: 1.2; }
+            .outline-title { font-size: 44px !important; line-height: 1.2; text-shadow: 1px 1px 0px #162e59, 2px 2px 0px #162e59, 3px 3px 10px rgba(0,0,0,0.4); }
             #slide-sub { font-size: 16px !important; }
-            .entry-line { left: -24px !important; height: 2px !important; } 
-            .entry-line.show { width: calc(100% + 24px) !important; }
+            .entry-line { height: 2px !important; } /* 모바일은 2px이 밸런스에 최적 */
             .contact-box { right: 20px !important; bottom: 20px !important; }
             .contact-box p:first-child { font-size: 16px !important; }
             .portfolio-section { padding-top: 60px !important; padding-bottom: 60px !important; }
@@ -296,13 +292,13 @@
             <img src="https://imgur.com/s7rYln8.jpg" class="slide-bg">
         </div>
 
-        <div class="hero-container relative z-10 flex flex-col items-start text-left w-max pl-8 sm:pl-16 md:pl-32 pr-0">
+        <div class="hero-container relative z-10 flex flex-col items-start text-left w-full pl-8 sm:pl-16 md:pl-28 pr-0">
             
             <h1 id="anim-title" class="anim-up outline-title text-5xl md:text-[92px] tracking-tight uppercase">
-                Blue Design
+                BLUE DESIGN
             </h1>
 
-            <div class="entry-line-container">
+            <div class="w-full relative h-[3px] my-3 md:my-4">
                 <div id="anim-line" class="entry-line"></div>
             </div>
 
@@ -310,9 +306,9 @@
                 사무공간 ㆍ 상업공간 전문 인테리어
             </p>
 
-            <div id="anim-btns" class="anim-down flex gap-8">
-                <a href="project_all.html" class="pb-1 text-[#162e59] font-black text-base md:text-xl tracking-wider border-b-[3px] border-[#162e59] transition-all hover:opacity-80">PROJECT LIST</a>
-                <a href="contact.html" class="pb-1 text-white font-bold text-base md:text-xl tracking-wider border-b-[3px] border-white transition-all hover:text-gray-200 hover:border-gray-200">GET A QUOTE</a>
+            <div id="anim-btns" class="anim-down flex gap-4">
+                <a href="project_all.html" class="px-8 py-4 bg-white text-black font-bold text-sm tracking-wider hover:bg-gray-200 transition-all">PROJECT LIST</a>
+                <a href="contact.html" class="px-8 py-4 border border-white text-white font-bold text-sm tracking-wider hover:bg-white hover:text-black transition-all">GET A QUOTE</a>
             </div>
         </div>
 
@@ -591,7 +587,7 @@ function checkReveal() {
     }
 }
 
-// 애니메이션 제어 트리거
+// 디자인픽셀 스타일 애니메이션 제어 스크립트 
 window.addEventListener('DOMContentLoaded', () => {
     // 1단계: 선이 확장되는 8초 모션 시작
     setTimeout(() => {
