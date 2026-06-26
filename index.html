@@ -59,7 +59,17 @@
             display: block !important;
         }
 
-        /* SLIDE */
+        /* 🟢 배경 슬라이드 고정 프레임 구조 (시안처럼 배경 이미지들만 제자리에 고정) */
+        .slider-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+        }
+
         .slide-bg {
             position: absolute;
             inset: 0;
@@ -114,7 +124,7 @@
         /* MOBILE */
         @media (max-width: 768px) {
             #slide-title { font-size: 34px !important; text-align: center; line-height: 1.3; padding: 0 20px; }
-            #slide-sub { font-size: 14px !important; text-align: center; letter-spacing: 0.2em; padding: 0 20px; }
+            #slide-sub { font-size: 14px !important; text-align: center; letter-spacing: 0.15em; padding: 0 20px; }
             .contact-box { right: 20px !important; bottom: 20px !important; }
             .contact-box p:first-child { font-size: 16px !important; }
             .portfolio-section { padding-top: 90px !important; padding-bottom: 90px !important; }
@@ -128,10 +138,17 @@
 
 <body class="bg-white">
 
-    <nav class="fixed top-0 left-0 w-full z-[999999] bg-white border-b border-gray-100 h-20">
+    <nav class="fixed top-0 left-0 w-full z-[999999] bg-white border-b border-gray-100 h-20 text-gray-800">
         <div class="max-w-[1400px] mx-auto px-6 h-full flex justify-between items-center relative">
             
-            <div class="hidden md:flex items-center gap-14 text-[15px] font-bold text-gray-800 h-full">
+            <a href="index.html" class="flex flex-col items-stretch leading-none group w-[130px]">
+                <div class="text-[18px] md:text-[22px] font-black tracking-wide text-[#162e59] text-left">BLUE DESIGN</div>
+                <div class="text-[9px] tracking-[0.22em] text-gray-500 uppercase mt-1 flex justify-between w-full">
+                    <span>I</span><span>N</span><span>T</span><span>E</span><span>R</span><span>I</span><span>O</span><span>R</span>
+                </div>
+            </a>
+
+            <div class="hidden md:flex items-center gap-10 text-[15px] font-bold h-full">
                 <div class="nav-item h-full">
                     <a href="about.html" class="hover:text-[#1e3a8a] transition-colors py-7">회사소개</a>
                     <div class="dropdown">
@@ -148,27 +165,16 @@
                         <a href="commercial.html" class="block px-6 py-3 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#1e3a8a] font-semibold text-center">상업공간</a>
                     </div>
                 </div>
-            </div>
-
-            <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center">
-                <a href="index.html" class="flex flex-col items-center text-center leading-none">
-                  <div class="text-[18px] md:text-[22px] font-black tracking-wide text-[#162e59]">BLUE DESIGN</div>
-                  <div class="text-[9px] md:text-[16px] tracking-[0.65em] pl-[0.65em] text-gray-500 uppercase mt-1">INTERIOR</div>
-                </a>
-              </div>
-
-            <div class="hidden md:flex justify-end items-center gap-10 text-[15px] font-bold text-gray-800">
-                <a href="contact.html" class="hover:text-[#1e3a8a] transition-colors">견적문의</a>
-                <a href="notice.html" class="hover:text-[#1e3a8a] transition-colors">공지사항</a>
-                <div class="flex items-center gap-3 border-l border-gray-100 pl-10">
-                    
+                <a href="contact.html" class="hover:text-[#1e3a8a] transition-colors py-7">견적문의</a>
+                <a href="notice.html" class="hover:text-[#1e3a8a] transition-colors py-7">공지사항</a>
+                
+                <div class="flex items-center gap-3 border-l border-gray-100 pl-10 h-8 my-auto">
                     <svg class="w-7 h-7 text-[#162e59]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="6" y="3" width="12" height="18" rx="2" />
                         <line x1="10" y1="6" x2="14" y2="6" />
                         <line x1="11" y1="17.5" x2="13" y2="17.5" />
                     </svg>
-                    
-                    <div class="flex flex-col whitespace-nowrap">
+                    <div class="flex flex-col whitespace-nowrap justify-center">
                         <span class="text-[16px] font-black text-[#162e59] leading-tight">010-4192-0882</span>
                         <span class="text-[12px] text-gray-400">camp0882@daum.net</span>
                     </div>
@@ -208,23 +214,34 @@
         </div>
     </nav>
 
-    <section class="relative min-h-screen w-full z-0">
-        <div id="slider" class="absolute inset-0 w-full h-full overflow-hidden z-0">
+    <div class="slider-wrapper">
+        <div id="slider" class="w-full h-full relative">
             <img src="https://imgur.com/qNy0djf.jpg" class="slide-bg active">
             <img src="https://imgur.com/QjHHuK1.jpg" class="slide-bg">
             <img src="https://imgur.com/s7rYln8.jpg" class="slide-bg">
         </div>
+    </div>
 
-        <div class="relative z-10 min-h-screen flex flex-col justify-center items-center text-white">
-            <h1 id="slide-title" class="text-4xl md:text-6xl font-bold tracking-tighter mb-4 transition-all duration-500">Blue Design</h1>
-            <p id="slide-sub" class="text-xl md:text-2xl font-light tracking-[0.15em] opacity-90 transition-all duration-500">사무ㆍ상업공간 전문 인테리어</p>
+    <section class="relative pt-20 min-h-screen w-full z-10 pointer-events-none">
+        <div class="min-h-[calc(100vh-80px)] flex flex-col justify-center items-center px-6 relative w-full">
+            
+            <div class="border border-white/40 px-10 py-12 md:px-24 md:py-20 text-center max-w-4xl w-full flex flex-col items-center justify-center bg-black/10 backdrop-blur-[0.5px] pointer-events-auto">
+                
+                <h1 id="slide-title" class="text-4xl md:text-6xl font-bold tracking-tighter mb-4 transition-all duration-500 text-white">
+                    Blue Design
+                </h1>
+                
+                <p id="slide-sub" class="text-xl md:text-2xl font-light tracking-[0.15em] opacity-90 transition-all duration-500 text-white">
+                    사무ㆍ상업공간 전문 인테리어
+                </p>
 
-            <div class="flex gap-4 mt-10">
-                <a href="project_all.html" class="px-8 py-4 bg-white text-black font-bold text-sm tracking-wider hover:bg-gray-200 transition-all">PROJECT LIST</a>
-                <a href="contact.html" class="px-8 py-4 border border-white text-white font-bold text-sm tracking-wider hover:bg-white hover:text-black transition-all">GET A QUOTE</a>
+                <div class="flex gap-4 mt-10">
+                    <a href="project_all.html" class="px-8 py-4 bg-white text-black font-bold text-sm tracking-wider hover:bg-gray-200 transition-all">PROJECT LIST</a>
+                    <a href="contact.html" class="px-8 py-4 border border-white text-white font-bold text-sm tracking-wider hover:bg-white hover:text-black transition-all">GET A QUOTE</a>
+                </div>
             </div>
 
-            <div class="absolute bottom-12 flex gap-4">
+            <div class="absolute bottom-12 flex gap-4 pointer-events-auto">
                 <span class="dot active" onclick="goSlide(0)"></span>
                 <span class="dot" onclick="goSlide(1)"></span>
                 <span class="dot" onclick="goSlide(2)"></span>
@@ -382,7 +399,6 @@ function goSlide(index) {
     updateSlide();
 }
 
-// slide update
 function updateSlide() {
     slides.forEach((img, i) => {
         img.classList.toggle('active', i === currentSlide);
@@ -428,14 +444,6 @@ function checkReveal() {
             textTarget.classList.remove('light-bg');
         }
     }
-}
-
-function openNaverBlog() {
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    let blogUrl = isMobile 
-        ? "https://m.blog.naver.com/zinux_?noTrackingCode=true&proxyReferer=&tab=1" 
-        : "https://blog.naver.com/zinux_";
-    window.open(blogUrl, '_blank');
 }
 
 window.addEventListener('scroll', checkReveal);
