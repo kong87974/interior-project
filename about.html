@@ -28,7 +28,7 @@
 
         #header {
             position: relative;
-            z-index: 9999;
+            z-index: 999999; /* 모바일 메뉴가 최상단에 오도록 값 증가 */
         }
 
         /* REVEAL ANIMATION */
@@ -62,7 +62,7 @@
             }
         }
 
-        /* 🔵 [유지] 연락처 글자 색상 실시간 변환 클래스 */
+        /* 연락처 글자 색상 실시간 변환 클래스 */
         .dynamic-contact-text {
             color: #ffffff;
             transition: color 0.3s ease;
@@ -223,7 +223,7 @@
         <p class="text-sm font-light opacity-90 tracking-[0.055em] mr-[-0.055em]">camp0882@daum.net</p>
     </div>
     <div class="flex justify-end gap-3">
-        <a href="javascript:void(0);" onclick="openNaverBlog();" class="w-10 h-10 rounded-full bg-[#03C75A] flex items-center justify-center text-white text-[10px] font-bold uppercase hover:scale-105 shadow-lg transition-transform">
+        <a href="https://blog.naver.com/zinux_" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-[#03C75A] flex items-center justify-center text-white text-[10px] font-bold uppercase hover:scale-105 shadow-lg transition-transform">
             BLOG
         </a>
         
@@ -245,6 +245,39 @@ fetch('./components/header.html')
     .then(res => res.text())
     .then(data => {
         document.getElementById('header').innerHTML = data;
+        
+        // [중요 추가] 서브페이지에서는 배경이 흰색이므로 헤더 글씨와 모바일 메뉴 버튼을 검은색으로 강제 변경
+        const headerNav = document.getElementById('mainHeader');
+        if(headerNav) {
+            headerNav.style.backgroundColor = "rgba(255, 255, 255, 0.9)";
+            headerNav.classList.remove('bg-transparent', 'border-white/10', 'border-white/20');
+            headerNav.classList.add('border-gray-100');
+            headerNav.style.backdropFilter = "blur(6px)";
+            
+            document.getElementById('leftMenu')?.classList.replace('text-white', 'text-gray-800');
+            document.getElementById('leftMenu')?.classList.remove('shadow-text');
+            
+            document.getElementById('logoMain')?.classList.remove('shadow-text');
+            document.getElementById('logoSub')?.classList.replace('text-gray-300', 'text-gray-500');
+            document.getElementById('logoSub')?.classList.remove('shadow-text');
+            
+            document.getElementById('rightMenu')?.classList.replace('text-white', 'text-gray-800');
+            document.getElementById('rightMenu')?.classList.remove('shadow-text');
+            
+            document.getElementById('headerContactBorder')?.classList.replace('border-white/10', 'border-gray-100');
+            document.getElementById('phoneIcon')?.classList.replace('text-white', 'text-[#162e59]');
+            document.getElementById('phoneIcon')?.classList.remove('shadow-icon');
+            
+            document.getElementById('headerPhone')?.classList.replace('text-white', 'text-[#162e59]');
+            document.getElementById('headerEmail')?.classList.replace('text-gray-300', 'text-gray-400');
+            
+            // 모바일 메뉴 버튼 색상 반전 (흰색 -> 검정)
+            const mobileBtn = document.getElementById('mobileMenuBtn');
+            if(mobileBtn) {
+                mobileBtn.classList.remove('border-white', 'text-white', 'shadow-text');
+                mobileBtn.classList.add('border-black', 'text-black');
+            }
+        }
     });
 
 fetch('./components/footer.html')
@@ -253,16 +286,12 @@ fetch('./components/footer.html')
         document.getElementById('footer').innerHTML = data;
     });
 
+// 모바일 메뉴 열기/닫기 함수
 window.toggleMenu = function () {
     const menu = document.getElementById("mobileMenu");
     if(menu){
         menu.classList.toggle("hidden");
     }
-};
-
-window.openNaverBlog = function() {
-    const blogUrl = "https://blog.naver.com/camp0882";
-    window.open(blogUrl, '_blank');
 };
 
 // 이메일 복사 함수 추가
