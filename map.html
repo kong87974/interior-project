@@ -108,7 +108,7 @@
                     <iframe
                         id="mapFrameMobile"
                         class="block md:hidden w-full h-full"
-                        src="https://map.kakao.com/?urlX=496582&urlY=1134552&urlLevel=3&map_type=TYPE_MAP&map_hybrid=false"
+                        src="https://map.kakao.com/link/map/블루디자인 세마점,37.1925,127.0435"
                         loading="lazy">
                     </iframe>
 
@@ -120,22 +120,20 @@
                 <div class="branch-card active border border-gray-200 p-6 pt-7 rounded-sm hover:shadow-sm"
                     onclick="changeBranch(
                         this,
-                        '세마점',
                         'https://map.naver.com/v5/search/%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%98%A4%EC%82%B0%EC%8B%9C%20%EA%B2%BD%EA%B8%B0%EB%8C%80%EB%A1%9C%20761%EB%B2%88%EA%B8%B0%2030?entry=thu&embed=1&panel=0&scale=false',
-                        'https://map.kakao.com/?urlX=496582&urlY=1134552&urlLevel=3&map_type=TYPE_MAP&map_hybrid=false'
+                        'https://map.kakao.com/link/map/블루디자인 세마점,37.1925,127.0435'
                     )">
                     <h3 class="text-xl font-black tracking-tight mb-3">세마점</h3>
                     <p class="text-[13.5px] md:text-[14.5px] text-gray-500 leading-relaxed break-keep">
-                        경기도 오산시 경기대로 761번길 30 현대프리미어캠퍼스 A-C-1층-023호
+                        경기도 오산시 경기대로 761번길 30 현대프리미어캠퍼스 A-D-B2-029호
                     </p>
                 </div>
 
                 <div class="branch-card border border-gray-200 p-6 pt-7 rounded-sm hover:shadow-sm"
                     onclick="changeBranch(
                         this,
-                        '세교점',
                         'https://map.naver.com/v5/search/%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%98%A4%EC%82%B0%EC%8B%9C%20%EB%8F%85%EC%82%B0%EC%84%B1%EB%A1%9C%20425?entry=thu&embed=1&panel=0&scale=false',
-                        'https://map.kakao.com/?urlX=496582&urlY=1134552&urlLevel=3&map_type=TYPE_MAP&map_hybrid=false'
+                        'https://map.kakao.com/link/map/블루디자인 세교점,37.1812,127.0542'
                     )">
                     <h3 class="text-xl font-black tracking-tight mb-3">세교점</h3>
                     <p class="text-[13.5px] md:text-[14.5px] text-gray-500 leading-relaxed break-keep">
@@ -176,6 +174,7 @@
     <div id="footer"></div>
 
     <script>
+        // 모바일 헤더 메뉴 활성화 스크립트 (유지)
         window.toggleComponentMenu = function () {
             const menu = document.getElementById("componentMobileMenu");
             if(menu) {
@@ -195,19 +194,19 @@
                 document.getElementById('footer').innerHTML = data;
             });
 
-        // 💡 PC와 모바일 지도를 동시에 스위칭하도록 함수 수정
-        function changeBranch(el, title, naverUrl, kakaoUrl) {
+        // 💡 PC(네이버)와 모바일(카카오) 지도를 동시에 스위칭하는 핵심 자바스크립트
+        function changeBranch(el, pcUrl, mobileUrl) {
             document.querySelectorAll('.branch-card').forEach(card => {
                 card.classList.remove('active');
             });
 
             el.classList.add('active');
             
-            // PC 지도 변경
-            document.getElementById('mapFramePC').src = naverUrl;
+            // PC 네이버 지도 주소 교체
+            document.getElementById('mapFramePC').src = pcUrl;
             
-            // 모바일 지도 변경
-            document.getElementById('mapFrameMobile').src = kakaoUrl;
+            // 모바일 카카오 지도 주소 교체
+            document.getElementById('mapFrameMobile').src = mobileUrl;
         }
 
         function checkScrollContact() {
@@ -256,7 +255,7 @@
             try {
                 const successful = document.execCommand('copy');
                 if (successful) {
-                    alert("이메일 주소(" + text + ")가 복사되었습니다.");
+                    alert("I메일 주소(" + text + ")가 복사되었습니다.");
                 } else {
                     alert("복사 실패. 이메일 주소를 직접 복사해주세요: " + text);
                 }
