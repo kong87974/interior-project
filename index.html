@@ -109,7 +109,7 @@
             opacity: 1;
         }
 
-        /* 타이틀 스타일: 파란색 3D 그림자 제거하고 흰색 테두리만 남김 */
+        /* 타이틀 스타일 */
         .outline-title {
             color: transparent;
             -webkit-text-stroke: 1.5px #ffffff;
@@ -118,7 +118,7 @@
             display: inline-block;
         }
 
-        /* 가로선 기준 위아래 슬라이딩 정밀 모션 제어 (4.0초 슬로우 진입) */
+        /* 애니메이션 제어 */
         .anim-up {
             opacity: 0;
             transform: translateY(40px);
@@ -135,7 +135,6 @@
             transform: translateY(0);
         }
 
-        /* ★ 얇게 수정한 가로선 레이아웃 */
         .entry-line-container {
             position: relative;
             width: 100%;
@@ -193,7 +192,7 @@
             color: #162e59 !important;
         }
 
-        /* MOBILE 반응형 오프셋 초기화 대응 */
+        /* MOBILE 반응형 */
         @media (max-width: 768px) {
             .hero-container { padding-left: 24px !important; padding-right: 24px !important; }
             .outline-title { font-size: 44px !important; line-height: 1.2; text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); }
@@ -330,7 +329,14 @@
             <a href="javascript:void(0);" onclick="openNaverBlog();" class="w-10 h-10 rounded-full bg-[#03C75A] flex items-center justify-center text-white text-[10px] font-bold uppercase hover:scale-105 shadow-lg transition-transform">
                 BLOG
             </a>
-            <a href="http://pf.kakao.com/_AJxenX" class="w-10 h-10 rounded-full bg-[#fae100] flex items-center justify-center overflow-hidden hover:scale-105 shadow-lg transition-transform">
+            
+            <a href="javascript:void(0);" onclick="copyEmail();" class="w-10 h-10 rounded-full bg-white border border-gray-100 flex items-center justify-center text-[#1e3a8a] hover:scale-105 shadow-lg transition-transform" title="이메일 주소 복사">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+            </a>
+
+            <a href="http://pf.kakao.com/_AJxenX" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-[#fae100] flex items-center justify-center overflow-hidden hover:scale-105 shadow-lg transition-transform">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/KakaoTalk_logo.svg" alt="카카오톡" class="w-5 h-5 object-contain">
             </a>
         </div>
@@ -480,6 +486,51 @@ function toggleMenu() {
     if(menu){
         menu.classList.toggle("hidden");
     }
+}
+
+// 블로그 버튼 임시 함수 (추후 링크가 있다면 연결 필요)
+function openNaverBlog() {
+    // 실제 블로그 주소가 있다면 주석을 해제하고 사용하세요.
+    // window.open('https://blog.naver.com/아이디', '_blank');
+    alert("블로그가 연결되지 않았습니다.");
+}
+
+// 이메일 복사 스크립트 (모바일 호환성 포함)
+function copyEmail() {
+    const email = "camp0882@daum.net";
+    
+    // 모바일/최신 브라우저를 위한 클립보드 API
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(email).then(() => {
+            alert("이메일 주소(" + email + ")가 복사되었습니다.");
+        }).catch(() => fallbackCopyTextToClipboard(email));
+    } else {
+        // 호환성을 위한 대체 방법 (구형 모바일 브라우저/인앱 환경)
+        fallbackCopyTextToClipboard(email);
+    }
+}
+
+function fallbackCopyTextToClipboard(text) {
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    textArea.style.position = "absolute";
+    textArea.style.left = "-999999px"; 
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    
+    try {
+        const successful = document.execCommand('copy');
+        if (successful) {
+            alert("이메일 주소(" + text + ")가 복사되었습니다.");
+        } else {
+            alert("복사 실패. 이메일 주소를 직접 복사해주세요: " + text);
+        }
+    } catch (err) {
+        alert("이 환경에서는 복사가 지원되지 않습니다: " + text);
+    }
+    
+    document.body.removeChild(textArea);
 }
 
 // slide logic
