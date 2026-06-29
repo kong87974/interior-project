@@ -287,9 +287,11 @@ fetch('./components/footer.html')
     });
 
 // 모바일 메뉴 열기/닫기 함수
-window.toggleMenu = function () {
-    const menu = document.getElementById("mobileMenu");
-    if(menu){
+// 기존에 있던 window.toggleMenu = function() { ... } 부분을 아래 코드로 교체하세요!
+
+window.toggleComponentMenu = function () {
+    const menu = document.getElementById("componentMobileMenu");
+    if(menu) {
         menu.classList.toggle("hidden");
     }
 };
