@@ -76,12 +76,10 @@
 
     <div id="header"></div>
 
-    <!-- 🛠️ 진행절차와 동일하게 동적 뷰포트 정렬을 적용하여 하단 푸터를 첫 화면 밖으로 깔끔하게 밀어냅니다 -->
     <main class="pt-32 pb-4 min-h-[calc(100vh-80px)] flex flex-col justify-between">
 
         <div class="max-w-[1400px] mx-auto px-6 w-full flex-grow flex flex-col justify-center">
 
-            <!-- ✏️ [TITLE ZONE] 진행절차 페이지와 황금비율 크기로 100% 동기화된 타이틀 디자인 -->
             <section class="mb-10">
                 <p class="text-[11px] tracking-[0.4em] text-[#1e3a8a] font-bold uppercase mb-3">
                     Location
@@ -97,7 +95,6 @@
                 </p>
             </section>
 
-            <!-- 🗺️ 네이버 지도 영역 -->
             <section class="mb-6">
                 <div class="map-wrap w-full h-[480px] overflow-hidden border border-gray-100 rounded-sm shadow-sm">
                     <iframe
@@ -108,10 +105,8 @@
                 </div>
             </section>
 
-            <!-- 🏢 하단 지점 탭 버튼 카드 카드 구역 -->
             <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-                <!-- 세마점 -->
                 <div class="branch-card active border border-gray-200 p-6 pt-7 rounded-sm hover:shadow-sm"
                     onclick="changeBranch(
                         this,
@@ -127,7 +122,6 @@
                     </p>
                 </div>
 
-                <!-- 세교점 -->
                 <div class="branch-card border border-gray-200 p-6 pt-7 rounded-sm hover:shadow-sm"
                     onclick="changeBranch(
                         this,
@@ -147,12 +141,10 @@
 
         </div>
 
-        <!-- 📏 어두운 푸터 가려짐을 보정하는 여백 공간 -->
         <div class="h-4 w-full"></div>
 
     </main>
 
-    <!-- 고정 연락처 박스 -->
     <div class="contact-box fixed bottom-10 right-10 z-[99999] flex flex-col items-end select-none">
         <div id="dynamic-text-target" class="dynamic-contact-text mb-5 flex flex-col items-end text-right">
             <p class="text-[21px] font-black tracking-tighter">010-4192-0882</p>
@@ -162,8 +154,15 @@
             <a href="javascript:void(0);" onclick="openNaverBlog();" class="w-10 h-10 rounded-full bg-[#03C75A] flex items-center justify-center text-white text-[10px] font-bold uppercase hover:scale-105 shadow-lg transition-transform">
                 BLOG
             </a>
-            <a href="http://pf.kakao.com/_AJxenX" class="w-10 h-10 rounded-full bg-[#fae100] flex items-center justify-center overflow-hidden hover:scale-105 shadow-lg transition-transform">
+            
+            <a href="http://pf.kakao.com/_AJxenX" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-[#fae100] flex items-center justify-center overflow-hidden hover:scale-105 shadow-lg transition-transform">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/KakaoTalk_logo.svg" alt="카카오톡" class="w-5 h-5 object-contain">
+            </a>
+
+            <a href="javascript:void(0);" onclick="copyEmail();" class="w-10 h-10 rounded-full bg-white border border-gray-100 flex items-center justify-center text-[#1e3a8a] hover:scale-105 shadow-lg transition-transform" title="이메일 주소 복사">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
             </a>
         </div>
     </div>
@@ -224,6 +223,41 @@
                 ? "https://m.blog.naver.com/zinux_?noTrackingCode=true&proxyReferer=&tab=1" 
                 : "https://blog.naver.com/zinux_";
             window.open(blogUrl, '_blank');
+        }
+
+        // 이메일 복사 함수
+        window.copyEmail = function() {
+            const email = "camp0882@daum.net";
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(email).then(() => {
+                    alert("이메일 주소(" + email + ")가 복사되었습니다.");
+                }).catch(() => fallbackCopyTextToClipboard(email));
+            } else {
+                fallbackCopyTextToClipboard(email);
+            }
+        };
+
+        function fallbackCopyTextToClipboard(text) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "absolute";
+            textArea.style.left = "-999999px"; 
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    alert("이메일 주소(" + text + ")가 복사되었습니다.");
+                } else {
+                    alert("복사 실패. 이메일 주소를 직접 복사해주세요: " + text);
+                }
+            } catch (err) {
+                alert("이 환경에서는 복사가 지원되지 않습니다: " + text);
+            }
+            
+            document.body.removeChild(textArea);
         }
 
         window.addEventListener('scroll', checkScrollContact);

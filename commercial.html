@@ -141,7 +141,6 @@
 
     <div id="header"></div>
 
-    <!-- HERO 구역 -->
     <section class="relative h-[400px] w-full flex items-center justify-center text-white overflow-hidden bg-black">
         <div class="absolute inset-0 z-0">
             <img src="https://imgur.com/Wzg5gzw.jpg"
@@ -161,7 +160,6 @@
         </div>
     </section>
 
-    <!-- CATEGORY TAB -->
     <div class="border-b border-gray-100 mb-16">
         <div class="tab-wrap max-w-[1400px] mx-auto flex justify-center gap-12 py-6 text-[14px] font-medium text-gray-400">
             <a href="project_all.html" class="tab-link">전체보기</a>
@@ -170,18 +168,14 @@
         </div>
     </div>
 
-    <!-- MAIN PORTFOLIO GRID -->
     <main class="max-w-[1400px] mx-auto px-6 pb-32">
         <div id="commercialProjectGrid" class="project-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10 min-h-[300px]">
-            <!-- 스크립트가 꽂히는 구역 -->
-        </div>
+            </div>
 
         <div id="pagination-container" class="flex justify-center gap-2 mt-20">
-            <!-- 버튼 자동 생성 -->
-        </div>
+            </div>
     </main>
 
-    <!-- 우측 하단 유틸 연락처 박스 -->
     <div class="contact-box fixed bottom-10 right-10 z-[99999] flex flex-col items-end select-none">
         <div id="dynamic-text-target" class="dynamic-contact-text mb-5 flex flex-col items-end text-right">
             <p class="text-[21px] font-black tracking-tighter">010-4192-0882</p>
@@ -191,8 +185,15 @@
             <a href="javascript:void(0);" onclick="openNaverBlog();" class="w-10 h-10 rounded-full bg-[#03C75A] flex items-center justify-center text-white text-[10px] font-bold uppercase hover:scale-105 shadow-lg transition-transform">
                 BLOG
             </a>
-            <a href="http://pf.kakao.com/_AJxenX" class="w-10 h-10 rounded-full bg-[#fae100] flex items-center justify-center overflow-hidden hover:scale-105 shadow-lg transition-transform">
+            
+            <a href="http://pf.kakao.com/_AJxenX" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-[#fae100] flex items-center justify-center overflow-hidden hover:scale-105 shadow-lg transition-transform">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/KakaoTalk_logo.svg" alt="카카오톡" class="w-5 h-5 object-contain">
+            </a>
+
+            <a href="javascript:void(0);" onclick="copyEmail();" class="w-10 h-10 rounded-full bg-white border border-gray-100 flex items-center justify-center text-[#1e3a8a] hover:scale-105 shadow-lg transition-transform" title="이메일 주소 복사">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
             </a>
         </div>
     </div>
@@ -200,9 +201,6 @@
     <div id="footer"></div>
 
     <script>
-        // ==========================================
-        // 1. 상업공간 전용 포트폴리오 데이터 리스트
-        // ==========================================
         const commercialProjects = [
             {
                 title: "[수원] 아구찜 음식점 인테리어",
@@ -212,9 +210,6 @@
             }
         ];
 
-        // ==========================================
-        // 2. 페이지네이션 모듈 세팅
-        // ==========================================
         const itemsPerPage = 9;
         let currentPage = 1;
 
@@ -276,11 +271,9 @@
             }
         }
 
-        // 초기화 가동
         renderCommercialProjects(currentPage);
         renderPagination();
 
-        // 컴포넌트 비동기 로드
         fetch('./components/header.html')
             .then(res => res.text())
             .then(data => { document.getElementById('header').innerHTML = data; });
@@ -315,6 +308,41 @@
             window.open(blogUrl, '_blank');
         }
 
+        // 이메일 복사 함수
+        window.copyEmail = function() {
+            const email = "camp0882@daum.net";
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(email).then(() => {
+                    alert("이메일 주소(" + email + ")가 복사되었습니다.");
+                }).catch(() => fallbackCopyTextToClipboard(email));
+            } else {
+                fallbackCopyTextToClipboard(email);
+            }
+        };
+
+        function fallbackCopyTextToClipboard(text) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "absolute";
+            textArea.style.left = "-999999px"; 
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    alert("이메일 주소(" + text + ")가 복사되었습니다.");
+                } else {
+                    alert("복사 실패. 이메일 주소를 직접 복사해주세요: " + text);
+                }
+            } catch (err) {
+                alert("이 환경에서는 복사가 지원되지 않습니다: " + text);
+            }
+            
+            document.body.removeChild(textArea);
+        }
+
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
@@ -332,5 +360,4 @@
         setTimeout(checkScrollContact, 400);
     </script>
 </body>
-
 </html>

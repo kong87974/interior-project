@@ -104,7 +104,7 @@
 
             .project-grid {
                 grid-template-columns: 1fr !important;
-                gap-y: 40px !important; /* 모바일에서도 줄간격 축소 */
+                gap-y: 40px !important;
             }
             
             .contact-box { right: 20px !important; bottom: 20px !important; }
@@ -116,16 +116,6 @@
 <body class="bg-white text-gray-900">
 
     <nav id="header"></nav>
-
-    <div id="mobileMenu"
-        class="hidden fixed top-[70px] left-0 w-full bg-white z-40 border-b border-gray-100 px-6 py-8 md:hidden">
-        <div class="flex flex-col gap-6 text-[15px] font-bold text-gray-800 uppercase">
-            <a href="about.html">회사소개</a>
-            <a href="project_all.html">프로젝트</a>
-            <a href="contact.html">견적문의</a>
-            <a href="notice.html">공지사항</a>
-        </div>
-    </div>
 
     <section class="relative h-[400px] w-full flex items-center justify-center text-white overflow-hidden bg-black">
         <div class="absolute inset-0 z-0">
@@ -168,8 +158,15 @@
             <a href="javascript:void(0);" onclick="openNaverBlog();" class="w-10 h-10 rounded-full bg-[#03C75A] flex items-center justify-center text-white text-[10px] font-bold uppercase hover:scale-105 shadow-lg transition-transform">
                 BLOG
             </a>
-            <a href="http://pf.kakao.com/_AJxenX" class="w-10 h-10 rounded-full bg-[#fae100] flex items-center justify-center overflow-hidden hover:scale-105 shadow-lg transition-transform">
+            
+            <a href="http://pf.kakao.com/_AJxenX" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-[#fae100] flex items-center justify-center overflow-hidden hover:scale-105 shadow-lg transition-transform">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/KakaoTalk_logo.svg" alt="카카오톡" class="w-5 h-5 object-contain">
+            </a>
+
+            <a href="javascript:void(0);" onclick="copyEmail();" class="w-10 h-10 rounded-full bg-white border border-gray-100 flex items-center justify-center text-[#1e3a8a] hover:scale-105 shadow-lg transition-transform" title="이메일 주소 복사">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
             </a>
         </div>
     </div>
@@ -177,9 +174,6 @@
     <div id="footer"></div>
 
     <script>
-        // ==========================================
-        // 1. 사무공간 프로젝트 데이터 리스트 (추가 4개 포함, 총 9개 세팅)
-        // ==========================================
         const officeProjects = [
             {
                 title: "[동탄] 지식산업센터 K-Materials 사무실",
@@ -211,7 +205,6 @@
                 img: "https://imgur.com/X1didZX.jpg",
                 link: "project_detail_05.html"
             },
-            // --- 💡 아래부터 새로 추가할 4개의 프로젝트 자리입니다 ---
             {
                 title: "[수원] (주)파워에스티 공장 & 사무실",
                 tag: "사무공간 / 복층 & 유리파티션 & 파사드 & 작업공간",
@@ -238,18 +231,14 @@
             }
         ];
 
-        // ==========================================
-        // 2. 페이지네이션 핵심 로직 세팅
-        // ==========================================
-        const itemsPerPage = 9; // 한 페이지에 보여줄 개수
-        let currentPage = 1;    // 현재 페이지 번호
+        const itemsPerPage = 9;
+        let currentPage = 1;
 
-        // 리스트를 화면에 그리는 함수
         function renderOfficeProjects(page) {
             const container = document.getElementById('officeProjectGrid');
             if(!container) return;
             
-            container.innerHTML = ""; // 기존 내용 비우기
+            container.innerHTML = "";
 
             const startIndex = (page - 1) * itemsPerPage;
             const endIndex = startIndex + itemsPerPage;
@@ -276,11 +265,9 @@
                 container.innerHTML += html;
             });
 
-            // 화면을 새로 그렸으니 애니메이션 다시 트리거
             setTimeout(reveal, 100);
         }
 
-        // 하단 번호 버튼을 그리는 함수
         function renderPagination() {
             const totalPages = Math.ceil(officeProjects.length / itemsPerPage);
             const paginationContainer = document.getElementById('pagination-container');
@@ -288,7 +275,6 @@
             
             paginationContainer.innerHTML = "";
 
-            // 페이지가 1개 이하면 버튼을 만들지 않음
             if (totalPages <= 1) return;
 
             for (let i = 1; i <= totalPages; i++) {
@@ -299,8 +285,7 @@
                 btn.addEventListener('click', () => {
                     currentPage = i;
                     renderOfficeProjects(currentPage);
-                    renderPagination(); // 번호 색상 업데이트
-                    // 페이지 넘기면 살짝 위로 스크롤 올려주기 (탭 메뉴 위치쯤으로)
+                    renderPagination(); 
                     window.scrollTo({ top: 400, behavior: 'smooth' }); 
                 });
 
@@ -308,15 +293,9 @@
             }
         }
 
-        // ==========================================
-        // 3. 페이지 로드 시 실행 (초기화)
-        // ==========================================
         renderOfficeProjects(currentPage);
         renderPagination();
 
-        // ==========================================
-        // 기존 컴포넌트 및 UI 함수들
-        // ==========================================
         fetch('./components/header.html')
             .then(res => res.text())
             .then(data => {
@@ -359,6 +338,41 @@
             window.open(blogUrl, '_blank');
         }
 
+        // 이메일 복사 함수
+        window.copyEmail = function() {
+            const email = "camp0882@daum.net";
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(email).then(() => {
+                    alert("이메일 주소(" + email + ")가 복사되었습니다.");
+                }).catch(() => fallbackCopyTextToClipboard(email));
+            } else {
+                fallbackCopyTextToClipboard(email);
+            }
+        };
+
+        function fallbackCopyTextToClipboard(text) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "absolute";
+            textArea.style.left = "-999999px"; 
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    alert("이메일 주소(" + text + ")가 복사되었습니다.");
+                } else {
+                    alert("복사 실패. 이메일 주소를 직접 복사해주세요: " + text);
+                }
+            } catch (err) {
+                alert("이 환경에서는 복사가 지원되지 않습니다: " + text);
+            }
+            
+            document.body.removeChild(textArea);
+        }
+
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
@@ -373,7 +387,6 @@
 
         window.addEventListener("scroll", reveal);
         window.addEventListener('resize', checkScrollContact);
-        
         setTimeout(checkScrollContact, 400);
 
     </script>
