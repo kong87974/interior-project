@@ -218,6 +218,13 @@
                 tag: "상업공간 / 철거 & 인테리어 공사",
                 img: "https://i.imgur.com/2MwxLjF.jpg",
                 link: "commercial_detail_01.html"
+            },
+            // ✅ 여기에 힐링숲 데이터를 추가했습니다.
+            {
+                title: "[화성] 힐링숲 찜질방",
+                tag: "상업공간 / 힐링 카페",
+                img: "images/메인1.jpg",
+                link: "commercial_detail_02.html"
             }
         ];
 
@@ -294,14 +301,12 @@
             .then(res => res.text())
             .then(data => { document.getElementById('footer').innerHTML = data; });
 
-// 기존에 있던 window.toggleMenu = function() { ... } 부분을 아래 코드로 교체하세요!
-
-window.toggleComponentMenu = function () {
-    const menu = document.getElementById("componentMobileMenu");
-    if(menu) {
-        menu.classList.toggle("hidden");
-    }
-};
+        window.toggleComponentMenu = function () {
+            const menu = document.getElementById("componentMobileMenu");
+            if(menu) {
+                menu.classList.toggle("hidden");
+            }
+        };
 
         function checkScrollContact() {
             const windowHeight = window.innerHeight;
