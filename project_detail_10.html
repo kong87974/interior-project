@@ -82,7 +82,7 @@
 
             <div>
                 <div class="w-full">
-                    <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                    <div class="overflow-hidden rounded-sm shadow-sm aspect-video">
                         <img src="https://i.imgur.com/dBNalgi.jpg" 
                              alt="메인 파사드 전경" 
                              class="zoomable-image protected-image w-full h-full object-cover hover:scale-[1.01] transition duration-700 cursor-pointer">
@@ -198,14 +198,12 @@
     </div>
 
     <script>
-        // header
         fetch('./components/header.html')
             .then(res => res.text())
             .then(data => {
                 document.getElementById('header').innerHTML = data;
             });
 
-        // footer
         fetch('./components/footer.html')
             .then(res => res.text())
             .then(data => {
@@ -219,21 +217,18 @@
             }
         };
 
-        // 🖼️ 이미지 확대(모달) 및 보호 기능 스크립트
         document.addEventListener('DOMContentLoaded', () => {
             const modal = document.getElementById('imageModal');
             const modalImg = document.getElementById('modalImage');
             const closeBtn = document.getElementById('closeModal');
             const images = document.querySelectorAll('.zoomable-image');
 
-            // 이미지 클릭 시 모달 열기
             images.forEach(img => {
                 img.addEventListener('click', () => {
-                    modalImg.src = img.src; // 클릭한 이미지 주소를 모달 이미지에 전달
+                    modalImg.src = img.src;
                     modal.classList.remove('hidden');
-                    document.body.classList.add('modal-open'); // 뒤 배경 스크롤 방지
+                    document.body.classList.add('modal-open');
                     
-                    // 약간의 딜레이 후 opacity와 scale을 변경하여 부드러운 애니메이션 효과
                     setTimeout(() => {
                         modal.classList.remove('opacity-0');
                         modalImg.classList.remove('scale-95');
@@ -242,37 +237,32 @@
                 });
             });
 
-            // 모달 닫기 함수
             const closeModalFunc = () => {
                 modal.classList.add('opacity-0');
                 modalImg.classList.remove('scale-100');
                 modalImg.classList.add('scale-95');
-                document.body.classList.remove('modal-open'); // 스크롤 방지 해제
+                document.body.classList.remove('modal-open');
                 
-                // 애니메이션이 끝난 후 hidden 처리
                 setTimeout(() => {
                     modal.classList.add('hidden');
                     modalImg.src = ''; 
                 }, 300);
             };
 
-            // 닫기 버튼 또는 여백 클릭 시 모달 닫기
             closeBtn.addEventListener('click', closeModalFunc);
             modal.addEventListener('click', (e) => {
-                // 이미지가 아닌 검은색 배경 영역 클릭 시 닫히도록 설정
                 if (e.target === modal) {
                     closeModalFunc();
                 }
             });
 
-            // 🔒 이미지 보호를 위한 추가 스크립트: 마우스 우클릭 차단
             document.querySelectorAll('.protected-image').forEach(el => {
                 el.addEventListener('contextmenu', (e) => {
-                    e.preventDefault(); // 기본 우클릭 메뉴를 띄우지 않음
+                    e.preventDefault(); 
                 });
             });
             modalImg.addEventListener('contextmenu', (e) => {
-                e.preventDefault(); // 확대 이미지에서도 우클릭 차단
+                e.preventDefault(); 
             });
         });
     </script>
