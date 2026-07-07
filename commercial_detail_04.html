@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLUE DESIGN | 상업공간</title>
+
+    <link rel="icon" href="https://i.imgur.com/P5pty6X.png" type="image/png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+
+    <style>
+        body {
+            font-family: "Pretendard", sans-serif;
+            letter-spacing: -0.02em;
+            overflow-x: hidden;
+        }
+
+        /* 모달 열렸을 때 배경 스크롤 방지용 */
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        /* 🔒 이미지 복사 방지 CSS */
+        .protected-image {
+            user-select: none;
+            -webkit-user-drag: none;
+            -ms-user-select: none;
+        }
+        
+        /* 🔒 확대 이미지 포인터 이벤트 차단 (우클릭 메뉴 방지) */
+        #modalImage {
+            pointer-events: none;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-900">
+
+    <div id="header"></div>
+
+    <main class="min-h-screen pt-32 pb-24 max-w-[1200px] mx-auto px-6">
+
+        <div class="text-center my-14">
+            <h1 class="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight mb-2">FREEZE 아이스크림 매장</h1>
+            <p class="text-sm md:text-base text-gray-400 font-medium tracking-wide">Ice Cream Shop Interior Design</p>
+        </div>
+
+
+        <div class="border-t border-b border-gray-300 py-8 my-10">
+            <div class="text-center text-xs md:text-sm font-extrabold tracking-[0.2em] text-gray-800 uppercase mb-8">
+                · PROJECT DETAILS ·
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-y-6 gap-x-12 text-[14px] md:text-[15px] px-2 md:px-4">
+                
+                <div class="md:col-span-6 grid grid-cols-2 gap-y-4 gap-x-4 border-b md:border-b-0 md:border-r border-gray-200 pb-6 md:pb-0 md:pr-10">
+                    <div class="flex items-center"><span class="w-16 text-gray-400 font-semibold shrink-0">연도</span><span class="text-gray-700 font-medium">2022</span></div>
+                    <div class="flex items-center"><span class="w-16 text-gray-400 font-semibold shrink-0">위치</span><span class="text-gray-700 font-medium">경기도 평택시</span></div>
+                    <div class="flex items-center"><span class="w-16 text-gray-400 font-semibold shrink-0">공사</span><span class="text-gray-700 font-medium">인테리어</span></div>
+                    <div class="flex items-center"><span class="w-16 text-gray-400 font-semibold shrink-0">면적</span><span class="text-gray-700 font-medium">-</span></div>
+                </div>
+
+                <div class="md:col-span-6 flex flex-col md:flex-row gap-2 md:gap-6">
+                    <span class="w-16 text-gray-400 font-semibold shrink-0">개요</span>
+                    <p class="text-gray-500 leading-relaxed font-medium text-justify break-keep">
+                        정갈하고 고급스러운 무드를 자아내는 모던 이자카야 인테리어입니다. 고객들이 프라이빗하고 편안하게 미식을 즐길 수 있도록 세밀한 동선과 공간 구획을 적용했습니다. 따뜻한 우드 톤의 마감재와 은은한 간접 조명을 매칭하여 깊이감 있고 분위기 있는 다이닝 공간을 완성했습니다.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="mt-16 space-y-12">
+
+            <div>
+                <div class="w-full">
+                    <div class="overflow-hidden rounded-sm shadow-sm aspect-video">
+                        <img src="https://i.imgur.com/1xugUs2.jpg" 
+                             alt="이자카야 완공 전경 1" 
+                             class="zoomable-image protected-image w-full h-full object-cover hover:scale-[1.01] transition duration-700 cursor-pointer">
+                    </div>
+                    <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 품격 있는 모던 이자카야 감성의 메인 다이닝 공간 완공 전경</p>
+                </div>
+
+                <div class="max-w-[850px] mx-auto text-center py-10 px-4">
+                    <h3 class="text-lg md:text-xl font-bold text-gray-850 mb-4">01. 미식 경험을 완성하는 고급스러운 다이닝 공간</h3>
+                    <p class="text-gray-500 leading-8 text-[15px] md:text-[16px] break-keep">
+                        전체적으로 톤 다운된 우드 마감재와 은은한 조명을 매치하여 차분하면서도 깊이 있는 분위기를 연출했습니다. 고객들이 일상의 피로를 내려놓고 온전히 미식에 집중할 수 있는 고급스러운 이자카야 메인 홀입니다.
+                    </p>
+                </div>
+            </div>
+
+            <div>
+                <div class="grid grid-cols-2 gap-6 w-full">
+                    <div class="w-full">
+                        <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                            <img src="https://i.imgur.com/hffsP0F.jpg" alt="프라이빗 부스 완공 디테일" class="zoomable-image protected-image w-full h-full object-cover hover:scale-[1.02] transition duration-700 cursor-pointer">
+                        </div>
+                        <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 완공 전경: 프라이빗한 식사를 위한 개별 부스 좌석 디테일</p>
+                    </div>
+                    <div class="w-full">
+                        <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                            <img src="https://i.imgur.com/k8nngHu.jpg" alt="정갈한 테이블 완공 전경" class="zoomable-image protected-image w-full h-full object-cover hover:scale-[1.02] transition duration-700 cursor-pointer">
+                        </div>
+                        <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 완공 전경: 정갈한 테이블 세팅과 따뜻한 무드의 조명 연출</p>
+                    </div>
+                </div>
+                <div class="max-w-[850px] mx-auto text-center py-10 px-4">
+                    <h3 class="text-lg md:text-xl font-bold text-gray-850 mb-4">02. 프라이빗한 시간을 보장하는 세밀한 공간 구획</h3>
+                    <p class="text-gray-500 leading-8 text-[15px] md:text-[16px] break-keep">
+                        타인의 시선에 방해받지 않고 일행과의 시간에 집중할 수 있도록 프라이빗한 부스 형태의 좌석을 마련했습니다. 시각적인 안정감을 주는 파티션 설계와 고객의 동선을 배려한 레이아웃으로 쾌적한 환경을 제공합니다.
+                    </p>
+                </div>
+            </div>
+
+            <div>
+                <div class="grid grid-cols-2 gap-6 w-full">
+                    <div class="w-full">
+                        <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                            <img src="https://i.imgur.com/ZhKJd7w.jpg" alt="조명과 우드의 조화" class="zoomable-image protected-image w-full h-full object-cover hover:scale-[1.02] transition duration-700 cursor-pointer">
+                        </div>
+                        <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 완공 디테일: 공간의 입체감을 살려주는 간접 조명과 우드 마감의 조화</p>
+                    </div>
+                    <div class="w-full">
+                        <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                            <img src="https://i.imgur.com/dmcvb0A.jpg" alt="깊이감 있는 텍스처" class="zoomable-image protected-image w-full h-full object-cover hover:scale-[1.02] transition duration-700 cursor-pointer">
+                        </div>
+                        <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 완공 디테일: 고급스러운 질감이 돋보이는 벽면 텍스처와 라인 조명</p>
+                    </div>
+                </div>
+                <div class="max-w-[850px] mx-auto text-center py-10 px-4">
+                    <h3 class="text-lg md:text-xl font-bold text-gray-850 mb-4">03. 빛과 질감이 어우러진 하이엔드 디테일</h3>
+                    <p class="text-gray-500 leading-8 text-[15px] md:text-[16px] break-keep">
+                        단조로울 수 있는 벽면에 입체적인 텍스처를 적용하고, 그 선을 따라 부드럽게 흐르는 간접 조명을 설치하여 공간의 품격을 한층 끌어올렸습니다. 작은 디테일 하나까지 놓치지 않고 완성도 높은 프리미엄 이자카야의 정체성을 담아냈습니다.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <div id="footer"></div>
+
+    <div id="imageModal" class="fixed inset-0 z-[999999] hidden bg-black/90 flex items-center justify-center opacity-0 transition-opacity duration-300">
+        <button id="closeModal" class="absolute top-6 right-6 text-white hover:text-gray-400 focus:outline-none z-50">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <img id="modalImage" src="" alt="확대 이미지" class="protected-image max-h-[90vh] max-w-[90vw] object-contain shadow-2xl rounded-sm scale-95 transition-transform duration-300">
+    </div>
+
+    <script>
+        fetch('./components/header.html')
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+
+        fetch('./components/footer.html')
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+
+        window.toggleComponentMenu = function () {
+            const menu = document.getElementById("componentMobileMenu");
+            if(menu) {
+                menu.classList.toggle("hidden");
+            }
+        };
+
+        // 🖼️ 이미지 확대(모달) 및 보호 기능 스크립트
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const closeBtn = document.getElementById('closeModal');
+            const images = document.querySelectorAll('.zoomable-image');
+
+            // 이미지 클릭 시 모달 열기
+            images.forEach(img => {
+                img.addEventListener('click', () => {
+                    modalImg.src = img.src; // 클릭한 이미지 주소를 모달 이미지에 전달
+                    modal.classList.remove('hidden');
+                    document.body.classList.add('modal-open'); // 뒤 배경 스크롤 방지
+                    
+                    // 약간의 딜레이 후 opacity와 scale을 변경하여 부드러운 애니메이션 효과
+                    setTimeout(() => {
+                        modal.classList.remove('opacity-0');
+                        modalImg.classList.remove('scale-95');
+                        modalImg.classList.add('scale-100');
+                    }, 10);
+                });
+            });
+
+            // 모달 닫기 함수
+            const closeModalFunc = () => {
+                modal.classList.add('opacity-0');
+                modalImg.classList.remove('scale-100');
+                modalImg.classList.add('scale-95');
+                document.body.classList.remove('modal-open'); // 스크롤 방지 해제
+                
+                // 애니메이션이 끝난 후 hidden 처리
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    modalImg.src = ''; 
+                }, 300);
+            };
+
+            // 닫기 버튼 또는 여백 클릭 시 모달 닫기
+            closeBtn.addEventListener('click', closeModalFunc);
+            modal.addEventListener('click', (e) => {
+                // 이미지가 아닌 검은색 배경 영역 클릭 시 닫히도록 설정
+                if (e.target === modal) {
+                    closeModalFunc();
+                }
+            });
+
+            // 🔒 이미지 보호를 위한 추가 스크립트: 마우스 우클릭 차단
+            document.querySelectorAll('.protected-image').forEach(el => {
+                el.addEventListener('contextmenu', (e) => {
+                    e.preventDefault(); // 기본 우클릭 메뉴를 띄우지 않음
+                });
+            });
+            modalImg.addEventListener('contextmenu', (e) => {
+                e.preventDefault(); // 확대 이미지에서도 우클릭 차단
+            });
+        });
+    </script>
+
+</body>
+
+</html>
