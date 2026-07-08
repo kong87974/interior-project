@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLUE DESIGN | 상업공간</title>
+
+    <link rel="icon" href="https://i.imgur.com/P5pty6X.png" type="image/png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+
+    <style>
+        body {
+            font-family: "Pretendard", sans-serif;
+            letter-spacing: -0.02em;
+            overflow-x: hidden;
+        }
+
+        /* 모달 열렸을 때 배경 스크롤 방지용 */
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        /* 🔒 이미지 복사 방지 CSS */
+        .protected-image {
+            user-select: none;
+            -webkit-user-drag: none;
+            -ms-user-select: none;
+        }
+        
+        /* 🔒 확대 이미지 포인터 이벤트 차단 (우클릭 메뉴 방지) */
+        #modalImage {
+            pointer-events: none;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-900">
+
+    <div id="header"></div>
+
+    <main class="min-h-screen pt-32 pb-24 max-w-[1200px] mx-auto px-6">
+
+        <div class="text-center my-14">
+            <h1 class="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight mb-2">ACE COFFEE 매장</h1>
+            <p class="text-sm md:text-base text-gray-400 font-medium tracking-wide">ACE COFFEE Shop Interior Design</p>
+        </div>
+
+
+        <div class="border-t border-b border-gray-300 py-8 my-10">
+            <div class="text-center text-xs md:text-sm font-extrabold tracking-[0.2em] text-gray-800 uppercase mb-8">
+                · PROJECT DETAILS ·
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-y-6 gap-x-12 text-[14px] md:text-[15px] px-2 md:px-4">
+                
+                <div class="md:col-span-6 grid grid-cols-2 gap-y-4 gap-x-4 border-b md:border-b-0 md:border-r border-gray-200 pb-6 md:pb-0 md:pr-10">
+                    <div class="flex items-center"><span class="w-16 text-gray-400 font-semibold shrink-0">연도</span><span class="text-gray-700 font-medium">2025</span></div>
+                    <div class="flex items-center"><span class="w-16 text-gray-400 font-semibold shrink-0">위치</span><span class="text-gray-700 font-medium">경기도 오산시</span></div>
+                    <div class="flex items-center"><span class="w-16 text-gray-400 font-semibold shrink-0">공사</span><span class="text-gray-700 font-medium">인테리어</span></div>
+                    <div class="flex items-center"><span class="w-16 text-gray-400 font-semibold shrink-0">면적</span><span class="text-gray-700 font-medium">-</span></div>
+                </div>
+
+                <div class="md:col-span-6 flex flex-col md:flex-row gap-2 md:gap-6">
+                    <span class="w-16 text-gray-400 font-semibold shrink-0">개요</span>
+                    <p class="text-gray-500 leading-relaxed font-medium text-justify break-keep">
+                        쾌적하고 활기찬 운동 환경을 조성하기 위해 모던하고 인더스트리얼한 감성을 담아낸 헬스짐 인테리어입니다. 회원의 운동 몰입도를 극대화할 수 있도록 프리웨이트, 유산소, 스트레칭 등 각 존(Zone)의 특성에 맞춘 효율적인 동선 구획과 역동적인 조명 설계를 적용하여, 트렌디하면서도 전문적인 피트니스 공간을 완성했습니다.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="mt-16 space-y-20">
+
+            <!-- 1번째 섹션: 사진 1장 (전체 너비) -->
+            <div>
+                <div class="w-full">
+                    <div class="overflow-hidden rounded-sm shadow-sm aspect-video">
+                        <img src="https://i.imgur.com/BJkxS8y.jpg" 
+                             alt="헬스짐 메인 전경" 
+                             class="zoomable-image protected-image w-full h-full object-cover hover:scale-[1.01] transition duration-700 cursor-pointer">
+                    </div>
+                    <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 스포티하고 세련된 분위기로 완성된 헬스짐 메인 전경</p>
+                </div>
+                
+                <div class="max-w-[850px] mx-auto text-center py-10 px-4">
+                    <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-4">01. 운동의 몰입도를 높이는 역동적이고 트렌디한 공간</h3>
+                    <p class="text-gray-500 leading-8 text-[15px] md:text-[16px] break-keep">
+                        매장에 들어서는 순간부터 활기찬 에너지가 느껴지도록 시크한 모노톤 베이스에 감각적인 간접 조명과 포인트 컬러를 더했습니다. 거친 질감과 세련된 마감재를 적절히 믹스 매치하여 시각적인 역동성을 부여하고, 회원들이 지루함 없이 운동에 집중할 수 있는 환경을 연출했습니다.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 2번째 섹션: 사진 2장 (나란히 배열) -->
+            <div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+                    <div class="w-full">
+                        <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                            <img src="https://i.imgur.com/5JWUAOv.jpg" 
+                                 alt="웨이트 존" 
+                                 class="zoomable-image protected-image w-full h-full object-cover hover:scale-[1.01] transition duration-700 cursor-pointer">
+                        </div>
+                        <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 안전과 효율을 고려해 넉넉하게 기구를 배치한 프리웨이트 존</p>
+                    </div>
+                    <div class="w-full">
+                        <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                            <img src="https://i.imgur.com/tb9KTD6.jpg" 
+                                 alt="유산소 및 스트레칭 존" 
+                                 class="zoomable-image protected-image w-full h-full object-cover hover:scale-[1.01] transition duration-700 cursor-pointer">
+                        </div>
+                        <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 시야가 탁 트인 개방감으로 쾌적함을 더한 유산소 및 스트레칭 공간</p>
+                    </div>
+                </div>
+                
+                <div class="max-w-[850px] mx-auto text-center py-10 px-4">
+                    <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-4">02. 사용자 편의를 고려한 체계적인 공간 구획과 동선 설계</h3>
+                    <p class="text-gray-500 leading-8 text-[15px] md:text-[16px] break-keep">
+                        다양한 기구가 밀집된 피트니스 센터의 특성을 고려하여, 운동 중 충돌이나 불편함이 없도록 넉넉하고 효율적인 동선을 확보했습니다. 바닥재는 충격 흡수와 소음 방지에 탁월한 특수 매트를 시공하였으며, 각 구역별로 최적화된 조도를 설정해 안전하고 쾌적한 워크아웃(Workout)을 지원합니다.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <div id="footer"></div>
+
+    <div id="imageModal" class="fixed inset-0 z-[999999] hidden bg-black/90 flex items-center justify-center opacity-0 transition-opacity duration-300">
+        <button id="closeModal" class="absolute top-6 right-6 text-white hover:text-gray-400 focus:outline-none z-50">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <img id="modalImage" src="" alt="확대 이미지" class="protected-image max-h-[90vh] max-w-[90vw] object-contain shadow-2xl rounded-sm scale-95 transition-transform duration-300">
+    </div>
+
+    <script>
+        fetch('./components/header.html')
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+
+        fetch('./components/footer.html')
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+
+        window.toggleComponentMenu = function () {
+            const menu = document.getElementById("componentMobileMenu");
+            if(menu) {
+                menu.classList.toggle("hidden");
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const closeBtn = document.getElementById('closeModal');
+            const images = document.querySelectorAll('.zoomable-image');
+
+            images.forEach(img => {
+                img.addEventListener('click', () => {
+                    modalImg.src = img.src;
+                    modal.classList.remove('hidden');
+                    document.body.classList.add('modal-open');
+                    
+                    setTimeout(() => {
+                        modal.classList.remove('opacity-0');
+                        modalImg.classList.remove('scale-95');
+                        modalImg.classList.add('scale-100');
+                    }, 10);
+                });
+            });
+
+            const closeModalFunc = () => {
+                modal.classList.add('opacity-0');
+                modalImg.classList.remove('scale-100');
+                modalImg.classList.add('scale-95');
+                document.body.classList.remove('modal-open');
+                
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    modalImg.src = ''; 
+                }, 300);
+            };
+
+            closeBtn.addEventListener('click', closeModalFunc);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModalFunc();
+                }
+            });
+
+            document.querySelectorAll('.protected-image').forEach(el => {
+                el.addEventListener('contextmenu', (e) => {
+                    e.preventDefault(); 
+                });
+            });
+            modalImg.addEventListener('contextmenu', (e) => {
+                e.preventDefault(); 
+            });
+        });
+    </script>
+
+</body>
+
+</html>
