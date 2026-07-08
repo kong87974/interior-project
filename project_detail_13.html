@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLUE DESIGN | 사무공간</title>
+
+    <link rel="icon" href="https://i.imgur.com/P5pty6X.png" type="image/png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+
+    <style>
+        body {
+            font-family: "Pretendard", sans-serif;
+            letter-spacing: -0.02em;
+            overflow-x: hidden;
+        }
+
+        /* 모달 열렸을 때 배경 스크롤 방지용 */
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        /* 🔒 이미지 복사 방지 CSS */
+        .protected-image {
+            user-select: none;
+            -webkit-user-drag: none;
+            -ms-user-select: none;
+        }
+        
+        /* 🔒 확대 이미지 포인터 이벤트 차단 (우클릭 메뉴 방지) */
+        #modalImage {
+            pointer-events: none;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-900">
+
+    <div id="header"></div>
+
+    <main class="min-h-screen pt-32 pb-24 max-w-[1200px] mx-auto px-6">
+
+        <div class="text-center my-14">
+            <h1 class="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight mb-2">[오산] GSM 건축사사무소 사무실</h1>
+            <p class="text-sm md:text-base text-gray-400 font-medium tracking-wide">GSM Architecture Office Interior</p>
+        </div>
+
+
+        <div class="border-t border-b border-gray-300 py-8 my-10">
+            <div class="text-center text-xs md:text-sm font-extrabold tracking-[0.2em] text-gray-800 uppercase mb-8">
+                · PROJECT DETAILS ·
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-y-6 gap-x-12 text-[14px] md:text-[15px] px-2 md:px-4">
+                
+                <div class="md:col-span-6 grid grid-cols-2 gap-y-4 gap-x-4 border-b md:border-b-0 md:border-r border-gray-200 pb-6 md:pb-0 md:pr-10">
+                    <div class="flex items-center"><span class="w-16 text-gray-400 font-semibold shrink-0">연도</span><span class="text-gray-700 font-medium">2021</span></div>
+                    <div class="flex items-center"><span class="w-16 text-gray-400 font-semibold shrink-0">위치</span><span class="text-gray-700 font-medium">경기도 오산시</span></div>
+                    <div class="flex items-center"><span class="w-16 text-gray-400 font-semibold shrink-0">공사</span><span class="text-gray-700 font-medium">유리파티션 / 파사드</span></div>
+                    <div class="flex items-center"><span class="w-16 text-gray-400 font-semibold shrink-0">면적</span><span class="text-gray-700 font-medium">-</span></div>
+                </div>
+
+                <div class="md:col-span-6 flex flex-col md:flex-row gap-2 md:gap-6">
+                    <span class="w-16 text-gray-400 font-semibold shrink-0">개요</span>
+                    <p class="text-gray-500 leading-relaxed font-medium text-justify break-keep">
+                        첨단 소재 기업의 정체성을 시각화하기 위해 메탈릭한 질감과 미래지향적인 라인을 적극 활용한 오피스 브랜딩 프로젝트입니다. 평범했던 로비, 복도, 대기실, 회의실을 기업의 첫인상을 결정짓는 강렬한 이미지월과 파사드로 전면 개편하여, 방문객에게 전문성과 혁신적인 기술력을 직관적으로 전달합니다.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="mt-16 space-y-20">
+
+            <!-- 1번째 섹션: 사진 1장 -->
+            <div>
+                <div class="w-full">
+                    <div class="overflow-hidden rounded-sm shadow-sm aspect-video">
+                        <img src="https://i.imgur.com/7HIUdT1.jpg" 
+                             alt="메인 파사드 전경" 
+                             class="zoomable-image protected-image w-full h-full object-cover hover:scale-[1.01] transition duration-700 cursor-pointer">
+                    </div>
+                    <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 첨단 소재 기업의 정체성을 담은 메인 파사드</p>
+                </div>
+                
+                <div class="max-w-[850px] mx-auto text-center py-10 px-4">
+                    <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-4">01. 기업의 얼굴이 되는 강렬한 첫인상</h3>
+                    <p class="text-gray-500 leading-8 text-[15px] md:text-[16px] break-keep">
+                        메탈릭한 마감재와 미래지향적인 라인을 사용하여 묵직하면서도 세련된 메인 파사드를 디자인했습니다. 방문객이 들어서는 순간부터 기업의 혁신적인 기술력과 전문성을 직관적으로 느낄 수 있도록 기획된 공간입니다.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 2번째 섹션: 사진 2장 -->
+            <div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+                    <div class="w-full">
+                        <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                            <img src="https://i.imgur.com/06jM0OQ.jpg" 
+                                 alt="라운지 및 대기 공간 시공 중" 
+                                 class="zoomable-image protected-image w-full h-full object-cover hover:scale-[1.01] transition duration-700 cursor-pointer">
+                        </div>
+                        <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ [시공 중] 효율적인 공간 분리를 위한 뼈대 및 기초 골조 작업 현장</p>
+                    </div>
+                    <div class="w-full">
+                        <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                            <img src="https://i.imgur.com/4JCRWg6.jpg" 
+                                 alt="내부 복도 시공 중" 
+                                 class="zoomable-image protected-image w-full h-full object-cover hover:scale-[1.01] transition duration-700 cursor-pointer">
+                        </div>
+                        <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ [시공 중] 정확한 레이아웃에 따른 파티션 프레임 및 배선 작업</p>
+                    </div>
+                </div>
+                
+                <div class="max-w-[850px] mx-auto text-center py-10 px-4">
+                    <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-4">02. 꼼꼼하고 안전한 기초 시공 과정</h3>
+                    <p class="text-gray-500 leading-8 text-[15px] md:text-[16px] break-keep">
+                        클라이언트의 요구사항을 반영하여 정확하고 튼튼한 기초 공사를 진행 중인 모습입니다. 효율적인 업무 동선을 위한 공간 구획과 파티션 프레임 등 뼈대가 되는 작업이 안전하고 꼼꼼하게 이루어지고 있습니다.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 3번째 섹션: 사진 2장 -->
+            <div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+                    <div class="w-full">
+                        <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                            <img src="https://i.imgur.com/ikAIjiv.jpg" 
+                                 alt="내부 복도 완공" 
+                                 class="zoomable-image protected-image w-full h-full object-cover hover:scale-[1.01] transition duration-700 cursor-pointer">
+                        </div>
+                        <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ [시공 완료] 정밀한 시공으로 완성된 깔끔한 내부 복도와 유리 파티션</p>
+                    </div>
+                    <div class="w-full">
+                        <div class="overflow-hidden rounded-sm shadow-sm aspect-[4/3]">
+                            <img src="https://i.imgur.com/ASQhRUf.jpg" 
+                                 alt="벽면 디테일 완공" 
+                                 class="zoomable-image protected-image w-full h-full object-cover hover:scale-[1.01] transition duration-700 cursor-pointer">
+                        </div>
+                        <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ [시공 완료] 조명과 마감재의 조화로 기업의 신뢰감을 높인 업무 공간 디테일</p>
+                    </div>
+                </div>
+
+                <div class="max-w-[850px] mx-auto text-center py-10 px-4">
+                    <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-4">03. 개방감과 신뢰감을 모두 잡은 모던 오피스 완성</h3>
+                    <p class="text-gray-500 leading-8 text-[15px] md:text-[16px] break-keep">
+                        시공이 완료된 후의 쾌적하고 전문적인 업무 공간입니다. 답답한 가벽 대신 유리 파티션을 시공하여 개방감을 극대화했으며, 곳곳에 배치된 입체적인 간접 조명과 깔끔한 마감으로 완성도 높은 기업의 아이덴티티를 구현했습니다.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 4번째 섹션: 3D 모델링 (나머지 1장) -->
+            <div>
+                <div class="flex items-center gap-4 text-gray-500 mb-12">
+                    <div class="flex-grow border-t border-gray-300"></div>
+                    <span class="text-xs font-medium tracking-widest text-[#1e3a8a]">>----- 3D Modeling -----<</span>
+                    <div class="flex-grow border-t border-gray-300"></div>
+                </div>
+
+                <div class="w-full protected-image">
+                    <div class="overflow-hidden rounded-sm shadow-sm bg-gray-50 border border-gray-200 aspect-video p-2 flex items-center justify-center">
+                        <!-- 6번째 3D 이미지 URL을 아래 src에 입력하세요 -->
+                        <img src="https://i.imgur.com/P9z2x4d.jpg" 
+                             alt="3D 모델링 공간" 
+                             class="zoomable-image protected-image w-full h-full object-contain hover:scale-[1.03] transition duration-700 cursor-pointer">
+                    </div>
+                    <p class="text-xs text-gray-400 mt-3 text-center tracking-wide">▲ 3D 모델링</p>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <div id="footer"></div>
+
+    <div id="imageModal" class="fixed inset-0 z-[999999] hidden bg-black/90 flex items-center justify-center opacity-0 transition-opacity duration-300">
+        <button id="closeModal" class="absolute top-6 right-6 text-white hover:text-gray-400 focus:outline-none z-50">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <img id="modalImage" src="" alt="확대 이미지" class="protected-image max-h-[90vh] max-w-[90vw] object-contain shadow-2xl rounded-sm scale-95 transition-transform duration-300">
+    </div>
+
+    <script>
+        fetch('./components/header.html')
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+
+        fetch('./components/footer.html')
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+
+        window.toggleComponentMenu = function () {
+            const menu = document.getElementById("componentMobileMenu");
+            if(menu) {
+                menu.classList.toggle("hidden");
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const closeBtn = document.getElementById('closeModal');
+            const images = document.querySelectorAll('.zoomable-image');
+
+            images.forEach(img => {
+                img.addEventListener('click', () => {
+                    modalImg.src = img.src;
+                    modal.classList.remove('hidden');
+                    document.body.classList.add('modal-open');
+                    
+                    setTimeout(() => {
+                        modal.classList.remove('opacity-0');
+                        modalImg.classList.remove('scale-95');
+                        modalImg.classList.add('scale-100');
+                    }, 10);
+                });
+            });
+
+            const closeModalFunc = () => {
+                modal.classList.add('opacity-0');
+                modalImg.classList.remove('scale-100');
+                modalImg.classList.add('scale-95');
+                document.body.classList.remove('modal-open');
+                
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    modalImg.src = ''; 
+                }, 300);
+            };
+
+            closeBtn.addEventListener('click', closeModalFunc);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModalFunc();
+                }
+            });
+
+            document.querySelectorAll('.protected-image').forEach(el => {
+                el.addEventListener('contextmenu', (e) => {
+                    e.preventDefault(); 
+                });
+            });
+            modalImg.addEventListener('contextmenu', (e) => {
+                e.preventDefault(); 
+            });
+        });
+    </script>
+
+</body>
+
+</html>
